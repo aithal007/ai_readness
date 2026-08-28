@@ -1,0 +1,12 @@
+{
+  "name": "brand-ai-readiness-audit",
+  "version": "1.0.0",
+  "description": "Audits a website for AI-discoverability problems (why AI assistants miss, misrepresent, or won't cite a brand) and on-site engagement problems (why visitors who arrive don't stay), and emits a single evidence-backed, prioritized findings report. Recommend-only: no skill in this marketplace modifies a live site.",
+  "skills": [
+    { "id": "audit-orchestrator", "path": "skills/audit-orchestrator", "entrypoint": true },
+    { "id": "crawl-render-audit", "path": "skills/crawl-render-audit" },
+    { "id": "structured-data-entity-audit", "path": "skills/structured-data-entity-audit" },
+    { "id": "freshness-corroboration-audit", "path": "skills/freshness-corroboration-audit" },
+    { "id": "engagement-audit", "path": "skills/engagement-audit" }
+  ]
+}
