@@ -70,6 +70,47 @@ agent-performed judgment steps (web-search corroboration, orientation
 clarity) are only available when an agent follows the skills' SKILL.md
 procedures, since they aren't expressible as a deterministic script.
 
+## Project layout
+
+```
+brand-ai-readiness-audit/
+├── marketplace.json                  # registers all 5 skills; audit-orchestrator is the entrypoint
+├── README.md                         # this file
+├── ARCHITECTURE.md                   # detailed file-by-file design doc
+└── skills/
+    ├── audit-orchestrator/           # entrypoint: composes the other four
+    │   ├── SKILL.md
+    │   ├── references/report_schema.md
+    │   └── scripts/{run_checks.py, finalize_report.py}
+    ├── crawl-render-audit/
+    ├── structured-data-entity-audit/
+    ├── freshness-corroboration-audit/
+    └── engagement-audit/
+        └── (each: SKILL.md, references/checklist.md, scripts/{check_*.py, page_parser.py})
+```
+
+## Example output
+
+`finalize_report.py` renders each finding like this in the Markdown report:
+
+```markdown
+## F-001 - Sitewide robots.txt block for AI crawlers (CRITICAL)
+
+- **Category:** discoverability
+- **Evidence:** robots.txt disallows User-agent: * for /
+- **Why it matters:** Every AI crawler, including ones that would otherwise
+  cite this brand, is blocked before it can read a single page.
+- **Suggested action:** Remove or scope the sitewide Disallow rule.
+  - **How:** Edit /robots.txt to allow at least the homepage and key
+    content paths for GPTBot, ClaudeBot, PerplexityBot, and Google-Extended.
+```
+
+The accompanying JSON carries the same fields (`id`, `title`, `severity`,
+`category`, `evidence`, `mechanism`, `suggested_action`, `source_skill`) plus
+a `summary` block with per-severity counts -- see
+[`ARCHITECTURE.md`](./ARCHITECTURE.md) for the full schema and how every
+script and skill fits together.
+
 ## Guardrails
 
 - Read-only `GET` requests only; `robots.txt` is checked before crawling
