@@ -1,135 +1,151 @@
 # brand-ai-readiness-audit
 
-An Agent Skill Marketplace that audits a website for two things at once:
+An Agent Skill Marketplace that audits any website for two things at once:
 
-- **AI discoverability** -- why an AI assistant might miss, misrepresent, or
-  refuse to cite this brand.
-- **On-site engagement** -- why a visitor who does arrive doesn't stay.
+- **AI discoverability** — why an assistant misses, misquotes, or refuses to
+  cite this brand.
+- **On-site engagement** — why a visitor who does arrive doesn't stay.
 
-Point it at a domain and it returns one structured report: findings with
-evidence and severity, plus prioritized, mechanism-sound suggested actions.
-It never modifies the target site -- every check is a read-only `GET`
-request, `robots.txt` is honored, and the whole marketplace runs on a bare
-`python3` install with zero pip installs (every script is Python
-standard-library only, so it's portable across agent hosts).
+Point the entrypoint at a domain and it returns one prioritized report:
+findings with falsifiable evidence and severity, plus mechanism-sound fixes.
 
-## Why it's split this way
+**Recommend-only.** Read-only `GET` traffic, `robots.txt` honoured, no
+authentication, no form submission, no state-changing request. Nothing here
+alters a live site.
 
-Discoverability breaks down into three sequential preconditions that fail
-independently: a crawler has to (1) be let in, (2) be able to read the
-page, (3) be able to extract the specific fact being asked about -- and
-even once all three hold, a machine trusts a fact more when independent
-sources agree on it. On-site engagement is a separate concern entirely (it
-matters only *after* discovery succeeds). Each skill below owns one of
-these failure modes, so it can be tested, reasoned about, and improved
-independently instead of living inside one large, tangled checklist.
+**Zero dependencies.** Every script is Python standard library only, so the
+marketplace runs on a bare `python3` with no pip install and no browser binary.
 
-## Skills
+## The model it is built on
 
-| Skill | Owns | Kind of check |
+A brand gets cited only if six things hold, **in order**. A failure early makes
+everything later irrelevant — which is exactly why the work is decomposed this
+way rather than into one large checklist.
+
+```
+        ┌─────────────────────── audit-orchestrator (entrypoint) ───────────────────────┐
+        │  crawls ONCE into evidence.json, then fans out over that single snapshot      │
+        └───────────────────────────────────┬──────────────────────────────────────────┘
+                                            │
+   1 REACH ────► 2 IDENTITY ────► 3 QUOTABLE ────► 4 ANSWERABLE ────► 5 TRUST ────► 6 CONVERT
+   crawl-render   structured-      ai-citability-   answerability-     freshness-    engagement-
+   -audit         data-entity      audit            probe              corroboration -audit
+        │              │                │                │                  │             │
+        └──────────────┴────────────────┴────────┬───────┴──────────────────┴─────────────┘
+                                                 ▼
+                                         evidence-critic
+                                (drops, merges, recalibrates, strips)
+                                                 ▼
+                                    audit_report.json + .md
+```
+
+## The skills
+
+| Skill | The question it owns | Who fixes it |
 |---|---|---|
-| **`audit-orchestrator`** (entrypoint) | Composes the other four into one report | Runs their scripts, adds two judgment-based findings, merges/dedupes/IDs everything, emits the final schema-compliant report |
-| `crawl-render-audit` | Can a crawler get in and read the page | Scripted: `robots.txt` (incl. named AI-crawler rules), noindex directives, HTTP errors, sitemap, login walls, JS-render-gap heuristic |
-| `structured-data-entity-audit` | Are facts stated unambiguously; is the entity disambiguated | Scripted: JSON-LD validity/coverage, `sameAs`, Open Graph, title/description, `llms.txt` |
-| `freshness-corroboration-audit` | Is content current, internally consistent, and corroborated | Scripted: stale dates, cross-page fact consistency, broken links, on-site corroboration signals -- **plus** a bounded, agent-performed live web-search step for off-site agreement/mistaken-identity, which no single-domain script can check |
-| `engagement-audit` | Does a visitor who arrives understand and stay | Scripted: HTTPS, mobile viewport, heading structure, alt text, nav/search affordances, CTA presence, render-blocking scripts -- **plus** an agent-performed reading-comprehension judgment of homepage orientation clarity |
+| **`audit-orchestrator`** *(entrypoint)* | Composes everything, emits the report | — |
+| `crawl-render-audit` | Can a crawler reach the page and read it? | Infra / platform |
+| `structured-data-entity-audit` | Is it clear *who* this is, and do markup and page agree? | SEO / dev |
+| `ai-citability-audit` | Is this the kind of page answer engines actually quote? | Content |
+| `answerability-probe` | Can real questions about the brand be answered at all? | Content / product |
+| `freshness-corroboration-audit` | Is it current, consistent, and independently corroborated? | Content / PR |
+| `engagement-audit` | Does an arriving visitor orient, act, and get there? | UX |
+| `evidence-critic` | Do these findings actually hold up? | — |
 
-## How the entrypoint composes them
+Each owns a **distinct failure mode with a different fix owner**, and each is
+independently runnable and independently useful. That is the test for whether a
+split is real rather than padding.
 
-`audit-orchestrator` doesn't re-implement any check. Its procedure
-(`skills/audit-orchestrator/SKILL.md`) is:
+## Three things that make this different
 
-1. `scripts/run_checks.py <url>` subprocess-runs each sub-skill's own check
-   script and merges their JSON output into `raw_findings.json`, tagging
-   every finding with which skill produced it. A sub-check that fails to
-   run becomes a visible low-severity `"meta"` finding, not a silent gap.
-2. The agent appends two findings the scripts structurally can't produce --
-   a bounded off-site web-search corroboration check
-   (`freshness-corroboration-audit`'s Part B) and a homepage
-   orientation-clarity judgment (`engagement-audit`'s step 2) -- to the same
-   findings list, in the same shape.
-3. `scripts/finalize_report.py` de-duplicates, sorts by severity, assigns
-   `F-001`, `F-002`, ... IDs, computes the summary counts, and emits the
-   final report (both JSON and a human-readable Markdown rendering).
+### 1. It tests the outcome, not just the inputs
 
-The exact raw-finding and final-report shapes are defined once, in
-`skills/audit-orchestrator/references/report_schema.md`, and every skill
-targets that same contract.
+Every conventional audit checks inputs — is the bot allowed in, is the markup
+valid. `answerability-probe` checks the **outcome**: it infers the organisation
+type from evidence, takes the questions people actually ask about that kind of
+organisation, and reports which ones cannot be answered from the site's own
+extractable text. An unanswerable question is the literal reason an assistant
+says "I don't have information about that", or fills the gap from a source the
+brand doesn't control.
 
-## Running it directly (without an agent)
+### 2. It is calibrated against evidence, including where the evidence is
+inconvenient
 
-Every check script is independently runnable and prints JSON to stdout:
+Every threshold traces to a measured result recorded in
+[`skills/audit-orchestrator/references/evidence-base.md`](skills/audit-orchestrator/references/evidence-base.md),
+and every finding carries an `evidence_tier` of `measured`, `correlational` or
+`speculative` so a reader can see how much weight it bears.
 
+That cuts against popular advice where the evidence demands it:
+
+- **Schema markup is not sold as an AI-citation lever.** Controlled studies
+  found null or slightly negative effects; one test of 1,885 pages saw
+  citations *fall*. It is recommended for entity identity and rich results,
+  which are real.
+- **Blocking `GPTBot` is not reported as a defect.** It is a training crawler.
+  Google states blocking `Google-Extended` does not affect Search inclusion.
+  Refusing training while allowing search is a documented, legitimate choice —
+  and flagging it is the most common false positive in this space.
+- **Missing `llms.txt` is informational at most.** Of 137,000 domains studied,
+  97% of published files received zero requests.
+- The marketplace maintains a **do-not-recommend list** — keyword stuffing
+  (−8.3%, the worst tactic tested), blanket rewrites (up to −36% retrieval),
+  hidden text, and anything classed as manipulation. `evidence-critic`
+  mechanically strips any recommendation matching it.
+
+### 3. It argues with itself before it reports
+
+`evidence-critic` re-reads every proposed finding against the evidence that
+produced it and drops the ones that don't hold: unfalsifiable claims, claims
+the bundle contradicts, duplicates found independently by two skills,
+single-page issues overstated as sitewide, speculative mechanisms carrying high
+severity. What it suppressed — and why — is published in the report, because a
+suppression list is what makes an audit auditable rather than merely assertive.
+
+## How the entrypoint composes it
+
+1. **Collect once.** `run_audit.py` crawls the site a single time into
+   `evidence.json`, then runs all six analyzers against that one snapshot. Every
+   skill therefore reasons over *identical* evidence — no drift, no contradictory
+   findings from differently-timed fetches, and one crawl budget instead of six.
+2. **Add what scripts can't do.** Two steps need judgement: off-site
+   corroboration with **source-independence** analysis (three sources are not
+   three confirmations if two are copies of one press release), and homepage
+   orientation clarity. Both are agent-performed and explicitly *not* faked in
+   code.
+3. **Adjudicate.** `evidence-critic` runs, mechanically then by judgement.
+4. **Finalize.** `finalize_report.py` assigns IDs, computes severity counts and
+   pillar scores, and writes the JSON report plus a readable Markdown version.
+
+A failed analyzer becomes a visible `meta` finding, never a silent gap — a
+degraded run that looks identical to a clean one is the worst outcome in a
+multi-step audit.
+
+## Running it without an agent
+
+```bash
+python3 skills/audit-orchestrator/scripts/run_audit.py https://example.com \
+    --out raw_findings.json --evidence-out evidence.json --today 2026-09-07
+python3 skills/evidence-critic/scripts/critique_findings.py \
+    --findings raw_findings.json --evidence evidence.json --out adjudicated.json
+python3 skills/audit-orchestrator/scripts/finalize_report.py adjudicated.json \
+    --site example.com --evidence evidence.json --out audit_report.json --md audit_report.md
 ```
-python3 skills/audit-orchestrator/scripts/run_checks.py https://example.com --out raw.json --today 2026-08-27
-python3 skills/audit-orchestrator/scripts/finalize_report.py raw.json --site example.com --out audit_report.json --md audit_report.md
-```
 
-This produces the scripted two-thirds of the report; the two
-agent-performed judgment steps (web-search corroboration, orientation
-clarity) are only available when an agent follows the skills' SKILL.md
-procedures, since they aren't expressible as a deterministic script.
+Each analyzer also runs standalone against an `evidence.json`.
 
-## Project layout
-
-```
-brand-ai-readiness-audit/
-├── marketplace.json                  # registers all 5 skills; audit-orchestrator is the entrypoint
-├── README.md                         # this file
-├── ARCHITECTURE.md                   # detailed file-by-file design doc
-└── skills/
-    ├── audit-orchestrator/           # entrypoint: composes the other four
-    │   ├── SKILL.md
-    │   ├── references/report_schema.md
-    │   └── scripts/{run_checks.py, finalize_report.py}
-    ├── crawl-render-audit/
-    ├── structured-data-entity-audit/
-    ├── freshness-corroboration-audit/
-    └── engagement-audit/
-        └── (each: SKILL.md, references/checklist.md, scripts/{check_*.py, page_parser.py})
-```
-
-## Example output
-
-`finalize_report.py` renders each finding like this in the Markdown report:
-
-```markdown
-## F-001 - Sitewide robots.txt block for AI crawlers (CRITICAL)
-
-- **Category:** discoverability
-- **Evidence:** robots.txt disallows User-agent: * for /
-- **Why it matters:** Every AI crawler, including ones that would otherwise
-  cite this brand, is blocked before it can read a single page.
-- **Suggested action:** Remove or scope the sitewide Disallow rule.
-  - **How:** Edit /robots.txt to allow at least the homepage and key
-    content paths for GPTBot, ClaudeBot, PerplexityBot, and Google-Extended.
-```
-
-The accompanying JSON carries the same fields (`id`, `title`, `severity`,
-`category`, `evidence`, `mechanism`, `suggested_action`, `source_skill`) plus
-a `summary` block with per-severity counts -- see
-[`ARCHITECTURE.md`](./ARCHITECTURE.md) for the full schema and how every
-script and skill fits together.
+This produces everything except the two judgement steps, which need an agent
+following the SKILL.md procedures.
 
 ## Guardrails
 
-- Read-only `GET` requests only; `robots.txt` is checked before crawling
-  any page beyond the homepage.
-- A custom, self-identifying `User-Agent` and a ~0.5s per-host delay
-  between requests keep every run well short of rate-abusive.
-- Each sub-skill samples at most homepage + ~4 same-domain pages; the
-  off-site corroboration step is capped at 2-4 web searches. A typical
-  audit finishes in well under 5 minutes (observed: under a minute against
-  a large, real site during testing).
-- Internal-page sampling skips login/signup/cart/checkout/account/admin
-  paths and non-HTML assets (images, PDFs, stylesheets, fonts) -- it never
-  wanders into an authenticated-area-adjacent page or wastes a request on
-  something that was never going to be a content page.
-- No authentication, no form submission, no state-changing request of any
-  kind, ever.
-- Each skill declares its `allowed-tools` in frontmatter (`Bash` for the
-  three purely-scripted skills; `Bash WebSearch` for the two whose SKILL.md
-  includes an agent-performed live-search step). If a host environment has
-  no search tool bound, those two skills degrade gracefully: they emit an
-  explicit low-severity `meta` finding saying the check couldn't run,
-  rather than fabricating a result or silently skipping it.
+- Read-only `GET` only. `robots.txt` checked before any page beyond the entry
+  point. Self-identifying user-agent, ~0.4s between requests to a host.
+- Login, signup, cart, checkout, account and admin paths are skipped outright,
+  as are non-HTML assets.
+- Hard-bounded: 15 pages, depth 2, 150-second crawl budget, 2–4 web searches.
+  Observed runtime is **~30 seconds for 12 pages**, well inside the 5-minute
+  target.
+- The one probe that sends non-default user-agents does so only to *detect*
+  CDN-level AI-bot blocking — a failure mode invisible to `robots.txt` analysis
+  — and it fetches the same public homepage, nothing more.

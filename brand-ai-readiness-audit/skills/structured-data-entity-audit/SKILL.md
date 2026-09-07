@@ -1,64 +1,78 @@
 ---
 name: structured-data-entity-audit
-description: Checks whether a site states its facts in a form a machine can parse unambiguously -- schema.org JSON-LD validity and coverage (Organization, Product/Offer, Article), sameAs entity-disambiguation links, Open Graph/Twitter meta tags, title/meta-description quality, language declaration, and llms.txt presence. Use when auditing why an AI assistant misrepresents, confuses, or can't extract clean facts about a brand, or as part of a larger AI-discoverability/engagement audit.
+description: Check whether a website states unambiguously which organisation it belongs to and whether its machine-readable claims match its visible page - JSON-LD validity, microdata, RDFa and microformats detection, Organization entity identity, stable @id, sameAs links to canonical references like Wikidata or LinkedIn, colliding entity declarations from multiple plugins, and title, description and language metadata. Use when an AI assistant confuses a brand with a similarly named organisation, attributes the wrong facts to it, or when auditing schema markup and entity clarity.
 license: MIT
-allowed-tools: Bash WebSearch
+allowed-tools: Bash(python3:*) Bash(python:*) Read WebSearch
+metadata:
+  marketplace: brand-ai-readiness-audit
+  stage: "2"
 ---
 
 # Structured Data & Entity Audit
 
-Once a crawler can reach and read a page (see `crawl-render-audit`), the
-next question is whether the facts on it are stated *explicitly* enough to
-extract correctly, and whether the entity itself is disambiguated from
-anything else that might share its name. Machines extract explicit,
-structured facts far more reliably than facts implied only in prose --
-and they trust an entity more when it's clearly linked to canonical
-external profiles (Wikipedia, Wikidata, LinkedIn, Crunchbase) that rule out
-mistaken identity.
+Two questions: is it clear **who** this site belongs to, and do its machine
+claims **agree with** what the page actually shows?
 
 ## When to use
 
-As part of a brand AI-discoverability/engagement audit (normally invoked by
-`audit-orchestrator`), or standalone when an AI assistant is citing wrong
-facts, confusing the brand with something else of the same name, or simply
-never mentioning it despite good content.
+Stage 2 of the `audit-orchestrator` flow, or standalone when assistants mix a
+brand up with something else of the same name, or attribute the wrong facts.
 
 ## Inputs
 
-A single URL or bare domain.
+An `evidence.json` bundle from `crawl-render-audit`.
 
 ## Procedure
 
-1. Run the check script:
-   ```
-   python3 scripts/check_structured_data.py <url>
-   ```
-   It fetches the homepage plus a small sample of internal pages, parses
-   every `<script type="application/ld+json">` block, and checks Open
-   Graph/Twitter meta, title/description quality, `<html lang>`, favicon,
-   and `/llms.txt`. See [references/checklist.md](references/checklist.md)
-   for the full check list, the `@type` coverage logic, and known heuristic
-   limitations.
+```
+python3 scripts/analyze_structured_entity.py --evidence evidence.json
+```
 
-2. Product/Article structured-data findings are **heuristic** (they infer
-   "this looks like a product/article page" from price patterns, purchase
-   wording, or an `<article>` tag). Before treating one as a confirmed
-   defect, sanity-check the page: a SaaS pricing page that mentions a price
-   is not necessarily missing anything by lacking `Product` schema -- it may
-   correctly need `Service`/`Offer` under an `Organization` instead. The
-   script's evidence text already flags this ambiguity; preserve that
-   hedging in the final report rather than overstating confidence.
+Optionally, where the brand name is generic or shared, run one web search for
+the name to judge collision risk, and raise the severity of a missing `sameAs`
+finding accordingly. The script cannot know how common a name is; you can.
 
-3. For the entity-disambiguation check (`sameAs` on the Organization
-   entity): if the brand name is generic or shared with other entities (a
-   common word, a name reused across industries), treat a missing `sameAs`
-   as more urgent than the script's default `medium` severity -- this is a
-   judgment call the script can't make on its own since it doesn't know how
-   common the name is. Use a web search of the brand name if you want to
-   confirm name collisions before upgrading severity.
+## What it checks
+
+- **The structured-data ladder** — JSON-LD, microdata, RDFa, microformats2,
+  legacy microformats, Open Graph, Dublin Core, then machine hints. It reports
+  a verdict, not a binary.
+- **Validity** — a JSON-LD block that fails to parse is reported as worse than
+  absent markup, because it looks finished and so never gets revisited.
+- **Entity identity** — a stable `@id`, `sameAs` links to canonical references,
+  and whether those references are authoritative or only social profiles.
+- **Collisions** — several plugins each declaring their own Organization with
+  different `@id` values, which is worse than one sparse declaration.
+- **Parity** — whether the name asserted in markup appears in the visible page.
+- **Descriptive metadata** — title, meta description, `html lang`.
+
+## Gotchas
+
+- **Never report "no structured data" on the strength of missing JSON-LD.**
+  Microdata, RDFa and microformats are structured data too, and because they
+  annotate visible text their fact-parity is arguably better than JSON-LD's.
+  Enormous numbers of themes emit classic microformats such as `vcard` and
+  `hentry`. The analyzer resolves the full ladder first; do not second-guess it
+  into a harsher verdict.
+- **Do not sell schema as a route to AI citations.** This is the most common
+  overclaim in the field. Controlled studies found null or slightly negative
+  effects on AI citation — one test of 1,885 pages saw citations *fall* after
+  JSON-LD was added, and a rigorous re-analysis collapsed the association to
+  null once ranking position was controlled for. Any study that does not
+  control for rank is mostly measuring rank. Recommend schema for entity
+  disambiguation and search rich results, which are real. What gets a page
+  quoted is concrete facts in visible body text.
+- **Bare identifier codes do not belong in `sameAs`.** LEI, DUNS, VAT, ISNI and
+  tax numbers are not URLs; they belong in `identifier` as a `PropertyValue`.
+- **Markup must not assert what the page does not show.** A fact present only
+  in JSON-LD is the same class of problem as a fact present only inside an
+  image — unverifiable against the page, and discounted accordingly.
+- **Do not recommend FAQPage or HowTo markup as a visibility win.** FAQ rich
+  results have been heavily restricted since 2023 and HowTo was effectively
+  deprecated.
 
 ## Output
 
-A JSON array of findings in the shape documented in
-[../audit-orchestrator/references/report_schema.md](../audit-orchestrator/references/report_schema.md).
-Each finding's `category` is `"discoverability"`.
+Findings JSON per `../audit-orchestrator/references/report_schema.md`, with
+`category: discoverability`. Full check table in
+[references/checklist.md](references/checklist.md).

@@ -1,54 +1,73 @@
-# Structured Data & Entity Audit -- check reference
+# Structured data & entity — checks and thresholds
 
-## Checks performed by `scripts/check_structured_data.py`
+## The verdict ladder
 
-| Check | Severity | Why |
-|---|---|---|
-| Invalid/unparseable JSON-LD | high | A malformed block is typically ignored wholesale by consumers even though it looks present in the source. |
-| No JSON-LD at all on homepage | high | Structured data is the least-ambiguous way to state entity facts; its absence forces noisy text inference. |
-| JSON-LD present but no Organization/WebSite type | medium | Without an explicit entity type, there's less structured basis for identity. |
-| Organization present but no `sameAs` | medium (raise if name is generic/shared) | `sameAs` is the standard mechanism for disambiguating this entity from unrelated ones with a similar name. |
-| Missing Open Graph title/description | medium | Widely-parsed, explicit "what is this page" signal used by previews and many ingestion pipelines. |
-| Missing Twitter/X card tags | low | Redundant, low-cost signal. |
-| Empty/missing `<title>` | high | One of the highest-weight explicit signals of page topic. |
-| Generic placeholder `<title>` (e.g. "Home", "Untitled Document") | medium | Carries no identifying information. |
-| Missing meta description | medium | A commonly-ingested, explicit one-line summary. |
-| No `<html lang>` | low | Minor locale/entity-matching and accessibility signal. |
-| No favicon | low | Minor brand-identity polish signal. |
-| Product-page pattern (price + purchase wording) without Product/Offer schema | medium, heuristic | See hedging note in SKILL.md -- confirm before treating as a hard defect. |
-| Article-page pattern (`<article>` tag or `/blog/`,`/news/` URL) without Article/BlogPosting schema | medium | Article schema carries headline/author/date explicitly, used for both extraction and freshness. |
-| No `/llms.txt` | low, proactive | Emerging, cheap, low-risk convention some AI tools check first; not a substitute for real crawlability/schema. |
+Resolved in order. The point is to never report "no structured data" on the
+strength of missing JSON-LD alone.
 
-## `@type` extraction logic
+| Verdict | Trigger |
+|---|---|
+| `INVALID_STRUCTURED_DATA` | a JSON-LD block exists but fails to parse |
+| `STRUCTURED_DATA_PRESENT` | JSON-LD, microdata (`itemscope`/`itemtype`/`itemprop`), RDFa (`typeof`/`vocab`), or microformats2 (`h-*`) |
+| `LEGACY_MICROFORMATS_ONLY` | classic microformats — `vcard`, `hentry`, `hreview`, `adr` |
+| `SOCIAL_META_ONLY` | Open Graph, Twitter cards or Dublin Core only |
+| `MACHINE_HINTS_ONLY` | `rel=me`, feed autodiscovery, or an embedded state blob |
+| `NO_STRUCTURED_DATA` | none of the above |
 
-The script walks every parsed JSON-LD object recursively (including
-`@graph` arrays and arrays used for multiple `@type` values) and collects
-every `@type` string it finds anywhere in the document, not just at the top
-level. This means a `WebPage` wrapping an `@graph` of `[Organization,
-WebSite, BreadcrumbList]` is correctly seen as containing `Organization`.
+Invalid markup is reported as **worse than absent**, because it looks finished
+and so never gets revisited.
 
-## `llms.txt` format, if you recommend adding one
+## Checks
 
-Per the community `llms.txt` convention: a plain markdown file at
-`/llms.txt`, starting with a required `# <Project or Site Name>` H1 (the
-only mandatory element), optionally followed by a one-line blockquote
-summary, free-form context paragraphs, and `##`-delimited markdown link
-lists (e.g. `## Docs`, `## Key Pages`) pointing to the most important pages.
-Treat this as a cheap, low-risk addition, not a replacement for proper
-crawlability, valid JSON-LD, or a real sitemap -- its actual effect on any
-given AI system's behavior is unconfirmed and debated; recommend it as a
-minor proactive improvement, not as fixing a confirmed defect.
+| Check | Severity |
+|---|---|
+| JSON-LD present but unparseable | high |
+| Nothing on the whole ladder | medium |
+| Only legacy or social-meta markup | low |
+| Organization node missing `@id`, `sameAs`, or with social-only `sameAs` | medium |
+| Non-URL values inside `sameAs` | medium (part of the identity finding) |
+| Conflicting Organization `@id`s across pages | medium |
+| Markup name absent from visible page text | low |
+| No Organization node despite other markup | medium |
+| Missing or empty `<title>` | high |
+| Placeholder `<title>` ("Home", "Untitled") | medium |
+| Meta description missing on ≥half the pages | low |
+| No `html lang` | low |
+| No `/llms.txt` | low, **speculative** |
 
-## Known limitations / false-positive risks
+## Entity identity — what good looks like
 
-- The product/article heuristics are text-pattern matches, not a real
-  understanding of page intent -- always sanity-check before reporting them
-  as confirmed defects (see SKILL.md step 2).
-- `sameAs` absence is flagged at a flat `medium` regardless of how common
-  the brand name is; a human/agent judgment call is needed to know whether
-  name-collision risk is actually high for this specific brand (see SKILL.md
-  step 3).
-- The script samples at most 3 internal pages beyond the homepage, chosen
-  by URL/link-text heuristics (about/product/pricing/contact/blog) -- it
-  will not catch a structured-data gap on a page type it didn't happen to
-  sample.
+A stable `@id` (`https://example.com/#org`), one canonical Organization per
+site, and `sameAs` pointing at authoritative references rather than only social
+profiles. Priority order: Wikidata and the official URL first; then Wikipedia
+and the LinkedIn company page; then Crunchbase; then ROR for research
+organisations and ISNI for publishers and cultural bodies.
+
+Bare identifier codes — LEI, DUNS, VAT, ISNI numbers, tax IDs — are **not URLs**
+and belong in `identifier` as a `PropertyValue`, never in `sameAs`.
+
+The identity spine that actually resolves "which entity is this page about" is
+`WebPage → isPartOf → WebSite → publisher → Organization`, plus
+`WebPage.about → Organization`. `sameAs` alone does not do it.
+
+## Honest scope
+
+Recommend schema for **entity disambiguation** and **search rich results**.
+Do not present it as a route to AI citations. Controlled evidence points to
+null or slightly negative effects there: 1,885 pages adding JSON-LD saw
+AI-Overview citations fall 4.6% against controls; visibility distributions were
+near-identical across schema-coverage buckets; facts planted in FAQ schema went
+unused by every platform tested; and a corrected re-analysis collapsed the
+association to null once ranking position was controlled for.
+
+Also: do not recommend FAQPage or HowTo as visibility wins — FAQ rich results
+have been heavily restricted since 2023 and HowTo was effectively deprecated.
+
+## Known limits
+
+- The `@type` walk collects types from anywhere in the document including
+  `@graph` and multi-value arrays, so a `WebPage` wrapping a graph is read
+  correctly — but the analyzer does not validate property-level completeness
+  against schema.org.
+- Name-collision risk cannot be judged from the site alone. Where a brand name
+  is generic, raise the `sameAs` finding's severity using a web search.

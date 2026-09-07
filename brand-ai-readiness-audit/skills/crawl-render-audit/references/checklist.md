@@ -1,74 +1,69 @@
-# Crawl & Render Audit -- check reference
+# Crawl & Render — checks and thresholds
 
-## Why these checks, specifically
+## Access
 
-Search engines and AI assistants find content the same basic way: a crawler
-has to (1) be let in, (2) be able to read what's on the page, (3) be able to
-pick out the specific fact being asked about. Fail step 1 or 2 and step 3
-never gets a chance -- the page is invisible to that system even though a
-human sees it fine. This skill only covers steps 1 and 2; structured-data
-extractability (step 3) is `structured-data-entity-audit`'s job.
-
-## Checks performed by `scripts/check_crawl_render.py`
-
-| Check | Severity if failed | Why |
+| Check | Severity | Threshold |
 |---|---|---|
-| `robots.txt` disallows `*` sitewide | critical | Blocks every well-behaved crawler, AI or otherwise. |
-| `robots.txt` disallows named AI crawlers | critical/high | Named rules override `*`; that specific assistant will never fetch the site. |
-| No `/sitemap.xml` | medium | Sitemaps are the most reliable discovery path for pages with few inbound internal links. |
-| `X-Robots-Tag: noindex` header | critical | Explicit, machine-authoritative exclusion from indexing. |
-| `<meta name="robots" content="noindex">` | critical | Same effect via HTML instead of headers. |
-| Homepage returns 4xx/5xx | critical | An error on the homepage blocks the whole domain by definition. |
-| No `<link rel="canonical">` | low | Ambiguity about which URL variant is authoritative can split signal across duplicates. |
-| JS-render gap (see below) | high | Most AI crawlers do not execute JavaScript; client-only content is invisible to them. |
-| No `<noscript>` fallback on a JS-heavy page | medium | Compounds the render-gap issue; there's no plain-text fallback either. |
-| Login/paywall wording with thin visible text | high | Gated content is invisible to anonymous crawlers. |
-| Broken links in the sampled internal pages | medium/high | Wastes crawl budget and is a quality/freshness signal. |
+| `Disallow: /` for `*` | critical | robots.txt blocks the root for all agents |
+| Search-index crawler disallowed | critical | any of OAI-SearchBot, Claude-SearchBot, PerplexityBot, Googlebot, Bingbot, Applebot, DuckAssistBot |
+| Training crawler disallowed | **low, informational** | GPTBot, ClaudeBot, Google-Extended, Applebot-Extended, CCBot — no citation impact |
+| Live user-fetch agent disallowed | low | ChatGPT-User, Claude-User, Perplexity-User — advisory only |
+| Content Signals directives present | low/medium | `search=no` raises it to medium |
+| Network-layer block detected | critical | browser UA succeeds, AI UA gets 401/403/429/503 or a body under 35% the size |
+| `noindex` (meta or `X-Robots-Tag`) | critical on homepage, else high | any sampled page |
+| No usable sitemap | medium | no `<loc>` entries from robots.txt declarations or `/sitemap.xml` |
+| Broken internal links | medium | any 4xx/5xx in the sampled crawl |
 
-## The render-gap heuristic, precisely
+### The crawler taxonomy, which is the whole point
 
-The script never executes JavaScript (it's stdlib-only Python, by design,
-for portability -- see the marketplace README). It approximates "does this
-page need JS to show its real content" with two static signals combined:
+`citation_impact` is what decides severity, not the mere presence of a
+`Disallow`:
 
-- **Visible text extracted from raw HTML is very short** (under ~250
-  characters after stripping `<script>`/`<style>`/`<noscript>`), **and**
-- Either a **known SPA root element** is present (`id="root"`, `id="app"`,
-  `id="__next"`, `id="__nuxt"`, etc.) **or** there are **6+ `<script>` tags**.
+- **`removes`** — search-index agents. Blocking genuinely costs visibility.
+- **`none`** — training and opt-out tokens. Google states blocking
+  Google-Extended does not affect Google Search inclusion; OpenAI states
+  disallowing GPTBot only opts out of training. Refusing training while
+  allowing search is the documented way to keep citations without contributing
+  training data. **Never report this as a defect.**
+- **`intent`** — user-triggered fetchers. Operators say robots.txt may not
+  apply, so a `Disallow` is a statement of intent, not an effective block.
 
-This is a heuristic, not proof. False positives happen (a genuinely
-minimal, mostly-image landing page). False negatives happen too (a
-framework that does partial SSR for the hero section but loads the rest of
-the content via client-side fetch after mount -- the raw HTML will look
-"non-empty" even though most of the substance is still missing). When the
-result is ambiguous or high-stakes, verify manually:
+## Readability
 
-```
-curl -A GPTBot <url> | less     # what a non-rendering crawler actually sees
-```
+| Check | Severity | Threshold |
+|---|---|---|
+| JavaScript render gap | critical if ≥ half the sample, else high | under 120 words extractable **and** (SPA root element **or** ≥6 script tags) |
+| Facts locked in non-text | high | fact-bearing image without alt, PDF-only doc, canvas, third-party embed, unrendered template binding, or a fact only in a `data-` attribute |
+| Content only in a state blob | medium | render gap co-occurring with `__NEXT_DATA__` / `__NUXT__` / `__INITIAL_STATE__` |
 
-or, if a rendering-capable fetch tool is available in the current
-environment, fetch the rendered DOM and diff its visible text against the
-script's raw-HTML extraction.
+### Render-gap heuristic limits
 
-## AI crawler user-agent tokens checked against robots.txt
+It never executes JavaScript, by design — the collector is standard-library
+only so it runs anywhere. So:
 
-`GPTBot`, `ChatGPT-User`, `OAI-SearchBot`, `ClaudeBot`, `Claude-User`,
-`Claude-SearchBot`, `anthropic-ai`, `PerplexityBot`, `Perplexity-User`,
-`Google-Extended`, `Applebot-Extended`, `CCBot`, `Amazonbot`,
-`Meta-ExternalAgent`, `Bytespider`, `Diffbot`. This list changes over time
-as new assistants ship their own fetchers -- treat it as illustrative, not
-exhaustive, and don't hesitate to check for a newer bot name by hand if the
-target's `robots.txt` mentions one not in this list.
+- **False positives**: a deliberately minimal, image-led landing page.
+- **False negatives**: partial server-side rendering where the hero renders but
+  the substance loads client-side afterwards.
 
-## Politeness / guardrails
+Confirm either way with `curl -A GPTBot <url> | head -c 2000`. If the facts are
+not in that output, no non-rendering crawler can see them.
 
-- Custom, self-identifying `User-Agent` on every request.
-- ~0.5s delay between requests to the same host.
-- At most homepage + `robots.txt` + `sitemap.xml` + 4 sampled internal pages
-  per run.
-- Every sampled URL beyond the homepage is checked against `robots.txt`
-  `Disallow` rules for `*` before fetching; disallowed URLs are skipped, not
-  fetched.
-- No authentication attempted, no forms submitted, no state-changing
-  requests (GET only).
+## Extractability failure modes detected
+
+Fact-bearing images without alt text; image-heavy pages with sparse text; text
+inside SVG; canvas-rendered content; CSS-generated text; unrendered template
+bindings and surviving mustaches; facts only in `data-` attributes; PDF-only
+documents; third-party embeds (Datawrapper, Flourish, Tableau, Google Docs,
+Airtable, Typeform); custom elements suggesting shadow DOM; media without
+captions; obfuscated contact details; content behind "load more"; and prose
+referencing a table that does not exist in markup.
+
+Each is reported as a **signal**, never a certainty.
+
+## Crawl budget and politeness
+
+Homepage plus a prioritized same-domain sample, default 15 pages, depth 2, with
+a 150-second wall-clock budget and roughly 0.4s between requests to the same
+host. Every URL beyond the entry page is checked against robots.txt first.
+Login, signup, cart, checkout, account and admin paths are skipped outright, as
+are non-HTML assets. GET only — never a form submission, never authentication.

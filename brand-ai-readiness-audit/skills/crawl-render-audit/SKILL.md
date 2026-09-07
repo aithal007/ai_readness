@@ -1,62 +1,85 @@
 ---
 name: crawl-render-audit
-description: Checks whether AI crawlers and search bots can actually reach and read a website -- robots.txt access for named AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, etc.), noindex directives, HTTP/redirect errors, sitemap presence, login/paywall gates, and whether page content only appears after client-side JavaScript runs (a render gap most AI crawlers can't see past). Use when auditing why a brand is invisible to AI assistants or search, or as the first stage of a larger AI-discoverability/engagement audit.
+description: Check whether AI and search crawlers can actually reach a website and read what is on it - robots.txt rules interpreted by crawler purpose, CDN and WAF blocking that silently overrides robots.txt, noindex directives, JavaScript render gaps that leave pages blank to non-rendering bots, and facts locked inside images, PDFs, canvas or client-side templates. Also collects the shared evidence bundle every other skill in this marketplace reads. Use when a brand is missing from AI answers entirely, when a site looks fine to humans but empty to bots, or as the first stage of a broader AI-readiness audit.
 license: MIT
-allowed-tools: Bash
+allowed-tools: Bash(python3:*) Bash(python:*) Read
+metadata:
+  marketplace: brand-ai-readiness-audit
+  stage: "1"
 ---
 
 # Crawl & Render Audit
 
-This is the "can a machine get in, and can it read what's there" check --
-the first of the three sequential preconditions for AI discoverability
-(access, then legibility, then extractability). If this fails, nothing
-downstream matters: a page a crawler can't fetch or can't read is invisible
-regardless of how good its content or structured data is.
+Precondition 1. If a crawler cannot fetch the page, or fetches it and finds
+nothing readable, no other improvement matters.
+
+This skill also owns `scripts/evidence_collector.py`, the single bounded crawl
+that produces the `evidence.json` every other analyzer in this marketplace
+consumes.
 
 ## When to use
 
-As part of a brand AI-discoverability/engagement audit (normally invoked by
-the `audit-orchestrator` skill in this marketplace), or standalone whenever
-someone asks why a site isn't showing up in AI assistant answers or search.
+As stage 1 of the `audit-orchestrator` flow, or standalone when a site is
+absent from AI answers and you need to know whether it is even reachable.
 
 ## Inputs
 
-A single URL or bare domain (e.g. `example.com` or `https://example.com`).
+A URL or bare domain.
 
 ## Procedure
 
-1. Run the check script, which handles fetching, robots.txt parsing, and
-   the render-gap heuristic deterministically:
+1. Collect the evidence bundle (skip if the orchestrator already did):
    ```
-   python3 scripts/check_crawl_render.py <url>
+   python3 scripts/evidence_collector.py <url> --out evidence.json --max-pages 15
    ```
-   It prints a JSON object `{"skill": "crawl-render-audit", "site": ..., "findings": [...]}`.
-   Each finding already has `title`, `severity`, `category`, `evidence`,
-   `mechanism`, and `suggested_action` -- see
-   [references/checklist.md](references/checklist.md) for exactly what each
-   check does and why, and for a manual fallback procedure if the script
-   can't run in the current environment (e.g. no outbound network access).
+   Crawls the homepage plus a prioritized same-domain sample, honouring
+   robots.txt for every URL beyond the entry page, throttled, and hard-bounded
+   by page count, depth and wall-clock budget.
 
-2. The script fetches the homepage, `robots.txt`, and `sitemap.xml`, then
-   samples up to 4 same-domain internal links (favoring about/product/
-   pricing/contact/blog pages), skipping any URL `robots.txt` disallows for
-   `*`. Total requests per run: roughly 5-9, each throttled ~0.5s apart --
-   deliberately small and polite, well under a rate-abuse threshold.
+2. Analyze it:
+   ```
+   python3 scripts/analyze_crawl_render.py --evidence evidence.json
+   ```
+   Emits findings JSON on stdout.
 
-3. If asked to judge JS-render gaps more precisely than the static-HTML
-   heuristic allows (e.g. the heuristic is ambiguous, or you have a
-   rendering-capable fetch tool available), fetch the page with that tool
-   and compare the rendered visible text to the script's raw-HTML text
-   extraction. A large gap confirms the finding; a small gap means the
-   heuristic's flag was a false positive -- downgrade or drop it.
+3. If the render-gap finding is ambiguous and you have a rendering-capable
+   fetch tool, fetch the page rendered and compare its visible text to
+   `text_sample` in the bundle. A large gap confirms it; a small gap means the
+   heuristic misfired and the finding should be dropped.
 
-4. Pass the script's raw findings through unchanged to whatever is composing
-   the final report (the `audit-orchestrator` skill, if running inside this
-   marketplace). Do not re-invent severities or evidence text -- the script
-   already grounds both in what it observed.
+## What it checks
+
+Access — sitewide `Disallow`, per-agent rules resolved **by crawler purpose**,
+Cloudflare Content Signals directives, network-layer bot blocking, `noindex`
+via meta tag or `X-Robots-Tag`, sitemap availability, broken internal links.
+
+Readability — JavaScript render gap (little extractable text alongside a
+client-render root or heavy scripting, with the `<noscript>` fallback measured),
+and facts locked in non-text elements (fact-bearing images without alt text,
+PDF-only documents, canvas, third-party embeds, unrendered template bindings,
+values living only in `data-` attributes).
+
+## Gotchas
+
+- **Blocking a training crawler is not a defect.** GPTBot, ClaudeBot,
+  Google-Extended, Applebot-Extended and CCBot are training or opt-out tokens.
+  Google states plainly that blocking Google-Extended does not affect inclusion
+  in Google Search. Blocking these costs no citation visibility, and reporting
+  it as a problem is the single most common false positive in this domain. The
+  analyzer records it as informational only — keep it that way.
+- **Only these blocks actually cost visibility**: OAI-SearchBot,
+  Claude-SearchBot, PerplexityBot, Googlebot, Bingbot, Applebot,
+  DuckAssistBot, plus the live user-fetch agents.
+- **robots.txt is not the whole story.** CDN and WAF bot management blocks
+  before robots.txt is consulted and overrides it, so a permissive robots.txt
+  can coexist with total invisibility. That is what the user-agent differential
+  probe in the collector exists to catch; treat a positive there as serious.
+- **The render-gap test is a heuristic.** A deliberately minimal page can trip
+  it. Confirm with `curl -A GPTBot <url>` before reporting with confidence.
 
 ## Output
 
-A JSON array of findings in the shape documented in
-[../audit-orchestrator/references/report_schema.md](../audit-orchestrator/references/report_schema.md).
-Each finding's `category` is `"discoverability"`.
+Findings JSON in the shape defined by
+`../audit-orchestrator/references/report_schema.md`, all with
+`category: discoverability`. Details of every check, its threshold and the
+evidence behind it are in [references/checklist.md](references/checklist.md).

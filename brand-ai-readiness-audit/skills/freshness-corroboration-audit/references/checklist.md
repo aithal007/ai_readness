@@ -1,59 +1,71 @@
-# Freshness & Corroboration Audit -- check reference
+# Freshness & corroboration — checks and thresholds
 
-## Checks performed by `scripts/check_freshness.py`
+## Part A — scripted
 
-| Check | Severity | Why |
+| Check | Threshold | Severity |
 |---|---|---|
-| Copyright/"updated" year >=2 years old | medium (>=3 years: high) | A visibly stale date is a low-effort, high-signal staleness cue to both humans and systems. |
-| JSON-LD `dateModified`/`datePublished` >18 months old | medium | These fields are read directly by systems reasoning about freshness. |
-| Different phone numbers across the site's own pages | high | Directly undermines self-corroboration; no way to know which value is correct. |
-| Broken internal links in the sampled set | medium | A direct staleness/quality signal. |
-| Zero on-site corroboration signals (no links to review platforms/press/canonical profiles, no "as seen in" wording) | low | Nothing here for a system to corroborate the brand against -- see Part B in SKILL.md for the off-site half of this check. |
-| No discoverable `/blog/` or `/news/` section | low, proactive | Not wrong for every site type, but a real signal of update cadence when present. |
+| Stale dates | most recent copyright/updated year ≥2 years old | medium; high at ≥3 years |
+| Placeholder content | "coming soon", "under construction", "lorem ipsum" | low; medium if the page also carries a year-old date |
+| Conflicting phone numbers | more than one distinct number across sampled pages | high |
+| Conflicting email addresses | more than one distinct address across sampled pages | medium |
+| Many distinct prices | over 6 across the sample | low, **speculative** — a prompt to spot-check, not a defect |
+| No on-site corroboration | no outbound links to reference or review platforms and no press language | medium |
 
-## Year-staleness detection
+Phone numbers are normalised to their last 10 digits before comparison, so
+formatting differences do not register as contradictions.
 
-The script looks for a 4-digit year (1900s/2000s) immediately following the
-words "copyright", "©", or "updated"/"last updated" anywhere in the raw
-page text, and compares the *newest* such year found to the current date
-(passed in via `--today`, or the system clock if omitted -- prefer passing
-`--today` explicitly with the agent's actual known current date, since
-sandboxed environments sometimes have an inaccurate system clock).
+**Always pass `--today`** with the real current date. Sandbox clocks are
+frequently wrong and every staleness judgement depends on it.
 
-## Internal-consistency detection
+## Part B — agent-performed, not scriptable
 
-The script extracts phone-number-shaped and price-shaped tokens from the
-homepage and up to 4 sampled internal pages, and flags it when the *same
-type* of fact (e.g. "a phone number") has more than one distinct value
-across the sampled pages. This deliberately does not try to determine which
-value is "correct" -- only that a visitor or a machine reading both pages
-would see contradictory information, which is itself the problem.
+A crawl of one domain cannot see other domains. This half needs live search and
+is bounded at **two to four queries**.
 
-## Off-site corroboration (Part B, agent-performed)
+### Source independence — the part most audits miss
 
-This is the one check in this skill (and one of very few in the whole
-marketplace) that cannot be scripted with stdlib Python, because it
-requires searching *other* domains, not just fetching the target site. Keep
-it bounded (2-4 searches) so total audit runtime stays well under 5 minutes
-and no search backend gets hammered. See SKILL.md Procedure, Part B, for the
-exact steps.
+Three sources repeating a claim are not three confirmations if two are copies
+of the brand's own press release. Classify each result before counting it:
 
-If the executing agent has no web-search tool available, Part B is skipped
-and replaced with a single low-severity `category: "meta"` finding saying
-so -- never fabricated search results, and never a silent gap presented as
-a clean result.
+| Class | Counts toward corroboration? |
+|---|---|
+| The brand's own properties | No |
+| Press-release wires and syndication | No |
+| Aggregators and scraper sites that copy | No |
+| Independent editorial, reference, regulatory or academic sources | **Yes** |
 
-## Known limitations / false-positive risks
+Where many mentions all trace to one origin, report that pattern explicitly. It
+looks like strength and is not.
 
-- Year-staleness detection can misfire on pages that mention historical
-  years for legitimate reasons (e.g. "founded in 2004") if that happens to
-  be the *only* year on the page and it's near neither "copyright" nor
-  "updated" -- in practice this is rare since the regex requires proximity
-  to one of those specific words.
-- Phone/price extraction uses generic regexes and can pick up unrelated
-  numbers (e.g. a version number that happens to look like a price). Treat
-  a single flagged inconsistency as worth a manual look, not an automatic
-  hard fact.
-- "No blog/news section" is intentionally low severity and framed as
-  proactive rather than a defect -- plenty of legitimate sites (a single
-  local business, a niche tool) have no need for one.
+### Mistaken identity
+
+If results for the brand name are dominated by an unrelated organisation, that
+is a more urgent version of the missing-`sameAs` finding from
+`structured-data-entity-audit`. Cross-reference the two.
+
+### Phrasing
+
+Two to four searches is a sample. Write "no independent coverage found in a
+brief search", never "no independent coverage exists".
+
+## Why off-site matters disproportionately
+
+Roughly three quarters of AI citations point at third-party pages rather than
+the brand's own domain, and ranked comparison and "best of" content is the
+single largest cited content format. A site-only audit therefore addresses a
+minority of the citation surface.
+
+## Never recommend
+
+Astroturfed reviews, self-owned "independent" comparison sites, unlabelled
+sponsored placements, or any other manufactured corroboration — all are classed
+manipulation patterns and are increasingly detected. Also never recommend
+removing dates to appear evergreen: undated content measured worse than
+recently-dated content.
+
+## Known limits
+
+- Phone and price regexes are generic and can pick up unrelated numbers. Treat
+  a single flagged contradiction as worth a look, not as proof.
+- Year detection requires proximity to "copyright", "©", "updated" or
+  "last modified", so a historical year mentioned in prose does not misfire.

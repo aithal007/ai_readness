@@ -1,12 +1,49 @@
 {
   "name": "brand-ai-readiness-audit",
-  "version": "1.0.0",
-  "description": "Audits a website for AI-discoverability problems (why AI assistants miss, misrepresent, or won't cite a brand) and on-site engagement problems (why visitors who arrive don't stay), and emits a single evidence-backed, prioritized findings report. Recommend-only: no skill in this marketplace modifies a live site.",
+  "version": "2.0.0",
+  "description": "Audits any website for the reasons AI assistants fail to find, trust or cite a brand, and the reasons visitors who arrive do not stay. Emits one prioritized, evidence-backed report of findings and fixes. Recommend-only: read-only GET traffic, robots.txt honoured, no skill ever alters a live site.",
+  "entrypoint": "audit-orchestrator",
   "skills": [
-    { "id": "audit-orchestrator", "path": "skills/audit-orchestrator", "entrypoint": true },
-    { "id": "crawl-render-audit", "path": "skills/crawl-render-audit" },
-    { "id": "structured-data-entity-audit", "path": "skills/structured-data-entity-audit" },
-    { "id": "freshness-corroboration-audit", "path": "skills/freshness-corroboration-audit" },
-    { "id": "engagement-audit", "path": "skills/engagement-audit" }
+    {
+      "id": "audit-orchestrator",
+      "path": "skills/audit-orchestrator",
+      "entrypoint": true,
+      "owns": "Composes every other skill and emits the final report"
+    },
+    {
+      "id": "crawl-render-audit",
+      "path": "skills/crawl-render-audit",
+      "owns": "Can a crawler reach the page and read it (also owns the shared evidence collector)"
+    },
+    {
+      "id": "structured-data-entity-audit",
+      "path": "skills/structured-data-entity-audit",
+      "owns": "Is it clear who this is, and do markup and visible page agree"
+    },
+    {
+      "id": "ai-citability-audit",
+      "path": "skills/ai-citability-audit",
+      "owns": "Is this the kind of page answer engines actually quote"
+    },
+    {
+      "id": "answerability-probe",
+      "path": "skills/answerability-probe",
+      "owns": "Can real questions about the brand be answered from its own content"
+    },
+    {
+      "id": "freshness-corroboration-audit",
+      "path": "skills/freshness-corroboration-audit",
+      "owns": "Is it current, self-consistent and independently corroborated"
+    },
+    {
+      "id": "engagement-audit",
+      "path": "skills/engagement-audit",
+      "owns": "Does a visitor who arrives orient, act and reach their goal"
+    },
+    {
+      "id": "evidence-critic",
+      "path": "skills/evidence-critic",
+      "owns": "Adjudicates every finding before it reaches the report"
+    }
   ]
 }

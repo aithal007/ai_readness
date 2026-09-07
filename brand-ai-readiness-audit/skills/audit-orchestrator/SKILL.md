@@ -1,135 +1,131 @@
 ---
 name: audit-orchestrator
-description: Entrypoint for a full brand AI-readiness audit -- runs crawl-render-audit, structured-data-entity-audit, freshness-corroboration-audit, and engagement-audit against a target website, merges their findings, and emits a single structured report (findings with evidence and severity, plus prioritized suggested actions) covering both AI discoverability (why a brand is missed or misrepresented by AI assistants) and on-site engagement (why visitors who arrive don't stay). Use this when asked to audit a website's AI discoverability, GEO, or on-site engagement, or to explain why a brand is invisible/stale/bouncing in AI apps.
+description: Audit any website for the reasons AI assistants fail to find, trust or cite a brand, and the reasons visitors who arrive do not stay, then emit one prioritized report of findings with evidence, severity and fixes. Use this whenever someone asks why a brand is invisible, misquoted, stale or bouncing in AI apps, asks for an AI-discoverability, GEO, LLM-visibility, AI-readiness or answer-engine audit, or simply points at a domain and asks what is wrong with it for AI search - even if they do not use any of those terms. This is the entrypoint skill for the brand-ai-readiness-audit marketplace and it composes all the other skills in it.
 license: MIT
-allowed-tools: Bash WebSearch
+allowed-tools: Bash(python3:*) Bash(python:*) Read Write WebSearch
+metadata:
+  marketplace: brand-ai-readiness-audit
+  role: entrypoint
+  version: "2.0"
 ---
 
-# Brand AI-Readiness Audit -- Orchestrator
+# Brand AI-Readiness Audit — orchestrator
 
-This is the entrypoint skill for the `brand-ai-readiness-audit` marketplace.
-It composes the marketplace's four concern-specific skills into one audit
-and emits a single report. It does not duplicate their checks -- it runs
-them, collects what they produce, and is responsible for turning that into
-a clear, prioritized, schema-compliant report a non-expert can act on.
+Runs the whole marketplace against one site and produces a single report.
 
-**Recommend-only.** This skill (and every skill it composes) only reads
-public pages over plain GET requests and reports findings. Nothing here
-modifies the target site, submits forms, authenticates, or takes any
+**Recommend-only.** Everything here is read-only GET traffic. No skill ever
+modifies the target site, submits a form, authenticates, or takes any
 state-changing action.
 
 ## When to use
 
-Whenever asked to audit a website for AI discoverability/citation problems,
-GEO issues, or on-site engagement problems -- or to explain why a brand is
-"invisible", "stale", or "bouncing" in AI apps.
+Any request to diagnose a site's visibility in AI assistants or its on-site
+engagement. If the user names a brand but not a domain, get the canonical
+domain first.
 
 ## Inputs
 
-- A target URL or bare domain (required).
-- Today's date, if known precisely by the calling agent/environment
-  (recommended -- passed through to the freshness checks so staleness is
-  judged against the real current date rather than a possibly-wrong system
-  clock).
+- A URL or bare domain (required).
+- Today's real date, if you know it. Pass it through as `--today`; sandbox
+  clocks are frequently wrong and staleness findings depend on it.
+
+## The model this audit is built on
+
+A brand gets cited only if six things hold, in order. Each skill owns one, and
+a failure early makes everything later irrelevant.
+
+| # | Question | Skill |
+|---|---|---|
+| 1 | Can a crawler reach and read the page? | `crawl-render-audit` |
+| 2 | Is it clear who this is, and do markup and page agree? | `structured-data-entity-audit` |
+| 3 | Is the page the kind of page answer engines quote? | `ai-citability-audit` |
+| 4 | Can real questions about the brand actually be answered? | `answerability-probe` |
+| 5 | Is it current, self-consistent and corroborated elsewhere? | `freshness-corroboration-audit` |
+| 6 | Does a visitor who arrives orient and act? | `engagement-audit` |
+
+`evidence-critic` then adjudicates every proposed finding before it reaches the
+report.
 
 ## Procedure
 
-### 1. Normalize the target
+Work through this checklist in order. Do not skip a step silently — if one
+cannot run, record it and say so in the final report.
 
-Confirm you have a single, specific domain to audit (not a search query or
-an ambiguous brand name). If given only a brand name, ask for or infer the
-canonical domain before proceeding.
+- [ ] **Step 1 — Collect once.** From this skill's `scripts/` directory:
+  ```
+  python3 run_audit.py <url> --out raw_findings.json --evidence-out evidence.json --today <YYYY-MM-DD>
+  ```
+  This crawls the site **once** into `evidence.json` and then runs all six
+  analyzers against that single snapshot, so every skill reasons over identical
+  evidence. It prints per-skill progress to stderr and the findings path to
+  stdout. Typical cost is 10-15 pages in well under a minute.
 
-### 2. Run the scripted checks
+  Success condition: `raw_findings.json` exists and parses, and stderr shows a
+  line for all six analyzers. Any analyzer that failed appears as a `meta`
+  finding — read those, because that area is **unverified, not clean**.
 
-From this skill's `scripts/` directory:
+  If collection itself fails, stop and report that the site was unreachable.
+  Do not fabricate findings.
 
-```
-python3 run_checks.py <url> --out raw_findings.json --today <YYYY-MM-DD>
-```
+- [ ] **Step 2 — Add the two judgement checks scripts cannot do.** Both append
+  to `raw_findings.json`'s `findings` array in the same shape as the scripted
+  ones (see `references/report_schema.md`).
 
-This subprocess-invokes each sub-skill's own check script
-(`crawl-render-audit/scripts/check_crawl_render.py`,
-`structured-data-entity-audit/scripts/check_structured_data.py`,
-`freshness-corroboration-audit/scripts/check_freshness.py`,
-`engagement-audit/scripts/check_engagement.py`), tags each finding with
-`source_skill`, and writes the merged (not yet finalized) list to
-`raw_findings.json`. If any sub-check fails to run (network issue, timeout),
-`run_checks.py` records that as a low-severity `"meta"` finding instead of
-silently dropping that section of the audit -- read the output for any of
-these before treating a "clean" area as actually verified.
+  **2a. Off-site corroboration and source independence.** Follow Part B of
+  `freshness-corroboration-audit`'s SKILL.md. This needs live web search
+  because a single-domain crawl structurally cannot see other domains. It
+  matters more than it looks: only a small share of AI citations point at a
+  brand's own site, so the off-site picture is most of the surface.
+  If no search tool is available, append one low-severity `meta` finding saying
+  the check could not run. Never invent search results.
 
-Total runtime is normally well under the 5-minute budget: each sub-skill
-fetches a handful of pages (homepage + a small same-domain sample, typically
-5-10 requests total per skill) at a throttled rate. See each sub-skill's
-`references/checklist.md` for its exact request budget.
+  **2b. Homepage orientation.** Follow step 2 of `engagement-audit`'s SKILL.md,
+  scoring against its `references/orientation_rubric.md`, using the
+  `text_sample` already captured in `evidence.json`.
 
-### 3. Add the two judgment-based checks the scripts can't do
+- [ ] **Step 3 — Adjudicate.** From `skills/evidence-critic/scripts/`:
+  ```
+  python3 critique_findings.py --findings raw_findings.json --evidence evidence.json --out adjudicated.json
+  ```
+  Then apply the judgement review in `evidence-critic`'s SKILL.md to what
+  survives. Removing a weak finding is a better outcome than shipping it.
 
-Two of the four sub-skills each have one step that requires reasoning a
-static script can't do on its own -- read their SKILL.md for the exact
-procedure, then append the resulting finding(s) to `raw_findings.json`'s
-`"findings"` array, in the same shape the scripts use (see
-[references/report_schema.md](references/report_schema.md) for the exact
-raw-finding shape):
+- [ ] **Step 4 — Finalize.** From this skill's `scripts/` directory:
+  ```
+  python3 finalize_report.py adjudicated.json --site <domain> --evidence evidence.json --out audit_report.json --md audit_report.md
+  ```
+  Assigns IDs, computes severity counts and pillar scores, and writes both the
+  JSON report and a readable Markdown version.
 
-- **`freshness-corroboration-audit`, Part B**: a small number (2-4) of live
-  web searches to check whether independent sources corroborate the brand's
-  core facts and identity (off-site agreement / mistaken-identity risk --
-  something no single-domain fetch can check).
-- **`engagement-audit`, step 2**: a reading-comprehension judgment of
-  whether the homepage orients a first-time visitor (what is this, who's it
-  for, what do I do next), using the rubric in that skill's
-  `references/orientation_rubric.md`.
+- [ ] **Step 5 — Present.** Lead with critical and high findings and what to do
+  about them. Give the user the report path. If any step degraded, open with
+  what is missing and why.
 
-Do not skip these two steps -- they cover real, distinct failure modes (off-
-site trust/disambiguation, and on-site orientation) that the mechanical
-checks structurally cannot catch.
+## Gotchas
 
-If no live web-search tool is available in the current environment, do not
-fabricate search results or skip the step silently: append a single
-low-severity `"meta"`-category finding stating that off-site corroboration
-could not be checked (no search tool available), so the final report is
-honest about what it did and didn't verify, exactly like `run_checks.py`
-already does for a sub-check that fails to run. The orientation-clarity
-judgment never needs this fallback -- it only reads text the scripts already
-fetched, so it can always run.
-
-### 4. Finalize the report
-
-```
-python3 finalize_report.py raw_findings.json --site <url> --out audit_report.json --md audit_report.md
-```
-
-This assigns `F-001`, `F-002`, ... IDs in severity order, de-duplicates
-exact repeats, computes the summary counts, and writes both the JSON report
-(the required deliverable) and a human-readable Markdown version. See
-[references/report_schema.md](references/report_schema.md) for the exact
-final schema and severity definitions.
-
-### 5. Present the result
-
-Return the JSON report (it already satisfies the required minimum schema:
-`site`, `audited_at`, `summary.total_findings/critical/high/medium`, and
-per-finding `id/title/severity/evidence/suggested_action`). Lead with the
-critical/high findings and their suggested actions; a non-expert reading
-the report should immediately understand what's broken, why it matters, and
-what to do about it, without needing to understand crawler internals
-first -- that's what each finding's `mechanism` field is for.
-
-If nothing scripted or judged rose to a genuine defect in some area, don't
-manufacture a finding to fill space -- a short area is a legitimate result,
-not a failure of the audit.
-
-## Composition summary
-
-| Sub-skill | Category | Covers |
-|---|---|---|
-| `crawl-render-audit` | discoverability | Can a crawler get in and read the page (robots.txt, indexing directives, JS-render gaps, login walls) |
-| `structured-data-entity-audit` | discoverability | Are facts stated explicitly/unambiguously (schema.org, Open Graph, entity disambiguation, llms.txt) |
-| `freshness-corroboration-audit` | discoverability | Is content current and internally consistent; do independent sources corroborate it |
-| `engagement-audit` | engagement | Does a visitor who arrives understand the site, trust it, and know what to do next |
+- **Pass `--today`.** Without it, staleness is judged against the machine
+  clock, which is often wrong in a sandbox.
+- **Blocked training crawlers are not a defect.** Refusing GPTBot, ClaudeBot
+  or Google-Extended while allowing the search crawlers is a documented,
+  legitimate licensing choice that costs no citation visibility. The analyzers
+  already encode this. Never "upgrade" such a finding to a problem.
+- **Do not promise that schema markup causes AI citations.** The best-controlled
+  studies show null or slightly negative effects. Structured data is worth
+  recommending for entity identity and search rich results, and the skills word
+  it that way. Keep that wording.
+- **Never recommend anything on the do-not-recommend list** in
+  `references/evidence-base.md` — keyword stuffing, hidden text, blanket
+  rewrites, stripping caveats, or text addressed to the model. These are
+  measured to be ineffective, manipulative, or both, and the critic will strip
+  them anyway.
+- **Do not manufacture findings to fill space.** A short report on a healthy
+  site is a correct result. Say so plainly.
+- **Absence of evidence is not a clean bill of health.** If a check could not
+  run, the report must say the area is unverified.
 
 ## Output
 
-A single JSON object matching [references/report_schema.md](references/report_schema.md).
+A single JSON report matching `references/report_schema.md`, plus a Markdown
+rendering. Required fields per finding are `id`, `title`, `severity`,
+`evidence` and `suggested_action`; summary carries `site`, `audited_at` and
+counts by severity. Everything else in the schema is additive.
