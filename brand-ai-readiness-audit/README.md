@@ -16,6 +16,10 @@ alters a live site.
 **Zero dependencies.** Every script is Python standard library only, so the
 marketplace runs on a bare `python3` with no pip install and no browser binary.
 
+> **Full technical reference:** [`ARCHITECTURE.md`](./ARCHITECTURE.md) documents
+> every file, check, threshold and design decision — including the live test
+> failures that produced each false-positive guard.
+
 ## The model it is built on
 
 A brand gets cited only if six things hold, **in order**. A failure early makes
@@ -149,3 +153,85 @@ following the SKILL.md procedures.
 - The one probe that sends non-default user-agents does so only to *detect*
   CDN-level AI-bot blocking — a failure mode invisible to `robots.txt` analysis
   — and it fetches the same public homepage, nothing more.
+
+## Layout
+
+```
+brand-ai-readiness-audit/
+├── marketplace.json          manifest; exactly one entrypoint
+├── README.md                 this file
+├── ARCHITECTURE.md           full technical reference
+└── skills/
+    ├── audit-orchestrator/   ENTRYPOINT — run_audit.py, finalize_report.py
+    │   └── references/       report_schema.md, evidence-base.md
+    ├── crawl-render-audit/   evidence_collector.py (the shared crawl engine)
+    ├── structured-data-entity-audit/
+    ├── ai-citability-audit/
+    ├── answerability-probe/
+    ├── freshness-corroboration-audit/
+    ├── engagement-audit/
+    └── evidence-critic/
+```
+
+3,457 lines of Python across 10 scripts. Every skill folder holds a `SKILL.md`,
+its analyzer in `scripts/`, and its detailed check tables in `references/`.
+
+## What a report looks like
+
+```
+# AI Discoverability & Engagement Audit — rust-lang.org
+_Audited 2026-09-08T18:47:05Z · 8 pages sampled in 8.0s_
+
+**8 findings** — 0 critical · 2 high · 3 medium · 3 low
+
+| Pillar                 | Score              |
+|------------------------|--------------------|
+| Reachable              | █████████░ 95/100  |
+| Readable               | █████████░ 93/100  |
+| Quotable               | █████████░ 94/100  |
+| Answerable             | ████████░░ 88/100  |
+| Current & corroborated | ██████████ 100/100 |
+| Engaging               | ████████░░ 83/100  |
+
+## Fix these first
+- F-001 · 2 of 7 core questions about this brand cannot be answered from
+  its own extractable content — Publish each missing fact as plain text...
+```
+
+Each finding carries evidence, the mechanism explaining why it matters,
+a prioritized action, an `evidence_tier`, and any severity adjustment the
+critic applied. The report ends with the critic's struck-through suppression
+list.
+
+## Validation and testing
+
+Every skill passes the Agent Skills specification rules — closed six-field
+frontmatter, name/directory match, space-separated `allowed-tools`, no BOM,
+descriptions within limits, all referenced files present, manifest well-formed
+with exactly one entrypoint.
+
+Tested end-to-end on six unseen sites spanning minimal-static, open-source,
+government-guidance, government-media, SaaS and aggregator categories:
+
+| Site | Findings | Overall | Notable |
+|---|---|---|---|
+| rust-lang.org | 8 | 92 | Cleanest; appropriate for well-maintained docs |
+| nasa.gov | 12 | 88 | Correctly flagged facts locked in non-text |
+| postman.com | 10 | 87 | Correctly flagged JS-rendered prices |
+| news.ycombinator.com | 17 | 79 | Critical: homepage never states what the site is |
+
+Six real false positives were found by running against live sites and fixed —
+URL-keyword commercial detection, "subscribe" read as purchase intent, two
+entity-type misclassifications, an over-strict critic filter, and critic
+over-merging. Each is documented in
+[`ARCHITECTURE.md` §19](./ARCHITECTURE.md#19-false-positive-guards).
+
+## Known limitations
+
+Stated plainly, because an audit tool that hides its own limits has no business
+auditing anything. No JavaScript execution, so render gaps are heuristic.
+Entity-type inference is imperfect. Sampling is bounded at 15 pages. Fact
+regexes are English- and Latin-script-biased. Off-site corroboration needs a
+search tool and is skipped-and-recorded without one. Pillar scores are a
+presentation device, not a validated metric. Full list in
+[`ARCHITECTURE.md` §22](./ARCHITECTURE.md#22-known-limitations).
