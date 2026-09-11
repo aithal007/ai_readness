@@ -30,7 +30,8 @@ reasoning (and live test failures) behind each decision.
 20. [Performance](#20-performance)
 21. [Spec compliance](#21-spec-compliance)
 22. [Known limitations](#22-known-limitations)
-23. [Testing record](#23-testing-record)
+23. [Finding states, scoring and the roadmap](#22b-finding-states-scoring-and-the-roadmap)
+24. [Testing record](#23-testing-record)
 24. [Extending the marketplace](#24-extending-the-marketplace)
 
 ---
@@ -208,9 +209,12 @@ brand-ai-readiness-audit/            <- marketplace root (this is what gets zipp
     └── evidence-critic/
         ├── SKILL.md
         └── scripts/critique_findings.py
+
+tests/
+└── run_tests.py                      <- 85 zero-dependency regression tests
 ```
 
-**Code volume:** 3,457 lines of Python across 10 scripts. The collector is a
+**Code volume:** ~4,400 lines of Python across 10 scripts plus an 85-test suite. The collector is a
 third of it because parsing arbitrary real-world HTML with nothing but the
 standard library is the hard part.
 
@@ -1422,6 +1426,56 @@ requires `typeof` or `vocab`, never bare `rel`.
 begins `1/N` where N ≥ 3. Several analyzers additionally require ≥ 2 qualifying
 pages before generalising.
 
+### 19.9 A timeout is not a broken link
+
+**Observed:** on a throttling origin, five perfectly healthy pages timed out and
+were reported as `LINK_ROT_WIDESPREAD` — a *critical* finding asserting a broken
+deploy that did not exist.
+**Guard:** `analyze_crawl_render.py` splits failures by whether an HTTP status
+came back. Only real 4xx/5xx count toward link rot. Transport failures become a
+separate `not_observable` note saying the pages may be healthy but slow, and
+that one attempt cannot tell the difference.
+
+### 19.10 A self-inflicted rate limit is not a bot block
+
+**Observed:** the user-agent differential probe fires four requests at one
+origin in quick succession. A throttling host answered the GPTBot probe with
+HTTP 429, and the analyzer reported "AI crawler user-agents are blocked at the
+network layer" — critical. The audit had provoked the very signal it reported.
+**Guard:** only 401/403 now counts as a confirmed block, because those are
+policy decisions about the user-agent. 429 (throttle) and 503 (overload) and
+transport failures drop to a hedged `medium` that says outright it could not be
+confirmed and that a 429 may have been caused by the probe itself. The probe
+also spaces its requests a second apart so it stops provoking the condition.
+
+### 19.11 An unreachable site is not a healthy one
+
+**Observed:** a site that could not be read at all produced zero findings, and
+the pillar arithmetic — 100 minus nothing — handed back **100/100**. The most
+misleading number the report could print.
+**Guard:** `run_audit.py` marks short-circuited runs explicitly with
+`short_circuited: true`; `critique_findings.py` carries that flag through; and
+`finalize_report.py` emits `readiness.overall: null` with a note naming why it
+was not scored. A contract test asserts the flag survives the critic, because
+losing it silently restores the bug.
+
+### 19.12 A tech aggregator is not an open-source project
+
+**Observed:** adding an `open_source_project` entity type, the first
+implementation inferred it from body-text vocabulary — licence words, GitHub
+links, "pull request". Hacker News matched all of them, because that is what its
+*content* is about, and was asked what licence it is released under.
+**Guard:** identity is now inferred only from the site's **own path structure**
+(two distinct kinds of `docs` / `learn` / `install` / `community` path, or one
+plus explicit licence text). An aggregator publishes none of those. Verified:
+rust-lang and fastapi classify correctly, Hacker News does not.
+
+A latent bug surfaced while fixing this: the path regexes were anchored with
+`(/|$)` but matched against a **space-joined** string of URLs, so `$` only ever
+matched the final URL. Real sites were matching by luck of which path happened
+to be last. The terminator is now `(?:/|\s|$)`, and a test with synthetic paths
+covers it.
+
 ---
 
 ## 20. Performance
@@ -1531,6 +1585,13 @@ auditing anything.
    detector available and the multi-page bundle already makes it possible. It is
    the clearest next improvement.
 
+8b. **Entity-type inference remains imperfect for mixed sites.** `django` and
+   `postgresql` classify as `professional_services` rather than
+   `open_source_project` because the crawl sample did not surface enough
+   project-shaped paths. The questions asked are plausible rather than wrong, but
+   less specific than they could be. Deepening the crawl on a docs-shaped site
+   would help; widening the vocabulary would re-open §19.12.
+
 9. **Language.** Vocabulary lists (CTAs, hedges, hours, comparison markers) are
    English-only. On a non-English site the structural checks still work; the
    vocabulary-driven ones under-report.
@@ -1541,6 +1602,55 @@ auditing anything.
 
 ---
 
+## 22b. Finding states, scoring and the roadmap
+
+### Three states, not one
+
+Conflating "broken", "doesn't apply" and "couldn't tell" is how an audit
+misleads. Each finding may carry a `status`:
+
+| `status` | Meaning | Counted? | Scored? |
+|---|---|---|---|
+| *(absent)* | A real defect | Yes | Yes |
+| `not_applicable` | The check does not apply to this kind of site | No | No |
+| `not_observable` | The site or section could not be seen | No | No |
+
+`finalize_report.py` splits the latter two into `not_assessed[]` with `N-NNN`
+ids and renders them under a "Not assessed" heading stating they are coverage
+limits, not faults.
+
+### Derived finding fields
+
+Computed in `finalize_report.py` rather than hand-set at ~40 call sites, so they
+cannot drift from the findings they describe:
+
+- **`code`** — stable identifier from `CODE_MAP` (a distinctive title substring
+  → constant), falling back to a deterministic title slug. `id` is positional
+  and reshuffles whenever severities change; `code` is what makes two runs
+  diffable.
+- **`confidence`** — starts at the evidence tier (measured 0.90 / correlational
+  0.75 / speculative 0.50), then −0.15 if the evidence covers one page of many,
+  −0.10 if the critic downgraded it, −0.05 for a tier-2 signal, +0.05 if another
+  skill corroborated it. Clamped to [0.30, 0.98].
+- **`affected_urls`** — `page` plus any URLs already named in the evidence
+  string, deduped and capped.
+- **`effort`** — quick / moderate / project, from the `EFFORT` table.
+
+### The roadmap
+
+Severity alone is a poor work order: it says what hurts most, not what to pick
+up first. `build_roadmap()` buckets by impact **against** effort — critical and
+high go to *now* regardless of cost; anything `quick` also goes to *now*,
+because deferring it costs more than doing it; `project` work goes to *later*
+even at medium severity, because it is a programme rather than a sprint item.
+Severity order is preserved inside each bucket.
+
+### Not scoring what was not read
+
+When the run short-circuits, `readiness.overall` is `null` rather than a number.
+Five untouched pillars would otherwise average one blocker away into a
+healthy-looking score. See §19.11.
+
 ## 23. Testing record
 
 ### Compliance
@@ -1550,21 +1660,59 @@ frontmatter valid, name/directory match, no BOM, descriptions within limits,
 `allowed-tools` correctly formatted, every referenced file present, manifest
 well-formed with exactly one entrypoint. **All checks passed.**
 
+### Regression suite
+
+`python3 tests/run_tests.py` — **85 tests, zero dependencies, no network**,
+built from hand-written evidence bundles. Exit 0 = all pass.
+
+Coverage: copyright-range parsing, staleness, commercial-intent gating, blocker
+diagnosis across every classified cause, login-wall and app-shell detection
+(with negatives), link-rot escalation, timeouts-vs-404s, the user-agent probe's
+three confidence levels, redirect loops/chains/HTTP hops, per-site-type
+engagement checks (each with a paired negative), entity-type inference including
+the aggregator-is-not-a-project case, and the report-layer derivations (`code`,
+`confidence`, `affected_urls`, roadmap bucketing).
+
+**Cross-component contract tests** deserve separate mention. A real bug shipped
+because `run_audit.py` marked non-defects with a boolean `not_applicable` while
+`finalize_report.py` filtered on a `status` string — the two modules disagreed,
+so five findings that should not have been counted were counted *and* scored.
+No test crossed that boundary. Four now do:
+
+- every `status` value the orchestrator can emit is one the report recognises
+- a blocker finding ends up in `not_assessed[]`, not in the severity counts
+- `status` survives the critic's deep copy
+- `short_circuited` survives the critic and suppresses scoring
+
+Verified by reintroducing the original bug: three contract tests fail, and pass
+again once fixed. A regression test that cannot fail is worthless, so this was
+checked rather than assumed.
+
 ### Functional, on unseen sites
 
 Deliberately spanning categories, none of which any threshold was tuned against:
 
-| Site | Category | Findings | Overall | Notable |
-|---|---|---|---|---|
-| example.com | Minimal static | — | — | Answerability coverage 0.17, correctly identifying a near-empty page |
-| rust-lang.org | Open source | 8 (0C 2H 3M 3L) | 92 | Cleanest result; appropriate for a well-maintained docs site |
-| gov.uk | Government guidance | — | — | Correctly produced **no** commercial findings after the fix |
-| nasa.gov | Government / media-heavy | 12 (0H… 2H 6M 4L) | 88 | Correctly flagged facts locked in non-text |
-| postman.com | SaaS | 10 (0C 2H 6M 2L) | 87 | Correctly flagged JS-rendered prices invisible to crawlers |
-| news.ycombinator.com | Aggregator | 17 (1C 3H 8M 5L) | 79 | Critical answerability — the homepage genuinely never states what the site is |
+| Site | Category | C/H/M/L | Secs | Overall | Notable |
+|---|---|---|---|---|---|
+| fastapi.tiangolo.com | OSS docs | 0/0/4/6 | 15 | 96 | Flags missing licence + community info |
+| postgresql.org | OSS project | 0/0/3/7 | 46 | 96 | |
+| djangoproject.com | OSS project | 0/1/1/8 | 19 | 96 | |
+| rust-lang.org | OSS project | 0/1/4/5 | 21 | 93 | |
+| python.org | OSS project | 0/0/7/6 | 12 | 92 | |
+| example.com | Minimal static | 1/1/3/2 | 12 | 90 | Answerability coverage 0.17 on a near-empty page |
+| books.toscrape.com | E-commerce | 1/1/12/4 | 36 | 82 | Priced-but-unbuyable + no shipping terms, both correct |
+| news.ycombinator.com | Aggregator | 1/3/7/6 | 29 | 80 | Homepage genuinely never states what the site is |
+| gnu.org | Throttling origin | — | 21 | **not scored** | Could not be read; says so instead of scoring |
+| web.whatsapp.com | Login wall | — | 13 | **not scored** | One finding: "not a public content site" |
+| *(nonexistent domain)* | DNS failure | 1/0/0/0 | 1 | **not scored** | Named as DNS, not a generic error |
 
-The score ordering (rust 92 > nasa 88 > postman 87 > HN 79) matches independent
-intuition about how well each would be represented by an assistant, which is
+Earlier runs of this same benchmark are what produced §19.9–19.12: gnu.org
+originally took 170s and reported non-existent link rot plus a bot block it had
+provoked itself, and web.whatsapp.com originally produced a dozen confident
+findings about a sign-in screen.
+
+The score ordering matches independent intuition about how well each would be
+represented by an assistant, which is
 the behaviour generalisation requires.
 
 ### Discrimination checks
@@ -1578,12 +1726,31 @@ the behaviour generalisation requires.
   finding at 10 characters of extractable text against 6 scripts and an
   `id="root"` element.
 
+### Discrimination checks, continued
+
+- **Entity type**: rust-lang and fastapi classify as `open_source_project`;
+  Hacker News, which links to GitHub constantly, does not (§19.12).
+- **Commercial gating**: `books.toscrape.com` (a real catalogue) gets the
+  priced-but-unbuyable and shipping-terms findings; `python.org`, whose PSF
+  grant pages contain currency figures, does not.
+- **Timeout vs defect**: a bundle of five transport failures produces an
+  unobservable note; five 404s produces a critical link-rot finding.
+
 ### Bugs found and fixed during testing
 
-Six, all documented in §19: URL-keyword commercial detection, "subscribe" as
-purchase intent, two entity-type misclassifications, an over-strict critic
-anchor regex, and critic over-merging. Each was found by reading actual output
-on a real site rather than by reasoning about the code.
+**Ten**, all documented in §19. Six from earlier rounds (URL-keyword commercial
+detection, "subscribe" as purchase intent, two entity-type misclassifications,
+an over-strict critic anchor regex, critic over-merging) and four from the
+latest benchmark (timeouts as link rot, a self-provoked 429 as a bot block, an
+unreachable site scoring 100/100, an aggregator read as an open-source project).
+
+Two further bugs were caught by tests rather than by live output: the
+`not_applicable`/`status` mismatch between the orchestrator and the report
+(§23), and a path regex anchored with `$` while matching against a space-joined
+string, so it only ever matched the last URL (§19.12).
+
+Every one of these was found by reading actual output or writing a test that
+crossed a real boundary — none by re-reading the code and reasoning about it.
 
 ---
 

@@ -46,6 +46,7 @@ TYPE_SLOTS = {
     "education": ["programs", "admissions", "fees", "deadlines"],
     "publisher": ["authorship", "publish_dates", "topics"],
     "professional_services": ["services", "credentials", "case_evidence"],
+    "open_source_project": ["install", "documentation", "license", "community"],
     "generic_org": ["services", "about_depth"],
 }
 QUESTIONS = {
@@ -71,6 +72,10 @@ QUESTIONS = {
     "publish_dates": "When was this published or updated?",
     "topics": "What topics does {brand} cover?",
     "credentials": "What are {brand}'s qualifications / accreditations?",
+    "install": "How do I install or download {brand}?",
+    "documentation": "Where is {brand}'s documentation?",
+    "license": "What licence is {brand} released under?",
+    "community": "How do I contribute to or get help with {brand}?",
     "case_evidence": "What results has {brand} achieved for clients?",
     "about_depth": "Who is behind {brand} and what is its background?",
 }
@@ -106,6 +111,16 @@ RX = {
                                 r"we helped|portfolio)\b", re.I),
     "services": re.compile(r"\b(services?|solutions?|what we do|offerings?|capabilit\w+|specialt\w+)\b", re.I),
     "authorship": re.compile(r"\b(by |author|written by|editorial team|our writers|contributor)\b", re.I),
+    "oss": re.compile(r"\b(open[- ]source|MIT licen[cs]e|Apache[- ]2|GPL|BSD licen[cs]e|"
+                      r"contributing|contributors?|pull request|source code|repository)\b", re.I),
+    "install": re.compile(r"\b(install|installation|download|pip install|npm install|cargo install|"
+                          r"apt[- ]get|brew install|get started|quickstart|getting started)\b", re.I),
+    "documentation": re.compile(r"\b(documentation|docs|reference|api reference|guide|manual|"
+                                r"tutorial|handbook)\b", re.I),
+    "license": re.compile(r"\b(licen[cs]e[ds]? under|MIT|Apache|GPL|BSD|MPL|licen[cs]ing|"
+                          r"copyright and licen[cs]e)\b"),
+    "community": re.compile(r"\b(contributing|community|forum|discord|slack|mailing list|"
+                            r"issue tracker|discussions?|get involved|code of conduct)\b", re.I),
 }
 
 
@@ -150,6 +165,35 @@ def infer_entity_type(bundle):
         reasons.append(f"local-business schema {sorted(types & LOCAL_TYPES) or ''}"
                        " or opening hours together with a postal address")
         return "local_business", reasons
+    # Open-source projects are a large category that fits none of the commercial
+    # types. Without this they fall through to professional_services and get
+    # asked what results they have achieved "for clients", which is a category
+    # error: a language or a library has users and contributors, not clients.
+    # Identity has to come from the site's OWN structure, not from vocabulary in
+    # its body text. A tech news aggregator links to GitHub and talks about
+    # licences all day without being an open-source project -- during testing,
+    # Hacker News was misread as one on exactly that basis. A project publishes
+    # install/docs/community paths; an aggregator does not.
+    # NB: allurls is a space-joined string, so "$" would only ever match the very
+    # last URL. The terminator has to allow whitespace too, or a path only counts
+    # when it happens to be last in the join -- which is luck, not detection.
+    _end = r"(?:/|\s|$)"
+    oss_path_kinds = {kind for kind, rx in (
+        ("docs", r"/(?:docs?|documentation|reference|manual)" + _end),
+        ("learn", r"/(?:tutorial|guide|getting-started|learn)" + _end),
+        ("install", r"/(?:download|install|releases?)" + _end),
+        ("community", r"/(?:community|contributing|contribute|forum)" + _end),
+    ) if re.search(rx, allurls)}
+    license_txt = bool(re.search(r"\b(open[- ]source|MIT licen[cs]e|Apache Licen[cs]e|"
+                                 r"GPL|BSD licen[cs]e|licen[cs]ed under)\b", blob, re.I))
+    # Two different kinds of project path is structural evidence an aggregator
+    # cannot fake by linking to repositories; one plus explicit licence text is
+    # the same strength by another route.
+    if len(oss_path_kinds) >= 2 or (oss_path_kinds and license_txt):
+        reasons.append(f"project-shaped paths on its own domain ({', '.join(sorted(oss_path_kinds))})"
+                       + (" plus open-source licence vocabulary" if license_txt else "")
+                       + ", and no commercial signals")
+        return "open_source_project", reasons
     if RX["credentials"].search(blob) and RX["services"].search(blob):
         reasons.append("services plus credentials/accreditation vocabulary")
         return "professional_services", reasons
@@ -271,7 +315,9 @@ def slot_answered(slot, bundle):
            "trial_or_signup": "trial", "booking": "booking", "programs": "programs",
            "admissions": "admissions", "fees": "fees", "deadlines": "deadlines",
            "credentials": "credentials", "case_evidence": "case_evidence",
-           "services": "services", "authorship": "authorship"}.get(slot)
+           "services": "services", "authorship": "authorship",
+           "install": "install", "documentation": "documentation",
+           "license": "license", "community": "community"}.get(slot)
     if key:
         ok = bool(RX[key].search(blob))
         return ok, (f"matched {key} vocabulary in extractable text" if ok

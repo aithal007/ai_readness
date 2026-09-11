@@ -60,7 +60,7 @@ Each owns a **distinct failure mode with a different fix owner**, and each is
 independently runnable and independently useful. That is the test for whether a
 split is real rather than padding.
 
-## Three things that make this different
+## What makes this different
 
 ### 1. It tests the outcome, not just the inputs
 
@@ -97,7 +97,31 @@ That cuts against popular advice where the evidence demands it:
   hidden text, and anything classed as manipulation. `evidence-critic`
   mechanically strips any recommendation matching it.
 
-### 3. It argues with itself before it reports
+### 3. It knows the difference between "broken", "not applicable", and "couldn't tell"
+
+Most audits have one bucket: *finding*. This one has three, because conflating
+them is how audits mislead people.
+
+- A **defect** is counted and scored.
+- **`not_applicable`** — the check doesn't apply to this kind of site. A
+  language project has no pricing page; saying so is a category error, not a
+  finding.
+- **`not_observable`** — the site or section couldn't be seen (gated, blocked,
+  timed out), so whether it's a problem is unknown.
+
+The last two are split into a separate `not_assessed[]` array, excluded from
+the severity counts and the pillar scores, and printed under a "Not assessed"
+heading that says plainly they are coverage limits rather than faults.
+
+Two consequences that fall out of taking this seriously:
+
+- A **timeout is not a broken link.** When five healthy pages on a slow host
+  timed out, the audit called it "link rot" — wrong. Timeouts are now reported
+  separately as unobservable.
+- A site that **couldn't be assessed gets no score at all**, not 100/100. An
+  unread site is not a healthy one.
+
+### 4. It argues with itself before it reports
 
 `evidence-critic` re-reads every proposed finding against the evidence that
 produced it and drops the ones that don't hold: unfalsifiable claims, claims
@@ -124,6 +148,25 @@ suppression list is what makes an audit auditable rather than merely assertive.
 A failed analyzer becomes a visible `meta` finding, never a silent gap — a
 degraded run that looks identical to a clean one is the worst outcome in a
 multi-step audit.
+
+## What a finding carries
+
+Beyond the required `id`, `title`, `severity`, `evidence` and
+`suggested_action`, each finding adds:
+
+| Field | Why |
+|---|---|
+| `code` | Stable identifier (`STALE_DATES`). `id` is positional and reshuffles between runs; `code` lets you diff two audits and ask "did this get fixed?" |
+| `confidence` | 0–1, **derived** from evidence tier, sample size and any critic downgrade — never hand-set, so it can't drift from the finding |
+| `affected_urls` | The specific pages, lifted into a structured field |
+| `effort` | quick / moderate / project — feeds the roadmap |
+| `evidence_tier` | measured / correlational / speculative |
+| `signal_tier` | 1 = gatekeeper, 2 = secondary |
+| `status` | present only on non-defects (see above) |
+
+The report also carries a **remediation roadmap** bucketing work into *now /
+next / later* by impact **against effort** — so a ten-minute config fix isn't
+queued behind a content programme just because its severity is lower.
 
 ## Running it without an agent
 
@@ -205,25 +248,47 @@ list.
 
 ## Validation and testing
 
-Every skill passes the Agent Skills specification rules — closed six-field
-frontmatter, name/directory match, space-separated `allowed-tools`, no BOM,
-descriptions within limits, all referenced files present, manifest well-formed
-with exactly one entrypoint.
+**Spec compliance.** Every skill passes the Agent Skills rules — closed
+six-field frontmatter, name/directory match, space-separated `allowed-tools`,
+no BOM, descriptions within limits, all referenced files present, manifest
+well-formed with exactly one entrypoint.
 
-Tested end-to-end on six unseen sites spanning minimal-static, open-source,
-government-guidance, government-media, SaaS and aggregator categories:
+**Regression suite.** `python3 tests/run_tests.py` — **85 tests, no network, no
+dependencies**, built from hand-written evidence bundles. They cover every
+false-positive guard, each with a paired negative case, plus cross-component
+*contract* tests that assert the orchestrator, critic and report agree on the
+finding schema. Those exist because a real bug shipped through that exact gap:
+`run_audit` marked non-defects with a boolean while `finalize_report` filtered
+on a string, so five "not a defect" findings were silently counted and scored.
+Nothing tested that boundary. Now three tests do, and they fail if the bug is
+reintroduced.
 
-| Site | Findings | Overall | Notable |
-|---|---|---|---|
-| rust-lang.org | 8 | 92 | Cleanest; appropriate for well-maintained docs |
-| nasa.gov | 12 | 88 | Correctly flagged facts locked in non-text |
-| postman.com | 10 | 87 | Correctly flagged JS-rendered prices |
-| news.ycombinator.com | 17 | 79 | Critical: homepage never states what the site is |
+**Live benchmark**, eleven unseen sites across open-source, documentation,
+government, aggregator, e-commerce, minimal-static and hostile inputs:
 
-Six real false positives were found by running against live sites and fixed —
-URL-keyword commercial detection, "subscribe" read as purchase intent, two
-entity-type misclassifications, an over-strict critic filter, and critic
-over-merging. Each is documented in
+| Site | Type | C/H/M/L | Score | Notable |
+|---|---|---|---|---|
+| fastapi.tiangolo.com | OSS docs | 0/0/4/6 | 96 | Flags missing licence + community info |
+| postgresql.org | OSS project | 0/0/3/7 | 96 | |
+| djangoproject.com | OSS project | 0/1/1/8 | 96 | |
+| python.org | OSS project | 0/0/7/6 | 92 | |
+| rust-lang.org | OSS project | 0/1/4/5 | 93 | |
+| books.toscrape.com | E-commerce | 1/1/12/4 | 82 | Correctly flags priced-but-unbuyable, no shipping terms |
+| news.ycombinator.com | Aggregator | 1/3/7/6 | 80 | Homepage never states what the site is |
+| example.com | Minimal | 1/1/3/2 | 90 | Answerability coverage 0.17 |
+| gnu.org | Throttling origin | — | **not scored** | Could not be read; says so |
+| web.whatsapp.com | Login wall | — | **not scored** | One finding: "not a public content site" |
+| *(dead domain)* | DNS failure | 1/0/0/0 | **not scored** | Named as DNS, not a generic error |
+
+Max runtime 46s; most sites finish in 12–30s, well inside the 5-minute budget.
+
+**Ten real false positives** were found by running against live sites and
+fixed — URL-keyword commercial detection, "subscribe" read as purchase intent,
+three entity-type misclassifications (including a tech aggregator read as an
+open-source project because it *links* to GitHub), timeouts reported as link
+rot, a self-inflicted rate limit reported as a bot block, an over-strict critic
+filter, critic over-merging, and an unreachable site scoring 100/100. Each is
+documented with what was observed and what guard was added in
 [`ARCHITECTURE.md` §19](./ARCHITECTURE.md#19-false-positive-guards).
 
 ## Known limitations

@@ -212,6 +212,12 @@ def main():
            "findings": kept,
            "critic": {"input_count": len(findings), "kept": len(kept),
                       "dropped": dropped, "severity_notes": notes}}
+    # Carry run-level context through untouched. The critic adjudicates
+    # findings; it must not silently drop metadata the report depends on --
+    # losing `short_circuited` here would let an unassessed site be scored.
+    for key in ("short_circuited", "pages_sampled", "evidence_file", "collected_at"):
+        if payload.get(key) is not None:
+            out[key] = payload[key]
     with open(args.out, "w", encoding="utf-8") as fh:
         json.dump(out, fh, indent=1)
     print(f"[{SKILL}] {len(findings)} in -> {len(kept)} kept, {len(dropped)} dropped/merged",

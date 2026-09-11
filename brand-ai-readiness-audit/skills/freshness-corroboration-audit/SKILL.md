@@ -45,12 +45,26 @@ across pages, and on-site corroboration signals.
 
 Do this yourself; it cannot be scripted.
 
-1. From the bundle, note the brand name and three to five core identity claims
-   — what it does, category, founding year, headquarters, flagship offering.
+1. **Use the scripted shortlist.** Part A emits a low-severity finding titled
+   *"Priority claims to verify against independent sources"* — it carries the
+   inferred site type and the 5–6 claims most worth the query budget, already
+   ranked (structured data > repeated across pages > concrete homepage text).
+   Verify those, in that order. If that finding is absent (no strong claims
+   found), fall back to brand name + what it does + founding year + HQ.
 2. Run **two to four** web searches. Keep it bounded; this must stay fast and
-   must not hammer a search backend. Useful shapes are the brand name alone,
-   the brand name with "wikipedia" or "crunchbase" or "linkedin", and the brand
-   name with a specific claim you want to verify.
+   must not hammer a search backend. Work **down the authority ladder** and stop
+   at the first tier that settles a claim:
+
+   | Tier | Sources |
+   |---|---|
+   | **P0** | Government / regulatory registries — company & charity registers, education regulators, patent/trademark offices, courts |
+   | **P1** | Structured knowledge bases — Wikidata, Wikipedia, Crunchbase, ROR, GLEIF/LEI, OpenCorporates |
+   | **P2** | Established independent news — a byline and an editor; **not** the brand's own newsroom or a PR wire |
+   | **P3** | Review / user platforms — Trustpilot, G2, Glassdoor, Reddit — reputation claims only, weighted low |
+   | **P4** | Other sites — partners, competitors, associations — context only |
+
+   P0/P1 settle identity, founding year and location cheaply; reserve P2 for
+   disputed or reputational claims.
 3. Assess three things:
 
    **Agreement.** Do independent sources state the same core facts? Note any

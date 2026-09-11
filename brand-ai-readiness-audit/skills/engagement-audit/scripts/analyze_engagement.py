@@ -30,10 +30,49 @@ GOALS = {
     "offering": re.compile(r"/(product|products|services|solutions|shop|store|courses|programs)\b",
                            re.I),
 }
+# "contact" and "about" apply to every organisation. "pricing" and "offering"
+# only make sense where the site actually sells or lists something -- flagging
+# them missing on a language project or a charity is a category error, not a
+# finding.
+UNIVERSAL_GOALS = {"contact", "about"}
+COMMERCIAL_CTA = {"buy now", "shop now", "add to cart", "get a quote", "book now",
+                  "start free", "book a demo", "request a demo", "schedule a call"}
+COMMERCIAL_SD = ("product", "offer", "service", "pricespecification", "aggregateoffer")
+COMMERCIAL_PATH_RE = re.compile(
+    r"/(pricing|plans|shop|store|cart|checkout|product|products)\b|/product/", re.I)
+
+
+def is_commercial(bundle):
+    """True when the site plainly sells or lists an offering.
+
+    Stray currency figures (grant amounts, salaries, case-study numbers) are not
+    commerce, so a couple of '$' strings do not count. What counts: a real
+    purchase CTA, Product/Offer structured data, a pricing/shop URL anywhere in
+    the link graph (even if that page was not crawled -- a JS-priced SaaS often
+    is not), or prices on a large share of pages (the shape of a catalogue)."""
+    pages = bundle.get("pages", [])
+    # A pricing/shop URL known to the site, crawled or not.
+    graph = bundle.get("link_graph", {}) or {}
+    known = list(graph.keys()) + [u for v in graph.values() for u in (v or [])]
+    if any(COMMERCIAL_PATH_RE.search(u or "") for u in known):
+        return True
+    priced_pages = 0
+    for p in pages:
+        f = p.get("facts", {})
+        if set(f.get("cta_matches", [])) & COMMERCIAL_CTA:
+            return True
+        types = " ".join(str(t).lower() for t in p.get("jsonld_types", []))
+        if any(t in types for t in COMMERCIAL_SD):
+            return True
+        if COMMERCIAL_PATH_RE.search(p.get("url", "")):
+            return True
+        if f.get("prices"):
+            priced_pages += 1
+    return priced_pages >= max(3, round(0.4 * len(pages)))
 
 
 def finding(title, severity, evidence, mechanism, action, priority,
-            evidence_tier="correlational", how=None, page=None):
+            evidence_tier="correlational", how=None, page=None, status=None):
     sa = {"summary": action, "priority": priority}
     if how:
         sa["how"] = how
@@ -42,7 +81,106 @@ def finding(title, severity, evidence, mechanism, action, priority,
          "signal_tier": 1, "evidence_tier": evidence_tier, "source_skill": SKILL}
     if page:
         f["page"] = page
+    if status:
+        f["status"] = status
     return f
+
+
+PURCHASE_CTA = {"add to cart", "add to bag", "add to basket", "buy now", "proceed to checkout"}
+SHIPPING_RE = re.compile(r"\b(shipping|delivery|returns?|refund|exchange)\b", re.I)
+BYLINE_RE = re.compile(r"\b(by [A-Z][a-z]+|author|written by|posted by)\b")
+HOURS_RE = re.compile(r"\b(mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?\s*[-–—to]*\s*"
+                      r"(?:(mon|tue|wed|thu|fri|sat|sun)[a-z]*)?\s*:?\s*\d{1,2}(?::\d{2})?\s*(?:am|pm)|"
+                      r"\b(opening hours|hours of operation|business hours)\b", re.I)
+
+
+def type_specific(bundle, commercial):
+    """Checks that only make sense for a particular kind of site.
+
+    Type comes from evidence, never a site list. Each check is gated so that a
+    site of a different type simply never sees it -- silence, not a false
+    finding.
+    """
+    out = []
+    pages = bundle.get("pages", [])
+    if not pages:
+        return out
+    types = set()
+    for p in pages:
+        types.update(p.get("jsonld_types", []))
+    blob = " ".join(p.get("text_sample", "") for p in pages)
+
+    # --- Shop: priced pages a visitor cannot actually buy from --------------
+    if commercial:
+        priced = [p for p in pages if p.get("facts", {}).get("prices")]
+        buyable = [p for p in priced
+                   if set(p.get("facts", {}).get("cta_matches", [])) & PURCHASE_CTA]
+        if len(priced) >= 3 and not buyable:
+            out.append(finding(
+                "Priced pages offer no visible way to buy", "medium",
+                f"{len(priced)} sampled page(s) show a price but none carries a purchase action "
+                f"(add to cart / buy now). Examples: "
+                f"{', '.join(p['url'] for p in priced[:3])}.",
+                "A price with no adjacent action makes the visitor hunt for the next step, and an "
+                "assistant summarising the page cannot tell a shopper how to proceed. If checkout "
+                "is rendered client-side, it is invisible to both.",
+                "Put an explicit purchase or enquiry action in the page markup next to each "
+                "price, server-rendered rather than injected by script.", "medium",
+                evidence_tier="correlational"))
+        if priced and not SHIPPING_RE.search(blob):
+            out.append(finding(
+                "No shipping or returns information found", "medium",
+                f"{len(priced)} page(s) show prices, but no shipping, delivery or returns "
+                f"vocabulary appears anywhere in {len(pages)} sampled page(s).",
+                "Shipping cost and return terms are among the first things a buyer -- and an "
+                "assistant answering on a buyer's behalf -- looks for. Their absence stalls the "
+                "decision at exactly the point of intent.",
+                "Publish shipping and returns terms as plain text and link them from product and "
+                "checkout pages.", "medium", evidence_tier="correlational"))
+
+    # --- Publisher: articles with no byline or date -------------------------
+    article_pages = [p for p in pages
+                     if {"Article", "BlogPosting", "NewsArticle"} & set(p.get("jsonld_types", []))
+                     or re.search(r"/(blog|news|article|posts?)/", p.get("url", ""))]
+    if len(article_pages) >= 3:
+        undated = [p for p in article_pages
+                   if not p.get("jsonld_dates") and not p.get("facts", {}).get("updated_years")]
+        if len(undated) >= max(2, len(article_pages) // 2):
+            out.append(finding(
+                "Articles are published without a visible date", "medium",
+                f"{len(undated)}/{len(article_pages)} article-shaped pages expose no publication "
+                "or update date in text or structured data.",
+                "Readers judge an article's relevance by its date before they read it, and "
+                "answer engines treat recency as a gate on whether to cite at all. An undated "
+                "article is assumed stale.",
+                "Show a publication date on every article and mirror it in datePublished / "
+                "dateModified.", "medium", evidence_tier="measured"))
+        if not BYLINE_RE.search(blob):
+            out.append(finding(
+                "Articles carry no visible author attribution", "low",
+                f"{len(article_pages)} article-shaped page(s) sampled, with no byline or author "
+                "vocabulary found in their text.",
+                "Named authorship is a core credibility signal for editorial content -- it is how "
+                "a reader, and a system weighing sources, tells a considered piece from anonymous "
+                "filler.",
+                "Attribute articles to a named author with a linked profile, and mark it up with "
+                "the author property.", "low", evidence_tier="correlational"))
+
+    # --- Local business: no opening hours anywhere --------------------------
+    local = {"LocalBusiness", "Restaurant", "Store", "Hotel", "MedicalBusiness",
+             "Dentist", "LodgingBusiness"} & types
+    if local and not HOURS_RE.search(blob) and "OpeningHoursSpecification" not in types:
+        out.append(finding(
+            "A local business publishes no opening hours", "high",
+            f"The site declares {sorted(local)} structured data but no opening hours appear in "
+            f"text or as OpeningHoursSpecification across {len(pages)} sampled page(s).",
+            "Opening hours are the single most asked question about a local business. If they are "
+            "not in extractable text, an assistant asked 'are they open now?' cannot answer, and "
+            "a visitor may simply go elsewhere.",
+            "Publish opening hours as plain text on the homepage and contact page, and mirror "
+            "them in OpeningHoursSpecification.", "high", evidence_tier="measured"))
+
+    return out
 
 
 def click_depths(bundle):
@@ -100,16 +238,31 @@ def analyze(bundle):
     reachable_urls = set(depths)
     home_links = " ".join(t for _, t in home.get("links_internal", [])) + " " + \
                  " ".join(h for h, _ in home.get("links_internal", []))
-    missing_goals, deep_goals = [], []
+    commercial = is_commercial(bundle)
+    missing_goals, deep_goals, na_goals = [], [], []
     for goal, rx in GOALS.items():
+        applies = goal in UNIVERSAL_GOALS or commercial
         hits = [(u, d) for u, d in depths.items() if rx.search(u)]
         if not hits:
             if not rx.search(home_links):
-                missing_goals.append(goal)
+                (missing_goals if applies else na_goals).append(goal)
         else:
             best = min(d for _, d in hits)
             if best > 3:
                 deep_goals.append((goal, best))
+
+    if na_goals:
+        findings.append(finding(
+            f"Visitor-goal checks not applicable: {', '.join(na_goals)}",
+            "low",
+            f"No {', '.join(na_goals)} destination was found, but this site shows no commercial "
+            "signals (prices, purchase CTAs, Product/Offer structured data, or a pricing/shop "
+            "URL), so these goals do not apply to it.",
+            "The audit distinguishes 'goal missing' from 'goal not relevant to this kind of "
+            "site' rather than reporting a category error.",
+            "No action needed. Add pricing/offering navigation only if the site starts selling "
+            "or listing an offering.", "low", evidence_tier="measured",
+            status="not_applicable"))
 
     if missing_goals:
         findings.append(finding(
@@ -194,6 +347,80 @@ def analyze(bundle):
             "structure is how they discover the rest of the site.",
             "Add contextual links onward from these pages to related content and the primary "
             "navigation.", "low"))
+
+    # --- Per-site-type checks -----------------------------------------------
+    # The universal checks above apply everywhere. These only run once the
+    # evidence says what kind of site this is, because "no add-to-cart button"
+    # is a defect on a shop and a category error on a documentation site.
+    findings.extend(type_specific(bundle, commercial))
+
+    # --- Orientation and trust affordances ----------------------------------
+    # Cheap, high-signal checks in the "understand / navigate / trust" band that
+    # structural checks alone miss.
+    nav_counts = [p.get("nav_links", 0) for p in pages if p.get("has_nav")]
+    if nav_counts:
+        top = max(nav_counts)
+        if top > 15:
+            findings.append(finding(
+                "Primary navigation offers too many choices", "low",
+                f"The richest <nav> across sampled pages exposes {top} links.",
+                "A navigation list this long stops being a map and becomes a search problem. "
+                "Visitors scan the first handful and give up; the hierarchy the site intends is "
+                "not communicated.",
+                "Group navigation into a small number of top-level categories, with the detail "
+                "one level down.", "low", evidence_tier="correlational"))
+        elif top and top < 3 and len(home.get("links_internal", [])) > 25:
+            findings.append(finding(
+                "Primary navigation exposes almost nothing", "low",
+                f"The site's <nav> carries only {top} link(s) while the homepage links to "
+                f"{len(home.get('links_internal', []))} internal pages.",
+                "Content the navigation never mentions is reachable only by chance. Both visitors "
+                "and crawlers use navigation as the map of what a site contains.",
+                "Surface the main sections in the primary navigation.", "low",
+                evidence_tier="correlational"))
+
+    deep_pages = [p for p in pages if p.get("depth", 0) >= 2]
+    if len(deep_pages) >= 3 and not any(p.get("has_breadcrumbs") for p in pages):
+        findings.append(finding(
+            "No breadcrumbs on a site with nested content", "low",
+            f"{len(deep_pages)} sampled page(s) sit two or more clicks deep and no breadcrumb "
+            "navigation (BreadcrumbList markup or a breadcrumb nav landmark) was found.",
+            "Someone arriving on a deep page from a search result or an assistant's citation has "
+            "no way to tell where they are in the site or how to go up a level. Breadcrumbs also "
+            "state the site's hierarchy explicitly for machines.",
+            "Add breadcrumb navigation to nested pages, marked up with BreadcrumbList.",
+            "low", evidence_tier="correlational"))
+
+    all_links = [(h, t) for p in pages for h, t in p.get("links_internal", [])] + \
+                [(h, t) for p in pages for h, t in p.get("links_external", [])]
+    joined = " ".join(f"{h} {t}" for h, t in all_links).lower()
+    has_privacy = "privacy" in joined
+    has_terms = any(w in joined for w in ("terms", "conditions", "legal"))
+    if not (has_privacy and has_terms):
+        missing = ", ".join(w for w, ok in (("privacy policy", has_privacy),
+                                            ("terms / legal", has_terms)) if not ok)
+        findings.append(finding(
+            "No link to a privacy policy or terms page", "low",
+            f"Across {len(pages)} sampled page(s), no link was found to: {missing}.",
+            "These pages are a baseline trust signal for visitors deciding whether to transact, "
+            "and their absence is conspicuous on any site that collects data. They are also "
+            "commonly expected by platforms and reviewers.",
+            f"Publish and link {missing} from the site footer.", "low",
+            evidence_tier="correlational"))
+
+    vague = [t for _h, t in all_links
+             if t.strip().lower() in ("click here", "here", "read more", "more", "link",
+                                      "this", "learn more >", "continue")]
+    if len(vague) >= 5:
+        findings.append(finding(
+            "Many links use uninformative anchor text", "low",
+            f"{len(vague)} link(s) across sampled pages use generic anchor text such as "
+            f"{', '.join(sorted(set(vague))[:4])}.",
+            "Anchor text is how both a screen-reader user scanning links and a machine building "
+            "a link graph work out what is on the other end. 'Click here' describes nothing, so "
+            "the destination's topic is lost.",
+            "Rewrite these links so the anchor text names the destination -- 'read the pricing "
+            "guide' rather than 'click here'.", "low", evidence_tier="measured"))
 
     # --- Readability of the interface --------------------------------------
     imgs = sum(p.get("images_total", 0) for p in pages)

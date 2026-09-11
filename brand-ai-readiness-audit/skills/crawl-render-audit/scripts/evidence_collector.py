@@ -107,7 +107,13 @@ HOURS_RE = re.compile(
     r"\b(mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?\s*(?:-|–|to|through)?\s*"
     r"(?:(mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?)?\s*:?\s*\d{1,2}(?::\d{2})?\s*(?:am|pm)", re.I)
 FOUNDED_RE = re.compile(r"\b(?:founded|established|est\.|since|incorporated)\s+(?:in\s+)?((?:19|20)\d{2})\b", re.I)
-COPYRIGHT_YEAR_RE = re.compile(r"(?:©|&copy;|copyright)\D{0,15}((?:19|20)\d{2})", re.I)
+# Capture an optional range end so "© 2001-2026" reads as 2026, not 2001. A bare
+# start year with no range is by far the most common false "stale" trigger.
+COPYRIGHT_YEAR_RE = re.compile(
+    r"(?:©|&copy;|copyright)\D{0,15}((?:19|20)\d{2})"
+    r"(?:\s*(?:-|&[nm]dash;|[‐-―])\s*((?:19|20)\d{2}))?",
+    re.I,
+)
 UPDATED_YEAR_RE = re.compile(r"(?:last updated|updated on|last modified|reviewed)\D{0,10}((?:19|20)\d{2})", re.I)
 COMING_SOON_RE = re.compile(r"\b(coming soon|launching soon|under construction|check back soon|"
                             r"page (?:is )?(?:currently )?unavailable|lorem ipsum)\b", re.I)
@@ -141,17 +147,54 @@ def _throttle(host):
     _last_request[host] = time.time()
 
 
-def fetch(url, timeout=TIMEOUT):
-    """GET a URL. Never raises; returns a dict describing what happened."""
+class _ChainRecorder(urllib.request.HTTPRedirectHandler):
+    """urllib follows redirects silently and keeps only the final URL, so a
+    three-hop chain and a direct hit look identical. Recording the hops lets the
+    audit report chains that waste crawl budget, loops that strand a crawler,
+    and downgrades to plain HTTP in the middle of an otherwise-HTTPS journey."""
+
+    def __init__(self):
+        super().__init__()
+        self.chain = []
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        self.chain.append({"from": req.full_url, "status": code, "to": newurl})
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+def _rate_limit_pause(headers, attempt):
+    """Honour Retry-After when a host asks us to slow down.
+
+    Without this the crawl records a page that would have succeeded as a
+    failure, and keeps hammering a host that explicitly asked it to stop --
+    which is the behaviour the guardrails exist to prevent.
+    """
+    raw = (headers or {}).get("retry-after", "")
+    try:
+        wait = float(str(raw).strip())
+    except (TypeError, ValueError):
+        wait = 0.0
+    if wait <= 0:
+        wait = 2.0 * (attempt + 1)          # polite exponential-ish fallback
+    return max(0.5, min(wait, 10.0))        # never stall the whole run on one host
+
+
+def fetch(url, timeout=TIMEOUT, _attempt=0):
+    """GET a URL. Never raises; returns a dict describing what happened.
+
+    Retries at most twice on HTTP 429, waiting for whatever the host asked for.
+    """
     _throttle(urlparse(url).netloc)
     req = urllib.request.Request(url, headers={
         "User-Agent": USER_AGENT,
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "en-US,en;q=0.9",
     })
+    recorder = _ChainRecorder()
+    opener = urllib.request.build_opener(recorder)
     started = time.time()
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
+        with opener.open(req, timeout=timeout) as resp:
             raw = resp.read(MAX_BYTES)
             if resp.headers.get("Content-Encoding") == "gzip":
                 try:
@@ -165,21 +208,28 @@ def fetch(url, timeout=TIMEOUT):
                 text = raw.decode("utf-8", errors="replace")
             return {"url": url, "final_url": resp.geturl(), "status": resp.status,
                     "headers": {k.lower(): v for k, v in resp.headers.items()},
-                    "text": text, "bytes": len(raw),
+                    "text": text, "bytes": len(raw), "redirect_chain": recorder.chain,
                     "elapsed_ms": int((time.time() - started) * 1000), "error": None}
     except urllib.error.HTTPError as e:
+        hdrs = {k.lower(): v for k, v in (e.headers or {}).items()}
+        if e.code == 429 and _attempt < 2:
+            pause = _rate_limit_pause(hdrs, _attempt)
+            print(f"[collector] 429 from {urlparse(url).netloc}; waiting {pause:.1f}s "
+                  f"(attempt {_attempt + 1}/2)", file=sys.stderr)
+            time.sleep(pause)
+            return fetch(url, timeout=timeout, _attempt=_attempt + 1)
         body = ""
         try:
             body = e.read(MAX_BYTES).decode("utf-8", errors="replace")
         except Exception:
             pass
-        return {"url": url, "final_url": url, "status": e.code,
-                "headers": {k.lower(): v for k, v in (e.headers or {}).items()},
-                "text": body, "bytes": len(body),
+        return {"url": url, "final_url": url, "status": e.code, "headers": hdrs,
+                "text": body, "bytes": len(body), "redirect_chain": recorder.chain,
                 "elapsed_ms": int((time.time() - started) * 1000), "error": f"HTTP {e.code}"}
     except Exception as e:
         return {"url": url, "final_url": url, "status": None, "headers": {}, "text": "",
-                "bytes": 0, "elapsed_ms": int((time.time() - started) * 1000),
+                "bytes": 0, "redirect_chain": recorder.chain,
+                "elapsed_ms": int((time.time() - started) * 1000),
                 "error": f"{type(e).__name__}: {e}"}
 
 
@@ -240,10 +290,14 @@ class DocParser(HTMLParser):
         self.counts = {"video": 0, "audio": 0, "canvas": 0, "svg": 0, "table": 0,
                        "picture": 0, "details": 0, "dialog": 0}
         self.forms = {"count": 0, "search": False, "inputs": 0, "labeled": 0,
-                      "submits_offsite": False}
+                      "submits_offsite": False, "has_password": False}
         self.viewport = False
         self.noscript_len = 0
         self.aria_labels = 0
+        self.has_nav = False
+        self.has_breadcrumbs = False
+        self.nav_links = 0
+        self._nav_depth = 0
 
         # Citability signals (see references/evidence-base.md for why each exists)
         self.emphasis_chars = 0
@@ -371,6 +425,8 @@ class DocParser(HTMLParser):
                                 "alt": a.get("alt"), "loading": a.get("loading")})
         elif tag == "a":
             self._link_depth += 1
+            if self._nav_depth:
+                self.nav_links += 1
             self._cur_link = {"href": a.get("href", ""), "text": "",
                               "aria": a.get("aria-label", "")}
         elif tag == "iframe":
@@ -386,6 +442,8 @@ class DocParser(HTMLParser):
                 self.forms["search"] = True
         elif tag == "input":
             itype = (a.get("type") or "text").lower()
+            if itype == "password":
+                self.forms["has_password"] = True
             if itype not in ("hidden", "submit", "button"):
                 self.forms["inputs"] += 1
                 if a.get("aria-label") or a.get("title") or a.get("placeholder"):
@@ -407,12 +465,23 @@ class DocParser(HTMLParser):
             if token.startswith(("h-", "p-", "u-", "e-", "dt-")) and len(token) > 2:
                 self.microformats.append(token)
 
+        # Track <nav> separately from the wider boilerplate set: the number of
+        # top-level navigation choices is an engagement signal in its own right,
+        # and header/footer/aside links are not navigation choices.
+        if tag == "nav":
+            self._nav_depth += 1
+            self.has_nav = True
+            aria = (a.get("aria-label") or "") + " " + (a.get("class") or "")
+            if "breadcrumb" in aria.lower():
+                self.has_breadcrumbs = True
         if tag in BOILERPLATE_TAGS:
             self._boiler_depth += 1
         if tag in BLOCK_TAGS:
             self._open_block(tag)
 
     def handle_endtag(self, tag):
+        if tag == "nav" and self._nav_depth:
+            self._nav_depth -= 1
         if tag in SKIP_TEXT_TAGS and self._skip_depth:
             self._skip_depth -= 1
             if tag == "noscript":
@@ -580,7 +649,9 @@ def extract_facts(text, html, parser):
         "postal_codes": sorted(set(ZIP_RE.findall(text)))[:5],
         "hours_mentions": len(HOURS_RE.findall(text)),
         "founded_years": sorted(set(FOUNDED_RE.findall(text)))[:3],
-        "copyright_years": sorted(set(COPYRIGHT_YEAR_RE.findall(html)))[:3],
+        # findall yields (start, end) tuples; the effective year is the range
+        # end where present, otherwise the start.
+        "copyright_years": sorted({(e or s) for s, e in COPYRIGHT_YEAR_RE.findall(html)})[:3],
         "updated_years": sorted(set(UPDATED_YEAR_RE.findall(html)))[:3],
         "coming_soon": sorted(set(m.lower() for m in COMING_SOON_RE.findall(text)))[:5],
         "cta_matches": sorted(set(m.lower() for m in CTA_RE.findall(html)))[:10],
@@ -898,6 +969,7 @@ def build_page_record(url, resp, depth):
         "error": resp["error"],
         "depth": depth,
         "elapsed_ms": resp["elapsed_ms"],
+        "redirect_chain": resp.get("redirect_chain") or [],
         "html_bytes": resp["bytes"],
         "https": (urlparse(resp["final_url"] or url).scheme == "https"),
         "headers": {k: v for k, v in resp["headers"].items()
@@ -939,6 +1011,9 @@ def build_page_record(url, resp, depth):
         "viewport": parser.viewport,
         "forms": parser.forms,
         "aria_labels": parser.aria_labels,
+        "has_nav": parser.has_nav,
+        "nav_links": parser.nav_links,
+        "has_breadcrumbs": parser.has_breadcrumbs or "BreadcrumbList" in jsonld_types,
         "facts": extract_facts(text, html, parser),
     }
     record["citability"] = compute_citability(parser, text, resp["final_url"] or url)
@@ -1010,7 +1085,12 @@ def probe_user_agents(url):
                          "PerplexityBot/1.0; +https://perplexity.ai/perplexitybot",
     }
     out = {}
-    for label, ua in probes.items():
+    for i, (label, ua) in enumerate(probes.items()):
+        # Space these out more than a normal crawl step. Four near-simultaneous
+        # requests to one origin can trip its rate limiter, and a 429 provoked by
+        # our own probe would then be misread as the site blocking AI crawlers.
+        if i:
+            time.sleep(1.0)
         _throttle(urlparse(url).netloc)
         req = urllib.request.Request(url, headers={"User-Agent": ua, "Accept": "text/html,*/*"})
         try:
