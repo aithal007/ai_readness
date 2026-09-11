@@ -20,6 +20,23 @@ marketplace runs on a bare `python3` with no pip install and no browser binary.
 > every file, check, threshold and design decision — including the live test
 > failures that produced each false-positive guard.
 
+## Verify this submission in under a minute
+
+Neither command touches the network, and both are standard library only.
+
+```bash
+python3 tests/validate_spec.py    # packaging + spec + report contract  -> ALL CHECKS PASSED
+python3 tests/run_tests.py        # behavioural regression suite        -> 85/85 passed
+```
+
+`validate_spec.py` is the mechanical gate: frontmatter key set, name/directory
+agreement, encoding and BOM, exactly one declared entrypoint, every declared
+skill directory present, the required report fields, and total size against the
+50 MB limit. It exits non-zero on any failure.
+
+To see it work end to end, point it at any domain — see
+[Running it without an agent](#running-it-without-an-agent).
+
 ## The model it is built on
 
 A brand gets cited only if six things hold, **in order**. A failure early makes
@@ -204,6 +221,9 @@ brand-ai-readiness-audit/
 ├── marketplace.json          manifest; exactly one entrypoint
 ├── README.md                 this file
 ├── ARCHITECTURE.md           full technical reference
+├── tests/
+│   ├── validate_spec.py      packaging + spec gate (run before submitting)
+│   └── run_tests.py          85 behavioural tests, no network
 └── skills/
     ├── audit-orchestrator/   ENTRYPOINT — run_audit.py, finalize_report.py
     │   └── references/       report_schema.md, evidence-base.md
@@ -248,10 +268,13 @@ list.
 
 ## Validation and testing
 
-**Spec compliance.** Every skill passes the Agent Skills rules — closed
-six-field frontmatter, name/directory match, space-separated `allowed-tools`,
-no BOM, descriptions within limits, all referenced files present, manifest
-well-formed with exactly one entrypoint.
+**Spec compliance.** `python3 tests/validate_spec.py` — every skill passes the
+Agent Skills rules: closed six-field frontmatter, name/directory match,
+space-separated `allowed-tools`, no BOM, descriptions within limits, all
+referenced files present, manifest well-formed with exactly one entrypoint. It
+also asserts the report contract and the 50 MB size limit. Verified to actually
+catch faults by injecting a bogus frontmatter key and a second entrypoint;
+both were caught and the run exited non-zero.
 
 **Regression suite.** `python3 tests/run_tests.py` — **85 tests, no network, no
 dependencies**, built from hand-written evidence bundles. They cover every
