@@ -236,7 +236,7 @@ brand-ai-readiness-audit/
     └── evidence-critic/
 ```
 
-3,457 lines of Python across 10 scripts. Every skill folder holds a `SKILL.md`,
+4,772 lines of Python across 10 scripts, plus 1,122 lines of tests. Every skill folder holds a `SKILL.md`,
 its analyzer in `scripts/`, and its detailed check tables in `references/`.
 
 ## What a report looks like
@@ -304,6 +304,13 @@ government, aggregator, e-commerce, minimal-static and hostile inputs:
 | *(dead domain)* | DNS failure | 1/0/0/0 | **not scored** | Named as DNS, not a generic error |
 
 Max runtime 46s; most sites finish in 12–30s, well inside the 5-minute budget.
+
+These rows are reproducible from the scripted path in
+[Running it without an agent](#running-it-without-an-agent) — no agent
+judgement is folded into them. Two consecutive runs against the same site
+produce byte-identical findings; the only value that moves between runs is the
+crawl-duration telemetry. Live sites do change, so a row may drift if the site
+itself does.
 
 **Ten real false positives** were found by running against live sites and
 fixed — URL-keyword commercial detection, "subscribe" read as purchase intent,

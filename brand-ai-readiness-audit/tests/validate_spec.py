@@ -126,6 +126,36 @@ def check_skill(dirname):
     return name
 
 
+REF_RE = re.compile(r"(?:references|scripts)/[A-Za-z0-9_.\-]+\.(?:md|py)")
+
+
+def check_references(dirname):
+    """Every references/ or scripts/ path named in a SKILL.md must exist.
+
+    Skills cite each other's files as well as their own, so a path resolves
+    against its own skill first and then against any skill in the marketplace.
+    """
+    rel = os.path.join("skills", dirname, "SKILL.md")
+    path = os.path.join(ROOT, rel)
+    if not os.path.isfile(path):
+        return
+    try:
+        body = io.open(path, encoding="utf-8").read()
+    except UnicodeDecodeError:
+        return  # already reported by check_skill
+
+    skills_dir = os.path.join(ROOT, "skills")
+    others = sorted(d for d in os.listdir(skills_dir)
+                    if os.path.isdir(os.path.join(skills_dir, d)))
+
+    for ref in sorted(set(REF_RE.findall(body))):
+        if os.path.isfile(os.path.join(skills_dir, dirname, ref)):
+            continue
+        if any(os.path.isfile(os.path.join(skills_dir, o, ref)) for o in others):
+            continue
+        fail("%s: references %r, which exists in no skill" % (rel, ref))
+
+
 def check_marketplace():
     path = os.path.join(ROOT, "marketplace.json")
     if not os.path.isfile(path):
@@ -200,6 +230,8 @@ def main():
     dirs = sorted(d for d in os.listdir(skills_dir)
                   if os.path.isdir(os.path.join(skills_dir, d)))
     names = [check_skill(d) for d in dirs]
+    for d in dirs:
+        check_references(d)
     notes.append("skills validated: %d" % len(dirs))
 
     declared = check_marketplace()
