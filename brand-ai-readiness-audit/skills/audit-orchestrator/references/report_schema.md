@@ -38,6 +38,8 @@ unfalsifiable claim is not a finding.
   "site": "example.com",
   "audited_at": "2026-09-07T14:32:00Z",
   "summary": {
+    "site": "example.com",
+    "audited_at": "2026-09-07T14:32:00Z",
     "total_findings": 10,
     "critical": 1,
     "high": 2,

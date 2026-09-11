@@ -408,11 +408,18 @@ def main():
                           "validated or externally comparable metric.",
         }
 
+    audited_at = (datetime.datetime.now(datetime.timezone.utc)
+                  .strftime("%Y-%m-%dT%H:%M:%SZ"))
+
     report = {
         "site": site,
-        "audited_at": datetime.datetime.now(datetime.timezone.utc)
-                              .strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "audited_at": audited_at,
+        # site/audited_at are mirrored inside summary as well as at the top
+        # level: the brief names them as summary fields, and a consumer may
+        # read them from either place.
         "summary": {
+            "site": site,
+            "audited_at": audited_at,
             "total_findings": len(out_findings),
             "critical": counts["critical"],
             "high": counts["high"],
