@@ -366,6 +366,27 @@ def analyze(bundle):
                 "Fix or remove the broken links listed above, then re-check navigation and footer "
                 "links sitewide.", "medium"))
 
+    # --- Read: soft paywall declared in the page's own structured data ------
+    # Deliberately keyed on the explicit isAccessibleForFree:false signal, not
+    # on the presence of a subscribe CTA -- a subscribe/newsletter prompt is
+    # lead-gen, not a content gate, and treating it as one would be exactly
+    # the kind of false positive this audit is built to avoid.
+    paywalled = [p for p in pages if p.get("paywalled")]
+    if paywalled:
+        findings.append(finding(
+            "Some pages declare themselves paywalled in structured data",
+            "medium",
+            f"{len(paywalled)}/{len(pages)} sampled page(s) carry "
+            f'"isAccessibleForFree": false in their own JSON-LD: '
+            + ", ".join(p["url"] for p in paywalled[:4]) + ".",
+            "A page can render a full article in HTML and still be invisible to a compliant "
+            "crawler or assistant if its own structured data declares it inaccessible for free -- "
+            "that declaration is authoritative regardless of what the raw HTML shows.",
+            "Mark a genuinely free preview with its own accessible CreativeWork node "
+            '(hasPart / isAccessibleForFree: true), or accept that paywalled pages will not be '
+            "quoted verbatim by AI assistants.",
+            "medium", evidence_tier="measured"))
+
     return findings
 
 

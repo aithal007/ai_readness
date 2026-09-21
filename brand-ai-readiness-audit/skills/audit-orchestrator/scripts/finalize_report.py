@@ -307,9 +307,14 @@ def main():
     ap.add_argument("findings_file")
     ap.add_argument("--site")
     ap.add_argument("--evidence")
-    ap.add_argument("--out", default="audit_report.json")
+    ap.add_argument("--out", default=None,
+                    help="default: audit_report.json next to findings_file, so a run's files "
+                         "stay together")
     ap.add_argument("--md", default=None)
     args = ap.parse_args()
+
+    if args.out is None:
+        args.out = str(pathlib.Path(args.findings_file).resolve().parent / "audit_report.json")
 
     if not os.path.exists(args.findings_file):
         print(f"error: file not found: {args.findings_file}", file=sys.stderr)

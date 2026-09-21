@@ -31,6 +31,7 @@ import json
 import os
 import subprocess
 import sys
+from urllib.parse import urlparse
 
 SKILL = "ai-citability-audit"
 
@@ -93,11 +94,15 @@ def commercial_pages(pages):
     """
     out = []
     for p in pages:
-        url = p["url"].lower()
+        # Path only -- not the full URL. A tracking/referrer query param such
+        # as "?ref_page=/pricing" on an unrelated page (observed live on
+        # github.com's own /enterprise/contact links) contains a PRICING_PATH
+        # segment without the page itself being a pricing page.
+        path = urlparse(p["url"]).path.lower()
         ctas = set(p.get("facts", {}).get("cta_matches", []))
         has_price = p["citability"]["tier1"]["has_price"]
         has_cta = any(c in ctas for c in PURCHASE_CTAS)
-        on_pricing_path = any(seg in url for seg in PRICING_PATH)
+        on_pricing_path = any(seg in path for seg in PRICING_PATH)
         if has_price or has_cta or (on_pricing_path and p["citability"]["word_count"] > 80):
             out.append(p)
     return out
@@ -146,7 +151,7 @@ def analyze(bundle):
                  if not p["citability"]["tier1"]["has_price"]
                  and (any(c in set(p.get("facts", {}).get("cta_matches", []))
                           for c in PURCHASE_CTAS)
-                      or any(seg in p["url"].lower() for seg in PRICING_PATH))]
+                      or any(seg in urlparse(p["url"]).path.lower() for seg in PRICING_PATH))]
     if priceless:
         findings.append(finding(
             "Commercial pages state no explicit price in extractable text",

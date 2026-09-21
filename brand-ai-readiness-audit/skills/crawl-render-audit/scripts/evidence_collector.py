@@ -109,10 +109,15 @@ HOURS_RE = re.compile(
 FOUNDED_RE = re.compile(r"\b(?:founded|established|est\.|since|incorporated)\s+(?:in\s+)?((?:19|20)\d{2})\b", re.I)
 # Capture an optional range end so "© 2001-2026" reads as 2026, not 2001. A bare
 # start year with no range is by far the most common false "stale" trigger.
+# React/Next.js SSR streaming often interpolates each number as its own text
+# node and drops an empty "<!-- -->" comment between them (observed live on
+# flipkart.com: "&copy; 2007-<!-- -->2026<!-- --> Flipkart.com"), so the gap
+# around the dash must tolerate an HTML comment, not just whitespace.
+_CY_GAP = r"(?:<!--.*?-->|\s)*"
 COPYRIGHT_YEAR_RE = re.compile(
     r"(?:©|&copy;|copyright)\D{0,15}((?:19|20)\d{2})"
-    r"(?:\s*(?:-|&[nm]dash;|[‐-―])\s*((?:19|20)\d{2}))?",
-    re.I,
+    rf"(?:{_CY_GAP}(?:-|&[nm]dash;|[‐-―]){_CY_GAP}((?:19|20)\d{{2}}))?",
+    re.I | re.DOTALL,
 )
 UPDATED_YEAR_RE = re.compile(r"(?:last updated|updated on|last modified|reviewed)\D{0,10}((?:19|20)\d{2})", re.I)
 COMING_SOON_RE = re.compile(r"\b(coming soon|launching soon|under construction|check back soon|"
@@ -123,8 +128,19 @@ CTA_RE = re.compile(r"\b(buy now|shop now|add to cart|get started|start free|sig
 LOGIN_WALL_RE = re.compile(r"\b(sign in to (?:continue|view|read)|log in to (?:continue|view|read)|"
                            r"subscribe to (?:continue|read|view)|create a free account to continue|"
                            r"members only)\b", re.I)
+# Deliberately narrow: a server-side consent GATE ("accept cookies or you get
+# nothing"), not the ordinary footer disclosure almost every site carries
+# ("we use cookies to improve your experience"). The trigger requires an
+# explicit "to continue/access/view" clause -- ordinary disclosure text does
+# not have one, so it never matches.
+CONSENT_WALL_RE = re.compile(
+    r"\b(accept (?:all )?cookies to (?:continue|view|access|read)|"
+    r"please accept (?:our )?cookies? to (?:continue|view|access)|"
+    r"you must accept (?:our use of )?cookies to (?:continue|access)|"
+    r"enable cookies to (?:continue|access|view)|"
+    r"consent is required to (?:access|view) this (?:site|page|content))\b", re.I)
 
-SKIP_PATH_WORDS = ("login", "signin", "sign-in", "signup", "sign-up", "logout", "cart",
+SKIP_PATH_WORDS = ("login", "signin", "sign-in", "signup", "sign-up", "join", "logout", "cart",
                    "checkout", "account", "wp-admin", "admin", "basket", "my-account")
 SKIP_EXTENSIONS = (".pdf", ".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp", ".ico", ".zip",
                    ".css", ".js", ".mp4", ".mp3", ".woff", ".woff2", ".ttf", ".xml", ".rss",
@@ -640,7 +656,13 @@ def extract_facts(text, html, parser):
     answerability probe reasons over."""
     emails = sorted(set(EMAIL_RE.findall(text)))[:10]
     tel_links = [h[4:] for h, _, _ in parser.links if h.lower().startswith("tel:")]
-    phones = sorted(set(p.strip() for p in PHONE_RE.findall(text)))[:10]
+    # Every separator in PHONE_RE is optional (real numbers are formatted every
+    # which way), which also lets it match an unbroken run of 9-12 digits --
+    # a percentage, an order ID, a tracking number. Require at least one
+    # actual separator character so a bare digit run is never read as a phone
+    # number (observed live: python.org's "66.66666666666667%" stat).
+    phones = sorted(set(p.strip() for p in PHONE_RE.findall(text)
+                        if any(c in p for c in " .-()")))[:10]
     return {
         "emails": emails,
         "tel_links": sorted(set(tel_links))[:10],
@@ -656,6 +678,7 @@ def extract_facts(text, html, parser):
         "coming_soon": sorted(set(m.lower() for m in COMING_SOON_RE.findall(text)))[:5],
         "cta_matches": sorted(set(m.lower() for m in CTA_RE.findall(html)))[:10],
         "login_wall": bool(LOGIN_WALL_RE.search(text)),
+        "consent_wall": bool(CONSENT_WALL_RE.search(text)),
     }
 
 
@@ -918,6 +941,16 @@ def jsonld_dates(parser):
     return out
 
 
+def jsonld_paywalled(parser):
+    """True when the page's own structured data explicitly declares itself
+    inaccessible for free (schema.org isAccessibleForFree: false) -- a soft
+    paywall the raw HTML can otherwise look completely normal for. This is a
+    structured, self-declared signal, not a heuristic guess: a subscribe CTA
+    or a mention of "subscribe" is NOT paywall evidence on its own."""
+    blob = " ".join(parser.jsonld_raw)
+    return bool(re.search(r'"isAccessibleForFree"\s*:\s*(false|"false")', blob, re.I))
+
+
 # ---------------------------------------------------------------------------
 # Crawl
 # ---------------------------------------------------------------------------
@@ -989,6 +1022,7 @@ def build_page_record(url, resp, depth):
         "jsonld_types": jsonld_types,
         "jsonld_invalid": jsonld_invalid,
         "jsonld_dates": jsonld_dates(parser),
+        "paywalled": jsonld_paywalled(parser),
         "microdata_types": sorted(set(parser.microdata_types))[:15],
         "rdfa_types": sorted(set(parser.rdfa_types))[:15],
         "microformats": sorted(set(parser.microformats))[:15],

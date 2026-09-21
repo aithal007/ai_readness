@@ -87,6 +87,21 @@ def finding(title, severity, evidence, mechanism, action, priority,
 
 
 PURCHASE_CTA = {"add to cart", "add to bag", "add to basket", "buy now", "proceed to checkout"}
+# A SaaS pricing page's purchase-equivalent action is "get started" / "sign
+# up", not a literal "buy now" -- without this a genuine, working pricing
+# page reads as "no way to buy".
+SAAS_ACTION_CTA = {"get started", "start free", "sign up", "request a demo", "book a demo"}
+# A currency figure on one of these sections is a grant amount, a program
+# budget or a press mention, not a product price -- exclude the section
+# rather than requiring product markup elsewhere, because plenty of genuine
+# catalogues (scraping-practice fixtures included) carry no schema or CTA at
+# all and would otherwise be wrongly excluded too.
+NON_COMMERCIAL_SECTION_RE = re.compile(
+    r"/(about|diversity|press|report|policy|policies|leadership|careers|jobs|"
+    r"social-impact|security|legal|privacy|terms)\b", re.I)
+# A SaaS subscription-pricing page is not a goods listing; shipping/returns
+# genuinely does not apply to it. Anything else priced defaults to "goods".
+SAAS_PRICING_PATH_RE = re.compile(r"/(pricing|plans)\b", re.I)
 SHIPPING_RE = re.compile(r"\b(shipping|delivery|returns?|refund|exchange)\b", re.I)
 BYLINE_RE = re.compile(r"\b(by [A-Z][a-z]+|author|written by|posted by)\b")
 HOURS_RE = re.compile(r"\b(mon|tue|wed|thu|fri|sat|sun)[a-z]*\.?\s*[-–—to]*\s*"
@@ -112,14 +127,20 @@ def type_specific(bundle, commercial):
 
     # --- Shop: priced pages a visitor cannot actually buy from --------------
     if commercial:
-        priced = [p for p in pages if p.get("facts", {}).get("prices")]
-        buyable = [p for p in priced
-                   if set(p.get("facts", {}).get("cta_matches", [])) & PURCHASE_CTA]
+        # Exclude sections where a currency figure is not a product price
+        # (about/press/policy/security pages carrying grant amounts, budgets,
+        # etc.) -- see NON_COMMERCIAL_SECTION_RE above.
+        priced = [p for p in pages if p.get("facts", {}).get("prices")
+                 and not NON_COMMERCIAL_SECTION_RE.search(p.get("url", ""))]
+        # A SaaS pricing page's purchase action is "get started", not a
+        # literal "buy now" -- both count as buyable.
+        buyable = [p for p in priced if set(p.get("facts", {}).get("cta_matches", []))
+                  & (PURCHASE_CTA | SAAS_ACTION_CTA)]
         if len(priced) >= 3 and not buyable:
             out.append(finding(
                 "Priced pages offer no visible way to buy", "medium",
                 f"{len(priced)} sampled page(s) show a price but none carries a purchase action "
-                f"(add to cart / buy now). Examples: "
+                f"(add to cart / buy now / get started). Examples: "
                 f"{', '.join(p['url'] for p in priced[:3])}.",
                 "A price with no adjacent action makes the visitor hunt for the next step, and an "
                 "assistant summarising the page cannot tell a shopper how to proceed. If checkout "
@@ -127,11 +148,16 @@ def type_specific(bundle, commercial):
                 "Put an explicit purchase or enquiry action in the page markup next to each "
                 "price, server-rendered rather than injected by script.", "medium",
                 evidence_tier="correlational"))
-        if priced and not SHIPPING_RE.search(blob):
+        # Shipping/returns is a goods concept -- it does not apply to a bare
+        # SaaS subscription-pricing page. Everything else priced defaults to
+        # "goods", which is the common case (a product catalogue rarely has
+        # any markup to positively confirm it's goods).
+        goods_priced = [p for p in priced if not SAAS_PRICING_PATH_RE.search(p.get("url", ""))]
+        if goods_priced and not SHIPPING_RE.search(blob):
             out.append(finding(
                 "No shipping or returns information found", "medium",
-                f"{len(priced)} page(s) show prices, but no shipping, delivery or returns "
-                f"vocabulary appears anywhere in {len(pages)} sampled page(s).",
+                f"{len(goods_priced)} page(s) show prices for goods, but no shipping, delivery or "
+                f"returns vocabulary appears anywhere in {len(pages)} sampled page(s).",
                 "Shipping cost and return terms are among the first things a buyer -- and an "
                 "assistant answering on a buyer's behalf -- looks for. Their absence stalls the "
                 "decision at exactly the point of intent.",

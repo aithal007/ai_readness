@@ -23,8 +23,10 @@ import concurrent.futures
 import json
 import os
 import pathlib
+import re
 import subprocess
 import sys
+from datetime import datetime
 
 # (skill id, script, extra args) -- every analyzer reads the shared bundle.
 ANALYZERS = [
@@ -92,10 +94,40 @@ def diagnose_auth_wall(bundle):
     # SPA marker + almost no static text + almost no crawlable links.
     app_shell = bool(home.get("spa_root")) and wc < 40 and n_links <= 3
 
-    if login_signals < 2 and not app_shell:
+    # Case C: a server-side consent GATE -- the page really has nothing behind
+    # it until a cookie is accepted (rare; distinct from the ordinary footer
+    # disclosure almost every site carries, which does not trip this flag at
+    # all -- see CONSENT_WALL_RE). Same multi-signal discipline as case A: the
+    # flag alone is not enough, the page must also be thin.
+    consent_signals = sum([
+        bool(facts.get("consent_wall")),
+        (wc < 60 and n_links <= 5),
+    ])
+
+    if login_signals >= 2:
+        kind = "a login wall"
+    elif app_shell:
+        kind = "a client-rendered application shell"
+    elif consent_signals >= 2:
+        kind = "a cookie-consent gate"
+    else:
         return None
 
-    kind = "a login wall" if login_signals >= 2 else "a client-rendered application shell"
+    if kind == "a cookie-consent gate":
+        return _blocker_finding(
+            "Entry point is gated behind a cookie-consent wall",
+            f"The homepage of {bundle.get('site')} returned HTTP {home['status']} but exposes "
+            f"only {wc} words of static text and {n_links} crawlable link(s), gated behind "
+            "consent-required language rather than showing the page's real content.",
+            "A server-side consent gate has nothing an AI assistant can reach, read or cite "
+            "until a cookie is accepted -- which no compliant crawler will do. Running the "
+            "content, engagement and corroboration checks here would only produce findings "
+            "about the consent notice.",
+            "Serve the underlying page content to first-time / anonymous visitors and crawlers; "
+            "gate only what genuinely requires consent (e.g. personalised ads), not the page "
+            "itself.",
+            priority="medium", status="not_applicable", evidence_tier="correlational")
+
     return _blocker_finding(
         "Entry point is not a public content site (authentication / application shell)",
         f"The homepage of {bundle.get('site')} returned HTTP {home['status']} but exposes only "
@@ -277,16 +309,40 @@ def meta_finding(skill, err):
     }
 
 
+def _default_run_dir(url):
+    """audit_runs/<domain>-<timestamp>/ -- so running against several sites (or
+    the same site twice) never silently overwrites a previous run's files.
+
+    Only used when --out / --evidence-out are omitted; passing either
+    explicitly is unaffected and behaves exactly as before."""
+    domain = re.sub(r"^https?://", "", url, flags=re.I).split("/")[0].lower()
+    domain = re.sub(r"[^a-z0-9.\-_]", "_", domain) or "site"
+    stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    return pathlib.Path("audit_runs") / f"{domain}-{stamp}"
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("url")
-    ap.add_argument("--out", default="raw_findings.json")
-    ap.add_argument("--evidence-out", default="evidence.json")
+    ap.add_argument("--out", default=None,
+                    help="default: audit_runs/<domain>-<timestamp>/raw_findings.json")
+    ap.add_argument("--evidence-out", default=None,
+                    help="default: audit_runs/<domain>-<timestamp>/evidence.json")
     ap.add_argument("--today", default=None,
                     help="ISO date to treat as today; pass the agent's real current date")
     ap.add_argument("--max-pages", type=int, default=15)
     ap.add_argument("--budget-seconds", type=int, default=150)
     args = ap.parse_args()
+
+    if args.out is None or args.evidence_out is None:
+        run_dir = _default_run_dir(args.url)
+        run_dir.mkdir(parents=True, exist_ok=True)
+        if args.out is None:
+            args.out = str(run_dir / "raw_findings.json")
+        if args.evidence_out is None:
+            args.evidence_out = str(run_dir / "evidence.json")
+        print(f"[orchestrator] no --out/--evidence-out given; writing this run to "
+              f"{run_dir}/", file=sys.stderr)
 
     root = pathlib.Path(__file__).resolve().parents[3]
     collector = root / "skills" / "crawl-render-audit" / "scripts" / "evidence_collector.py"

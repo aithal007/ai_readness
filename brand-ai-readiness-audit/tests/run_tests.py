@@ -9,6 +9,7 @@ false-positive guards and edge-case handling. They do NOT hit the network.
 """
 import importlib.util
 import pathlib
+import re
 import sys
 import traceback
 
@@ -30,6 +31,7 @@ fresh = _load(SKILLS / "freshness-corroboration-audit" / "scripts" / "analyze_fr
 run_audit = _load(SKILLS / "audit-orchestrator" / "scripts" / "run_audit.py")
 finalize = _load(SKILLS / "audit-orchestrator" / "scripts" / "finalize_report.py")
 critic = _load(SKILLS / "evidence-critic" / "scripts" / "critique_findings.py")
+citab = _load(SKILLS / "ai-citability-audit" / "scripts" / "analyze_citability.py")
 
 from datetime import datetime, timezone
 
@@ -99,6 +101,19 @@ def t_copyright_endash_range():
     assert facts["copyright_years"] == ["2026"], facts["copyright_years"]
 
 
+def t_copyright_range_split_by_react_hydration_comment():
+    # React/Next.js SSR streaming interpolates each number separately and
+    # inserts an empty <!-- --> comment between them, e.g. flipkart.com's
+    # real footer markup: "&copy; 2007-<!-- -->2026<!-- --> Flipkart.com".
+    # That comment used to sit inside the range's "-" gap and break the
+    # range match, so only the (old) start year was ever captured -- a
+    # false "stale" finding on a page updated today.
+    html = '<footer>&copy; 2007-<!-- -->2026<!-- --> Flipkart.com</footer>'
+    facts = collector.extract_facts(collector.parse_html(html).all_text, html,
+                                    collector.parse_html(html))
+    assert facts["copyright_years"] == ["2026"], facts["copyright_years"]
+
+
 def t_copyright_range_ending_old_still_flags():
     # item 1: a real range whose END is old must NOT be suppressed
     html = '<footer>© 2005-2019 Abandoned Project</footer>'
@@ -107,6 +122,108 @@ def t_copyright_range_ending_old_still_flags():
     assert facts["copyright_years"] == ["2019"], facts["copyright_years"]
     b = _bundle(pages=[_page(facts={**_page()["facts"], "copyright_years": ["2019"]})])
     assert any("stale" in f["title"].lower() for f in fresh.analyze(b, TODAY))
+
+
+# --- collector: phone extraction must not swallow bare digit runs ---------
+def t_phone_rejects_unbroken_digit_run():
+    # python.org's homepage shows a "66.66666666666667%" developer-survey
+    # stat; stripped of the decimal point that reads as a 15-digit run with
+    # no separators at all -- not remotely phone-shaped -- but the old regex
+    # had every separator optional, so it matched anyway.
+    html = "<p>66.66666666666667% of developers surveyed said so.</p>"
+    facts = collector.extract_facts(collector.parse_html(html).all_text, html,
+                                    collector.parse_html(html))
+    assert facts["phones"] == [], facts["phones"]
+
+
+def t_phone_still_detects_hyphenated_number():
+    html = "<p>Call us at 1-858-712-8966 for support.</p>"
+    facts = collector.extract_facts(collector.parse_html(html).all_text, html,
+                                    collector.parse_html(html))
+    assert facts["phones"] == ["1-858-712-8966"], facts["phones"]
+
+
+def t_phone_still_detects_spaced_international_number():
+    html = "<p>Reach the team on 89 144 233 377 during business hours.</p>"
+    facts = collector.extract_facts(collector.parse_html(html).all_text, html,
+                                    collector.parse_html(html))
+    assert facts["phones"] == ["89 144 233 377"], facts["phones"]
+
+
+def t_phone_still_detects_parenthesised_number():
+    html = "<p>Front desk: (555) 123-4567.</p>"
+    facts = collector.extract_facts(collector.parse_html(html).all_text, html,
+                                    collector.parse_html(html))
+    assert facts["phones"] == ["(555) 123-4567"], facts["phones"]
+
+
+def t_phone_rejects_tracking_id_style_digit_run():
+    html = "<p>Order reference 4021558873321.</p>"
+    facts = collector.extract_facts(collector.parse_html(html).all_text, html,
+                                    collector.parse_html(html))
+    assert facts["phones"] == [], facts["phones"]
+
+
+# --- collector: crawler must not follow auth-walled signup links ----------
+def t_crawlable_skips_github_style_join_path():
+    # github.com's own signup flow is /join (not /signup), so it slipped
+    # past SKIP_PATH_WORDS: the crawler fetched it, got a 403 (it requires
+    # an authenticated session), and the link-rot check then reported a
+    # live, working link as "broken" / site-wide link rot.
+    assert not collector.crawlable("https://github.com/join?plan=free", "github.com")
+
+
+def t_crawlable_still_follows_ordinary_content_paths():
+    assert collector.crawlable("https://github.com/torvalds/linux", "github.com")
+
+
+# --- citability: pricing-path check must read the URL PATH, not the whole
+# --- URL string (tracking query params can smuggle a path-shaped segment) --
+def _citab_page(url, cta_matches=(), has_price=False, word_count=200):
+    p = _page(url=url, word_count=word_count,
+              facts={**_page()["facts"], "cta_matches": list(cta_matches)})
+    p["citability"] = {
+        "word_count": word_count,
+        "tier1": {
+            "has_price": has_price, "query_term_coverage": 1.0, "uncovered_claim_terms": [],
+            "hedges_per_100w": 0, "statistics_count": 1, "attributed_quotes": 1,
+            "external_domains": 1, "spec_pairs": 99, "has_spec_table": True,
+            "comparison_markers": 1,
+        },
+        "tier2": {
+            "sections_over_300w": 0, "sections_in_150_300_band": 0,
+            "heading_depth": 2, "intro_summary_words": 30,
+        },
+    }
+    return p
+
+
+def t_commercial_pages_ignores_pricing_word_in_query_string():
+    # github.com's real "Contact Sales" links carry "?ref_page=/pricing" for
+    # analytics -- that must not make the contact page itself "commercial".
+    pg = _citab_page("https://github.com/enterprise/contact?ref_page=/pricing&ref_cta=Contact",
+                     cta_matches=["get started", "sign up", "subscribe"])
+    assert citab.commercial_pages([pg]) == []
+
+
+def t_commercial_pages_still_detects_real_pricing_path():
+    pg = _citab_page("https://example.test/pricing", word_count=150)
+    assert citab.commercial_pages([pg]) == [pg]
+
+
+def t_citability_no_price_finding_for_contact_page_with_tracking_query():
+    pg = _citab_page("https://github.com/enterprise/contact?ref_page=/pricing&ref_cta=Contact",
+                     cta_matches=["get started", "sign up", "subscribe"])
+    b = _bundle(pages=[pg])
+    titles = [f["title"] for f in citab.analyze(b)]
+    assert not any("no explicit price" in t.lower() for t in titles), titles
+
+
+def t_citability_still_flags_real_pricing_page_missing_a_price():
+    pg = _citab_page("https://example.test/pricing", word_count=150)
+    b = _bundle(pages=[pg])
+    titles = [f["title"] for f in citab.analyze(b)]
+    assert any("no explicit price" in t.lower() for t in titles), titles
 
 
 # --- freshness: stale-date FP now gone -----------------------------------
@@ -853,6 +970,242 @@ def t_contract_critic_preserves_status():
     kept, _dropped, _notes = critic.adjudicate([blocker], _bundle(pages=[shell]))
     assert kept, "critic dropped the blocker finding entirely"
     assert kept[0].get("status") == "not_applicable", kept[0]
+
+
+# ===================================================================
+# NEW: consent/cookie-wall detection (narrow: server-side gate, not
+# every page that merely mentions cookies in a footer notice)
+# ===================================================================
+def t_consent_wall_fact_strong_phrase():
+    html = "<p>Please accept cookies to continue using this site.</p>"
+    facts = collector.extract_facts(collector.parse_html(html).all_text, html,
+                                    collector.parse_html(html))
+    assert facts["consent_wall"] is True, facts
+
+
+def t_consent_wall_fact_not_triggered_by_footer_notice():
+    # An ordinary footer disclosure must NOT trip this -- the page still has
+    # its content, this is not a gate.
+    html = ("<p>We use cookies to improve your experience and analyse traffic. "
+            "See our cookie policy for details.</p>" + "<p>Real article text. </p>" * 30)
+    facts = collector.extract_facts(collector.parse_html(html).all_text, html,
+                                    collector.parse_html(html))
+    assert facts["consent_wall"] is False, facts
+
+
+def t_consent_wall_short_circuits_when_thin():
+    pg = _page(status=200, word_count=20, citability={"word_count": 20},
+               links_internal=[], text_sample="Accept cookies to continue. We value your privacy.",
+               facts={**_page()["facts"], "consent_wall": True})
+    f = run_audit.diagnose_auth_wall(_bundle(pages=[pg]))
+    assert f and f.get("status") == "not_applicable" and "consent" in f["title"].lower(), f
+
+
+def t_consent_wall_not_flagged_when_content_present():
+    # thin-page + consent flag alone is not enough if the page actually has
+    # real content and normal navigation -- require the same multi-signal
+    # discipline as the login wall.
+    pg = _page(status=200, word_count=500, citability={"word_count": 500},
+               text_sample="We use cookies. " + "Full article content here. " * 60,
+               links_internal=[[f"https://x.test/{i}", str(i)] for i in range(10)],
+               facts={**_page()["facts"], "consent_wall": True})
+    assert run_audit.diagnose_auth_wall(_bundle(pages=[pg])) is None
+
+
+# ===================================================================
+# NEW: soft paywall via isAccessibleForFree in JSON-LD (structured,
+# high-precision signal -- not a heuristic guess)
+# ===================================================================
+def t_paywall_jsonld_isaccessibleforfree_false_detected():
+    html = ('<script type="application/ld+json">{"@type":"NewsArticle",'
+            '"isAccessibleForFree":false,"headline":"X"}</script>' + "<p>Full text. </p>" * 50)
+    parser = collector.parse_html(html)
+    assert collector.jsonld_paywalled(parser) is True
+
+
+def t_paywall_jsonld_true_not_flagged():
+    html = ('<script type="application/ld+json">{"@type":"NewsArticle",'
+            '"isAccessibleForFree":true}</script>' + "<p>Full text. </p>" * 50)
+    parser = collector.parse_html(html)
+    assert collector.jsonld_paywalled(parser) is False
+
+
+def t_paywall_no_jsonld_signal_not_flagged():
+    html = "<p>Subscribe to our newsletter for updates.</p>" + "<p>Full text. </p>" * 50
+    parser = collector.parse_html(html)
+    assert collector.jsonld_paywalled(parser) is False
+
+
+def t_paywall_subscribe_cta_alone_is_not_a_paywall_finding():
+    # A subscribe/newsletter CTA with no isAccessibleForFree signal must NOT
+    # be reported as a paywall -- that would be lead-gen, not a content gate.
+    pg = _page(facts={**_page()["facts"], "cta_matches": ["subscribe"]}, paywalled=False)
+    findings = crawl.analyze(_bundle(pages=[pg]))
+    assert not any("paywall" in f["title"].lower() for f in findings), \
+        [f["title"] for f in findings]
+
+
+def t_paywall_finding_emitted_when_structured_signal_present():
+    pg1 = _page(url="https://x.test/a", paywalled=True)
+    pg2 = _page(url="https://x.test/b", paywalled=False)
+    findings = crawl.analyze(_bundle(pages=[pg1, pg2]))
+    pw = [f for f in findings if "paywall" in f["title"].lower()]
+    assert pw, [f["title"] for f in findings]
+    assert "1" in pw[0]["evidence"] and "2" in pw[0]["evidence"], pw[0]["evidence"]
+
+
+def t_paywall_finding_absent_when_no_pages_marked():
+    pg = _page(paywalled=False)
+    findings = crawl.analyze(_bundle(pages=[pg]))
+    assert not any("paywall" in f["title"].lower() for f in findings)
+
+
+# ===================================================================
+# NEW: default output layout -- each run gets its own folder unless
+# the caller passes explicit --out / --evidence-out paths (in which
+# case behaviour is byte-for-byte unchanged from before).
+# ===================================================================
+def t_default_run_dir_is_domain_and_timestamp():
+    d = run_audit._default_run_dir("https://www.Example.com:8443/path?q=1")
+    parts = d.parts
+    assert parts[0] == "audit_runs", d
+    assert re.match(r"^www\.example\.com_8443-\d{8}-\d{6}$", parts[1]), d
+
+
+def t_default_run_dir_sanitizes_unsafe_characters():
+    d = run_audit._default_run_dir("https://ex ample.com/a:b*c")
+    name = d.parts[1]
+    assert not any(c in name for c in ' :*/\\"<>|?'), name
+
+
+def t_default_run_dir_never_empty_on_garbage_input():
+    d = run_audit._default_run_dir("not a url at all")
+    assert d.parts[0] == "audit_runs" and d.parts[1], d
+
+
+def t_critique_out_defaults_next_to_findings():
+    import json as _json, subprocess, tempfile
+    with tempfile.TemporaryDirectory() as td:
+        raw = pathlib.Path(td) / "raw.json"
+        raw.write_text(_json.dumps({"site": "x.test", "findings": []}), encoding="utf-8")
+        c = SKILLS / "evidence-critic" / "scripts" / "critique_findings.py"
+        r = subprocess.run([sys.executable, str(c), "--findings", str(raw)],
+                           capture_output=True, text=True, timeout=60)
+        assert r.returncode == 0, r.stderr
+        expected = pathlib.Path(td) / "adjudicated_findings.json"
+        assert expected.exists(), f"{expected} was not created; stdout={r.stdout}"
+
+
+def t_critique_explicit_out_still_honoured():
+    # Backward compatibility: an explicit --out must land exactly there, not
+    # be redirected next to --findings.
+    import json as _json, subprocess, tempfile
+    with tempfile.TemporaryDirectory() as td:
+        sub = pathlib.Path(td) / "inputs"
+        sub.mkdir()
+        raw = sub / "raw.json"
+        raw.write_text(_json.dumps({"site": "x.test", "findings": []}), encoding="utf-8")
+        out = pathlib.Path(td) / "elsewhere.json"
+        c = SKILLS / "evidence-critic" / "scripts" / "critique_findings.py"
+        r = subprocess.run([sys.executable, str(c), "--findings", str(raw), "--out", str(out)],
+                           capture_output=True, text=True, timeout=60)
+        assert r.returncode == 0, r.stderr
+        assert out.exists()
+        assert not (sub / "adjudicated_findings.json").exists()
+
+
+def t_finalize_out_defaults_next_to_findings_file():
+    import json as _json, subprocess, tempfile
+    with tempfile.TemporaryDirectory() as td:
+        adj = pathlib.Path(td) / "adjudicated.json"
+        adj.write_text(_json.dumps({"site": "x.test", "findings": []}), encoding="utf-8")
+        fin = SKILLS / "audit-orchestrator" / "scripts" / "finalize_report.py"
+        r = subprocess.run([sys.executable, str(fin), str(adj), "--site", "x.test"],
+                           capture_output=True, text=True, timeout=60)
+        assert r.returncode == 0, r.stderr
+        expected = pathlib.Path(td) / "audit_report.json"
+        assert expected.exists(), f"{expected} was not created; stdout={r.stdout}"
+
+
+def t_finalize_explicit_out_still_honoured():
+    import json as _json, subprocess, tempfile
+    with tempfile.TemporaryDirectory() as td:
+        sub = pathlib.Path(td) / "inputs"
+        sub.mkdir()
+        adj = sub / "adjudicated.json"
+        adj.write_text(_json.dumps({"site": "x.test", "findings": []}), encoding="utf-8")
+        out = pathlib.Path(td) / "elsewhere.json"
+        fin = SKILLS / "audit-orchestrator" / "scripts" / "finalize_report.py"
+        r = subprocess.run([sys.executable, str(fin), str(adj), "--site", "x.test",
+                            "--out", str(out)], capture_output=True, text=True, timeout=60)
+        assert r.returncode == 0, r.stderr
+        assert out.exists()
+        assert not (sub / "audit_report.json").exists()
+
+
+# ===================================================================
+# NEW: the github.com case -- stray currency figures on policy/DEI
+# pages must not be counted as "priced pages", and a SaaS pricing page
+# with a "get started" CTA is buyable even though it's not a literal
+# "buy now" / "add to cart".
+# ===================================================================
+def t_shop_check_ignores_stray_prices_on_policy_pages():
+    pages = [
+        _page(url="https://x.test/pricing", jsonld_types=[],
+              facts={**_page()["facts"], "prices": ["$21"],
+                     "cta_matches": ["get started", "sign up"]}),
+        _page(url="https://x.test/about/diversity", jsonld_types=[],
+              facts={**_page()["facts"], "prices": ["$15,000"], "cta_matches": []}),
+        _page(url="https://x.test/about/report", jsonld_types=[],
+              facts={**_page()["facts"], "prices": ["$1,500", "$20,000"], "cta_matches": []}),
+        _page(url="https://x.test/security/advanced", jsonld_types=[],
+              facts={**_page()["facts"], "prices": [], "cta_matches": ["sign up"]}),
+    ]
+    titles = [f["title"] for f in engage.type_specific(_bundle(pages=pages), commercial=True)]
+    assert not any("no visible way to buy" in t for t in titles), titles
+    assert not any("shipping or returns" in t for t in titles), titles
+
+
+def t_shop_check_saas_pricing_page_counts_get_started_as_buyable():
+    pages = [_page(url=f"https://x.test/pricing", jsonld_types=[],
+                   facts={**_page()["facts"], "prices": ["$0", "$21", "$4"],
+                          "cta_matches": ["get started", "start free", "sign up"]})]
+    titles = [f["title"] for f in engage.type_specific(_bundle(pages=pages), commercial=True)]
+    assert not any("no visible way to buy" in t for t in titles), titles
+
+
+def t_shop_check_real_goods_shop_still_flagged_for_missing_shipping():
+    pages = [_page(url=f"https://x.test/product/{i}", jsonld_types=["Product", "Offer"],
+                   text_sample="Buy this today.",
+                   facts={**_page()["facts"], "prices": ["$19.99"], "cta_matches": []})
+             for i in range(3)]
+    titles = [f["title"] for f in engage.type_specific(_bundle(pages=pages), commercial=True)]
+    assert any("no visible way to buy" in t for t in titles), titles
+    assert any("shipping or returns" in t for t in titles), titles
+
+
+def t_shop_check_catalogue_with_no_markup_still_counted():
+    # A real catalogue site with no schema and no CTA at all (this is the
+    # shape of a scraping-practice fixture, and of many real small shops)
+    # must still be counted as priced -- only specific non-commercial
+    # sections are excluded, not "anything lacking markup".
+    pages = [_page(url=f"https://x.test/catalogue/book-{i}", jsonld_types=[],
+                   text_sample="A great book.",
+                   facts={**_page()["facts"], "prices": ["$51.77"], "cta_matches": []})
+             for i in range(5)]
+    titles = [f["title"] for f in engage.type_specific(_bundle(pages=pages), commercial=True)]
+    assert any("no visible way to buy" in t for t in titles), titles
+    assert any("shipping or returns" in t for t in titles), titles
+
+
+def t_shop_check_saas_pricing_alone_not_flagged_for_shipping():
+    # Shipping/returns is a goods concept -- a bare SaaS /pricing page with no
+    # cart/product path must not be told to publish shipping terms.
+    pages = [_page(url="https://x.test/pricing", jsonld_types=[],
+                   facts={**_page()["facts"], "prices": ["$21"],
+                          "cta_matches": ["get started"]})]
+    titles = [f["title"] for f in engage.type_specific(_bundle(pages=pages), commercial=True)]
+    assert not any("shipping or returns" in t for t in titles), titles
 
 
 for _n, _f in sorted((k, v) for k, v in globals().items() if k.startswith("t_")):

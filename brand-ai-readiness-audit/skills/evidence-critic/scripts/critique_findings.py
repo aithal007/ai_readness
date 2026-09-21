@@ -29,6 +29,7 @@ Usage:
 import argparse
 import json
 import os
+import pathlib
 import re
 import sys
 
@@ -191,8 +192,13 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--findings", required=True, help="merged raw findings JSON")
     ap.add_argument("--evidence", help="evidence bundle used to cross-check claims")
-    ap.add_argument("--out", default="adjudicated_findings.json")
+    ap.add_argument("--out", default=None,
+                    help="default: adjudicated_findings.json next to --findings, so a run's "
+                         "files stay together")
     args = ap.parse_args()
+
+    if args.out is None:
+        args.out = str(pathlib.Path(args.findings).resolve().parent / "adjudicated_findings.json")
 
     for path in [args.findings] + ([args.evidence] if args.evidence else []):
         if not os.path.exists(path):

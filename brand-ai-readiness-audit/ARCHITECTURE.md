@@ -211,10 +211,10 @@ brand-ai-readiness-audit/            <- marketplace root (this is what gets zipp
         └── scripts/critique_findings.py
 
 tests/
-└── run_tests.py                      <- 85 zero-dependency regression tests
+└── run_tests.py                      <- 119 zero-dependency regression tests
 ```
 
-**Code volume:** ~4,400 lines of Python across 10 scripts plus an 85-test suite. The collector is a
+**Code volume:** ~4,900 lines of Python across 10 scripts plus a 119-test suite. The collector is a
 third of it because parsing arbitrary real-world HTML with nothing but the
 standard library is the hard part.
 
@@ -463,9 +463,13 @@ spends its budget on pages that carry answers rather than on pagination.
 
 Exclusions applied before fetching:
 
-- `SKIP_PATH_WORDS` — `login`, `signin`, `signup`, `logout`, `cart`,
-  `checkout`, `account`, `wp-admin`, `admin`, `basket`, `my-account`. This keeps
-  the crawler well clear of anything authenticated-area-adjacent.
+- `SKIP_PATH_WORDS` — `login`, `signin`, `sign-in`, `signup`, `sign-up`, `join`,
+  `logout`, `cart`, `checkout`, `account`, `wp-admin`, `admin`, `basket`,
+  `my-account`. This keeps the crawler well clear of anything
+  authenticated-area-adjacent — `join` covers sites (e.g. github.com) whose
+  signup flow doesn't use the word "signup" itself; without it the crawler
+  followed the link, got a 403, and link-rot escalation misread a healthy site
+  as broken.
 - `SKIP_EXTENSIONS` — images, PDFs, archives, CSS/JS, fonts, media, XML.
 - `robots.txt` `can_fetch("*", url)` for every URL beyond the entry page.
 - Non-HTML `Content-Type` responses are discarded after fetch.
@@ -1662,7 +1666,7 @@ well-formed with exactly one entrypoint. **All checks passed.**
 
 ### Regression suite
 
-`python3 tests/run_tests.py` — **85 tests, zero dependencies, no network**,
+`python3 tests/run_tests.py` — **119 tests, zero dependencies, no network**,
 built from hand-written evidence bundles. Exit 0 = all pass.
 
 Coverage: copyright-range parsing, staleness, commercial-intent gating, blocker

@@ -26,7 +26,7 @@ Neither command touches the network, and both are standard library only.
 
 ```bash
 python3 tests/validate_spec.py    # packaging + spec + report contract  -> ALL CHECKS PASSED
-python3 tests/run_tests.py        # behavioural regression suite        -> 85/85 passed
+python3 tests/run_tests.py        # behavioural regression suite        -> 119/119 passed
 ```
 
 `validate_spec.py` is the mechanical gate: frontmatter key set, name/directory
@@ -114,7 +114,16 @@ That cuts against popular advice where the evidence demands it:
   hidden text, and anything classed as manipulation. `evidence-critic`
   mechanically strips any recommendation matching it.
 
-### 3. It knows the difference between "broken", "not applicable", and "couldn't tell"
+### 3. It tells "gated" and "paywalled" apart from "missing"
+
+A page behind a server-side cookie-consent gate, or a news article marked
+`isAccessibleForFree: false` in its own JSON-LD, is not "no content" — it's
+content the audit correctly declined to score. Both are detected narrowly
+(multi-signal for the consent gate; the structured `isAccessibleForFree`
+field, never a bare "subscribe" button, for the paywall) so neither trades one
+false-positive class for another.
+
+### 4. It knows the difference between "broken", "not applicable", and "couldn't tell"
 
 Most audits have one bucket: *finding*. This one has three, because conflating
 them is how audits mislead people.
@@ -138,7 +147,7 @@ Two consequences that fall out of taking this seriously:
 - A site that **couldn't be assessed gets no score at all**, not 100/100. An
   unread site is not a healthy one.
 
-### 4. It argues with itself before it reports
+### 5. It argues with itself before it reports
 
 `evidence-critic` re-reads every proposed finding against the evidence that
 produced it and drops the ones that don't hold: unfalsifiable claims, claims
@@ -196,6 +205,35 @@ python3 skills/audit-orchestrator/scripts/finalize_report.py adjudicated.json \
     --site example.com --evidence evidence.json --out audit_report.json --md audit_report.md
 ```
 
+Every `--out` / `--evidence-out` / `--md` above is optional. Omit them and each
+stage writes next to its input instead of the current directory — `run_audit.py`
+specifically creates `audit_runs/<domain>-<timestamp>/` and prints it, so
+auditing several sites (or the same site twice) never overwrites a previous
+run. Passing the flags explicitly, as above, behaves exactly as shown and is
+unaffected by that default.
+
+The simplest way to run it — no flags, just follow the path it prints:
+
+```bash
+cd skills/audit-orchestrator/scripts
+python3 run_audit.py https://example.com
+# -> [orchestrator] no --out/--evidence-out given; writing this run to
+#    audit_runs/example.com-20260913-220323/
+# -> audit_runs/example.com-20260913-220323/raw_findings.json
+
+python3 ../../evidence-critic/scripts/critique_findings.py \
+    --findings audit_runs/example.com-20260913-220323/raw_findings.json
+
+python3 finalize_report.py \
+    audit_runs/example.com-20260913-220323/adjudicated_findings.json \
+    --md audit_runs/example.com-20260913-220323/audit_report.md
+```
+
+Copy the folder name `run_audit.py` printed on its last line and reuse it in
+the next two commands — that's the only manual step. Everything each run
+produces (`evidence.json`, `raw_findings.json`, `adjudicated_findings.json`,
+`audit_report.json`, `audit_report.md`) ends up together in that one folder.
+
 Each analyzer also runs standalone against an `evidence.json`.
 
 This produces everything except the two judgement steps, which need an agent
@@ -223,7 +261,7 @@ brand-ai-readiness-audit/
 ├── ARCHITECTURE.md           full technical reference
 ├── tests/
 │   ├── validate_spec.py      packaging + spec gate (run before submitting)
-│   └── run_tests.py          85 behavioural tests, no network
+│   └── run_tests.py          119 behavioural tests, no network
 └── skills/
     ├── audit-orchestrator/   ENTRYPOINT — run_audit.py, finalize_report.py
     │   └── references/       report_schema.md, evidence-base.md
@@ -236,7 +274,7 @@ brand-ai-readiness-audit/
     └── evidence-critic/
 ```
 
-4,772 lines of Python across 10 scripts, plus 1,122 lines of tests. Every skill folder holds a `SKILL.md`,
+4,925 lines of Python across 10 scripts, plus 1,475 lines of tests. Every skill folder holds a `SKILL.md`,
 its analyzer in `scripts/`, and its detailed check tables in `references/`.
 
 ## What a report looks like
@@ -276,7 +314,7 @@ also asserts the report contract and the 50 MB size limit. Verified to actually
 catch faults by injecting a bogus frontmatter key and a second entrypoint;
 both were caught and the run exited non-zero.
 
-**Regression suite.** `python3 tests/run_tests.py` — **85 tests, no network, no
+**Regression suite.** `python3 tests/run_tests.py` — **119 tests, no network, no
 dependencies**, built from hand-written evidence bundles. They cover every
 false-positive guard, each with a paired negative case, plus cross-component
 *contract* tests that assert the orchestrator, critic and report agree on the
