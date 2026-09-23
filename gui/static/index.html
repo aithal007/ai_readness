@@ -76,6 +76,10 @@
       </div>
       <ul class="history-list" id="history-list"></ul>
     </section>
+    <footer class="credit">
+      <span>Built by <strong>PSTrio</strong></span>
+      <span>Adobe University Hackathon 2026</span>
+    </footer>
   </aside>
 
   <main class="main" id="main" tabindex="-1"></main>
@@ -84,11 +88,38 @@
 <div class="toast" id="toast" role="status" hidden></div>
 
 <template id="tpl-empty">
-  <section class="empty">
-    <h1>Why don&rsquo;t AI assistants cite this brand?</h1>
-    <p class="lede">Point the audit at any website. It crawls once, runs six evidence-backed checks in order, argues with its own findings, and returns a prioritized list of fixes. Read-only: it never changes the site.</p>
-    <ol class="chain" id="chain"></ol>
-    <p class="muted small">Enter a website on the left to start, or import a report you already have.</p>
+  <section class="landing">
+    <div class="landing-hero">
+      <span class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span>AI discoverability &middot; on-site engagement</span>
+      <h1>Why don&rsquo;t AI assistants <span class="grad">cite this brand?</span></h1>
+      <p class="lede">Point the audit at any website. It crawls once, runs six evidence-backed checks in order, argues with its own findings, and hands back a prioritized list of fixes. Read-only: it never changes the site.</p>
+      <form class="hero-form" id="hero-form" autocomplete="off">
+        <span class="hero-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+        <input id="hero-url" type="text" inputmode="url" placeholder="Enter a website, e.g. sqlite.org" aria-label="Website to audit" spellcheck="false" required>
+        <div class="hero-mode" role="radiogroup" aria-label="Run with">
+          <label><input type="radio" name="hero-mode" value="engine" checked><span>Engine</span></label>
+          <label id="hero-agent-option"><input type="radio" name="hero-mode" value="agent"><span>Agent</span></label>
+        </div>
+        <button class="btn primary" type="submit" id="hero-run">Run audit
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+      <p class="form-error" id="hero-error" role="alert" hidden></p>
+      <p class="hero-foot" id="hero-foot"></p>
+    </div>
+
+    <div class="flow-wrap">
+      <div class="section-kicker">How a brand gets cited, in order</div>
+      <ol class="flow" id="chain"></ol>
+    </div>
+
+    <div class="features">
+      <div class="feature"><span class="f-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/></svg></span>
+        <h3>Evidence-calibrated</h3><p>Every check traces to a measured study, and every finding says how strong its evidence is.</p></div>
+      <div class="feature"><span class="f-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span>
+        <h3>Argues with itself</h3><p>A critic drops, merges and recalibrates findings before they ship, and publishes what it removed.</p></div>
+      <div class="feature"><span class="f-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/></svg></span>
+        <h3>Prioritized fixes</h3><p>Each fix states its mechanism, and the roadmap orders them by impact against effort.</p></div>
+    </div>
   </section>
 </template>
 

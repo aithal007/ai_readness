@@ -197,25 +197,63 @@
 
     $("#new-audit").addEventListener("submit", function (ev) {
       ev.preventDefault();
-      var btn = $("#run-btn"), err = $("#form-error");
-      err.hidden = true;
-      btn.disabled = true;
       var mode = $('#mode-picker input:checked').value;
-      api("POST", "/api/runs", {
+      startRun({
         url: $("#url-input").value,
         mode: mode,
         max_pages: parseInt($("#pages-input").value, 10),
         model: mode === "agent" ? $("#model-input").value.trim() : null
-      }).then(function (r) {
-        $("#url-input").value = "";
-        closeNav();
-        location.hash = "#/run/" + r.id;
-        refreshHistory();
-      }).catch(function (e) {
-        err.textContent = e.message;
-        err.hidden = false;
-      }).then(function () { btn.disabled = false; });
+      }, $("#run-btn"), $("#form-error"), function () { $("#url-input").value = ""; });
     });
+  }
+
+  // One launcher for both the sidebar form and the landing search.
+  function startRun(params, btn, err, onOk) {
+    err.hidden = true;
+    btn.disabled = true;
+    api("POST", "/api/runs", params).then(function (r) {
+      if (onOk) onOk();
+      closeNav();
+      location.hash = "#/run/" + r.id;
+      refreshHistory();
+    }).catch(function (e) {
+      err.textContent = e.message;
+      err.hidden = false;
+    }).then(function () { btn.disabled = false; });
+  }
+
+  function ring(score, size, stroke) {
+    var r = (size - stroke) / 2, c = 2 * Math.PI * r;
+    var has = typeof score === "number";
+    var off = has ? c * (1 - Math.max(0, Math.min(100, score)) / 100) : c;
+    return '<svg viewBox="0 0 ' + size + " " + size + '" aria-hidden="true">' +
+      '<circle class="trk" cx="' + size / 2 + '" cy="' + size / 2 + '" r="' + r + '" fill="none"/>' +
+      '<circle class="val" cx="' + size / 2 + '" cy="' + size / 2 + '" r="' + r + '" fill="none" stroke-linecap="round" ' +
+      'stroke-dasharray="' + c.toFixed(2) + '" stroke-dashoffset="' + off.toFixed(2) + '" data-target="' + off.toFixed(2) + '" data-full="' + c.toFixed(2) + '"/></svg>';
+  }
+
+  function shortPath(p) {
+    p = String(p || "");
+    var sep = p.indexOf("\\") >= 0 ? "\\" : "/";
+    var parts = p.split(sep).filter(Boolean);
+    return parts.length > 2 ? "…" + sep + parts.slice(-2).join(sep) : p;
+  }
+
+  function reducedMotion() {
+    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function countUp(el, to) {
+    if (!el || typeof to !== "number") return;
+    if (reducedMotion()) { el.textContent = to; return; }
+    var t0 = null, dur = 900;
+    var step = function (ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * e);
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
   }
 
   function updateModeHint() {
@@ -247,9 +285,10 @@
     }
     ul.innerHTML = S.runs.map(function (r) {
       var sm = r.summary, score;
-      if (r.status === "running") score = '<span class="spinner" aria-label="running">' + icon("retry") + "</span>";
-      else if (sm && sm.score !== null && sm.score !== undefined) score = h(sm.score);
-      else score = "&ndash;";
+      var hasScore = sm && typeof sm.score === "number";
+      if (r.status === "running") score = '<span class="ring-mini"><span class="spinner" aria-label="running">' + icon("retry") + "</span></span>";
+      else score = '<span class="ring-mini' + (hasScore ? "" : " na") + '">' + ring(hasScore ? sm.score : null, 42, 4) +
+        "<b>" + (hasScore ? h(sm.score) : "&ndash;") + "</b></span>";
       var tag = r.mode === "agent" ? '<span class="tag agent">agent</span>'
         : r.mode === "imported" ? '<span class="tag">imported</span>' : '<span class="tag">engine</span>';
       var status = r.status === "running" ? '<span class="tag run">running</span>'
@@ -257,7 +296,7 @@
           ? '<span class="tag fail">' + h(r.status) + "</span>" : "";
       var counts = sm ? (sm.critical ? sm.critical + " crit · " : "") + (sm.high ? sm.high + " high · " : "") + plural(sm.total || 0, "finding") : "";
       return '<li><a class="history-item' + (r.id === S.runId ? " active" : "") + '" href="#/run/' + h(r.id) + '">' +
-        '<span class="score-chip">' + score + "</span>" +
+        score +
         '<span><span class="site">' + h(r.site || r.url) + "</span>" +
         '<span class="sub">' + tag + status + "<span>" + h(ago(r.started_at)) + "</span>" +
         (counts ? "<span>· " + h(counts) + "</span>" : "") + "</span></span></a></li>";
@@ -328,9 +367,34 @@
     main.innerHTML = "";
     main.appendChild($("#tpl-empty").content.cloneNode(true));
     $("#chain").innerHTML = PILLARS.map(function (p, i) {
-      return '<li><span class="n">' + (i + 1) + "</span><strong>" + h(p.label) + "</strong><span>" + h(p.q) + "</span></li>";
+      var skill = p.skills[p.skills.length - 1];
+      return '<li><span class="n">' + (i + 1) + "</span><strong>" + h(p.label) + '</strong><span class="q">' + h(p.q) +
+        '</span><span class="sk">' + h(skill) + "</span></li>";
     }).join("");
     document.title = "Brand AI-Readiness Audit";
+
+    var agent = S.meta.agent;
+    var opt = $("#hero-agent-option");
+    if (!agent.available) {
+      opt.classList.add("disabled");
+      opt.querySelector("input").disabled = true;
+      opt.title = "Agent mode needs Claude Code.";
+    }
+    var foot = function () {
+      var mode = $('input[name="hero-mode"]:checked').value;
+      $("#hero-foot").textContent = mode === "agent"
+        ? (agent.version || "Claude Code") + " with " + agent.default_model + " drives the skills, including web corroboration and a review of every finding. 2 to 7 minutes."
+        : "Scripted engine: deterministic, no LLM, about a minute. Frozen package " + (S.meta.engine.sha256 || "").slice(0, 8) + ", SHA-256 verified.";
+    };
+    $$('input[name="hero-mode"]').forEach(function (r) { r.addEventListener("change", foot); });
+    foot();
+    $("#hero-form").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      var mode = $('input[name="hero-mode"]:checked').value;
+      startRun({ url: $("#hero-url").value, mode: mode, max_pages: 15, model: mode === "agent" ? agent.default_model : null },
+        $("#hero-run"), $("#hero-error"));
+    });
+    setTimeout(function () { var u = $("#hero-url"); if (u && window.innerWidth > 900) u.focus(); }, 50);
   }
 
   // --- running --------------------------------------------------------------
@@ -403,8 +467,10 @@
       '<div style="display:flex;gap:12px;align-items:center"><div><div class="muted small">Elapsed</div><div class="elapsed" id="elapsed">0:00</div></div>' +
       '<button class="btn danger" id="cancel-btn">' + icon("stop") + "Cancel</button></div></div>" +
       '<ol class="steps" id="steps"></ol>' +
-      '<div class="section-title"><h2>' + (run.mode === "agent" ? "Agent activity" : "Engine log") + '</h2><span class="muted small">Live</span></div>' +
-      '<div class="console" id="console" role="log" aria-live="polite">' + run._allLog.map(consoleLine).join("") + "</div>";
+      '<div class="term"><div class="term-bar"><i></i><i></i><i></i><span>' +
+      (run.mode === "agent" ? "agent activity · " + h(run.harness || "Claude Code") : "engine log · run_audit.py") +
+      '</span><span class="live">live</span></div>' +
+      '<div class="console" id="console" role="log" aria-live="polite">' + run._allLog.map(consoleLine).join("") + "</div></div>";
     renderSteps();
     var started = new Date(run.started_at).getTime();
     var tick = function () { var e = $("#elapsed"); if (e) e.textContent = fmtElapsed((Date.now() - started) / 1000); };
@@ -450,7 +516,8 @@
       '<div class="meta-line"><span class="tag fail">' + h(run.status) + "</span><span>" + h(fmtDate(run.started_at)) + "</span><span>" + h(run.url) + "</span></div></div>" +
       '<div class="actions"><button class="btn" id="retry-btn">' + icon("retry") + 'Run again</button><button class="btn danger" id="del-btn">' + icon("trash") + "Delete</button></div></div>" +
       (run.error ? '<div class="banner">' + icon("info") + "<span>" + h(run.error) + "</span></div>" : "") +
-      '<div class="section-title"><h2>Log</h2></div><div class="console">' + (run.log || []).map(consoleLine).join("") + "</div>";
+      '<div class="term"><div class="term-bar"><i></i><i></i><i></i><span>log</span></div><div class="console">' +
+      (run.log || []).map(consoleLine).join("") + "</div></div>";
     $("#retry-btn").addEventListener("click", function () { rerun(run); });
     $("#del-btn").addEventListener("click", function () { deleteRun(run); });
   }
@@ -497,6 +564,9 @@
     } else if (run.mode === "agent") {
       bannerHtml = '<div class="banner info">' + icon("info") + "<span><strong>Agent-reviewed run.</strong> " + h(run.harness || "Claude Code") +
         " driving the audit-orchestrator skill with model <span class=\"mono\">" + h(run.model) + "</span>. The agent's own summary is under Review.</span></div>";
+    } else if (run.mode === "imported" && run.source_dir) {
+      bannerHtml = '<div class="banner info">' + icon("info") + "<span><strong>Opened from a run's output folder.</strong> " +
+        "These are the files that run wrote to <span class=\"mono\" title=\"" + h(run.source_dir) + "\">" + h(shortPath(run.source_dir)) + "</span>, shown unchanged.</span></div>";
     }
 
     var counts = { findings: findings().length, roadmap: ["now", "next", "later"].reduce(function (n, k) { return n + (((rep.roadmap || {})[k]) || []).length; }, 0) };
@@ -533,6 +603,9 @@
   function renderTab() {
     var body = $("#tab-body");
     if (!body) return;
+    body.classList.remove("fade-in");
+    void body.offsetWidth;
+    body.classList.add("fade-in");
     ({ overview: tabOverview, findings: tabFindings, roadmap: tabRoadmap, evidence: tabEvidence,
       review: tabReview, compare: tabCompare, markdown: tabMarkdown }[S.tab] || tabOverview)(body);
   }
@@ -548,9 +621,11 @@
   function tabOverview(body) {
     var rep = S.report, rd = rep.readiness || {}, sm = rep.summary || {};
     var scored = rd.overall !== null && rd.overall !== undefined;
-    var hero = scored
-      ? '<div class="hero-number">' + h(rd.overall) + "<small>/100</small></div>"
-      : '<div class="hero-number na">Not scored</div>';
+    var hero = '<div class="gauge" role="img" aria-label="' + (scored ? "Readiness " + h(rd.overall) + " out of 100" : "Not scored") + '">' +
+      ring(scored ? 0 : null, 184, 14) +
+      '<div class="gauge-center">' + (scored
+        ? '<span class="num" id="gauge-num">0</span><span class="of">out of 100</span>'
+        : '<span class="num na">Not scored</span><span class="of">site could not be assessed</span>') + "</div></div>";
     var tiles = SEV.map(function (s) {
       var n = sm[s] || 0;
       return '<button class="sev-tile' + (n ? "" : " zero") + '" data-sev="' + s + '" title="Show ' + s + ' findings">' +
@@ -562,7 +637,7 @@
       var has = score !== null && score !== undefined;
       return '<button class="pillar-row" data-pillar="' + p.key + '">' +
         '<span class="pillar-name"><strong>' + h(pd.label || p.label) + "</strong><span>" + h(p.q) + "</span></span>" +
-        '<span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:' + (has ? Math.max(0, Math.min(100, score)) : 0) + '%"></span></span>' +
+        '<span class="bar-track" aria-hidden="true"><span class="bar-fill" style="width:0%" data-w="' + (has ? Math.max(0, Math.min(100, score)) : 0) + '"></span></span>' +
         '<span class="pillar-score' + (has ? "" : " na") + '">' + (has ? h(score) : "n/a") + "</span></button>";
     }).join("");
 
@@ -623,6 +698,19 @@
       });
     });
     $$("[data-goto]", body).forEach(function (b) { b.addEventListener("click", function () { setTab(b.getAttribute("data-goto")); }); });
+
+    // Animate in: gauge sweep, count-up, bars growing from zero.
+    var val = $(".gauge .val", body);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        if (val && scored) {
+          var full = parseFloat(val.getAttribute("data-full"));
+          val.style.strokeDashoffset = (full * (1 - Math.max(0, Math.min(100, rd.overall)) / 100)).toFixed(2);
+        }
+        $$(".bar-fill[data-w]", body).forEach(function (b) { b.style.width = b.getAttribute("data-w") + "%"; });
+      });
+    });
+    if (scored) countUp($("#gauge-num"), rd.overall);
   }
 
   function weakestHtml(rd) {
@@ -692,7 +780,8 @@
       ["Signal tier", f.signal_tier ? "Tier " + f.signal_tier : null], ["Effort", f.effort],
       ["Category", f.category], ["Corroborated by", f.corroborated_by ? [].concat(f.corroborated_by).join(", ") : null]
     ].filter(function (x) { return x[1]; });
-    return '<details class="finding" id="f-' + h(f.id || f.code) + '">' +
+    var sevCls = SEV.indexOf(f.severity) >= 0 ? f.severity : "low";
+    return '<details class="finding sev-' + sevCls + '" id="f-' + h(f.id || f.code) + '">' +
       "<summary>" + sevBadge(f.severity) +
       '<div><div class="ftitle">' + h(f.title) + '</div><div class="fsub">' +
       (f.code ? '<span class="tag mono">' + h(f.code) + "</span>" : "") +
@@ -702,13 +791,13 @@
       "</div></div>" +
       '<div class="fright">' + conf + '<span class="chev">' + icon("chev") + "</span></div></summary>" +
       '<div class="fbody">' +
-      "<div><h4>Evidence</h4><p>" + h(f.evidence) + "</p></div>" +
-      (f.mechanism ? "<div><h4>Why it matters</h4><p>" + h(f.mechanism) + "</p></div>" : "") +
-      '<div><h4>Suggested fix</h4><div class="fix-box"><p>' + h(saText) + "</p>" + (sa.how ? "<p>" + h(sa.how) + "</p>" : "") + "</div></div>" +
+      '<div class="stack"><div><h4>Evidence</h4><p>' + h(f.evidence) + "</p></div>" +
+      (f.mechanism ? "<div><h4>Why it matters</h4><p>" + h(f.mechanism) + "</p></div>" : "") + "</div>" +
+      '<div class="stack"><div><h4>Suggested fix</h4><div class="fix-box"><p>' + h(saText) + "</p>" + (sa.how ? "<p>" + h(sa.how) + "</p>" : "") + "</div></div>" +
       (urls.length ? "<div><h4>Affected URLs</h4><ul class=\"url-list\">" + urls.slice(0, 12).map(function (u) {
         return '<li><a href="' + safeUrl(u) + '" target="_blank" rel="noopener noreferrer">' + h(u) + "</a></li>";
-      }).join("") + (urls.length > 12 ? "<li class=\"muted\">and " + (urls.length - 12) + " more</li>" : "") + "</ul></div>" : "") +
-      '<div class="meta-grid">' + metaItems.map(function (m) { return "<div><span>" + h(m[0]) + "</span><strong>" + h(m[1]) + "</strong></div>"; }).join("") + "</div>" +
+      }).join("") + (urls.length > 12 ? "<li class=\"muted\">and " + (urls.length - 12) + " more</li>" : "") + "</ul></div>" : "") + "</div>" +
+      '<div class="meta-grid full">' + metaItems.map(function (m) { return "<div><span>" + h(m[0]) + "</span><strong>" + h(m[1]) + "</strong></div>"; }).join("") + "</div>" +
       "</div></details>";
   }
 
@@ -770,9 +859,9 @@
     ];
     body.innerHTML =
       (rm.note ? '<div class="banner">' + icon("info") + "<span>" + h(rm.note) + "</span></div>" : "") +
-      '<div class="roadmap">' + lanes.map(function (l) {
+      '<div class="roadmap">' + lanes.map(function (l, i) {
         var items = rm[l.key] || [];
-        return '<div class="lane"><div class="lane-head"><div><h3>' + h(l.title) + "</h3><p>" + h(l.sub) + "</p></div>" +
+        return '<div class="lane lane-' + l.key + '"><div class="lane-head"><span class="lane-num">' + (i + 1) + "</span><div><h3>" + h(l.title) + "</h3><p>" + h(l.sub) + "</p></div>" +
           '<span class="tag">' + items.length + "</span></div>" +
           (items.length ? items.map(function (r) {
             return '<button class="lane-card" data-fid="' + h(r.id) + '"><div class="top">' + sevBadge(r.severity) +
@@ -816,7 +905,7 @@
       var probe = probes[name];
       var blocked = a.allowed_root === false || (probe && (probe.status === 401 || probe.status === 403));
       var impCls = imp.cls + (blocked ? "-blocked" : "");
-      return "<tr><td><strong>" + h(name) + "</strong></td><td>" + h(a.operator) + "</td><td>" + h(a.category) + "</td>" +
+      return "<tr" + (blocked ? ' class="row-blocked"' : "") + "><td><strong>" + h(name) + "</strong></td><td>" + h(a.operator) + "</td><td>" + h(a.category) + "</td>" +
         '<td><span class="impact ' + h(impCls) + '">' + h(imp.text) + "</span></td>" +
         "<td>" + (a.allowed_root === false ? '<span class="status bad"><i></i>disallowed</span>' : '<span class="status ok"><i></i>allowed</span>') + "</td>" +
         "<td>" + (probe ? statusCell(probe.status) : '<span class="muted">not probed</span>') + "</td></tr>";

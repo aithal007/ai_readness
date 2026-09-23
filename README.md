@@ -1,6 +1,6 @@
 # Brand AI-Readiness Audit
 
-**Adobe University Hackathon 2026 · Round 4 finalist**
+**Adobe University Hackathon 2026 · Round 4 finalist · Team PSTrio**
 
 An Agent Skill Marketplace that audits any website for two things at once:
 
@@ -302,9 +302,14 @@ A local web interface for running audits and reading reports. It lives in
 and no internet access beyond the site being audited.
 
 ```bash
-python3 gui/server.py                 # http://127.0.0.1:8765
+python3 gui/server.py                         # http://127.0.0.1:8765
+python3 gui/server.py --open demo/audit_out   # open an agent run's output folder
 python3 gui/server.py --port 9000 --no-browser
 ```
+
+`--open` takes any folder an audit wrote, such as the `audit_out/` from an
+interactive Claude Code session, and opens that report straight away. If the
+GUI is already running, it hands the report to that window instead.
 
 **What it does**
 
@@ -328,7 +333,7 @@ python3 gui/server.py --port 9000 --no-browser
 - **Compare.** Two audits matched by stable finding code: resolved, new, and
   still present.
 - **Import.** Drop in any `audit_report.json`, for example from an interactive
-  agent session, with its `evidence.json` and `.md` if you have them.
+  agent session, with its `evidence.json` and `.md` if you have them, or use `--open`.
 - Light and dark themes, keyboard search with `/`, and a layout that works down to phone width.
 
 **How it stays separate from the engine.** The GUI never edits the
@@ -429,7 +434,7 @@ fixed. Each is documented with what was observed and what guard was added in
 ├── gui/                          local web GUI (not part of the engine)
 │   ├── server.py                 standard-library server and job runner
 │   └── static/                   index.html, app.css, app.js
-└── round4/                       Round 4 reproduction materials
+└── round4/                       REPLAY_PSTrio.txt and the video script
 ```
 
 ---

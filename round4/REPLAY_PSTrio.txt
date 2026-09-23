@@ -21,4 +21,7 @@ TEST_STEPS:
       python3 .claude/skills/audit-orchestrator/scripts/run_audit.py https://www.sqlite.org/ --out audit_out/raw_findings.json --evidence-out audit_out/evidence.json
       python3 .claude/skills/evidence-critic/scripts/critique_findings.py --findings audit_out/raw_findings.json --evidence audit_out/evidence.json --out audit_out/adjudicated.json
       python3 .claude/skills/audit-orchestrator/scripts/finalize_report.py audit_out/adjudicated.json --site www.sqlite.org --evidence audit_out/evidence.json --out audit_out/audit_report.json --md audit_out/audit_report.md
+ 10. OPTIONAL viewer, shown in the video after the run. Our GUI is not part of the Round 3 engine and changes nothing: it only displays the files the run in steps 4 to 6 wrote. From the directory that contains demo/, clone our repository and open the run's output folder. The browser opens on that report; a banner names the folder it came from. Standard library only; Ctrl+C stops it.
+      git clone https://github.com/aithal007/ai_readness
+      python3 ai_readness/gui/server.py --open demo/audit_out
 EXPECTED_OUTPUT: demo/audit_out/audit_report.json

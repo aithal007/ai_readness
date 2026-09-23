@@ -564,6 +564,7 @@ def import_report(body):
         "id": new_run_id(host + "-imported"), "url": site, "site": host, "mode": "imported",
         "status": "done", "stage": "done", "started_at": report.get("audited_at") or now_iso(),
         "finished_at": now_iso(), "label": (body.get("name") or "")[:120],
+        "source_dir": (body.get("source_dir") or None),
         "engine_sha256": None, "engine_verified": None, "analyzers": {}, "log": [],
     }
     d = run_dir(meta["id"])
@@ -578,6 +579,37 @@ def import_report(body):
             fh.write(body["markdown"])
     save_meta(meta)
     return meta["id"]
+
+
+def read_output_dir(path):
+    """Build an import body from an audit output folder, such as the
+    audit_out/ an agent session writes. Only audit_report.json is required."""
+    path = os.path.abspath(path)
+    report_path = os.path.join(path, "audit_report.json")
+    if not os.path.isfile(report_path):
+        raise ValueError("No audit_report.json in %s" % path)
+    body = {"source_dir": path, "name": "audit_report.json"}
+    with open(report_path, encoding="utf-8") as fh:
+        body["report"] = json.load(fh)
+    ev = os.path.join(path, "evidence.json")
+    if os.path.isfile(ev):
+        with open(ev, encoding="utf-8") as fh:
+            body["evidence"] = json.load(fh)
+    md = os.path.join(path, "audit_report.md")
+    if os.path.isfile(md):
+        with open(md, encoding="utf-8") as fh:
+            body["markdown"] = fh.read()
+    return body
+
+
+def open_in_running_server(port, body):
+    """--open while another GUI already owns the port: hand it the report."""
+    import urllib.request
+    req = urllib.request.Request(
+        "http://127.0.0.1:%d/api/import" % port, data=json.dumps(body).encode("utf-8"),
+        headers={"Content-Type": "application/json", "X-Audit-GUI": "1"}, method="POST")
+    with urllib.request.urlopen(req, timeout=15) as r:
+        return json.load(r)["id"]
 
 
 def delete_run(run_id):
@@ -745,12 +777,29 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return self._error(409, str(e))
 
 
+class Server(http.server.ThreadingHTTPServer):
+    # On Windows, SO_REUSEADDR lets a second process bind a port that is
+    # already listening, so two GUIs would silently share 8765. Refuse it there;
+    # a busy port must fail so --open can hand the report to the running GUI.
+    allow_reuse_address = os.name != "nt"
+    daemon_threads = True
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--no-browser", action="store_true")
+    ap.add_argument("--open", metavar="DIR",
+                    help="import an audit output folder (e.g. demo/audit_out) and open it")
     args = ap.parse_args()
+
+    open_body = None
+    if args.open:
+        try:
+            open_body = read_output_dir(args.open)
+        except (ValueError, OSError) as e:
+            raise SystemExit("--open: %s" % e)
 
     engine = locate_engine()
     binary = find_claude()
@@ -763,8 +812,22 @@ def main():
     Handler.agent = agent
     Handler.allowed_hosts = {"%s:%d" % (h, args.port) for h in ("127.0.0.1", "localhost", args.host)}
 
-    httpd = http.server.ThreadingHTTPServer((args.host, args.port), Handler)
     url = "http://127.0.0.1:%d/" % args.port
+    try:
+        httpd = Server((args.host, args.port), Handler)
+    except OSError:
+        if open_body is None:
+            raise SystemExit("Port %d is in use. Is the GUI already running? Try --port." % args.port)
+        rid = open_in_running_server(args.port, open_body)
+        target = "%s#/run/%s/overview" % (url, rid)
+        print("The GUI is already running; opened the report there: %s" % target, flush=True)
+        if not args.no_browser:
+            webbrowser.open(target)
+        return
+    if open_body is not None:
+        rid = import_report(open_body)
+        url = "%s#/run/%s/overview" % (url, rid)
+        print("opened : %s" % open_body["source_dir"], flush=True)
     state = "verified" if engine["verified"] else "NOT VERIFIED"
     print("engine : %s (%s)" % (engine["source"], state), flush=True)
     if engine["sha256"]:
