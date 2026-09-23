@@ -24,6 +24,7 @@ binary, no model weights. The whole package is 0.18 MB.
 | Tests | 119 behavioural tests and a spec gate, all offline |
 | Runtime | 12 to 46 seconds per site for the scripted engine, 2 to 7 minutes agent-driven |
 | Interfaces | Any agent harness that reads `SKILL.md`, the command line, or the local web GUI |
+| Live showcase | **https://aithal007.github.io/ai_readness/** · five real audits, readable in the browser |
 
 ---
 
@@ -349,6 +350,32 @@ accepts only `http` and `https` targets. Run IDs and static paths are checked
 against traversal. All report text is escaped before display, because reports
 quote content scraped from arbitrary websites.
 
+**Design.** The interface reads like a printed audit report: paper, one ink
+colour for the interface, ruled ledgers, and serif display numerals. Colour is
+kept for data only, using a validated severity palette where every colour sits
+beside a shape and a word. The fonts (Instrument Serif, Geist, Geist Mono) are
+bundled under the SIL Open Font License, so nothing is fetched from a font service.
+
+### The published showcase
+
+**https://aithal007.github.io/ai_readness/** is the same page with no server
+behind it. It detects that, reads five bundled audits, and becomes read-only:
+it cannot crawl, and any report a visitor opens stays inside their own browser tab.
+The five audits are sqlite.org, lua.org and adobe.com reviewed by a Claude Code
+agent, plus sqlite.org and lua.org from the scripts alone. The two sqlite.org
+reports side by side show what the agent's review changes.
+
+It is built from runs in the local GUI's store:
+
+```bash
+python3 gui/build_static.py --out docs --runs RUN_ID [RUN_ID ...]
+```
+
+The builder publishes whitelisted run metadata only, then scans every output
+file for the builder's home path and user name and refuses to finish if either
+appears. Asset URLs carry content hashes, so a redeploy never serves stale
+styles. GitHub Pages serves `docs/` from the `main` branch.
+
 ---
 
 ## Guardrails
@@ -433,7 +460,9 @@ fixed. Each is documented with what was observed and what guard was added in
 │       └── evidence-critic/
 ├── gui/                          local web GUI (not part of the engine)
 │   ├── server.py                 standard-library server and job runner
-│   └── static/                   index.html, app.css, app.js
+│   ├── build_static.py           exports the published showcase into docs/
+│   └── static/                   index.html, app.css, app.js, bundled fonts
+├── docs/                         the published showcase (GitHub Pages)
 └── round4/                       REPLAY_PSTrio.txt and the video script
 ```
 
