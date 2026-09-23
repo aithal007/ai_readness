@@ -1,3 +1,8 @@
 *.pyc
 __pycache__/
 archive/
+gui/runs/
+gui/.engine/
+# created by the README quick start
+/r3/
+/demo/

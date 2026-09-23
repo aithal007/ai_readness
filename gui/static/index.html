@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand AI-Readiness Audit</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M9 21l5-10 4 7 2-3 3 6' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header class="topbar">
+  <button class="icon-btn only-narrow" id="nav-toggle" aria-label="Show audits" aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <a class="brand" href="#/" aria-label="Home">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="6 6 20 20"><path d="M9 21l5-10 4 7 2-3 3 6"/></svg>
+    </span>
+    <span class="brand-text">
+      <strong>Brand AI-Readiness Audit</strong>
+      <small>AI discoverability &amp; on-site engagement</small>
+    </span>
+  </a>
+  <div class="topbar-right">
+    <span class="engine-badge" id="engine-badge" hidden></span>
+    <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <form class="card new-audit" id="new-audit" autocomplete="off">
+      <h2 class="card-title">New audit</h2>
+      <label class="field">
+        <span>Website</span>
+        <input id="url-input" name="url" type="text" inputmode="url" placeholder="example.com" required spellcheck="false">
+      </label>
+      <fieldset class="segmented" id="mode-picker">
+        <legend>Run with</legend>
+        <div class="seg-track">
+          <label><input type="radio" name="mode" value="engine" checked><span>Engine</span></label>
+          <label id="agent-option"><input type="radio" name="mode" value="agent"><span>Agent</span></label>
+        </div>
+      </fieldset>
+      <p class="hint" id="mode-hint">Scripted pipeline. Deterministic, no LLM, about a minute.</p>
+      <div class="row-2">
+        <label class="field">
+          <span>Pages</span>
+          <select id="pages-input" name="max_pages">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15" selected>15</option>
+          </select>
+        </label>
+        <label class="field" id="model-field" hidden>
+          <span>Model</span>
+          <input id="model-input" name="model" type="text" spellcheck="false">
+        </label>
+      </div>
+      <button class="btn primary block" type="submit" id="run-btn">Run audit</button>
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+    </form>
+
+    <div class="card import-card">
+      <label class="btn ghost block" for="import-input">Import a report&hellip;</label>
+      <input type="file" id="import-input" accept=".json,.md" multiple hidden>
+      <p class="hint">Open an <code>audit_report.json</code> from any run, e.g. an interactive agent session. Add its <code>evidence.json</code> and <code>.md</code> too if you have them.</p>
+    </div>
+
+    <section class="history">
+      <div class="history-head">
+        <h2 class="card-title">Audits</h2>
+        <span class="muted" id="history-count"></span>
+      </div>
+      <ul class="history-list" id="history-list"></ul>
+    </section>
+  </aside>
+
+  <main class="main" id="main" tabindex="-1"></main>
+</div>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<template id="tpl-empty">
+  <section class="empty">
+    <h1>Why don&rsquo;t AI assistants cite this brand?</h1>
+    <p class="lede">Point the audit at any website. It crawls once, runs six evidence-backed checks in order, argues with its own findings, and returns a prioritized list of fixes. Read-only: it never changes the site.</p>
+    <ol class="chain" id="chain"></ol>
+    <p class="muted small">Enter a website on the left to start, or import a report you already have.</p>
+  </section>
+</template>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
