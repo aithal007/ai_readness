@@ -7,8 +7,8 @@ across unchanged and then proves it: every file is hashed on both sides and
 the run fails if a single byte differs. That check is the answer to "is the
 demo running the engine that was submitted?".
 
-    python3 setup_demo.py --source final_adobe --workspace demo
-    python3 setup_demo.py --source final_adobe --workspace demo --verify-only
+    python3 setup_demo.py --source submission.zip --workspace demo
+    python3 setup_demo.py --source submission.zip --workspace demo --verify-only
 
 --source may be the submitted archive (with or without a .zip extension) or an
 already-extracted marketplace directory. Standard library only, read-only with
