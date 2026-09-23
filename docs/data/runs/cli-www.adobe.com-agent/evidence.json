@@ -1,0 +1,4465 @@
+{
+ "schema_version": "2.0.0",
+ "site": "https://www.adobe.com/",
+ "domain": "www.adobe.com",
+ "entry_reachable": true,
+ "collected_at": "2026-09-23T15:57:49Z",
+ "limits": {
+  "max_pages": 15,
+  "max_depth": 2,
+  "budget_seconds": 150
+ },
+ "robots": {
+  "status": 200,
+  "present": true,
+  "bytes": 10199,
+  "star_allowed_root": true,
+  "agents": {
+   "GPTBot": {
+    "operator": "OpenAI",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "OAI-SearchBot": {
+    "operator": "OpenAI",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "ChatGPT-User": {
+    "operator": "OpenAI",
+    "category": "live-fetch",
+    "citation_impact": "intent",
+    "allowed_root": true
+   },
+   "ClaudeBot": {
+    "operator": "Anthropic",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "Claude-SearchBot": {
+    "operator": "Anthropic",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "Claude-User": {
+    "operator": "Anthropic",
+    "category": "live-fetch",
+    "citation_impact": "intent",
+    "allowed_root": true
+   },
+   "anthropic-ai": {
+    "operator": "Anthropic",
+    "category": "legacy",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "PerplexityBot": {
+    "operator": "Perplexity",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "Perplexity-User": {
+    "operator": "Perplexity",
+    "category": "live-fetch",
+    "citation_impact": "intent",
+    "allowed_root": true
+   },
+   "Googlebot": {
+    "operator": "Google",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "Google-Extended": {
+    "operator": "Google",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "Applebot": {
+    "operator": "Apple",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "Applebot-Extended": {
+    "operator": "Apple",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "Bingbot": {
+    "operator": "Microsoft",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "DuckAssistBot": {
+    "operator": "DuckDuckGo",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "MistralAI-User": {
+    "operator": "Mistral",
+    "category": "live-fetch",
+    "citation_impact": "intent",
+    "allowed_root": true
+   },
+   "CCBot": {
+    "operator": "Common Crawl",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "Amazonbot": {
+    "operator": "Amazon",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "meta-externalagent": {
+    "operator": "Meta",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "meta-externalfetcher": {
+    "operator": "Meta",
+    "category": "live-fetch",
+    "citation_impact": "intent",
+    "allowed_root": true
+   },
+   "Bytespider": {
+    "operator": "ByteDance",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   }
+  },
+  "agents_explicitly_named": [
+   "Googlebot"
+  ],
+  "content_signals": {},
+  "declared_sitemaps": [
+   "https://www.adobe.com/cc-product.index.xml",
+   "https://www.adobe.com/creativecloud/sitemap-index.xml",
+   "https://www.adobe.com/acrobat/sitemap-index.xml",
+   "https://www.adobe.com/home-sitemap.xml",
+   "https://www.adobe.com/plans-catalog-sitemap.xml",
+   "https://www.adobe.com/learn/sitemap_index.xml",
+   "https://www.adobe.com/express/sitemap-index.xml",
+   "https://www.adobe.com/naver.index.xml",
+   "https://www.adobe.com/edu/sitemap-index.xml"
+  ],
+  "raw_excerpt": "# The use of robots or other automated means to access the Adobe site\n# without the express permission of Adobe is strictly prohibited.\n# Notwithstanding the foregoing, Adobe may permit automated access to\n# access certain Adobe pages but solely for the limited purpose of\n# including content in publicly available search engines. Any other\n# use of robots or failure to obey the robots exclusion standards set\n# forth at http://www.robotstxt.org/ is strictly prohibited.\n\n# Details about Googlebot available at: http://www.google.com/bot.html\n# The Google search engine can see everything\nUser-agent: gsa-crawler-www \nAllow: /assets/globalnav/v1.1.4/css/globalnav.css\nAllow: /assets/globalnav/v1.1.4/*/globalnav.js\nAllow: /au/special/symposium\nAllow: /sea/special/symposium\nAllow: /*special/products/marketing-cloud/*.css$\nAllow: /*special/products/marketing-cloud/*.png$\nAllow: /*special/products/marketing-cloud/*.js$\nAllow: /www.adobe.com/special/ri/prod/assets/*.css$\nAllow: /www.adobe.com/special/ri/prod/assets/*.jpg$\nAllow: /www.adobe.com/special/ri/prod/assets/*.js$\nAllow: /www.adobe.com/special/ri/prod/assets/*.png$\nAllow: /www.adobe.com/special/retail-shopping-insights/\nAllow: /uk/special/landing/student/digitaledgeaward/\nAllow: /uk/special/landing/student/digitaledgeaward/\nAllow: /uk/special/landing/student/lovethejourney\nAllow: /fr/special/landing/student/lovethejourney\nDisallow: /assets/globalnav/\nDisallow: /*creativesuite/bridge\nDisallow: /cfusion/gpr/\nDisallow: /cfusion/searc"
+ },
+ "ua_probe": {
+  "probes": {
+   "browser": {
+    "status": null,
+    "bytes": 0,
+    "error": "TimeoutError"
+   },
+   "GPTBot": {
+    "status": null,
+    "bytes": 0,
+    "error": "TimeoutError"
+   },
+   "ClaudeBot": {
+    "status": null,
+    "bytes": 0,
+    "error": "TimeoutError"
+   },
+   "PerplexityBot": {
+    "status": null,
+    "bytes": 0,
+    "error": "TimeoutError"
+   }
+  },
+  "blocked_agents": [],
+  "network_layer_block_suspected": false
+ },
+ "sitemap": {
+  "checked": [
+   {
+    "url": "https://www.adobe.com/cc-product.index.xml",
+    "status": 200,
+    "is_index": true,
+    "url_count": 91
+   },
+   {
+    "url": "https://www.adobe.com/creativecloud/sitemap-index.xml",
+    "status": 200,
+    "is_index": true,
+    "url_count": 91
+   }
+  ],
+  "total_urls_found": 182,
+  "sample_urls": [
+   "https://www.adobe.com/products.sitemap.cc.xml",
+   "https://www.adobe.com/ie/products.sitemap.cc.xml",
+   "https://www.adobe.com/tw/products.sitemap.cc.xml",
+   "https://www.adobe.com/hk_zh/products.sitemap.cc.xml",
+   "https://www.adobe.com/ua/products.sitemap.cc.xml",
+   "https://www.adobe.com/tr/products.sitemap.cc.xml",
+   "https://www.adobe.com/se/products.sitemap.cc.xml",
+   "https://www.adobe.com/si/products.sitemap.cc.xml",
+   "https://www.adobe.com/sk/products.sitemap.cc.xml",
+   "https://www.adobe.com/ru/products.sitemap.cc.xml",
+   "https://www.adobe.com/ro/products.sitemap.cc.xml",
+   "https://www.adobe.com/pt/products.sitemap.cc.xml",
+   "https://www.adobe.com/br/products.sitemap.cc.xml",
+   "https://www.adobe.com/pl/products.sitemap.cc.xml",
+   "https://www.adobe.com/nl/products.sitemap.cc.xml",
+   "https://www.adobe.com/be_nl/products.sitemap.cc.xml",
+   "https://www.adobe.com/no/products.sitemap.cc.xml",
+   "https://www.adobe.com/lv/products.sitemap.cc.xml",
+   "https://www.adobe.com/lt/products.sitemap.cc.xml",
+   "https://www.adobe.com/kr/products.sitemap.cc.xml",
+   "https://www.adobe.com/it/products.sitemap.cc.xml",
+   "https://www.adobe.com/ch_it/products.sitemap.cc.xml",
+   "https://www.adobe.com/hu/products.sitemap.cc.xml",
+   "https://www.adobe.com/il_he/products.sitemap.cc.xml",
+   "https://www.adobe.com/lu_fr/products.sitemap.cc.xml",
+   "https://www.adobe.com/fr/products.sitemap.cc.xml",
+   "https://www.adobe.com/ch_fr/products.sitemap.cc.xml",
+   "https://www.adobe.com/ca_fr/products.sitemap.cc.xml",
+   "https://www.adobe.com/be_fr/products.sitemap.cc.xml",
+   "https://www.adobe.com/fi/products.sitemap.cc.xml",
+   "https://www.adobe.com/ee/products.sitemap.cc.xml",
+   "https://www.adobe.com/la/products.sitemap.cc.xml",
+   "https://www.adobe.com/mx/products.sitemap.cc.xml",
+   "https://www.adobe.com/es/products.sitemap.cc.xml",
+   "https://www.adobe.com/africa/products.sitemap.cc.xml",
+   "https://www.adobe.com/mena_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/nz/products.sitemap.cc.xml",
+   "https://www.adobe.com/lu_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/in/products.sitemap.cc.xml",
+   "https://www.adobe.com/il_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/hk_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/gr_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/uk/products.sitemap.cc.xml",
+   "https://www.adobe.com/ca/products.sitemap.cc.xml",
+   "https://www.adobe.com/be_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/au/products.sitemap.cc.xml",
+   "https://www.adobe.com/lu_de/products.sitemap.cc.xml",
+   "https://www.adobe.com/de/products.sitemap.cc.xml",
+   "https://www.adobe.com/ch_de/products.sitemap.cc.xml",
+   "https://www.adobe.com/at/products.sitemap.cc.xml",
+   "https://www.adobe.com/dk/products.sitemap.cc.xml",
+   "https://www.adobe.com/cz/products.sitemap.cc.xml",
+   "https://www.adobe.com/bg/products.sitemap.cc.xml",
+   "https://www.adobe.com/mena_ar/products.sitemap.cc.xml",
+   "https://www.adobe.com/sa_ar/products.sitemap.cc.xml",
+   "https://www.adobe.com/sa_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/ae_ar/products.sitemap.cc.xml",
+   "https://www.adobe.com/ae_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/th_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/th_th/products.sitemap.cc.xml",
+   "https://www.adobe.com/sg/products.sitemap.cc.xml",
+   "https://www.adobe.com/cl/products.sitemap.cc.xml",
+   "https://www.adobe.com/ar/products.sitemap.cc.xml",
+   "https://www.adobe.com/pe/products.sitemap.cc.xml",
+   "https://www.adobe.com/co/products.sitemap.cc.xml",
+   "https://www.adobe.com/ph_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/id_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/my_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/vn_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/vn_vi/products.sitemap.cc.xml",
+   "https://www.adobe.com/ph_fil/products.sitemap.cc.xml",
+   "https://www.adobe.com/my_ms/products.sitemap.cc.xml",
+   "https://www.adobe.com/in_id/products.sitemap.cc.xml",
+   "https://www.adobe.com/id_id/products.sitemap.cc.xml",
+   "https://www.adobe.com/ng/products.sitemap.cc.xml",
+   "https://www.adobe.com/cr/products.sitemap.cc.xml",
+   "https://www.adobe.com/ec/products.sitemap.cc.xml",
+   "https://www.adobe.com/gt/products.sitemap.cc.xml",
+   "https://www.adobe.com/eg_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/kw_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/qa_en/products.sitemap.cc.xml",
+   "https://www.adobe.com/eg_ar/products.sitemap.cc.xml",
+   "https://www.adobe.com/kw_ar/products.sitemap.cc.xml",
+   "https://www.adobe.com/qa_ar/products.sitemap.cc.xml",
+   "https://www.adobe.com/za/products.sitemap.cc.xml",
+   "https://www.adobe.com/pr/products.sitemap.cc.xml",
+   "https://www.adobe.com/gr_el/products.sitemap.cc.xml",
+   "https://www.adobe.com/in_hi/products.sitemap.cc.xml",
+   "https://www.adobe.com/jp/products.sitemap.cc.xml",
+   "https://www.adobe.com/cn/products.sitemap.cc.xml",
+   "https://www.adobe.com/cis_ru/products.sitemap.cc.xml",
+   "https://www.adobe.com/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ru/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/au/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/kr/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/de/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/jp/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/fr/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/es/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/it/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/hk_zh/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/tw/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/nl/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/pl/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/tr/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/uk/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ca/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/cn/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ae_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ae_ar/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ca_fr/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/be_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/be_fr/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/at/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ch_de/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/cl/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/gr_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ch_fr/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ie/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/hk_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/in/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/il_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/lt/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/lu_de/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/lu_fr/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/mena_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/lu_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/sa_ar/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/nz/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/sa_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/th_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/th_th/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ar/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/africa/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/za/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/co/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/cr/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ec/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/eg_ar/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/gt/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/gr_el/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/id_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/eg_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/id_id/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/in_hi/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/kw_ar/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/kw_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/my_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/pe/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ng/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/my_ms/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ph_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ph_fil/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/pr/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/qa_ar/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/qa_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/vn_vi/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/vn_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/dk/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/fi/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/no/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/se/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/la/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/mx/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/be_nl/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/bg/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ch_it/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/cz/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ee/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/hu/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/il_he/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/lv/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/mena_ar/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/pt/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ro/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/si/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/sk/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/ua/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/sg/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/br/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/cis_en/cc-shared/assets/sitemap.xml",
+   "https://www.adobe.com/cis_ru/cc-shared/assets/sitemap.xml"
+  ]
+ },
+ "wellknown": {
+  "llms_txt": {
+   "status": 200,
+   "present": true,
+   "starts_with_h1": true,
+   "bytes": 10481
+  },
+  "security_txt": {
+   "status": 200,
+   "present": true,
+   "starts_with_h1": false,
+   "bytes": 3632
+  }
+ },
+ "pages": [
+  {
+   "url": "https://www.adobe.com/",
+   "final_url": "https://www.adobe.com/",
+   "status": 200,
+   "error": null,
+   "depth": 0,
+   "elapsed_ms": 182,
+   "redirect_chain": [],
+   "html_bytes": 50037,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Tue, 22 Sep 2026 15:02:51 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Adobe: Creative, marketing and document management solutions",
+   "lang": "",
+   "canonical": "https://www.adobe.com/",
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "Adobe is changing the world through digital experiences. We help our customers create, deliver and optimize content and applications.",
+   "og": {
+    "og:title": "Adobe: Creative, marketing and document management solutions",
+    "og:description": "Adobe is changing the world through digital experiences. We help our customers create, deliver and optimize content and applications.",
+    "og:image": "https://www.adobe.com/homepage/assets/product-icons/jpg/media_1e1d6ce6caa68dfd49689c46528c152d9fdeaad6f.jpg",
+    "og:image:secure_url": "https://www.adobe.com/homepage/assets/product-icons/jpg/media_1e1d6ce6caa68dfd49689c46528c152d9fdeaad6f.jpg"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Adobe: Creative, marketing and document management solutions",
+    "twitter:description": "Adobe is changing the world through digital experiences. We help our customers create, deliver and optimize content and applications.",
+    "twitter:image": "https://www.adobe.com/homepage/assets/product-icons/jpg/media_1e1d6ce6caa68dfd49689c46528c152d9fdeaad6f.jpg"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [
+    {
+     "@context": "https://schema.org",
+     "@graph": [
+      {
+       "@type": "WebSite",
+       "@id": "https://www.adobe.com/#website",
+       "url": "https://www.adobe.com",
+       "name": "Adobe",
+       "publisher": {
+        "@type": "Organization",
+        "@id": "https://www.adobe.com/#organization"
+       }
+      },
+      {
+       "@type": [
+        "Organization",
+        "Corporation"
+       ],
+       "@id": "https://www.adobe.com/#organization",
+       "name": "Adobe",
+       "legalName": "Adobe Inc.",
+       "url": "https://www.adobe.com",
+       "tickerSymbol": "NASDAQ:ADBE",
+       "logo": {
+        "@type": "ImageObject",
+        "@id": "https://www.adobe.com/#logo",
+        "url": "https://www.adobe.com/content/dam/cc/icons/adobe_wordmark_red.svg",
+        "caption": "Adobe Corporate Logo"
+       },
+       "sameAs": [
+        "https://en.wikipedia.org/wiki/Adobe_Inc.",
+        "https://www.wikidata.org/wiki/Q11463",
+        "https://www.linkedin.com/company/adobe",
+        "https://www.google.com/finance/quote/ADBE:NASDAQ",
+        "https://www.youtube.com/user/AdobeSystems",
+        "https://www.instagram.com/adobe/"
+       ],
+       "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "345 Park Avenue",
+        "addressLocality": "San Jose",
+        "addressRegion": "CA",
+        "postalCode": "95110",
+        "addressCountry": "US"
+       }
+      }
+     ]
+    }
+   ],
+   "jsonld_types": [
+    "Corporation",
+    "ImageObject",
+    "Organization",
+    "PostalAddress",
+    "WebSite"
+   ],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Adobe homepage"
+    ],
+    [
+     2,
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Title"
+    ],
+    [
+     2,
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Title"
+    ],
+    [
+     2,
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Title"
+    ],
+    [
+     2,
+     "mas-field: ACOM / Headless / Team / com / Creative Cloud Team \u2192 Title"
+    ],
+    [
+     2,
+     "mas-field: ACOM / Headless / Individual / EDU / Creative Cloud Individual \u2192 Title"
+    ],
+    [
+     2,
+     "Tools that work for you."
+    ],
+    [
+     3,
+     "Adobe homepage"
+    ],
+    [
+     3,
+     "Adobe homepage"
+    ],
+    [
+     3,
+     "Create at the highest level."
+    ],
+    [
+     3,
+     "Create at the highest level."
+    ],
+    [
+     3,
+     "See terms"
+    ],
+    [
+     3,
+     "See terms"
+    ],
+    [
+     3,
+     "Free trial"
+    ],
+    [
+     3,
+     "Free trial"
+    ],
+    [
+     3,
+     "Creativity and design"
+    ],
+    [
+     3,
+     "Creativity and design"
+    ],
+    [
+     3,
+     "All the best models, all in one place."
+    ],
+    [
+     3,
+     "All the best models, all in one place."
+    ],
+    [
+     3,
+     "Create with Firefly"
+    ],
+    [
+     3,
+     "Create with Firefly"
+    ],
+    [
+     3,
+     "Content creation"
+    ],
+    [
+     3,
+     "Content creation"
+    ],
+    [
+     3,
+     "Get work done. Faster."
+    ],
+    [
+     3,
+     "Get work done. Faster."
+    ],
+    [
+     3,
+     "PDF and document essentials"
+    ],
+    [
+     3,
+     "PDF and document essentials"
+    ],
+    [
+     3,
+     "Orchestrate customer experiences with AI."
+    ],
+    [
+     3,
+     "Orchestrate customer experiences with AI."
+    ],
+    [
+     3,
+     "It starts with Adobe"
+    ],
+    [
+     3,
+     "It starts with Adobe"
+    ],
+    [
+     3,
+     "Adobe for Business"
+    ],
+    [
+     3,
+     "Adobe for Business"
+    ],
+    [
+     3,
+     "Students and teachers save 71%."
+    ],
+    [
+     3,
+     "Students and teachers save 71%."
+    ],
+    [
+     3,
+     "Students and teachers"
+    ],
+    [
+     3,
+     "Students and teachers"
+    ],
+    [
+     3,
+     "Everything you need to make anything."
+    ],
+    [
+     3,
+     "Everything you need to make anything."
+    ],
+    [
+     3,
+     "Create with the top tools."
+    ],
+    [
+     3,
+     "Create with the top tools."
+    ],
+    [
+     3,
+     "Generate stunning content easily."
+    ],
+    [
+     3,
+     "Generate stunning content easily."
+    ],
+    [
+     3,
+     "Do it all in less time."
+    ],
+    [
+     3,
+     "Do it all in less time."
+    ],
+    [
+     3,
+     "Orchestrate customer experiences."
+    ],
+    [
+     3,
+     "Orchestrate customer experiences."
+    ],
+    [
+     3,
+     "Students and teachers save big."
+    ],
+    [
+     3,
+     "Students and teachers save big."
+    ],
+    [
+     3,
+     "Explore what's new."
+    ],
+    [
+     3,
+     "Explore what's new."
+    ],
+    [
+     3,
+     "Introducing Color Mode.\u200b"
+    ],
+    [
+     3,
+     "Introducing Color Mode.\u200b"
+    ],
+    [
+     3,
+     "Explore Premiere"
+    ],
+    [
+     3,
+     "Explore Premiere"
+    ],
+    [
+     3,
+     "One place to make anything."
+    ],
+    [
+     3,
+     "One place to make anything."
+    ],
+    [
+     3,
+     "Explore Firefly"
+    ],
+    [
+     3,
+     "Explore Firefly"
+    ],
+    [
+     3,
+     "Blend images seamlessly with Harmonize."
+    ]
+   ],
+   "text_len": 6689,
+   "main_text_len": 1702,
+   "boilerplate_text_len": 0,
+   "link_density": 0.57,
+   "text_sample": "Adobe: Creative, marketing and document management solutions Adobe homepage mobile mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Subtitle mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Title mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Product description mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Short Description mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[ Free trial - segmentation - modal] mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[KR Buy now only] https://main--federal--adobecom.aem.page/federal/assets/svgs/creative-cloud.svg mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Callout text mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Subtitle mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Title mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Product description mas-field: ACOM / Headless / Individual / com / Firefly Pro Plus \u2192 Short Description mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[Create with Firefly] https://main--federal--adobecom.aem.page/federal/assets/svgs/firefly-appicon-256.svg mas-field: ACOM / Headless / Individual / com / Firefly Pro Plus \u2192 Callout text mas-field: ACOM / Headless / Individual / com / Acrobat Studio \u2192 Subtitle mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Title mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Product description mas-field: ACOM / Headless / Individual / com / Acrobat Studio \u2192 Short Description mas-field: ACOM / Headless / Individual / com / Acrobat Studio \u2192 ctas[Free trial - segmentation - modal] mas-field: ACOM / Headless / Individual / EDU / Creative Cloud Individual \u2192 ctas[KR Only Buy Now] https://main--federal--adobecom.aem.page/federal/assets/svgs/acrobat-pro.svg mas-field: ACOM / Headless / Individual / com / Acrobat Studio \u2192 Callout text Adobe for Business mas-field: ACOM / Headless / Team / com / Creative Cloud Team \u2192 Title mas-field: ACOM / Headless / Team / com / Creative Cloud Team \u2192 Product description mas-field: ACOM / Headless / Team / com / Creative Cloud Team \u2192 ctas[It starts with Adobe] https://main--federal--adobecom.aem.page/federal/assets/svgs/experience-cloud-logo.svg Adobe for Busines",
+   "word_count": 927,
+   "links_internal": [
+    [
+     "https://www.adobe.com/federal/assets/svgs/creative-cloud.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/creative-cloud.svg"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/firefly-appicon-256.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/firefly-appicon-256.svg"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/acrobat-pro.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/acrobat-pro.svg"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/experience-cloud-logo.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/experience-cloud-logo.svg"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/creative-cloud.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/creative-cloud.svg"
+    ],
+    [
+     "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/everything-you-need",
+     "https://main--upp--adobecom.aem.page/homepage/fragments/loggedout/redesign/default/everything-you-need/everything-you-need"
+    ],
+    [
+     "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/explore-whats-new/explore-whats-new",
+     "https://main--upp--adobecom.aem.page/homepage/fragments/loggedout/redesign/default/explore-whats-new/explore-whats-new"
+    ],
+    [
+     "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/customer-testimonials/customer-testimonials",
+     "https://main--upp--adobecom.aem.page/homepage/fragments/loggedout/redesign/default/customer-testimonials/customer-testimonials"
+    ],
+    [
+     "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/news/news",
+     "https://main--upp--adobecom.aem.page/homepage/fragments/loggedout/redesign/default/news/news"
+    ],
+    [
+     "https://www.adobe.com/products/catalog.html",
+     "See all products"
+    ],
+    [
+     "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/all-products-card",
+     "https://main--upp--adobecom.aem.page/homepage/fragments/loggedout/redesign/default/all-products-card/all-products-card"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Subtitle"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Title"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Product description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Short Description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 ctas["
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "Free trial"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "- segmentation - modal]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[KR Buy now only]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Callout text"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Subtitle"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Title"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Product description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Firefly Pro Plus \u2192 Short Description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[Create with Firefly]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Firefly Pro Plus \u2192 Callout text"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Acrobat Studio \u2192 Subtitle"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Title"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual \u2192 Product description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Acrobat Studio \u2192 Short Description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Acrobat Studio \u2192 ctas[Free trial - segmentation - modal]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / EDU / Creative Cloud Individual \u2192 ctas[KR Only Buy Now]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / com / Acrobat Studio \u2192 Callout text"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Team / com / Creative Cloud Team \u2192 Title"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Team / com / Creative Cloud Team \u2192 Product description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Team / com / Creative Cloud Team \u2192 ctas[It starts with Adobe]"
+    ],
+    [
+     "https://business.adobe.com",
+     "Adobe for Business"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / EDU / Creative Cloud Individual \u2192 Subtitle"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / EDU / Creative Cloud Individual \u2192 Title"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / EDU / Creative Cloud Individual \u2192 Product description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / EDU / Creative Cloud Individual \u2192 Product price"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / EDU / Creative Cloud Individual \u2192 ctas["
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "Free trial"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "- segmentation - modal]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / EDU / Creative Cloud Individual \u2192 ctas[KR Only Buy Now]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Headless / Individual / EDU / Creative Cloud Individual \u2192 Callout text"
+    ]
+   ],
+   "images_total": 11,
+   "images_missing_alt": 6,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 11,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 5,
+    "external": 2,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [
+     "buy now"
+    ],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 927,
+    "tier1": {
+     "statistics_count": 3,
+     "statistics_per_100w": 0.32,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 2,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 1,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 3,
+     "heading_levels_skipped": false,
+     "heading_count": 105,
+     "sections": 105,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 14,
+     "structured_format_ratio": 0.0,
+     "emphasis_density": 0.1241,
+     "intro_summary_words": 15
+    }
+   },
+   "structured_data": {
+    "verdict": "STRUCTURED_DATA_PRESENT",
+    "strong": true,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/all-products-card",
+   "final_url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/all-products-card",
+   "status": 200,
+   "error": null,
+   "depth": 1,
+   "elapsed_ms": 657,
+   "redirect_chain": [],
+   "html_bytes": 20396,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Tue, 22 Sep 2026 15:02:51 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Firefly",
+   "lang": "",
+   "canonical": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/all-products-card",
+   "hreflangs": [],
+   "robots_meta": "noindex, nofollow",
+   "meta_description": "Create and enhance images, video, and audio with AI-powered tools.",
+   "og": {
+    "og:title": "Firefly",
+    "og:description": "Create and enhance images, video, and audio with AI-powered tools.",
+    "og:image": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/media_177ad1e4e1f2ff11992428f533093c4766d7e730a.png?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/media_177ad1e4e1f2ff11992428f533093c4766d7e730a.png?width=1200&format=pjpg&optimize=medium"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Firefly",
+    "twitter:description": "Create and enhance images, video, and audio with AI-powered tools.",
+    "twitter:image": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/media_177ad1e4e1f2ff11992428f533093c4766d7e730a.png?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     3,
+     "Firefly"
+    ],
+    [
+     3,
+     "Adobe Acrobat"
+    ],
+    [
+     3,
+     "Photoshop"
+    ],
+    [
+     3,
+     "Premiere"
+    ],
+    [
+     3,
+     "Creative Cloud"
+    ],
+    [
+     3,
+     "GenStudio"
+    ],
+    [
+     3,
+     "Business Products"
+    ],
+    [
+     3,
+     "Illustrator"
+    ],
+    [
+     3,
+     "All products"
+    ]
+   ],
+   "text_len": 1616,
+   "main_text_len": 657,
+   "boilerplate_text_len": 0,
+   "link_density": 0.479,
+   "text_sample": "Firefly https://main--federal--adobecom.aem.page/federal/assets/svgs/firefly-appicon-256.svg Firefly Create and enhance images, video, and audio with AI-powered tools. link https://main--federal--adobecom.aem.page/federal/assets/svgs/acrobat-pro.svg Adobe Acrobat The complete AI-powered PDF and design solution for business workflows. link https://main--federal--adobecom.aem.page/federal/assets/svgs/photoshop.svg Photoshop Create gorgeous images, rich graphics, and incredible art. link https://main--federal--adobecom.aem.page/federal/assets/svgs/premiere-pro.svg Premiere Create everything from social clips to feature films with the leading video editor. link https://main--federal--adobecom.aem.page/federal/assets/svgs/creative-cloud.svg Creative Cloud Get 20+ apps, including Photoshop, Illustrator, {{premiere}}, and Acrobat Pro. link https://main--federal--adobecom.aem.page/federal/assets/svgs/experience-cloud-logo.svg GenStudio Scale your content supply chain. link https://main--federal--adobecom.aem.page/federal/assets/svgs/experience-cloud-logo.svg Business Products Adobe solutions integrate our best-in-class products to help you tackle pressing business challenges. link https://main--federal--adobecom.aem.page/federal/assets/svgs/illustrator.svg Illustrator Design precision vector graphics\u2014from branding to illustration\u2014that stay sharp, scalable, and fully editable at any size. link https://main--federal--adobecom.aem.page/federal/assets/svgs/all-products.svg All products See all Adobe products link style three-up, container, dark, parallax stagger ltr background #000 layout product-grid",
+   "word_count": 132,
+   "links_internal": [
+    [
+     "https://www.adobe.com/federal/assets/svgs/firefly-appicon-256.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/firefly-appicon-256.svg"
+    ],
+    [
+     "https://www.adobe.com/products/firefly.html",
+     "link"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/acrobat-pro.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/acrobat-pro.svg"
+    ],
+    [
+     "https://www.adobe.com/acrobat.html",
+     "link"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/photoshop.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/photoshop.svg"
+    ],
+    [
+     "https://www.adobe.com/photoshop.html",
+     "link"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/premiere-pro.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/premiere-pro.svg"
+    ],
+    [
+     "https://www.adobe.com/products/premiere.html",
+     "link"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/creative-cloud.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/creative-cloud.svg"
+    ],
+    [
+     "https://www.adobe.com/creativecloud.html",
+     "link"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/experience-cloud-logo.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/experience-cloud-logo.svg"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/experience-cloud-logo.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/experience-cloud-logo.svg"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/illustrator.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/illustrator.svg"
+    ],
+    [
+     "https://www.adobe.com/products/illustrator.html",
+     "link"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/all-products.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/all-products.svg"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://business.adobe.com/products/genstudio.html",
+     "link"
+    ],
+    [
+     "https://business.adobe.com/",
+     "link"
+    ],
+    [
+     "https://adobe.com/products/catalog.html",
+     "link"
+    ]
+   ],
+   "images_total": 9,
+   "images_missing_alt": 9,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 9,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 4,
+    "external": 2,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 132,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 2,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 1,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 3,
+     "heading_levels_skipped": false,
+     "heading_count": 9,
+     "sections": 9,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 1,
+     "structured_format_ratio": 0.0,
+     "emphasis_density": 0.0,
+     "intro_summary_words": 0
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": [
+    {
+     "mode": "unrendered_template_binding",
+     "note": "template syntax survived into served HTML -- value never rendered server-side"
+    }
+   ]
+  },
+  {
+   "url": "https://www.adobe.com/products/catalog.html",
+   "final_url": "https://www.adobe.com/products/catalog.html",
+   "status": 200,
+   "error": null,
+   "depth": 1,
+   "elapsed_ms": 95,
+   "redirect_chain": [],
+   "html_bytes": 28586,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Fri, 18 Sep 2026 07:44:39 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Adobe products: desktop, web, and mobile applications | Adobe",
+   "lang": "",
+   "canonical": "https://www.adobe.com/products/catalog.html",
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "Adobe provides everything you need to design and deliver exceptional digital experiences. View a complete list of our products and services.",
+   "og": {
+    "og:title": "Adobe products: desktop, web, and mobile applications | Adobe",
+    "og:description": "Adobe provides everything you need to design and deliver exceptional digital experiences. View a complete list of our products and services.",
+    "og:image": "https://www.adobe.com/cc-shared/assets/img/product-icons/jpg/default.jpg?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/cc-shared/assets/img/product-icons/jpg/default.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Adobe products: desktop, web, and mobile applications | Adobe",
+    "twitter:description": "Adobe provides everything you need to design and deliver exceptional digital experiences. View a complete list of our products and services.",
+    "twitter:image": "https://www.adobe.com/cc-shared/assets/img/product-icons/jpg/default.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 cardTitle"
+    ]
+   ],
+   "text_len": 1498,
+   "main_text_len": 84,
+   "boilerplate_text_len": 0,
+   "link_density": 0.868,
+   "text_sample": "Adobe products: desktop, web, and mobile applications | Adobe mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 cardTitle mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 description Includes: https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/acrobat-pro-40.svg Acrobat https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/photoshop-40.svg Photoshop https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/premiere-pro-40.svg Premiere https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/illustrator-40.svg Illustrator https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/express-40.svg Adobe Express https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/firefly.svg Adobe Firefly mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[Buy now] mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[Free trial - segmentation - modal] Start with confidence \u2014 you can cancel within 14 days of purchase for a full refund. https://main--cc--adobecom.aem.page/creativecloud/plans/merch-shared/fragments/cco/personalization/modals/switch-modal-single-app-upgrade merch-card-collection: ACOM / CC Catalog Page Collection: PARENT background #fafafa style xl spacing https://main--cc--adobecom.aem.page/creativecloud/plans/merch-shared/fragments/faqs/catalog",
+   "word_count": 117,
+   "links_internal": [
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/acrobat-pro-40.svg",
+     "https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/acrobat-pro-40.svg"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/photoshop-40.svg",
+     "https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/photoshop-40.svg"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/premiere-pro-40.svg",
+     "https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/premiere-pro-40.svg"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/illustrator-40.svg",
+     "https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/illustrator-40.svg"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/express-40.svg",
+     "https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/express-40.svg"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/firefly.svg",
+     "https://main--cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/firefly.svg"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/plans/merch-shared/fragments/cco/personalization/modals/switch-modal-single-app-upgrade",
+     "https://main--cc--adobecom.aem.page/creativecloud/plans/merch-shared/fragments/cco/personalization/modals/switch-modal-single-app-upgrade"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/plans/merch-shared/fragments/faqs/catalog",
+     "https://main--cc--adobecom.aem.page/creativecloud/plans/merch-shared/fragments/faqs/catalog"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 cardTitle"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[Buy now]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[Free trial - segmentation - modal]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "merch-card-collection: ACOM / CC Catalog Page Collection: PARENT"
+    ]
+   ],
+   "images_total": 3,
+   "images_missing_alt": 3,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 3,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 3,
+    "external": 1,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [
+     "buy now"
+    ],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 117,
+    "tier1": {
+     "statistics_count": 1,
+     "statistics_per_100w": 0.85,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 1,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 1,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 1,
+     "heading_levels_skipped": false,
+     "heading_count": 1,
+     "sections": 1,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 2,
+     "structured_format_ratio": 0.0,
+     "emphasis_density": 0.243,
+     "intro_summary_words": 94
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.adobe.com/products/firefly.html",
+   "final_url": "https://www.adobe.com/products/firefly.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 319,
+   "redirect_chain": [],
+   "html_bytes": 58110,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Wed, 23 Sep 2026 12:58:31 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Adobe Firefly - Free Generative AI for Creatives",
+   "lang": "",
+   "canonical": "https://www.adobe.com/products/firefly.html",
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "Create and edit images, audio, and video with Adobe Firefly\u2019s Generative AI, plus try top models from Google, OpenAI, and more.",
+   "og": {
+    "og:title": "Adobe Firefly - Free Generative AI for Creatives",
+    "og:description": "Create and edit images, audio, and video with Adobe Firefly\u2019s Generative AI, plus try top models from Google, OpenAI, and more.",
+    "og:image": "https://www.adobe.com/products/media_1912d2dfb102c668252eb9dda176f925d677fc5e2.png?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/products/media_1912d2dfb102c668252eb9dda176f925d677fc5e2.png?width=1200&format=pjpg&optimize=medium",
+    "og:image:alt": "AI sound effect generation concept showing a yoga pose in a plant-filled room with a waveform labeled \u2018Wind Chimes\u2019 overlayed on the image."
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Adobe Firefly - Free Generative AI for Creatives",
+    "twitter:description": "Create and edit images, audio, and video with Adobe Firefly\u2019s Generative AI, plus try top models from Google, OpenAI, and more.",
+    "twitter:image": "https://www.adobe.com/products/media_1912d2dfb102c668252eb9dda176f925d677fc5e2.png?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Adobe Firefly. Create stunning content faster."
+    ],
+    [
+     2,
+     "Top Firefly features."
+    ],
+    [
+     2,
+     "Firefly is for everyone."
+    ],
+    [
+     3,
+     "Content creators and video editors."
+    ],
+    [
+     3,
+     "Art directors and marketers."
+    ],
+    [
+     3,
+     "Design teams who collaborate."
+    ],
+    [
+     2,
+     "Remix content from the community."
+    ],
+    [
+     2,
+     "The power of Adobe Firefly. Pocket-sized."
+    ],
+    [
+     2,
+     "Discover popular features and partner models."
+    ],
+    [
+     2,
+     "Questions? We have answers."
+    ],
+    [
+     3,
+     "What is {{Adobe Firefly}}?"
+    ],
+    [
+     3,
+     "What is generative AI?"
+    ],
+    [
+     3,
+     "What is Adobe Firefly best for?"
+    ],
+    [
+     3,
+     "What can you create with Adobe Firefly?"
+    ],
+    [
+     3,
+     "What AI models are available in Adobe Firefly?"
+    ],
+    [
+     3,
+     "What is the best AI image and video generator?"
+    ],
+    [
+     3,
+     "How does Adobe Firefly compare to other AI image, video, and audio generators?"
+    ],
+    [
+     3,
+     "What is Firefly Boards?"
+    ],
+    [
+     3,
+     "Who would benefit most from using Adobe Firefly?"
+    ],
+    [
+     3,
+     "How do marketers use Adobe Firefly?"
+    ],
+    [
+     3,
+     "How can content creators use Adobe Firefly for social media?"
+    ],
+    [
+     3,
+     "Is Adobe Firefly commercially safe?"
+    ],
+    [
+     3,
+     "How does Adobe ensure responsible AI in Adobe Firefly?"
+    ],
+    [
+     3,
+     "Does Adobe train Adobe Firefly on my personal content?"
+    ],
+    [
+     3,
+     "What languages can I use for prompts in Adobe Firefly?"
+    ],
+    [
+     3,
+     "What apps does Adobe Firefly work with?"
+    ],
+    [
+     3,
+     "Does Adobe Firefly work on mobile devices?"
+    ],
+    [
+     3,
+     "What file formats can I export from Adobe Firefly?"
+    ],
+    [
+     3,
+     "Is Adobe Firefly free to use?"
+    ],
+    [
+     3,
+     "What are generative credits in Adobe Firefly?"
+    ],
+    [
+     2,
+     "Adobe Firefly. Your AI-powered creative space."
+    ]
+   ],
+   "text_len": 13658,
+   "main_text_len": 11313,
+   "boilerplate_text_len": 0,
+   "link_density": 0.092,
+   "text_sample": "Adobe Firefly - Free Generative AI for Creatives https://main--da--cc--adobecom.aem.live/cc-shared/assets/img/firefly.svg Adobe Firefly. Create stunning content faster. Generate and edit images, video, audio, and designs using top AI models from Adobe, Google, OpenAI, Kling AI, and more. Get started for free. https://main--da-cc--adobecom.aem.page/cc-shared/ff-gallery-assets.json base-offset=100px parallax-distance=70px Tablet-base-offset=88px Tablet-parallax-distance=-250px Desktop-base-offset=350px Desktop-parallax-distance=-250px base-offset=198px parallax-distance=10px Tablet-base-offset=150px Tablet-parallax-distance=-300px Desktop-base-offset=200px Desktop-parallax-distance=-300px base-offset=88px parallax-distance=-80px Tablet-base-offset=75px Tablet-parallax-distance=-550px Desktop-base-offset=-80px Desktop-parallax-distance=-550px base-offset=30px parallax-distance=-130px Tablet-base-offset=135px Tablet-parallax-distance=-50px Desktop-base-offset=-450px Desktop-parallax-distance=-50px image video Adobe models Commercially safe Partner models Models created by others https://main--cc--adobecom.aem.live/creativecloud/animation/testdoc/unity/generate.svg Generate Describe what you want to generate promoid=NQCJQWSV&mv=other&ff_source=adobe-com&ff_campaign=firefly-marketing-page Unable to process the request Please describe what you want to generate. Prompt exceeds the max length of 750 characters Enter prompt and select model style dark background #000 | Google | Open AI | Kling | Blackforestlabs | Elevenlabs | Topazlabs | Lumaai | Runway style dark background #000 FEATURES Top Firefly features. The industry-leading generative AI tools for images, video, audio, and vectors are in the Firefly app. View all features. background style xxl-spacing-top, xl-top-rounded-corners, static links https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/firefly/editorial-carousel-firefly https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/firefly/ff-ai-models FLEXIBILITY Firefly is for everyone. From generating podcast thumbnails and graphics to prototyping complete brand campaigns, Firefly has the AI models and design tools you need to go from initial idea to final product. background #FFF style grid-width-8, xxl-spacing-top, xl-top-rounded-corners #FFF Content creators and video editors. Generate sound effects, cinematic b-roll, and atmospheric layers like smoke, water, or lens flares. Translate videos into multiple languages without l",
+   "word_count": 1873,
+   "links_internal": [
+    [
+     "https://www.adobe.com/cc-shared/assets/img/firefly.svg",
+     "https://main--da--cc--adobecom.aem.live/cc-shared/assets/img/firefly.svg"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/ff-gallery-assets.json",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/ff-gallery-assets.json"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/assets/firefly/s2-icon-image-20-n.svg",
+     "image"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/assets/firefly/s2-icon-video-20-n.svg",
+     "video"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/animation/testdoc/unity/generate.svg",
+     "https://main--cc--adobecom.aem.live/creativecloud/animation/testdoc/unity/generate.svg"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/features.html",
+     "View all features."
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/firefly/editorial-carousel-firefly",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/firefly/editorial-carousel-firefly"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/firefly/ff-ai-models",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/firefly/ff-ai-models"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/firefly/segment-blade",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/firefly/segment-blade"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/firefly/create-consistent-images-at-scale-aside",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/firefly/create-consistent-images-at-scale-aside"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/firefly/drive-business-results-aside",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/firefly/drive-business-results-aside"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/app",
+     "Learn more"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/features/text-to-image.html",
+     "AI image generator"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/features/ai-video-generator.html",
+     "AI video generator"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/features/ai-video-editor.html",
+     "AI video editor"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/features/ai-photo-editor.html",
+     "AI image editor"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/partner-models/google-gemini-nano-banana.html",
+     "Nano Banana"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/partner-models/flux.html",
+     "FLUX"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/partner-models/runway.html",
+     "Runway"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/partner-models/luma-ai.html",
+     "Luma"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/partner-models/gpt-image.html",
+     "GPT Image"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/partner-models/elevenlabs.html",
+     "ElevenLabs"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/partner-models/topaz.html",
+     "Topaz"
+    ],
+    [
+     "https://www.adobe.com/ai/overview.html",
+     "Generative AI"
+    ],
+    [
+     "https://www.adobe.com/products/photoshop.html",
+     "Adobe Photoshop"
+    ],
+    [
+     "https://www.adobe.com/products/premiere.html",
+     "Premiere"
+    ],
+    [
+     "https://www.adobe.com/express",
+     "Adobe Express"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/features/image-to-video.html",
+     "images into videos"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/features/sound-effect-generator.html",
+     "generating sound effects"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/features/moodboard.html",
+     "Firefly Boards"
+    ],
+    [
+     "https://www.adobe.com/express",
+     "Adobe Express"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/features/custom-models.html",
+     "Learn more about Adobe Firefly Custom Models"
+    ],
+    [
+     "https://www.adobe.com/products/firefly/plans.html",
+     "Firefly plans"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/assets/firefly/s2-icon-image-20-n.svg",
+     "image"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/assets/firefly/s2-icon-video-20-n.svg",
+     "video"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/animation/testdoc/unity/generate.svg",
+     "https://main--cc--adobecom.aem.live/creativecloud/animation/testdoc/unity/generate.svg"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://firefly.adobe.com/community?promoid=NQCJQWSV&mv=other",
+     "Explore the Gallery"
+    ],
+    [
+     "https://apps.apple.com/us/app/adobe-firefly-ai-generator/id6742595426",
+     "iOS"
+    ],
+    [
+     "https://play.google.com/store/apps/details?id=com.adobe.firefly",
+     "Android"
+    ],
+    [
+     "https://business.adobe.com/products/genstudio.html",
+     "Adobe GenStudio"
+    ],
+    [
+     "https://helpx.adobe.com/firefly/using/generative-credits.html",
+     "Learn more about generative credits"
+    ]
+   ],
+   "images_total": 10,
+   "images_missing_alt": 6,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 10,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 2,
+    "external": 1,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [
+     "get started"
+    ],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 1873,
+    "tier1": {
+     "statistics_count": 2,
+     "statistics_per_100w": 0.11,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 5,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 0,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 3,
+     "heading_levels_skipped": false,
+     "heading_count": 31,
+     "sections": 31,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 1,
+     "structured_format_ratio": 0.345,
+     "emphasis_density": 0.021,
+     "intro_summary_words": 121
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.adobe.com/products/illustrator.html",
+   "final_url": "https://www.adobe.com/products/illustrator.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 221,
+   "redirect_chain": [],
+   "html_bytes": 26848,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Wed, 23 Sep 2026 12:58:31 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Vector Graphics Software | Adobe Illustrator",
+   "lang": "",
+   "canonical": "https://www.adobe.com/products/illustrator.html",
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "Powered by generative AI, magically transform a text prompt into a fully editable vector graphic with Adobe Illustrator, the industry-leading vector graphics software.",
+   "og": {
+    "og:title": "Vector Graphics Software | Adobe Illustrator",
+    "og:description": "Powered by generative AI, magically transform a text prompt into a fully editable vector graphic with Adobe Illustrator, the industry-leading vector graphics software.",
+    "og:image": "https://www.adobe.com/products/media_19762a181d8f7cdad7fa491acc9917bdedbcba01a.jpg?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/products/media_19762a181d8f7cdad7fa491acc9917bdedbcba01a.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Vector Graphics Software | Adobe Illustrator",
+    "twitter:description": "Powered by generative AI, magically transform a text prompt into a fully editable vector graphic with Adobe Illustrator, the industry-leading vector graphics software.",
+    "twitter:image": "https://www.adobe.com/products/media_19762a181d8f7cdad7fa491acc9917bdedbcba01a.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "mas-field: ACOM-CC / Headless / Individual / com / Illustrator \u2192 cardTitle"
+    ]
+   ],
+   "text_len": 1421,
+   "main_text_len": 71,
+   "boilerplate_text_len": 0,
+   "link_density": 0.884,
+   "text_sample": "Vector Graphics Software | Adobe Illustrator con-block-row-bgcolor #fff con-block-row-lockup (m-icon) https://main--da-cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/illustrator.svg {{adobe-illustrator}} mas-field: ACOM-CC / Headless / Individual / com / Illustrator \u2192 cardTitle mas-field: ACOM-CC / Headless / Individual / com / Illustrator \u2192 description mas-field: ACOM-CC / Headless / Individual / com / Illustrator \u2192 ctas[1] mas-field: ACOM-CC / Headless / Individual / com / Illustrator \u2192 ctas[2] con-block-row-supplemental (xl-body, bold) Browse plans for businesses or students and teachers . https://main--cc--adobecom.aem.live/cc-shared/fragments/merch/products/illustrator/sticky-banner/default https://main--cc--adobecom.aem.live/cc-shared/fragments/products/illustrator/riverflow https://main--cc--adobecom.aem.live/cc-shared/fragments/products/illustrator/explore-ai-features https://main--cc--adobecom.aem.live/cc-shared/fragments/merch/products/illustrator/mini-compare/segment-blade https://main--cc--adobecom.aem.live/cc-shared/fragments/products/illustrator/illustrator-faq https://main--cc--adobecom.aem.live/cc-shared/fragments/products/illustrator/ai-gorgeous-graphics-designed-by-you https://main--cc--adobecom.aem.live/cc-shared/fragments/products/illustrator/try-beta {{home}} {{adobe-cc}} {{adobe-illustrator}} mas-field: ACOM / Plans / Individual / com / Illustrator \u2192 jsonLdSchema",
+   "word_count": 94,
+   "links_internal": [
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/illustrator.svg",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/assets/img/product-icons/svg/illustrator.svg"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/business/teams/illustrator.html",
+     "businesses"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/buy/students.html",
+     "students and teachers"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/merch/products/illustrator/sticky-banner/default",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/merch/products/illustrator/sticky-banner/default"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/illustrator/riverflow",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/illustrator/riverflow"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/illustrator/explore-ai-features",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/illustrator/explore-ai-features"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/merch/products/illustrator/mini-compare/segment-blade",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/merch/products/illustrator/mini-compare/segment-blade"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/illustrator/illustrator-faq",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/illustrator/illustrator-faq"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/illustrator/ai-gorgeous-graphics-designed-by-you",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/illustrator/ai-gorgeous-graphics-designed-by-you"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/illustrator/try-beta",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/illustrator/try-beta"
+    ],
+    [
+     "https://www.adobe.com/",
+     "{{home}}"
+    ],
+    [
+     "https://www.adobe.com/creativecloud",
+     "{{adobe-cc}}"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Illustrator \u2192 cardTitle"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Illustrator \u2192 description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Illustrator \u2192 ctas[1]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Illustrator \u2192 ctas[2]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Plans / Individual / com / Illustrator \u2192 jsonLdSchema"
+    ]
+   ],
+   "images_total": 3,
+   "images_missing_alt": 2,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 3,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 2,
+    "external": 1,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 94,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 1,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 0,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 1,
+     "heading_levels_skipped": false,
+     "heading_count": 1,
+     "sections": 1,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 1,
+     "structured_format_ratio": 0.231,
+     "emphasis_density": 0.1013,
+     "intro_summary_words": 70
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": [
+    {
+     "mode": "unrendered_template_binding",
+     "note": "template syntax survived into served HTML -- value never rendered server-side"
+    }
+   ]
+  },
+  {
+   "url": "https://www.adobe.com/products/premiere.html",
+   "final_url": "https://www.adobe.com/products/premiere.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 262,
+   "redirect_chain": [],
+   "html_bytes": 27469,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Wed, 23 Sep 2026 12:58:31 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Professional video editing software | Adobe Premiere",
+   "lang": "",
+   "canonical": "https://www.adobe.com/products/premiere.html",
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "Discover Premiere's professional video editing and postproduction software. Edit & trim video, add effects, mix audio, extend video, and more.",
+   "og": {
+    "og:title": "Professional video editing software | Adobe Premiere",
+    "og:description": "Discover Premiere's professional video editing and postproduction software. Edit & trim video, add effects, mix audio, extend video, and more.",
+    "og:image": "https://www.adobe.com/products/media_14a141cf8900a74105b7122f28472dce9fd8cf872.jpg?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/products/media_14a141cf8900a74105b7122f28472dce9fd8cf872.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Professional video editing software | Adobe Premiere",
+    "twitter:description": "Discover Premiere's professional video editing and postproduction software. Edit & trim video, add effects, mix audio, extend video, and more.",
+    "twitter:image": "https://www.adobe.com/products/media_14a141cf8900a74105b7122f28472dce9fd8cf872.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "mas-field: ACOM-CC / Headless / Individual / com / Adobe Premiere Pro \u2192 cardTitle"
+    ]
+   ],
+   "text_len": 1706,
+   "main_text_len": 27,
+   "boilerplate_text_len": 0,
+   "link_density": 0.924,
+   "text_sample": "Professional video editing software | Adobe Premiere con-block-row-bgcolor #fff https://main--cc--adobecom.aem.live/cc-shared/assets/img/product-icons/svg/premiere-pro.svg {{adobe-premiere}} mas-field: ACOM-CC / Headless / Individual / com / Adobe Premiere Pro \u2192 cardTitle mas-field: ACOM-CC / Headless / Individual / com / Adobe Premiere Pro \u2192 description mas-field: ACOM-CC / Headless / Individual / com / Adobe Premiere Pro \u2192 ctas[1] mas-field: ACOM-CC / Headless / Individual / com / Adobe Premiere Pro \u2192 ctas[2] con-block-row-text (l-body) Browse plans for businesses or students and teachers . https://main--cc--adobecom.aem.live/cc-shared/fragments/merch/products/premiere/sticky-banner/default https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/riverflow https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/explore-pr-features https://main--cc--adobecom.aem.live/cc-shared/fragments/merch/products/premiere/mini-compare/segment-blade https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/pr-mobile https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/premiere-faq https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/discover-your-best-work https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/features/download-beta-app background #fafafa https://main--cc--adobecom.aem.live/cc-shared/fragments/products/adobe-express/adobe-express-premiere-edit-faster-edit-easier {{home}} {{adobe-cc}} Adobe {{premiere}} mas-field: ACOM / Plans / Individual / com / Adobe Premiere Pro \u2192 jsonLdSchema",
+   "word_count": 108,
+   "links_internal": [
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/premiere-pro.svg",
+     "https://main--cc--adobecom.aem.live/cc-shared/assets/img/product-icons/svg/premiere-pro.svg"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/business",
+     "businesses"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/buy/students",
+     "students and teachers"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/merch/products/premiere/sticky-banner/default",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/merch/products/premiere/sticky-banner/default"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/riverflow",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/riverflow"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/explore-pr-features",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/explore-pr-features"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/merch/products/premiere/mini-compare/segment-blade",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/merch/products/premiere/mini-compare/segment-blade"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/pr-mobile",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/pr-mobile"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/premiere-faq",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/premiere-faq"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/discover-your-best-work",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/discover-your-best-work"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/features/download-beta-app",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/features/download-beta-app"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/adobe-express/adobe-express-premiere-edit-faster-edit-easier",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/adobe-express/adobe-express-premiere-edit-faster-edit-easier"
+    ],
+    [
+     "https://www.adobe.com/",
+     "{{home}}"
+    ],
+    [
+     "https://www.adobe.com/creativecloud",
+     "{{adobe-cc}}"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Adobe Premiere Pro \u2192 cardTitle"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Adobe Premiere Pro \u2192 description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Adobe Premiere Pro \u2192 ctas[1]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Adobe Premiere Pro \u2192 ctas[2]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Plans / Individual / com / Adobe Premiere Pro \u2192 jsonLdSchema"
+    ]
+   ],
+   "images_total": 3,
+   "images_missing_alt": 2,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 3,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 2,
+    "external": 1,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 108,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 1,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 0,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 1,
+     "heading_levels_skipped": false,
+     "heading_count": 1,
+     "sections": 1,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 1,
+     "structured_format_ratio": 0.176,
+     "emphasis_density": 0.1401,
+     "intro_summary_words": 83
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": [
+    {
+     "mode": "unrendered_template_binding",
+     "note": "template syntax survived into served HTML -- value never rendered server-side"
+    }
+   ]
+  },
+  {
+   "url": "https://www.adobe.com/creativecloud/plans/merch-shared/fragments/faqs/catalog",
+   "final_url": "https://www.adobe.com/creativecloud/plans/merch-shared/fragments/faqs/catalog.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 323,
+   "redirect_chain": [
+    {
+     "from": "https://www.adobe.com/creativecloud/plans/merch-shared/fragments/faqs/catalog",
+     "status": 301,
+     "to": "https://www.adobe.com/creativecloud/plans/merch-shared/fragments/faqs/catalog.html"
+    }
+   ],
+   "html_bytes": 26986,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Fri, 18 Sep 2026 07:44:39 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Frequently asked questions",
+   "lang": "",
+   "canonical": "https://www.adobe.com/creativecloud/plans/merch-shared/fragments/faqs/catalog.html",
+   "hreflangs": [],
+   "robots_meta": "noindex, nofollow",
+   "meta_description": "Adobe makes some of the most widely used software applications in the world, many of which are industry standard. Get started with free apps like ...",
+   "og": {
+    "og:title": "Frequently asked questions",
+    "og:description": "Adobe makes some of the most widely used software applications in the world, many of which are industry standard. Get started with free apps like ...",
+    "og:image": "https://www.adobe.com/default-meta-image.png?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/default-meta-image.png?width=1200&format=pjpg&optimize=medium"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Frequently asked questions",
+    "twitter:description": "Adobe makes some of the most widely used software applications in the world, many of which are industry standard. Get started with free apps like ...",
+    "twitter:image": "https://www.adobe.com/default-meta-image.png?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     2,
+     "Frequently asked questions"
+    ]
+   ],
+   "text_len": 3645,
+   "main_text_len": 3205,
+   "boilerplate_text_len": 0,
+   "link_density": 0.103,
+   "text_sample": "Frequently asked questions Frequently asked questions Are any Adobe products free? Yes, Adobe offers free products like {{acrobat-reader}}, {{fill-sign}}, {{photoshop-express}}, and {{adobe-scan}}. You can also use {{creative-cloud-express}}, {{fresco}}, and {{lightroom-mobile}} for free, with the option of making in-app purchases. Are Adobe products worth it? Adobe makes some of the most widely used software applications in the world, many of which are industry standard. Get started with free apps like Adobe {{acrobat-reader}}, {{fill-sign}}, {{photoshop-express}}, and {{adobe-scan}}. Or consider {{creative-cloud}}, with plans starting at just PRICE - M2M - Adobe Express . Every Adobe {{creative-cloud}} plan includes perks like free stock images and fonts, collaboration tools, and cloud storage as well as regular feature updates to deliver the latest technology. Learn more about Adobe Creative Cloud plans and pricing . Which Adobe product is best for editing PDFs? You can edit PDFs with {{adobe-acrobat}}, which is available in two editions: Standard and Pro. {{acrobat-standard}} provides basic tools to create, edit, and sign PDFs on Windows devices. {{acrobat-pro}} is the complete PDF solution with tools to edit, convert, and sign PDFs across web, mobile, and tablet, as well as on Windows and macOS computers. If you\u2019d like to try before you buy, you can get a free 7-day trial of {{acrobat-pro}}. Learn more about Acrobat . How many products does Adobe have? Adobe offers nearly 100 products. Get creative with industry-standard apps like Adobe {{photoshop}}, {{illustrator}}, {{indesign}}, and {{lightroom}}. Create, edit, and sign PDFs with {{adobe-acrobat}} and {{acrobat-sign}}. And deliver exceptional customer experiences with our marketing and commerce apps such as {{adobe-experience-manager}}, Campaign, and Target. How much do Adobe products cost? {{creative-cloud}} plans start at PRICE - M2M - Adobe Express . You can subscribe to specific Single App plans or get 20+ creative apps and services in the {{creative-cloud-pro}} plan. Explore Creative Cloud plans . What are the most popular Adobe products? Adobe makes some of the most widely used software in the world, including popular apps like {{acrobat-pro}}, {{photoshop}}, {{illustrator}}, {{indesign}}, {{lightroom}}, and {{premiere}}. How can I get a student discount on Adobe products? Students who provide a valid school-issued email address at purchase are eligible to save over mas-field: ACOM-CC / Headl",
+   "word_count": 536,
+   "links_internal": [
+    [
+     "https://www.adobe.com/creativecloud/plans.html",
+     "Learn more about Adobe Creative Cloud plans and pricing"
+    ],
+    [
+     "https://www.adobe.com/acrobat.html",
+     "Learn more about Acrobat"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/plans.html",
+     "Explore Creative Cloud plans"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/buy/students.html",
+     "Learn more about Creative Cloud for students"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/3d-ar.html",
+     "Adobe Substance 3D"
+    ],
+    [
+     "https://www.adobe.com/products/illustrator.html",
+     "Learn more about {{illustrator}}"
+    ],
+    [
+     "https://www.adobe.com/products/premiere.html",
+     "Learn more about {{premiere}}"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://milo.adobe.com/tools/ost?osi=2yzU1dqwSmgxwAYD1qNk4vYjHn7aU4lnXlA7ttsE-cQ&type=price&seat=false",
+     "PRICE - M2M - Adobe Express"
+    ],
+    [
+     "https://milo.adobe.com/tools/ost?osi=2yzU1dqwSmgxwAYD1qNk4vYjHn7aU4lnXlA7ttsE-cQ&type=price&seat=false",
+     "PRICE - M2M - Adobe Express"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / EDU / Creative Cloud Individual \u2192 callout"
+    ]
+   ],
+   "images_total": 0,
+   "images_missing_alt": 0,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 3,
+    "external": 1,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [
+     "get started",
+     "subscribe"
+    ],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 536,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 2,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 0,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 2,
+     "heading_levels_skipped": false,
+     "heading_count": 1,
+     "sections": 1,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 1,
+     "median_paragraph_words": 32,
+     "structured_format_ratio": 0.0,
+     "emphasis_density": 0.1084,
+     "intro_summary_words": 0
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": [
+    {
+     "mode": "unrendered_template_binding",
+     "note": "template syntax survived into served HTML -- value never rendered server-side"
+    }
+   ]
+  },
+  {
+   "url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/news/news",
+   "final_url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/news/news",
+   "status": 200,
+   "error": null,
+   "depth": 1,
+   "elapsed_ms": 243,
+   "redirect_chain": [],
+   "html_bytes": 10599,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Tue, 22 Sep 2026 15:02:51 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Adobe News",
+   "lang": "",
+   "canonical": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/news/news",
+   "hreflangs": [],
+   "robots_meta": "noindex, nofollow",
+   "meta_description": "New features in Adobe Acrobat give customers the power to turn documents into visual reports and presentations that are easier to understand.",
+   "og": {
+    "og:title": "Adobe News",
+    "og:description": "New features in Adobe Acrobat give customers the power to turn documents into visual reports and presentations that are easier to understand.",
+    "og:image": "https://www.adobe.com/default-meta-image.png?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/default-meta-image.png?width=1200&format=pjpg&optimize=medium"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Adobe News",
+    "twitter:description": "New features in Adobe Acrobat give customers the power to turn documents into visual reports and presentations that are easier to understand.",
+    "twitter:image": "https://www.adobe.com/default-meta-image.png?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     2,
+     "Adobe News"
+    ],
+    [
+     3,
+     "Adobe brings docs into focus like never before."
+    ],
+    [
+     3,
+     "Introducing Adobe Brand Visibility."
+    ],
+    [
+     3,
+     "Explore new ways to share information with PDF Spaces."
+    ]
+   ],
+   "text_len": 901,
+   "main_text_len": 532,
+   "boilerplate_text_len": 0,
+   "link_density": 0.356,
+   "text_sample": "Adobe News https://main--federal--adobecom.aem.page/federal/assets/svgs/b-app-experiencecloud.svg Adobe News Adobe brings docs into focus like never before. New features in Adobe Acrobat give customers the power to turn documents into visual reports and presentations that are easier to understand. Read story | Read story about Adobe brings docs into focus like never before. Introducing Adobe Brand Visibility. Get to know Adobe's new unified GEO platform for enterprise brands. Read story | Read story about Introducing Adobe Brand Visibility. Explore new ways to share information with PDF Spaces. Today in Acrobat, we're introducing a new way to share information, one designed to engage, inform and move the people who matter most. Read story | Read story about Explore new ways to share information with PDF Spaces. style container, rounded-corners-bottom, spacing-3xl-bottom background #ffffff",
+   "word_count": 127,
+   "links_internal": [
+    [
+     "https://www.adobe.com/federal/assets/svgs/b-app-experiencecloud.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/b-app-experiencecloud.svg"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://blog.adobe.com/en/publish/2026/09/09/show-up-sharper-faster-with-new-acrobat-ai",
+     "Read story | Read story about Adobe brings docs into focus like never before."
+    ],
+    [
+     "https://business.adobe.com/blog/introducing-adobe-brand-visibility",
+     "Read story | Read story about Introducing Adobe Brand Visibility."
+    ],
+    [
+     "https://blog.adobe.com/en/publish/2026/05/06/stop-sending-files-start-sharing-experiences-with-pdf-sapces-acrobat",
+     "Read story | Read story about Explore new ways to share information with PDF Spaces."
+    ]
+   ],
+   "images_total": 0,
+   "images_missing_alt": 0,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 4,
+    "external": 2,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 127,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 2,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 1,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 3,
+     "heading_levels_skipped": false,
+     "heading_count": 4,
+     "sections": 4,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 14,
+     "structured_format_ratio": 0.0,
+     "emphasis_density": 0.0,
+     "intro_summary_words": 0
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.adobe.com/photoshop.html",
+   "final_url": "https://www.adobe.com/products/photoshop.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 373,
+   "redirect_chain": [
+    {
+     "from": "https://www.adobe.com/photoshop.html",
+     "status": 301,
+     "to": "https://www.adobe.com/products/photoshop.html"
+    }
+   ],
+   "html_bytes": 27229,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Wed, 23 Sep 2026 12:58:31 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Official Adobe Photoshop | Free Trial and Online Photo & Design App",
+   "lang": "",
+   "canonical": "https://www.adobe.com/products/photoshop.html",
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "Explore quick new ways to create custom scenes, make complex edits, & combine images online or with the free Photoshop mobile app.",
+   "og": {
+    "og:title": "Official Adobe Photoshop | Free Trial and Online Photo & Design App",
+    "og:description": "Explore quick new ways to create custom scenes, make complex edits, & combine images online or with the free Photoshop mobile app.",
+    "og:image": "https://www.adobe.com/products/media_17f61e1224166630fb2e30723046881244c8812a9.jpg?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/products/media_17f61e1224166630fb2e30723046881244c8812a9.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Official Adobe Photoshop | Free Trial and Online Photo & Design App",
+    "twitter:description": "Explore quick new ways to create custom scenes, make complex edits, & combine images online or with the free Photoshop mobile app.",
+    "twitter:image": "https://www.adobe.com/products/media_17f61e1224166630fb2e30723046881244c8812a9.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "mas-field: ACOM-CC / Headless / Individual / com / Photoshop \u2192 cardTitle"
+    ]
+   ],
+   "text_len": 1559,
+   "main_text_len": 58,
+   "boilerplate_text_len": 0,
+   "link_density": 0.917,
+   "text_sample": "Official Adobe Photoshop | Free Trial and Online Photo & Design App #ffffff con-block-row-lockup (s-lockup) https://main--cc--adobecom.aem.live/cc-shared/assets/img/product-icons/svg/photoshop-40.svg {{adobe-photoshop}} mas-field: ACOM-CC / Headless / Individual / com / Photoshop \u2192 cardTitle mas-field: ACOM-CC / Headless / Individual / com / Photoshop \u2192 description mas-field: ACOM-CC / Headless / Individual / com / Photoshop \u2192 ctas[1] mas-field: ACOM-CC / Headless / Individual / com / Photoshop \u2192 ctas[2] con-block-row-text (l-body) Browse plans for businesses or students and teachers . https://main--da-cc--adobecom.aem.page/cc-shared/fragments/merch/products/photoshop/sticky-banner/default https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/product-page/riverflow https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/product-page/features https://main--da-cc--adobecom.aem.page/cc-shared/fragments/merch/products/photoshop/mini-compare/segment-blade https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/product-page/goes-everywhere https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/photoshop-includes-adobe-express-need-a-quick-edit https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/photoshop-faq https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/photoshop-start-with-photoshop {{home}} {{adobe-cc}} {{adobe-photoshop}} mas-field: ACOM / Plans / Individual / com / Photoshop \u2192 jsonLdSchema",
+   "word_count": 99,
+   "links_internal": [
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/photoshop-40.svg",
+     "https://main--cc--adobecom.aem.live/cc-shared/assets/img/product-icons/svg/photoshop-40.svg"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/business/teams/photoshop.html",
+     "businesses"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/buy/students.html",
+     "students and teachers"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/merch/products/photoshop/sticky-banner/default",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/merch/products/photoshop/sticky-banner/default"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/photoshop/product-page/riverflow",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/product-page/riverflow"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/photoshop/product-page/features",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/product-page/features"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/merch/products/photoshop/mini-compare/segment-blade",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/merch/products/photoshop/mini-compare/segment-blade"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/photoshop/product-page/goes-everywhere",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/product-page/goes-everywhere"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/photoshop/photoshop-includes-adobe-express-need-a-quick-edit",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/photoshop-includes-adobe-express-need-a-quick-edit"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/photoshop/photoshop-faq",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/photoshop-faq"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/photoshop/photoshop-start-with-photoshop",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/photoshop-start-with-photoshop"
+    ],
+    [
+     "https://www.adobe.com",
+     "{{home}}"
+    ],
+    [
+     "https://www.adobe.com/creativecloud.html",
+     "{{adobe-cc}}"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Photoshop \u2192 cardTitle"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Photoshop \u2192 description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Photoshop \u2192 ctas[1]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Photoshop \u2192 ctas[2]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Plans / Individual / com / Photoshop \u2192 jsonLdSchema"
+    ]
+   ],
+   "images_total": 3,
+   "images_missing_alt": 2,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 3,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 2,
+    "external": 1,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 99,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 1,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 0,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 1,
+     "heading_levels_skipped": false,
+     "heading_count": 1,
+     "sections": 1,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 1,
+     "structured_format_ratio": 0.214,
+     "emphasis_density": 0.136,
+     "intro_summary_words": 70
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": [
+    {
+     "mode": "unrendered_template_binding",
+     "note": "template syntax survived into served HTML -- value never rendered server-side"
+    }
+   ]
+  },
+  {
+   "url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/customer-testimonials/customer-testimonials",
+   "final_url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/customer-testimonials/customer-testimonials",
+   "status": 200,
+   "error": null,
+   "depth": 1,
+   "elapsed_ms": 241,
+   "redirect_chain": [],
+   "html_bytes": 16260,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Tue, 22 Sep 2026 15:02:51 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Carousel C2",
+   "lang": "",
+   "canonical": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/customer-testimonials/customer-testimonials",
+   "hreflangs": [],
+   "robots_meta": "noindex, nofollow",
+   "meta_description": "",
+   "og": {
+    "og:title": "Carousel C2",
+    "og:image": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/customer-testimonials/media_191fda7fa571515198325e7248a6d416dcb7ffc63.png?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/customer-testimonials/media_191fda7fa571515198325e7248a6d416dcb7ffc63.png?width=1200&format=pjpg&optimize=medium",
+    "og:image:alt": "Filmmaker Antoni Sendra, staring thoughtfully at his editing workstation."
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Carousel C2",
+    "twitter:image": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/customer-testimonials/media_191fda7fa571515198325e7248a6d416dcb7ffc63.png?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     3,
+     "\"Creative Cloud lets me create effortlessly and allows me to focus on what's important.\""
+    ],
+    [
+     4,
+     "\u201cWith Acrobat, I can summarize key contract details in seconds.\u201d"
+    ],
+    [
+     3,
+     "\"If it wasn't for Creative Cloud, I don't think I'd be here. I feel like I can create anything.\""
+    ]
+   ],
+   "text_len": 580,
+   "main_text_len": 248,
+   "boilerplate_text_len": 0,
+   "link_density": 0.072,
+   "text_sample": "Carousel C2 homepage-carousel Customer testimonials style spacing-3xl-bottom background white \"Creative Cloud lets me create effortlessly and allows me to focus on what's important.\" Antoni Sendra Filmmaker See all plans background carousel homepage-carousel \u201cWith Acrobat, I can summarize key contract details in seconds.\u201d Angi Ciccarelli Real Estate Agent See all plans background carousel homepage-carousel \"If it wasn't for Creative Cloud, I don't think I'd be here. I feel like I can create anything.\" Michelle Phan Creator See all plans background carousel homepage-carousel",
+   "word_count": 81,
+   "links_internal": [
+    [
+     "https://www.adobe.com/creativecloud/plans.html",
+     "See all plans"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/plans.html",
+     "See all plans"
+    ],
+    [
+     "https://www.adobe.com/creativecloud/plans.html",
+     "See all plans"
+    ]
+   ],
+   "links_external": [],
+   "images_total": 6,
+   "images_missing_alt": 0,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 6,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 4,
+    "external": 2,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 81,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 0,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 0,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 4,
+     "heading_levels_skipped": false,
+     "heading_count": 3,
+     "sections": 3,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 2,
+     "structured_format_ratio": 0.0,
+     "emphasis_density": 0.1379,
+     "intro_summary_words": 0
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/everything-you-need",
+   "final_url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/everything-you-need",
+   "status": 200,
+   "error": null,
+   "depth": 1,
+   "elapsed_ms": 245,
+   "redirect_chain": [],
+   "html_bytes": 19635,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Tue, 22 Sep 2026 15:02:51 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Everything you need to make anything.",
+   "lang": "",
+   "canonical": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/everything-you-need",
+   "hreflangs": [],
+   "robots_meta": "noindex, nofollow",
+   "meta_description": "Whether you're a student, social influencer, creative professional, performance marketer, or global brand, Adobe has the apps you need to make it happen.",
+   "og": {
+    "og:title": "Everything you need to make anything.",
+    "og:description": "Whether you're a student, social influencer, creative professional, performance marketer, or global brand, Adobe has the apps you need to make it happen.",
+    "og:image": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_123c15ca5b250c113b7f1027f0513ea6226f725cc.png?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_123c15ca5b250c113b7f1027f0513ea6226f725cc.png?width=1200&format=pjpg&optimize=medium",
+    "og:image:alt": "https://main--upp--adobecom.aem.page/homepage/assets/video/sr/media_1badc9f153c69f16292c23f9752012c9ab7edb851.mp4 | A dramatic photo of a woman runner is opened in Photoshop, where the Select Subject feature instantly finds her outline in fine detail."
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Everything you need to make anything.",
+    "twitter:description": "Whether you're a student, social influencer, creative professional, performance marketer, or global brand, Adobe has the apps you need to make it happen.",
+    "twitter:image": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_123c15ca5b250c113b7f1027f0513ea6226f725cc.png?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     2,
+     "Everything you need to make anything."
+    ],
+    [
+     3,
+     "Create with the top tools."
+    ],
+    [
+     3,
+     "Generate stunning content easily."
+    ],
+    [
+     3,
+     "Do it all in less time."
+    ],
+    [
+     3,
+     "Orchestrate customer experiences."
+    ],
+    [
+     3,
+     "Students and teachers save big."
+    ]
+   ],
+   "text_len": 2305,
+   "main_text_len": 743,
+   "boilerplate_text_len": 0,
+   "link_density": 0.608,
+   "text_sample": "Everything you need to make anything. Everything you need to make anything. Whether you're a student, social influencer, creative professional, performance marketer, or global brand, Adobe has the apps you need to make it happen. style rounded-corners-top, spacing-xl-top, spacing-xs-bottom background #fff https://main--federal--adobecom.aem.page/federal/assets/svgs/creative-cloud.svg | Adobe Creative Cloud Creativity and design Create with the top tools. Do it all with industry-leading apps for design, photo, video, and creative AI. https://www.adobe.com/creativecloud.html | Adobe products https://main--upp--adobecom.aem.page/homepage/assets/video/sr/07-new-test/media_1c1a3a49c0743f60e1f65e2fa6550dfdb74bf6b6a.mp4 https://main--federal--adobecom.aem.page/federal/assets/svgs/firefly-appicon-256.svg | Adobe Firefly Content creation Generate stunning content easily. Quickly create and edit images, video, and audio with creative AI. https://www.adobe.com/products/firefly.html https://main--upp--adobecom.aem.page/homepage/assets/video/sr/07-new-test/media_1f6cfe88cac9aedf8fe519c1aee63a4d3ff88fd30.mp4 https://main--federal--adobecom.aem.page/federal/assets/svgs/acrobat-pro.svg | Adobe Acrobat PDF and document essentials Do it all in less time. Create, edit, and share PDFs. Make edits and create presentations with AI. https://www.adobe.com/acrobat/pdf-and-document-essentials.html https://main--upp--adobecom.aem.page/homepage/assets/video/sr/07-new-test/media_10552085c17e81dd8aa9937f8833001840b9aefce.mp4 https://main--federal--adobecom.aem.page/federal/assets/svgs/experience-cloud-logo.svg Adobe for Business Orchestrate customer experiences. Deliver business impact, move faster, and personalize at scale. https://business.adobe.com/ https://main--upp--adobecom.aem.page/homepage/assets/video/sr/07-new-test/media_1ca1e5a546e0359fe58b5da46d41c82156a11c640.mp4 https://main--federal--adobecom.aem.page/federal/assets/svgs/creative-cloud.svg | Adobe Creative Cloud Students and teachers Students and teachers save big. Save a bundle on our biggest bundle of top industry creative tools. https://www.adobe.com/education/students/creativecloud.html https://main--upp--adobecom.aem.page/homepage/assets/video/sr/07-new-test/media_10474e01322a0aa425661636af8bb5fc854dc57d7.mp4 background #fff",
+   "word_count": 170,
+   "links_internal": [
+    [
+     "https://www.adobe.com/federal/assets/svgs/creative-cloud.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/creative-cloud.svg | Adobe Creative Cloud"
+    ],
+    [
+     "https://www.adobe.com/creativecloud.html",
+     "https://www.adobe.com/creativecloud.html | Adobe products"
+    ],
+    [
+     "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_1c1a3a49c0743f60e1f65e2fa6550dfdb74bf6b6a.mp4",
+     "https://main--upp--adobecom.aem.page/homepage/assets/video/sr/07-new-test/media_1c1a3a49c0743f60e1f65e2fa6550dfdb74bf6b6a.mp4"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/firefly-appicon-256.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/firefly-appicon-256.svg | Adobe Firefly"
+    ],
+    [
+     "https://www.adobe.com/products/firefly.html",
+     "https://www.adobe.com/products/firefly.html"
+    ],
+    [
+     "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_1f6cfe88cac9aedf8fe519c1aee63a4d3ff88fd30.mp4",
+     "https://main--upp--adobecom.aem.page/homepage/assets/video/sr/07-new-test/media_1f6cfe88cac9aedf8fe519c1aee63a4d3ff88fd30.mp4"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/acrobat-pro.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/acrobat-pro.svg | Adobe Acrobat"
+    ],
+    [
+     "https://www.adobe.com/acrobat/pdf-and-document-essentials.html",
+     "https://www.adobe.com/acrobat/pdf-and-document-essentials.html"
+    ],
+    [
+     "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_10552085c17e81dd8aa9937f8833001840b9aefce.mp4",
+     "https://main--upp--adobecom.aem.page/homepage/assets/video/sr/07-new-test/media_10552085c17e81dd8aa9937f8833001840b9aefce.mp4"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/experience-cloud-logo.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/experience-cloud-logo.svg"
+    ],
+    [
+     "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_1ca1e5a546e0359fe58b5da46d41c82156a11c640.mp4",
+     "https://main--upp--adobecom.aem.page/homepage/assets/video/sr/07-new-test/media_1ca1e5a546e0359fe58b5da46d41c82156a11c640.mp4"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/creative-cloud.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/creative-cloud.svg | Adobe Creative Cloud"
+    ],
+    [
+     "https://www.adobe.com/education/students/creativecloud.html",
+     "https://www.adobe.com/education/students/creativecloud.html"
+    ],
+    [
+     "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_10474e01322a0aa425661636af8bb5fc854dc57d7.mp4",
+     "https://main--upp--adobecom.aem.page/homepage/assets/video/sr/07-new-test/media_10474e01322a0aa425661636af8bb5fc854dc57d7.mp4"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://business.adobe.com/",
+     "https://business.adobe.com/"
+    ]
+   ],
+   "images_total": 5,
+   "images_missing_alt": 0,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 5,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 4,
+    "external": 2,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 170,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 1,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 0,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 3,
+     "heading_levels_skipped": false,
+     "heading_count": 6,
+     "sections": 6,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 4,
+     "structured_format_ratio": 0.0,
+     "emphasis_density": 0.0,
+     "intro_summary_words": 0
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.adobe.com/creativecloud.html",
+   "final_url": "https://www.adobe.com/creativecloud.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 243,
+   "redirect_chain": [],
+   "html_bytes": 26795,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Wed, 23 Sep 2026 12:58:31 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Adobe Creative Cloud | Professional Creative Software",
+   "lang": "",
+   "canonical": "https://www.adobe.com/creativecloud.html",
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "Enjoy the collection of professional creative software in Adobe Creative Cloud including Photoshop, Illustrator, Premiere & more on desktop, mobile & web.",
+   "og": {
+    "og:title": "Adobe Creative Cloud | Professional Creative Software",
+    "og:description": "Enjoy the collection of professional creative software in Adobe Creative Cloud including Photoshop, Illustrator, Premiere & more on desktop, mobile & web.",
+    "og:image": "https://www.adobe.com/products/media_14a141cf8900a74105b7122f28472dce9fd8cf872.jpg",
+    "og:image:secure_url": "https://www.adobe.com/products/media_14a141cf8900a74105b7122f28472dce9fd8cf872.jpg",
+    "og:image:alt": "Adobe"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Adobe Creative Cloud | Professional Creative Software",
+    "twitter:description": "Enjoy the collection of professional creative software in Adobe Creative Cloud including Photoshop, Illustrator, Premiere & more on desktop, mobile & web.",
+    "twitter:image": "https://www.adobe.com/products/media_14a141cf8900a74105b7122f28472dce9fd8cf872.jpg"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 cardTitle"
+    ]
+   ],
+   "text_len": 1587,
+   "main_text_len": 142,
+   "boilerplate_text_len": 0,
+   "link_density": 0.861,
+   "text_sample": "Adobe Creative Cloud | Professional Creative Software con-block-row-bgcolor #000000 con-block-row-lockup (s-lockup) https://main--cc--adobecom.aem.live/cc-shared/assets/img/product-icons/svg/creative-cloud.svg {{creative-cloud}} mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 cardTitle mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 description Con-block-row-text (order-1-desktop, xl-button) mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[Buy now] mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[2] background linear-gradient(0deg, #fff 0, #fff 138px, #000 138px, #000 100%) https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/sticky-banner/default https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/3-up-cards https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/2-up-features https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/tabs https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/membership-perks https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/firefly https://main--cc--adobecom.aem.live/cc-shared/fragments/merch/creativecloud/mini-compare/segment-blade https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/faq {{home}} {{adobe-cc}} https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/personalization/modals/switch-modal-single-app-upgrade mas-field: ACOM / Plans / Individual / com / Creative Cloud Individual \u2192 jsonLdSchema",
+   "word_count": 108,
+   "links_internal": [
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/creative-cloud.svg",
+     "https://main--cc--adobecom.aem.live/cc-shared/assets/img/product-icons/svg/creative-cloud.svg"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/cco/sticky-banner/default",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/sticky-banner/default"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/3-up-cards",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/3-up-cards"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/2-up-features",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/2-up-features"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/tabs",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/tabs"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/membership-perks",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/membership-perks"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/firefly",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/firefly"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/merch/creativecloud/mini-compare/segment-blade",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/merch/creativecloud/mini-compare/segment-blade"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/faq",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/q1-2026/faq"
+    ],
+    [
+     "https://www.adobe.com/",
+     "{{home}}"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/cco/personalization/modals/switch-modal-single-app-upgrade",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/cco/personalization/modals/switch-modal-single-app-upgrade"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 cardTitle"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 description"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[Buy now]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM-CC / Headless / Individual / com / Creative Cloud Individual \u2192 ctas[2]"
+    ],
+    [
+     "https://mas.adobe.com/studio.html",
+     "mas-field: ACOM / Plans / Individual / com / Creative Cloud Individual \u2192 jsonLdSchema"
+    ]
+   ],
+   "images_total": 3,
+   "images_missing_alt": 3,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 3,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 2,
+    "external": 1,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [
+     "buy now"
+    ],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 108,
+    "tier1": {
+     "statistics_count": 1,
+     "statistics_per_100w": 0.93,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 1,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 0,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 1,
+     "heading_levels_skipped": false,
+     "heading_count": 1,
+     "sections": 1,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 1,
+     "structured_format_ratio": 0.154,
+     "emphasis_density": 0.1122,
+     "intro_summary_words": 81
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": [
+    {
+     "mode": "unrendered_template_binding",
+     "note": "template syntax survived into served HTML -- value never rendered server-side"
+    }
+   ]
+  },
+  {
+   "url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/explore-whats-new/explore-whats-new",
+   "final_url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/explore-whats-new/explore-whats-new",
+   "status": 200,
+   "error": null,
+   "depth": 1,
+   "elapsed_ms": 248,
+   "redirect_chain": [],
+   "html_bytes": 16492,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Tue, 22 Sep 2026 15:02:51 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Explore what's new.",
+   "lang": "",
+   "canonical": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/explore-whats-new/explore-whats-new",
+   "hreflangs": [],
+   "robots_meta": "noindex, nofollow",
+   "meta_description": "Get the intelligence and tools to win customers in AI searches.",
+   "og": {
+    "og:title": "Explore what's new.",
+    "og:description": "Get the intelligence and tools to win customers in AI searches.",
+    "og:image": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/explore-whats-new/media_127cc08be6cabac874a7fecd37c599646a4f5de95.png?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/explore-whats-new/media_127cc08be6cabac874a7fecd37c599646a4f5de95.png?width=1200&format=pjpg&optimize=medium"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Explore what's new.",
+    "twitter:description": "Get the intelligence and tools to win customers in AI searches.",
+    "twitter:image": "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/explore-whats-new/media_127cc08be6cabac874a7fecd37c599646a4f5de95.png?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     2,
+     "Explore what's new."
+    ],
+    [
+     3,
+     "Turn AI signals into business impact with Adobe Brand Visibility."
+    ],
+    [
+     3,
+     "Change only what you want."
+    ],
+    [
+     3,
+     "Introducing Color Mode.\u200b"
+    ],
+    [
+     3,
+     "Work smarter than ever with documents."
+    ]
+   ],
+   "text_len": 1217,
+   "main_text_len": 580,
+   "boilerplate_text_len": 0,
+   "link_density": 0.383,
+   "text_sample": "Explore what's new. Features and Releases Explore what's new. Discover the latest product features from Adobe. background #ffffff style spacing-xs-bottom, spacing-3xl-top Mobile https://main--federal--adobecom.aem.page/federal/assets/svgs/experience-cloud-logo.svg | Adobe Experience Cloud Turn AI signals into business impact with Adobe Brand Visibility. Get the intelligence and tools to win customers in AI searches. Learn more Tablet style container, parallax-scale-down-grid background #ffffff https://main--federal--adobecom.aem.page/federal/assets/svgs/photoshop.svg | Adobe Photoshop Change only what you want. Photoshop AI Assistant edits what you ask. Everything else stays. Try AI Assistant https://main--federal--adobecom.aem.page/federal/assets/svgs/premiere-pro.svg | Adobe Premiere Introducing Color Mode.\u200b Color grading purpose\u2012built for editors. Now in Premiere (beta). Explore Premiere https://main--federal--adobecom.aem.page/federal/assets/svgs/acrobat-pro.svg | Adobe Acrobat Work smarter than ever with documents. Trusted PDF tools, now with AI for editing, insights, and content creation. Explore Acrobat style Three-up, container, wide, parallax stagger ltr, spacing-3xl-bottom background #fff",
+   "word_count": 130,
+   "links_internal": [
+    [
+     "https://www.adobe.com/federal/assets/svgs/experience-cloud-logo.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/experience-cloud-logo.svg | Adobe Experience Cloud"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/photoshop.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/photoshop.svg | Adobe Photoshop"
+    ],
+    [
+     "https://www.adobe.com/products/photoshop/app.html",
+     "Try AI Assistant"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/premiere-pro.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/premiere-pro.svg | Adobe Premiere"
+    ],
+    [
+     "https://www.adobe.com/products/premiere/color-mode.html",
+     "Explore Premiere"
+    ],
+    [
+     "https://www.adobe.com/federal/assets/svgs/acrobat-pro.svg",
+     "https://main--federal--adobecom.aem.page/federal/assets/svgs/acrobat-pro.svg | Adobe Acrobat"
+    ],
+    [
+     "https://www.adobe.com/acrobat/generative-ai-pdf.html",
+     "Explore Acrobat"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://business.adobe.com/products/brand-visibility.html",
+     "Learn more"
+    ]
+   ],
+   "images_total": 5,
+   "images_missing_alt": 3,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 5,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 4,
+    "external": 2,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 130,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 1,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 0,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 3,
+     "heading_levels_skipped": false,
+     "heading_count": 5,
+     "sections": 5,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 4,
+     "structured_format_ratio": 0.0,
+     "emphasis_density": 0.0,
+     "intro_summary_words": 0
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.adobe.com/products/photoshop/app.html",
+   "final_url": "https://www.adobe.com/products/photoshop/app.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 215,
+   "redirect_chain": [],
+   "html_bytes": 25950,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Wed, 23 Sep 2026 12:58:31 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Free Photoshop app: Free photo editor app - Adobe",
+   "lang": "",
+   "canonical": "https://www.adobe.com/products/photoshop/app.html",
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "Craft something truly unique with the new Photoshop on iPhone photo editor app. Combine & edit photos and graphics. It\u2019s easy to learn. And it\u2019s free.",
+   "og": {
+    "og:title": "Free Photoshop app: Free photo editor app - Adobe",
+    "og:description": "Craft something truly unique with the new Photoshop on iPhone photo editor app. Combine & edit photos and graphics. It\u2019s easy to learn. And it\u2019s free.",
+    "og:image": "https://www.adobe.com/products/photoshop/media_17a90e9a1384d81a92d775f98b1592317bf0975d9.jpg?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/products/photoshop/media_17a90e9a1384d81a92d775f98b1592317bf0975d9.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Free Photoshop app: Free photo editor app - Adobe",
+    "twitter:description": "Craft something truly unique with the new Photoshop on iPhone photo editor app. Combine & edit photos and graphics. It\u2019s easy to learn. And it\u2019s free.",
+    "twitter:image": "https://www.adobe.com/products/photoshop/media_17a90e9a1384d81a92d775f98b1592317bf0975d9.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Photoshop on mobile.The ultimate image editing app."
+    ],
+    [
+     2,
+     "Change what you want. Keep what you love."
+    ]
+   ],
+   "text_len": 1395,
+   "main_text_len": 535,
+   "boilerplate_text_len": 0,
+   "link_density": 0.563,
+   "text_sample": "Free Photoshop app: Free photo editor app - Adobe #ffffff con-block-row-lockup (s-lockup) https://main--cc--adobecom.aem.live/cc-shared/assets/img/product-icons/svg/photoshop-40.svg Photoshop Photoshop on mobile. The ultimate image editing app. con-block-row-text (l-body) Craft something truly unique with the all-new, free Photoshop on mobile for iPhone or Android. Combine and edit photos, graphics, and Adobe Stock images. It\u2019s easy to learn. con-block-row-text (xl-button) Scan QR code to get the free app. https://main--da-cc--adobecom.aem.page/cc-shared/fragments/merch/products/photoshop/sticky-banner/ps-app #FFDD00 Change what you want. Keep what you love. Tell AI Assistant in Photoshop what you need. It edits just what you ask for and keeps the rest of your image intact. Now available on web and mobile. Try AI Assistant https://main--da-cc--adobecom.aem.live/cc-shared/fragments/products/photoshop/app/vertical-videos https://main--cc--adobecom.aem.live/cc-shared/fragments/products/photoshop/app/riverflows https://main--cc--adobecom.aem.live/cc-shared/fragments/products/photoshop/photoshop-goes-everywhere-v2-pink-bg https://main--cc--adobecom.aem.live/cc-shared/fragments/products/photoshop/app/faqs https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/ff-free-trial-do-more-with-photoshop {{home}} {{adobe-cc}} {{adobe-photoshop}} Photoshop on mobile",
+   "word_count": 115,
+   "links_internal": [
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/photoshop-40.svg",
+     "https://main--cc--adobecom.aem.live/cc-shared/assets/img/product-icons/svg/photoshop-40.svg"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/merch/products/photoshop/sticky-banner/ps-app",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/merch/products/photoshop/sticky-banner/ps-app"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/photoshop/app/vertical-videos",
+     "https://main--da-cc--adobecom.aem.live/cc-shared/fragments/products/photoshop/app/vertical-videos"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/photoshop/app/riverflows",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/photoshop/app/riverflows"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/photoshop/photoshop-goes-everywhere-v2-pink-bg",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/photoshop/photoshop-goes-everywhere-v2-pink-bg"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/photoshop/app/faqs",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/photoshop/app/faqs"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/photoshop/ff-free-trial-do-more-with-photoshop",
+     "https://main--da-cc--adobecom.aem.page/cc-shared/fragments/products/photoshop/ff-free-trial-do-more-with-photoshop"
+    ],
+    [
+     "https://www.adobe.com/",
+     "{{home}}"
+    ],
+    [
+     "https://www.adobe.com/creativecloud.html",
+     "{{adobe-cc}}"
+    ],
+    [
+     "https://www.adobe.com/products/photoshop.html",
+     "{{adobe-photoshop}}"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://photoshop.adobe.com/",
+     "Try AI Assistant"
+    ]
+   ],
+   "images_total": 5,
+   "images_missing_alt": 3,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 5,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 2,
+    "external": 1,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 115,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 1,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 1,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 0.9,
+     "uncovered_claim_terms": [
+      "mobile.the"
+     ]
+    },
+    "tier2": {
+     "heading_depth": 2,
+     "heading_levels_skipped": false,
+     "heading_count": 2,
+     "sections": 2,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 1,
+     "structured_format_ratio": 0.286,
+     "emphasis_density": 0.0351,
+     "intro_summary_words": 42
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": [
+    {
+     "mode": "unrendered_template_binding",
+     "note": "template syntax survived into served HTML -- value never rendered server-side"
+    }
+   ]
+  },
+  {
+   "url": "https://www.adobe.com/products/premiere/color-mode.html",
+   "final_url": "https://www.adobe.com/products/premiere/color-mode.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 874,
+   "redirect_chain": [],
+   "html_bytes": 22665,
+   "https": true,
+   "headers": {
+    "content-type": "text/html; charset=utf-8",
+    "last-modified": "Wed, 23 Sep 2026 12:58:31 GMT",
+    "cache-control": "must-revalidate, max-age=7200"
+   },
+   "title": "Premiere Color Mode. Color Grading. Reinvented for Video Editors",
+   "lang": "",
+   "canonical": "https://www.adobe.com/products/premiere/color-mode.html",
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "Switch into Color Mode. A first of its kind color grading system in Adobe Premiere designed from the ground up for video editors.",
+   "og": {
+    "og:title": "Premiere Color Mode. Color Grading. Reinvented for Video Editors",
+    "og:description": "Switch into Color Mode. A first of its kind color grading system in Adobe Premiere designed from the ground up for video editors.",
+    "og:image": "https://www.adobe.com/products/premiere/media_14a141cf8900a74105b7122f28472dce9fd8cf872.jpg?width=1200&format=pjpg&optimize=medium",
+    "og:image:secure_url": "https://www.adobe.com/products/premiere/media_14a141cf8900a74105b7122f28472dce9fd8cf872.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Premiere Color Mode. Color Grading. Reinvented for Video Editors",
+    "twitter:description": "Switch into Color Mode. A first of its kind color grading system in Adobe Premiere designed from the ground up for video editors.",
+    "twitter:image": "https://www.adobe.com/products/premiere/media_14a141cf8900a74105b7122f28472dce9fd8cf872.jpg?width=1200&format=pjpg&optimize=medium"
+   },
+   "has_favicon": true,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Introducing Color Mode."
+    ],
+    [
+     2,
+     "Color grading. Reinvented for video editors."
+    ]
+   ],
+   "text_len": 1709,
+   "main_text_len": 479,
+   "boilerplate_text_len": 0,
+   "link_density": 0.681,
+   "text_sample": "Premiere Color Mode. Color Grading. Reinvented for Video Editors #000 con-block-row-lockup (m-lockup) https://main--cc--adobecom.aem.live/cc-shared/assets/img/product-icons/svg/premiere-pro.svg|Premiere Introducing Color Mode. con-block-row-text (xl-heading) Color grading. Reinvented for video editors. con-block-row-text (xl-body) Switch into Color Mode \u2014 a first-of-its-kind color grading system in Adobe Premiere (beta) designed from the ground up for video editors. With all-new tools that work the way you think, you can finally craft brilliant color with confidence and control \u2014 right next to your edit. con-block-row-text (xl-button) Get the beta|Get the beta Premiere Watch the film|Watch the film how Premiere Color Mode works con-block-row-text (image, s-spacing) https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/color-feels-like-yours https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/watch https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/original https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/color-controls-tabs https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/editors-love https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/learn-from-editors https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/color-mode-is-here https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/faq https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/try {{home}} {{adobe-cc}} Adobe {{premiere}} Color Mode",
+   "word_count": 109,
+   "links_internal": [
+    [
+     "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/premiere-pro.svg",
+     "https://main--cc--adobecom.aem.live/cc-shared/assets/img/product-icons/svg/premiere-pro.svg|Premiere"
+    ],
+    [
+     "https://www.adobe.com/apps/beta-apps/all-platforms?action=install&source=apps&productId=premiere-beta",
+     "Get the beta|Get the beta Premiere"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/modals/videos/products/premiere/color-mode-marquee",
+     "Watch the film|Watch the film how Premiere Color Mode works"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/color-feels-like-yours",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/color-feels-like-yours"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/watch",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/watch"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/original",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/original"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/color-controls-tabs",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/color-controls-tabs"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/editors-love",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/editors-love"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/learn-from-editors",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/learn-from-editors"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/color-mode-is-here",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/color-mode-is-here"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/faq",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/faq"
+    ],
+    [
+     "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/try",
+     "https://main--cc--adobecom.aem.live/cc-shared/fragments/products/premiere/color-mode/try"
+    ],
+    [
+     "https://www.adobe.com/",
+     "{{home}}"
+    ],
+    [
+     "https://www.adobe.com/creativecloud",
+     "{{adobe-cc}}"
+    ],
+    [
+     "https://www.adobe.com/products/premiere",
+     "Adobe {{premiere}}"
+    ]
+   ],
+   "links_external": [],
+   "images_total": 1,
+   "images_missing_alt": 1,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 1,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 2,
+    "external": 1,
+    "head_blocking": 1,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": true,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 109,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 0,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 0,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 2,
+     "heading_levels_skipped": false,
+     "heading_count": 2,
+     "sections": 2,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 1,
+     "structured_format_ratio": 0.308,
+     "emphasis_density": 0.0544,
+     "intro_summary_words": 2
+    }
+   },
+   "structured_data": {
+    "verdict": "SOCIAL_META_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": true,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": [
+    {
+     "mode": "unrendered_template_binding",
+     "note": "template syntax survived into served HTML -- value never rendered server-side"
+    }
+   ]
+  }
+ ],
+ "link_graph": {
+  "https://www.adobe.com/": [
+   "https://www.adobe.com/federal/assets/svgs/creative-cloud.svg",
+   "https://www.adobe.com/federal/assets/svgs/firefly-appicon-256.svg",
+   "https://www.adobe.com/federal/assets/svgs/acrobat-pro.svg",
+   "https://www.adobe.com/federal/assets/svgs/experience-cloud-logo.svg",
+   "https://www.adobe.com/federal/assets/svgs/creative-cloud.svg",
+   "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/everything-you-need",
+   "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/explore-whats-new/explore-whats-new",
+   "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/customer-testimonials/customer-testimonials",
+   "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/news/news",
+   "https://www.adobe.com/products/catalog.html",
+   "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/all-products-card"
+  ],
+  "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/all-products-card": [
+   "https://www.adobe.com/federal/assets/svgs/firefly-appicon-256.svg",
+   "https://www.adobe.com/products/firefly.html",
+   "https://www.adobe.com/federal/assets/svgs/acrobat-pro.svg",
+   "https://www.adobe.com/acrobat.html",
+   "https://www.adobe.com/federal/assets/svgs/photoshop.svg",
+   "https://www.adobe.com/photoshop.html",
+   "https://www.adobe.com/federal/assets/svgs/premiere-pro.svg",
+   "https://www.adobe.com/products/premiere.html",
+   "https://www.adobe.com/federal/assets/svgs/creative-cloud.svg",
+   "https://www.adobe.com/creativecloud.html",
+   "https://www.adobe.com/federal/assets/svgs/experience-cloud-logo.svg",
+   "https://www.adobe.com/federal/assets/svgs/experience-cloud-logo.svg",
+   "https://www.adobe.com/federal/assets/svgs/illustrator.svg",
+   "https://www.adobe.com/products/illustrator.html",
+   "https://www.adobe.com/federal/assets/svgs/all-products.svg"
+  ],
+  "https://www.adobe.com/products/catalog.html": [
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/acrobat-pro-40.svg",
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/photoshop-40.svg",
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/premiere-pro-40.svg",
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/illustrator-40.svg",
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/express-40.svg",
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/firefly.svg",
+   "https://www.adobe.com/creativecloud/plans/merch-shared/fragments/cco/personalization/modals/switch-modal-single-app-upgrade",
+   "https://www.adobe.com/creativecloud/plans/merch-shared/fragments/faqs/catalog"
+  ],
+  "https://www.adobe.com/products/firefly.html": [
+   "https://www.adobe.com/cc-shared/assets/img/firefly.svg",
+   "https://www.adobe.com/cc-shared/ff-gallery-assets.json",
+   "https://www.adobe.com/cc-shared/assets/firefly/s2-icon-image-20-n.svg",
+   "https://www.adobe.com/cc-shared/assets/firefly/s2-icon-video-20-n.svg",
+   "https://www.adobe.com/creativecloud/animation/testdoc/unity/generate.svg",
+   "https://www.adobe.com/products/firefly/features.html",
+   "https://www.adobe.com/cc-shared/fragments/products/firefly/editorial-carousel-firefly",
+   "https://www.adobe.com/cc-shared/fragments/products/firefly/ff-ai-models",
+   "https://www.adobe.com/cc-shared/fragments/products/firefly/segment-blade",
+   "https://www.adobe.com/cc-shared/fragments/products/firefly/create-consistent-images-at-scale-aside",
+   "https://www.adobe.com/cc-shared/fragments/products/firefly/drive-business-results-aside",
+   "https://www.adobe.com/products/firefly/app",
+   "https://www.adobe.com/products/firefly/features/text-to-image.html",
+   "https://www.adobe.com/products/firefly/features/ai-video-generator.html",
+   "https://www.adobe.com/products/firefly/features/ai-video-editor.html",
+   "https://www.adobe.com/products/firefly/features/ai-photo-editor.html",
+   "https://www.adobe.com/products/firefly/partner-models/google-gemini-nano-banana.html",
+   "https://www.adobe.com/products/firefly/partner-models/flux.html",
+   "https://www.adobe.com/products/firefly/partner-models/runway.html",
+   "https://www.adobe.com/products/firefly/partner-models/luma-ai.html",
+   "https://www.adobe.com/products/firefly/partner-models/gpt-image.html",
+   "https://www.adobe.com/products/firefly/partner-models/elevenlabs.html",
+   "https://www.adobe.com/products/firefly/partner-models/topaz.html",
+   "https://www.adobe.com/ai/overview.html",
+   "https://www.adobe.com/products/photoshop.html",
+   "https://www.adobe.com/products/premiere.html",
+   "https://www.adobe.com/express",
+   "https://www.adobe.com/products/firefly/features/image-to-video.html",
+   "https://www.adobe.com/products/firefly/features/sound-effect-generator.html",
+   "https://www.adobe.com/products/firefly/features/moodboard.html",
+   "https://www.adobe.com/express",
+   "https://www.adobe.com/products/firefly/features/custom-models.html",
+   "https://www.adobe.com/products/firefly/plans.html",
+   "https://www.adobe.com/cc-shared/assets/firefly/s2-icon-image-20-n.svg",
+   "https://www.adobe.com/cc-shared/assets/firefly/s2-icon-video-20-n.svg",
+   "https://www.adobe.com/creativecloud/animation/testdoc/unity/generate.svg"
+  ],
+  "https://www.adobe.com/products/illustrator.html": [
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/illustrator.svg",
+   "https://www.adobe.com/creativecloud/business/teams/illustrator.html",
+   "https://www.adobe.com/creativecloud/buy/students.html",
+   "https://www.adobe.com/cc-shared/fragments/merch/products/illustrator/sticky-banner/default",
+   "https://www.adobe.com/cc-shared/fragments/products/illustrator/riverflow",
+   "https://www.adobe.com/cc-shared/fragments/products/illustrator/explore-ai-features",
+   "https://www.adobe.com/cc-shared/fragments/merch/products/illustrator/mini-compare/segment-blade",
+   "https://www.adobe.com/cc-shared/fragments/products/illustrator/illustrator-faq",
+   "https://www.adobe.com/cc-shared/fragments/products/illustrator/ai-gorgeous-graphics-designed-by-you",
+   "https://www.adobe.com/cc-shared/fragments/products/illustrator/try-beta",
+   "https://www.adobe.com/",
+   "https://www.adobe.com/creativecloud"
+  ],
+  "https://www.adobe.com/products/premiere.html": [
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/premiere-pro.svg",
+   "https://www.adobe.com/creativecloud/business",
+   "https://www.adobe.com/creativecloud/buy/students",
+   "https://www.adobe.com/cc-shared/fragments/merch/products/premiere/sticky-banner/default",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/riverflow",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/explore-pr-features",
+   "https://www.adobe.com/cc-shared/fragments/merch/products/premiere/mini-compare/segment-blade",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/pr-mobile",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/premiere-faq",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/discover-your-best-work",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/features/download-beta-app",
+   "https://www.adobe.com/cc-shared/fragments/products/adobe-express/adobe-express-premiere-edit-faster-edit-easier",
+   "https://www.adobe.com/",
+   "https://www.adobe.com/creativecloud"
+  ],
+  "https://www.adobe.com/creativecloud/plans/merch-shared/fragments/faqs/catalog": [
+   "https://www.adobe.com/creativecloud/plans.html",
+   "https://www.adobe.com/acrobat.html",
+   "https://www.adobe.com/creativecloud/plans.html",
+   "https://www.adobe.com/creativecloud/buy/students.html",
+   "https://www.adobe.com/creativecloud/3d-ar.html",
+   "https://www.adobe.com/products/illustrator.html",
+   "https://www.adobe.com/products/premiere.html"
+  ],
+  "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/news/news": [
+   "https://www.adobe.com/federal/assets/svgs/b-app-experiencecloud.svg"
+  ],
+  "https://www.adobe.com/photoshop.html": [
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/photoshop-40.svg",
+   "https://www.adobe.com/creativecloud/business/teams/photoshop.html",
+   "https://www.adobe.com/creativecloud/buy/students.html",
+   "https://www.adobe.com/cc-shared/fragments/merch/products/photoshop/sticky-banner/default",
+   "https://www.adobe.com/cc-shared/fragments/products/photoshop/product-page/riverflow",
+   "https://www.adobe.com/cc-shared/fragments/products/photoshop/product-page/features",
+   "https://www.adobe.com/cc-shared/fragments/merch/products/photoshop/mini-compare/segment-blade",
+   "https://www.adobe.com/cc-shared/fragments/products/photoshop/product-page/goes-everywhere",
+   "https://www.adobe.com/cc-shared/fragments/products/photoshop/photoshop-includes-adobe-express-need-a-quick-edit",
+   "https://www.adobe.com/cc-shared/fragments/products/photoshop/photoshop-faq",
+   "https://www.adobe.com/cc-shared/fragments/products/photoshop/photoshop-start-with-photoshop",
+   "https://www.adobe.com",
+   "https://www.adobe.com/creativecloud.html"
+  ],
+  "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/customer-testimonials/customer-testimonials": [
+   "https://www.adobe.com/creativecloud/plans.html",
+   "https://www.adobe.com/creativecloud/plans.html",
+   "https://www.adobe.com/creativecloud/plans.html"
+  ],
+  "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/everything-you-need": [
+   "https://www.adobe.com/federal/assets/svgs/creative-cloud.svg",
+   "https://www.adobe.com/creativecloud.html",
+   "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_1c1a3a49c0743f60e1f65e2fa6550dfdb74bf6b6a.mp4",
+   "https://www.adobe.com/federal/assets/svgs/firefly-appicon-256.svg",
+   "https://www.adobe.com/products/firefly.html",
+   "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_1f6cfe88cac9aedf8fe519c1aee63a4d3ff88fd30.mp4",
+   "https://www.adobe.com/federal/assets/svgs/acrobat-pro.svg",
+   "https://www.adobe.com/acrobat/pdf-and-document-essentials.html",
+   "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_10552085c17e81dd8aa9937f8833001840b9aefce.mp4",
+   "https://www.adobe.com/federal/assets/svgs/experience-cloud-logo.svg",
+   "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_1ca1e5a546e0359fe58b5da46d41c82156a11c640.mp4",
+   "https://www.adobe.com/federal/assets/svgs/creative-cloud.svg",
+   "https://www.adobe.com/education/students/creativecloud.html",
+   "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/everything-you-need/media_10474e01322a0aa425661636af8bb5fc854dc57d7.mp4"
+  ],
+  "https://www.adobe.com/creativecloud.html": [
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/creative-cloud.svg",
+   "https://www.adobe.com/cc-shared/fragments/cco/sticky-banner/default",
+   "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/3-up-cards",
+   "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/2-up-features",
+   "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/tabs",
+   "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/membership-perks",
+   "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/firefly",
+   "https://www.adobe.com/cc-shared/fragments/merch/creativecloud/mini-compare/segment-blade",
+   "https://www.adobe.com/cc-shared/fragments/cco/q1-2026/faq",
+   "https://www.adobe.com/",
+   "https://www.adobe.com/cc-shared/fragments/cco/personalization/modals/switch-modal-single-app-upgrade"
+  ],
+  "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/explore-whats-new/explore-whats-new": [
+   "https://www.adobe.com/federal/assets/svgs/experience-cloud-logo.svg",
+   "https://www.adobe.com/federal/assets/svgs/photoshop.svg",
+   "https://www.adobe.com/products/photoshop/app.html",
+   "https://www.adobe.com/federal/assets/svgs/premiere-pro.svg",
+   "https://www.adobe.com/products/premiere/color-mode.html",
+   "https://www.adobe.com/federal/assets/svgs/acrobat-pro.svg",
+   "https://www.adobe.com/acrobat/generative-ai-pdf.html"
+  ],
+  "https://www.adobe.com/products/photoshop/app.html": [
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/photoshop-40.svg",
+   "https://www.adobe.com/cc-shared/fragments/merch/products/photoshop/sticky-banner/ps-app",
+   "https://www.adobe.com/cc-shared/fragments/products/photoshop/app/vertical-videos",
+   "https://www.adobe.com/cc-shared/fragments/products/photoshop/app/riverflows",
+   "https://www.adobe.com/cc-shared/fragments/products/photoshop/photoshop-goes-everywhere-v2-pink-bg",
+   "https://www.adobe.com/cc-shared/fragments/products/photoshop/app/faqs",
+   "https://www.adobe.com/cc-shared/fragments/products/photoshop/ff-free-trial-do-more-with-photoshop",
+   "https://www.adobe.com/",
+   "https://www.adobe.com/creativecloud.html",
+   "https://www.adobe.com/products/photoshop.html"
+  ],
+  "https://www.adobe.com/products/premiere/color-mode.html": [
+   "https://www.adobe.com/cc-shared/assets/img/product-icons/svg/premiere-pro.svg",
+   "https://www.adobe.com/apps/beta-apps/all-platforms?action=install&source=apps&productId=premiere-beta",
+   "https://www.adobe.com/cc-shared/fragments/modals/videos/products/premiere/color-mode-marquee",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/color-feels-like-yours",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/watch",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/original",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/color-controls-tabs",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/editors-love",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/learn-from-editors",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/color-mode-is-here",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/faq",
+   "https://www.adobe.com/cc-shared/fragments/products/premiere/color-mode/try",
+   "https://www.adobe.com/",
+   "https://www.adobe.com/creativecloud",
+   "https://www.adobe.com/products/premiere"
+  ]
+ },
+ "stats": {
+  "pages_fetched": 15,
+  "pages_failed": 0,
+  "failures": [],
+  "robots_skipped": [],
+  "elapsed_seconds": 52.8,
+  "budget_exhausted": false
+ }
+}

@@ -1,0 +1,628 @@
+{
+  "site": "www.adobe.com",
+  "audited_at": "2026-09-23T15:58:47Z",
+  "summary": {
+    "site": "www.adobe.com",
+    "audited_at": "2026-09-23T15:58:47Z",
+    "total_findings": 20,
+    "critical": 0,
+    "high": 4,
+    "medium": 8,
+    "low": 8
+  },
+  "readiness": {
+    "overall": 82,
+    "pillars": {
+      "crawl_access": {
+        "label": "Reachable",
+        "score": 88
+      },
+      "machine_readable": {
+        "label": "Readable",
+        "score": 86
+      },
+      "citability": {
+        "label": "Quotable",
+        "score": 67
+      },
+      "answerability": {
+        "label": "Answerable",
+        "score": 76
+      },
+      "trust_freshness": {
+        "label": "Current & corroborated",
+        "score": 93
+      },
+      "engagement": {
+        "label": "Engaging",
+        "score": 82
+      }
+    },
+    "scale_note": "Scores are this audit's own 0-100 framework (100 = no findings in that pillar), intended to show relative weakness at a glance. They are not a validated or externally comparable metric."
+  },
+  "audit_scope": {
+    "pages_sampled": 15,
+    "crawl_seconds": 52.8,
+    "collected_at": "2026-09-23T15:57:49Z"
+  },
+  "roadmap": {
+    "now": [
+      {
+        "id": "F-001",
+        "code": "FACTS_IN_NON_TEXT",
+        "title": "Facts appear to be locked in non-text elements",
+        "severity": "high",
+        "effort": "project",
+        "action": "Add a plain-text equivalent alongside each of these elements: real HTML text for prices and specs shown as images, an HTML summary beside PDF-only documents, and descriptive alt text on fact-bearing graphics."
+      },
+      {
+        "id": "F-002",
+        "code": "NO_PRICE",
+        "title": "Commercial pages state no explicit price in extractable text",
+        "severity": "high",
+        "effort": "moderate",
+        "action": "Publish a real figure, a starting-from figure, or an explicit range as plain text on each commercial page."
+      },
+      {
+        "id": "F-003",
+        "code": "UNANSWERABLE_QUESTIONS",
+        "title": "3 of 8 core questions about this brand cannot be answered from its own extractable content",
+        "severity": "high",
+        "effort": "project",
+        "action": "Publish each missing fact as plain, visible text on a relevant page: How do I contact Adobe?, How much does Adobe cost?, What are the specifications / what's included?"
+      },
+      {
+        "id": "F-004",
+        "code": "ANSWERS_NOT_EXTRACTABLE",
+        "title": "Some missing answers may exist on the page but in a non-extractable form",
+        "severity": "high",
+        "effort": "project",
+        "action": "Add a plain-text equivalent beside each non-textual element carrying a fact (prices in images, spec tables as graphics, PDF-only documents)."
+      },
+      {
+        "id": "F-014",
+        "code": "NO_HTML_LANG",
+        "title": "No language declared on the html element",
+        "severity": "low",
+        "effort": "quick",
+        "action": "Add a lang attribute, e.g. <html lang=\"en\">."
+      },
+      {
+        "id": "F-019",
+        "code": "NO_PRIVACY_OR_TERMS",
+        "title": "No link to a privacy policy or terms page",
+        "severity": "low",
+        "effort": "quick",
+        "action": "Publish and link privacy policy, terms / legal from the site footer."
+      }
+    ],
+    "next": [
+      {
+        "id": "F-005",
+        "code": "UNDATED_CONTENT",
+        "title": "Most pages publish no date at all",
+        "severity": "medium",
+        "effort": "moderate",
+        "action": "Add an accurate, visible published/updated date to substantive pages, mirrored in dateModified."
+      },
+      {
+        "id": "F-006",
+        "code": "NO_SPECS",
+        "title": "Product pages lack structured specifications",
+        "severity": "medium",
+        "effort": "moderate",
+        "action": "Add a specification table or definition list of concrete attributes and values to each product/service page."
+      },
+      {
+        "id": "F-011",
+        "code": "MISSING_ALT_TEXT",
+        "title": "Most images have no alt text",
+        "severity": "medium",
+        "effort": "moderate",
+        "action": "Add descriptive alt text to images that carry meaning; keep alt=\"\" for purely decorative ones."
+      },
+      {
+        "id": "F-012",
+        "code": "HOMEPAGE_EXTRACTABLE_TEXT_IS_UNRENDERED",
+        "title": "Homepage extractable text is unrendered CMS template bindings, not a value proposition",
+        "severity": "medium",
+        "effort": "unknown",
+        "action": "Server-render the homepage hero and product-card copy (headline, one-line description, audience, primary CTA) so it appears as real HTML text."
+      }
+    ],
+    "later": [
+      {
+        "id": "F-007",
+        "code": "NO_COMPARISON",
+        "title": "No comparison against alternatives anywhere in the sampled pages",
+        "severity": "medium",
+        "effort": "project",
+        "action": "Publish an honest comparison page covering how you differ from named alternatives, including where you are not the right fit."
+      },
+      {
+        "id": "F-008",
+        "code": "THIN_PAGES",
+        "title": "Most sampled pages are very thin",
+        "severity": "medium",
+        "effort": "project",
+        "action": "Expand the substantive pages with concrete detail, or consolidate thin pages into fewer, richer ones."
+      },
+      {
+        "id": "F-009",
+        "code": "NO_CORROBORATION",
+        "title": "No third-party corroboration signals anywhere on the site",
+        "severity": "medium",
+        "effort": "project",
+        "action": "Build and then reference independent presence: a Wikidata item, an accurate LinkedIn and Crunchbase profile, listings on the review platforms your category uses, and coverage in real publications."
+      },
+      {
+        "id": "F-010",
+        "code": "GOALS_UNREACHABLE",
+        "title": "Common visitor goals have no reachable page",
+        "severity": "medium",
+        "effort": "project",
+        "action": "Add clear, crawlable navigation links to each missing destination, using plain labels ('Contact', 'Pricing') rather than icons or JavaScript-only menus."
+      },
+      {
+        "id": "F-013",
+        "code": "WEAK_STRUCTURED_DATA",
+        "title": "Only weak or legacy structured data is present",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Add an Organization JSON-LD block alongside the existing markup rather than replacing it."
+      },
+      {
+        "id": "F-015",
+        "code": "NO_INTRO_SUMMARY",
+        "title": "Pages open without a summary paragraph",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Open each substantive page with a 40-120 word summary that directly answers the question the page exists to answer."
+      },
+      {
+        "id": "F-016",
+        "code": "PRIORITY_CLAIMS",
+        "title": "Priority claims to verify against independent sources",
+        "severity": "low",
+        "effort": "project",
+        "action": "For each claim above, search independent sources working DOWN this ladder and stop at the first tier that settles it: P0 Government / regulatory registries; P1 Structured knowledge bases; P2 Established independent news; P3 User & review platforms; P4 Other websites. Count a claim corroborated only when a source that is NOT the brand, NOT a press-release wire, and NOT an aggregator copying one origin agrees with it. Record CONTRADICTED / CONFIRMED / UNCORROBORATED per claim (uncorroborated is not the same as false)."
+      },
+      {
+        "id": "F-017",
+        "code": "OFF_SITE_CORROBORATION_OF_CORE",
+        "title": "Off-site corroboration of core identity claims confirmed",
+        "severity": "low",
+        "effort": "unknown",
+        "action": "No action needed; optionally add sameAs links (Wikidata, LinkedIn) to the Organization JSON-LD."
+      },
+      {
+        "id": "F-018",
+        "code": "NO_BREADCRUMBS",
+        "title": "No breadcrumbs on a site with nested content",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Add breadcrumb navigation to nested pages, marked up with BreadcrumbList."
+      },
+      {
+        "id": "F-020",
+        "code": "VAGUE_ANCHOR_TEXT",
+        "title": "Many links use uninformative anchor text",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Rewrite these links so the anchor text names the destination -- 'read the pricing guide' rather than 'click here'."
+      }
+    ],
+    "note": "Bucketed by impact against implementation cost, so a cheap fix is not queued behind an expensive one. Severity order is preserved within each bucket."
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "code": "FACTS_IN_NON_TEXT",
+      "title": "Facts appear to be locked in non-text elements",
+      "severity": "high",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "Detected: unrendered_template_binding on 8 page(s) (e.g. https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/all-products-card). Reviewer note: the 8 pages include CMS fragment endpoints; the same template-binding evidence also appears on the homepage.",
+      "mechanism": "A fact carried only by an image, a PDF, a canvas, a third-party embed or an unrendered template is invisible to text extraction. The information already exists -- it just cannot be read -- which makes this among the cheapest gaps to close.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add a plain-text equivalent alongside each of these elements: real HTML text for prices and specs shown as images, an HTML summary beside PDF-only documents, and descriptive alt text on fact-bearing graphics.",
+        "priority": "high"
+      },
+      "source_skill": "crawl-render-audit",
+      "affected_urls": [
+        "https://www.adobe.com/homepage/fragments/loggedout/redesign/default/all-products-card/all-products-card"
+      ],
+      "effort": "project"
+    },
+    {
+      "id": "F-002",
+      "code": "NO_PRICE",
+      "title": "Commercial pages state no explicit price in extractable text",
+      "severity": "high",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "9/9 pricing/product-like pages contain no currency figure in the extracted text. Examples: https://www.adobe.com/, https://www.adobe.com/products/catalog.html, https://www.adobe.com/products/firefly.html.",
+      "mechanism": "A visible price is a citation gatekeeper: its absence measured an OR above 100 against being cited, unanimously across all 6 models tested -- missing price alone can eliminate citation odds regardless of other content strengths. 'Contact us for pricing' reads to an answer engine as 'no price exists'.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Publish a real figure, a starting-from figure, or an explicit range as plain text on each commercial page.",
+        "priority": "high",
+        "how": "Even 'from $49/month' or 'typical projects run $5,000-$15,000' is extractable; 'request a quote' is not."
+      },
+      "source_skill": "ai-citability-audit",
+      "affected_urls": [
+        "https://www.adobe.com/",
+        "https://www.adobe.com/products/catalog.html",
+        "https://www.adobe.com/products/firefly.html"
+      ],
+      "effort": "moderate"
+    },
+    {
+      "id": "F-003",
+      "code": "UNANSWERABLE_QUESTIONS",
+      "title": "3 of 8 core questions about this brand cannot be answered from its own extractable content",
+      "severity": "high",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "Entity type inferred as 'saas' (SoftwareApplication schema, or a pricing/plans path plus API/integration/docs vocabulary). Sampled 15 page(s). Unanswerable: How do I contact Adobe? -> no email or tel: link in extractable text; How much does Adobe cost? -> no currency figure anywhere in the extracted text of the sampled pages; What are the specifications / what's included? -> no spec table and at most 1 attribute:value pairs on any page.",
+      "mechanism": "An assistant answering a question about a brand builds the answer from what it can reach, read and quote at that moment. Where the answer is not present as extractable text, the assistant either omits the brand entirely or fills the gap from a third-party source it does not control -- which is how brands get described inaccurately. Each gap below is a specific question your site currently cannot answer.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Publish each missing fact as plain, visible text on a relevant page: How do I contact Adobe?, How much does Adobe cost?, What are the specifications / what's included?",
+        "priority": "high",
+        "how": "Put the answer in body text, not only in an image, a PDF, a form, or a JS-rendered widget. Stating it once, plainly, is enough."
+      },
+      "source_skill": "answerability-probe",
+      "answerability": {
+        "entity_type": "saas",
+        "coverage": 0.62,
+        "answered": [
+          "identity",
+          "what_it_does",
+          "location",
+          "integrations_or_docs",
+          "trial_or_signup"
+        ],
+        "unanswered": [
+          "contact",
+          "price",
+          "product_specs"
+        ]
+      },
+      "effort": "project"
+    },
+    {
+      "id": "F-004",
+      "code": "ANSWERS_NOT_EXTRACTABLE",
+      "title": "Some missing answers may exist on the page but in a non-extractable form",
+      "severity": "high",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "Detected extractability risks across sampled pages: unrendered_template_binding. These co-occur with 3 unanswerable question(s).",
+      "mechanism": "A fact rendered inside an image, canvas, PDF, third-party embed or client-side template is visible to a human but absent for a text extractor. This is the most recoverable class of gap -- the content already exists and only needs a text equivalent.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add a plain-text equivalent beside each non-textual element carrying a fact (prices in images, spec tables as graphics, PDF-only documents).",
+        "priority": "high",
+        "how": "A short HTML table or paragraph next to the visual is sufficient; the visual can stay."
+      },
+      "source_skill": "answerability-probe",
+      "effort": "project"
+    },
+    {
+      "id": "F-005",
+      "code": "UNDATED_CONTENT",
+      "title": "Most pages publish no date at all",
+      "severity": "medium",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "15/15 sampled pages expose no visible updated/copyright year and no JSON-LD date field.",
+      "mechanism": "A recent timestamp measured a clear citation advantage over no timestamp in every model tested. Undated content forces an answer engine to guess at currency, and it guesses conservatively.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add an accurate, visible published/updated date to substantive pages, mirrored in dateModified.",
+        "priority": "medium"
+      },
+      "source_skill": "ai-citability-audit",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-006",
+      "code": "NO_SPECS",
+      "title": "Product pages lack structured specifications",
+      "severity": "medium",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "9/9 commercial pages expose fewer than 3 attribute:value spec pairs and no spec table. Examples: https://www.adobe.com/, https://www.adobe.com/products/catalog.html, https://www.adobe.com/products/firefly.html.",
+      "mechanism": "Presence of technical specifications measured OR 8.6-243 for citation across models -- it is one of the strongest completeness differentiators, because it gives the engine discrete attributes it can match against a specific question.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add a specification table or definition list of concrete attributes and values to each product/service page.",
+        "priority": "medium"
+      },
+      "source_skill": "ai-citability-audit",
+      "affected_urls": [
+        "https://www.adobe.com/",
+        "https://www.adobe.com/products/catalog.html",
+        "https://www.adobe.com/products/firefly.html"
+      ],
+      "effort": "moderate"
+    },
+    {
+      "id": "F-007",
+      "code": "NO_COMPARISON",
+      "title": "No comparison against alternatives anywhere in the sampled pages",
+      "severity": "medium",
+      "confidence": 0.75,
+      "category": "discoverability",
+      "evidence": "None of the 9 commercial pages contain comparison language (vs / compared to / alternative to / instead of).",
+      "mechanism": "Pages that compare against alternatives measured OR 1.6-7.5 for citation. Separately, ranked comparison and 'best-of' content accounts for the single largest share of content citations in AI answers (~36%) -- far more than any brand's own marketing pages.",
+      "evidence_tier": "correlational",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Publish an honest comparison page covering how you differ from named alternatives, including where you are not the right fit.",
+        "priority": "medium",
+        "how": "Omitting genuine limitations is classed as a manipulation pattern and is increasingly detected -- state trade-offs honestly."
+      },
+      "source_skill": "ai-citability-audit",
+      "effort": "project"
+    },
+    {
+      "id": "F-008",
+      "code": "THIN_PAGES",
+      "title": "Most sampled pages are very thin",
+      "severity": "medium",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "11/15 sampled pages contain under 150 words of extracted text.",
+      "mechanism": "Depth of coverage measured OR 4-10,000+ for citation. Thin pages rarely contain enough quotable substance to be selected as a source, and they also suggest the real content may not be reaching the extractor at all -- cross-check the crawl-render findings for a rendering gap before treating this as purely editorial.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Expand the substantive pages with concrete detail, or consolidate thin pages into fewer, richer ones.",
+        "priority": "medium"
+      },
+      "source_skill": "ai-citability-audit",
+      "effort": "project"
+    },
+    {
+      "id": "F-009",
+      "code": "NO_CORROBORATION",
+      "title": "No third-party corroboration signals anywhere on the site",
+      "severity": "medium",
+      "confidence": 0.75,
+      "category": "discoverability",
+      "evidence": "Across 15 sampled pages there are no outbound links to independent reference or review sources (g2.com, trustpilot.com, capterra.com, wikipedia.org, wikidata.org, linkedin.com...) and no press-mention language.",
+      "mechanism": "Only a small share of AI citations point at a brand's own domain -- the large majority point at third-party pages discussing it. A brand whose claims appear nowhere but its own site has nothing for an assistant to corroborate against, and self-assertion alone is weak evidence.",
+      "evidence_tier": "correlational",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Build and then reference independent presence: a Wikidata item, an accurate LinkedIn and Crunchbase profile, listings on the review platforms your category uses, and coverage in real publications.",
+        "priority": "medium",
+        "how": "Getting included in credible third-party comparison and 'best of' roundups is unusually high-leverage: ranked listicles account for the single largest share of content citations in AI answers."
+      },
+      "source_skill": "freshness-corroboration-audit",
+      "effort": "project"
+    },
+    {
+      "id": "F-010",
+      "code": "GOALS_UNREACHABLE",
+      "title": "Common visitor goals have no reachable page",
+      "severity": "medium",
+      "confidence": 0.75,
+      "category": "engagement",
+      "evidence": "No page or homepage link matching these goals was found in the crawl: contact, about. Crawl reached 135 internal URL(s) from the homepage. Reviewer note: a bounded 15-page sample dominated by CMS fragments and a client-rendered nav; Adobe's real contact/about pages very likely exist, so this is most likely a crawlable-link gap rather than absence.",
+      "mechanism": "These are the destinations visitors arrive looking for. If a goal has no discoverable path from the homepage, the visitor must guess a URL or leave -- and an assistant browsing on their behalf will simply report that it could not find the information.",
+      "evidence_tier": "correlational",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add clear, crawlable navigation links to each missing destination, using plain labels ('Contact', 'Pricing') rather than icons or JavaScript-only menus.",
+        "priority": "medium",
+        "how": "If these pages do exist, the problem is that they are not linked in crawlable HTML -- check whether the navigation is rendered client-side."
+      },
+      "source_skill": "engagement-audit",
+      "effort": "project"
+    },
+    {
+      "id": "F-011",
+      "code": "MISSING_ALT_TEXT",
+      "title": "Most images have no alt text",
+      "severity": "medium",
+      "confidence": 0.9,
+      "category": "engagement",
+      "evidence": "40/67 images across sampled pages have empty or missing alt attributes.",
+      "mechanism": "Alt text is the text stand-in for an image. Without it, any information carried visually is unavailable to screen-reader users and to text extraction alike. Note that purely decorative icons legitimately use empty alt, so treat this as a prompt to review rather than proof that every instance is wrong.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add descriptive alt text to images that carry meaning; keep alt=\"\" for purely decorative ones.",
+        "priority": "medium"
+      },
+      "source_skill": "engagement-audit",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-012",
+      "code": "HOMEPAGE_EXTRACTABLE_TEXT_IS_UNRENDERED",
+      "title": "Homepage extractable text is unrendered CMS template bindings, not a value proposition",
+      "severity": "medium",
+      "confidence": 0.9,
+      "category": "engagement",
+      "evidence": "Homepage text_sample in evidence.json begins with the title 'Adobe: Creative, marketing and document management solutions' followed by repeated 'mas-field: ACOM / Headless / Individual / com / Creative Cloud Individual -> Title/Subtitle/Product description' placeholders and CTA labels such as 'Free trial - segmentation - modal' and 'Create with Firefly'. Only 'Adobe for Business' reads as audience copy. What it is: only the <title>. Who for: implied (individual vs business). Next action: CTA labels present but embedded in placeholder strings.",
+      "mechanism": "A non-rendering extractor sees template field names instead of prose, so it cannot state what Adobe is, who it serves, or what to do next from body text. Human visitors likely see rendered content; this is a text-extraction orientation gap.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Server-render the homepage hero and product-card copy (headline, one-line description, audience, primary CTA) so it appears as real HTML text.",
+        "priority": "medium"
+      },
+      "source_skill": "engagement-audit",
+      "effort": "unknown"
+    },
+    {
+      "id": "F-013",
+      "code": "WEAK_STRUCTURED_DATA",
+      "title": "Only weak or legacy structured data is present",
+      "severity": "low",
+      "confidence": 0.7,
+      "category": "discoverability",
+      "evidence": "Verdicts across sampled pages: ['SOCIAL_META_ONLY', 'STRUCTURED_DATA_PRESENT']. 0 page(s) carry only classic microformats, 14 only social meta tags.",
+      "mechanism": "These formats are read by fewer consumers than JSON-LD and typically carry less entity detail, but they ARE structured data -- this is a gap in richness, not an absence of markup.",
+      "evidence_tier": "correlational",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Add an Organization JSON-LD block alongside the existing markup rather than replacing it.",
+        "priority": "low"
+      },
+      "source_skill": "structured-data-entity-audit",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-014",
+      "code": "NO_HTML_LANG",
+      "title": "No language declared on the html element",
+      "severity": "low",
+      "confidence": 0.7,
+      "category": "discoverability",
+      "evidence": "<html> has no lang attribute on https://www.adobe.com/.",
+      "mechanism": "Missing language metadata weakens locale and entity matching, and degrades screen reader pronunciation.",
+      "evidence_tier": "correlational",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Add a lang attribute, e.g. <html lang=\"en\">.",
+        "priority": "low"
+      },
+      "source_skill": "structured-data-entity-audit",
+      "affected_urls": [
+        "https://www.adobe.com/"
+      ],
+      "effort": "quick"
+    },
+    {
+      "id": "F-015",
+      "code": "NO_INTRO_SUMMARY",
+      "title": "Pages open without a summary paragraph",
+      "severity": "low",
+      "confidence": 0.85,
+      "category": "discoverability",
+      "evidence": "2 page(s) over 300 words have under 25 words between the H1 and the first subheading. Examples: https://www.adobe.com/, https://www.adobe.com/creativecloud/plans/merch-shared/fragments/faqs/catalog.",
+      "mechanism": "Retrieval favours content that answers early, and the opening position is the strongest slot in a passage. Some engine architectures weight the opening especially heavily when judging a batch of retrieved documents. Fix the tier-1 gatekeeper findings first -- structural work measured negligible benefit on pages that still fail a gatekeeper.",
+      "evidence_tier": "measured",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Open each substantive page with a 40-120 word summary that directly answers the question the page exists to answer.",
+        "priority": "low"
+      },
+      "source_skill": "ai-citability-audit",
+      "affected_urls": [
+        "https://www.adobe.com/",
+        "https://www.adobe.com/creativecloud/plans/merch-shared/fragments/faqs/catalog"
+      ],
+      "effort": "moderate"
+    },
+    {
+      "id": "F-016",
+      "code": "PRIORITY_CLAIMS",
+      "title": "Priority claims to verify against independent sources",
+      "severity": "low",
+      "confidence": 0.75,
+      "category": "discoverability",
+      "evidence": "Inferred site type: saas. The claims most worth spending the bounded off-site query budget on (Part B):\n1. [identity] Adobe (from JSON-LD, on 1 page)\n2. [identity] Adobe Inc. (from JSON-LD, on 1 page)\n3. [location] 345 Park Avenue, San Jose, CA, 95110, US (from JSON-LD, on 1 page)",
+      "mechanism": "Off-site corroboration is where most of the citation surface is -- assistants trust a fact more when independent sources agree, and a claim that lives only on the brand's own site has nothing to check it against. Verifying the highest-value claims first, and weighting sources by authority, spends a small query budget where it matters.",
+      "evidence_tier": "correlational",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "For each claim above, search independent sources working DOWN this ladder and stop at the first tier that settles it: P0 Government / regulatory registries; P1 Structured knowledge bases; P2 Established independent news; P3 User & review platforms; P4 Other websites. Count a claim corroborated only when a source that is NOT the brand, NOT a press-release wire, and NOT an aggregator copying one origin agrees with it. Record CONTRADICTED / CONFIRMED / UNCORROBORATED per claim (uncorroborated is not the same as false).",
+        "priority": "low",
+        "how": "P0/P1 (registries, Wikidata/Crunchbase) settle identity, founding year and location cheaply. Reserve P2 news for disputed or reputational claims. P3 review sites only for reputation, weighted low."
+      },
+      "source_skill": "freshness-corroboration-audit",
+      "effort": "project"
+    },
+    {
+      "id": "F-017",
+      "code": "OFF_SITE_CORROBORATION_OF_CORE",
+      "title": "Off-site corroboration of core identity claims confirmed",
+      "severity": "low",
+      "confidence": 0.7,
+      "category": "discoverability",
+      "evidence": "Web search on 2026-09-23 returned independent sources agreeing with the site's JSON-LD: Wikipedia 'Adobe Inc.' and Britannica (San Jose HQ, founded 1982), Wikipedia 'Adobe World Headquarters' (345 Park Avenue, San Jose, CA 95110), and an SEC EDGAR filing (CIK 796343). Claims CONFIRMED, no contradictions. Only one bounded query was run; sameAs links to Wikidata/LinkedIn were not verified.",
+      "mechanism": "Independent agreement raises trust in the brand's own claims. Recorded as a pass.",
+      "evidence_tier": "correlational",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "No action needed; optionally add sameAs links (Wikidata, LinkedIn) to the Organization JSON-LD.",
+        "priority": "low"
+      },
+      "source_skill": "freshness-corroboration-audit",
+      "effort": "unknown"
+    },
+    {
+      "id": "F-018",
+      "code": "NO_BREADCRUMBS",
+      "title": "No breadcrumbs on a site with nested content",
+      "severity": "low",
+      "confidence": 0.75,
+      "category": "engagement",
+      "evidence": "8 sampled page(s) sit two or more clicks deep and no breadcrumb navigation (BreadcrumbList markup or a breadcrumb nav landmark) was found.",
+      "mechanism": "Someone arriving on a deep page from a search result or an assistant's citation has no way to tell where they are in the site or how to go up a level. Breadcrumbs also state the site's hierarchy explicitly for machines.",
+      "evidence_tier": "correlational",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add breadcrumb navigation to nested pages, marked up with BreadcrumbList.",
+        "priority": "low"
+      },
+      "source_skill": "engagement-audit",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-019",
+      "code": "NO_PRIVACY_OR_TERMS",
+      "title": "No link to a privacy policy or terms page",
+      "severity": "low",
+      "confidence": 0.75,
+      "category": "engagement",
+      "evidence": "Across 15 sampled page(s), no link was found to: privacy policy, terms / legal. Reviewer note: sample dominated by fragment URLs with no footer; likely not sitewide.",
+      "mechanism": "These pages are a baseline trust signal for visitors deciding whether to transact, and their absence is conspicuous on any site that collects data. They are also commonly expected by platforms and reviewers.",
+      "evidence_tier": "correlational",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Publish and link privacy policy, terms / legal from the site footer.",
+        "priority": "low"
+      },
+      "source_skill": "engagement-audit",
+      "effort": "quick"
+    },
+    {
+      "id": "F-020",
+      "code": "VAGUE_ANCHOR_TEXT",
+      "title": "Many links use uninformative anchor text",
+      "severity": "low",
+      "confidence": 0.9,
+      "category": "engagement",
+      "evidence": "9 link(s) across sampled pages use generic anchor text such as link.",
+      "mechanism": "Anchor text is how both a screen-reader user scanning links and a machine building a link graph work out what is on the other end. 'Click here' describes nothing, so the destination's topic is lost.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Rewrite these links so the anchor text names the destination -- 'read the pricing guide' rather than 'click here'.",
+        "priority": "low"
+      },
+      "source_skill": "engagement-audit",
+      "effort": "moderate"
+    }
+  ],
+  "critic_summary": {
+    "findings_considered": 21,
+    "findings_reported": 21,
+    "suppressed": [],
+    "severity_adjustments": []
+  }
+}

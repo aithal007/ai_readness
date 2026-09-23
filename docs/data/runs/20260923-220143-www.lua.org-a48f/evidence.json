@@ -1,0 +1,6977 @@
+{
+ "schema_version": "2.0.0",
+ "site": "https://www.lua.org/",
+ "domain": "www.lua.org",
+ "entry_reachable": true,
+ "collected_at": "2026-09-23T16:32:18Z",
+ "limits": {
+  "max_pages": 15,
+  "max_depth": 2,
+  "budget_seconds": 150
+ },
+ "robots": {
+  "status": 404,
+  "present": false,
+  "bytes": 0,
+  "star_allowed_root": true,
+  "agents": {
+   "GPTBot": {
+    "operator": "OpenAI",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "OAI-SearchBot": {
+    "operator": "OpenAI",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "ChatGPT-User": {
+    "operator": "OpenAI",
+    "category": "live-fetch",
+    "citation_impact": "intent",
+    "allowed_root": true
+   },
+   "ClaudeBot": {
+    "operator": "Anthropic",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "Claude-SearchBot": {
+    "operator": "Anthropic",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "Claude-User": {
+    "operator": "Anthropic",
+    "category": "live-fetch",
+    "citation_impact": "intent",
+    "allowed_root": true
+   },
+   "anthropic-ai": {
+    "operator": "Anthropic",
+    "category": "legacy",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "PerplexityBot": {
+    "operator": "Perplexity",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "Perplexity-User": {
+    "operator": "Perplexity",
+    "category": "live-fetch",
+    "citation_impact": "intent",
+    "allowed_root": true
+   },
+   "Googlebot": {
+    "operator": "Google",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "Google-Extended": {
+    "operator": "Google",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "Applebot": {
+    "operator": "Apple",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "Applebot-Extended": {
+    "operator": "Apple",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "Bingbot": {
+    "operator": "Microsoft",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "DuckAssistBot": {
+    "operator": "DuckDuckGo",
+    "category": "search-index",
+    "citation_impact": "removes",
+    "allowed_root": true
+   },
+   "MistralAI-User": {
+    "operator": "Mistral",
+    "category": "live-fetch",
+    "citation_impact": "intent",
+    "allowed_root": true
+   },
+   "CCBot": {
+    "operator": "Common Crawl",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "Amazonbot": {
+    "operator": "Amazon",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "meta-externalagent": {
+    "operator": "Meta",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   },
+   "meta-externalfetcher": {
+    "operator": "Meta",
+    "category": "live-fetch",
+    "citation_impact": "intent",
+    "allowed_root": true
+   },
+   "Bytespider": {
+    "operator": "ByteDance",
+    "category": "training",
+    "citation_impact": "none",
+    "allowed_root": true
+   }
+  },
+  "agents_explicitly_named": [],
+  "content_signals": {},
+  "declared_sitemaps": [],
+  "raw_excerpt": ""
+ },
+ "ua_probe": {
+  "probes": {
+   "browser": {
+    "status": 200,
+    "bytes": 2036,
+    "error": null
+   },
+   "GPTBot": {
+    "status": 200,
+    "bytes": 2036,
+    "error": null
+   },
+   "ClaudeBot": {
+    "status": 200,
+    "bytes": 2036,
+    "error": null
+   },
+   "PerplexityBot": {
+    "status": 200,
+    "bytes": 2036,
+    "error": null
+   }
+  },
+  "blocked_agents": [],
+  "network_layer_block_suspected": false
+ },
+ "sitemap": {
+  "checked": [
+   {
+    "url": "https://www.lua.org/sitemap.xml",
+    "status": 404,
+    "is_index": false,
+    "url_count": 0
+   }
+  ],
+  "total_urls_found": 0,
+  "sample_urls": []
+ },
+ "wellknown": {
+  "llms_txt": {
+   "status": 404,
+   "present": false,
+   "starts_with_h1": false,
+   "bytes": 153
+  },
+  "security_txt": {
+   "status": 404,
+   "present": false,
+   "starts_with_h1": false,
+   "bytes": 153
+  }
+ },
+ "pages": [
+  {
+   "url": "https://www.lua.org/",
+   "final_url": "https://www.lua.org/",
+   "status": 200,
+   "error": null,
+   "depth": 0,
+   "elapsed_ms": 507,
+   "redirect_chain": [],
+   "html_bytes": 2036,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Fri, 11 Apr 2025 01:12:06 GMT",
+    "etag": "\"67f86c66-7f4\""
+   },
+   "title": "The Programming Language Lua",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "Official website of the Lua language",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [
+    "news.rss"
+   ],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [],
+   "text_len": 129,
+   "main_text_len": 25,
+   "boilerplate_text_len": 0,
+   "link_density": 0.728,
+   "text_sample": "The Programming Language Lua about news get started download documentation community site map portugu\ufffds designed and developed at",
+   "word_count": 18,
+   "links_internal": [
+    [
+     "https://www.lua.org/images/luaa.gif",
+     ""
+    ],
+    [
+     "https://www.lua.org/about.html",
+     "about"
+    ],
+    [
+     "https://www.lua.org/news.html",
+     "news"
+    ],
+    [
+     "https://www.lua.org/start.html",
+     "get started"
+    ],
+    [
+     "https://www.lua.org/download.html",
+     "download"
+    ],
+    [
+     "https://www.lua.org/docs.html",
+     "documentation"
+    ],
+    [
+     "https://www.lua.org/community.html",
+     "community"
+    ],
+    [
+     "https://www.lua.org/map.html",
+     "site map"
+    ],
+    [
+     "https://www.lua.org/portugues.html",
+     "portugu\ufffds"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://www.puc-rio.br/",
+     ""
+    ]
+   ],
+   "images_total": 2,
+   "images_missing_alt": 0,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 1,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [
+     "get started"
+    ],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 18,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 1,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 0,
+     "has_spec_table": true,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 0,
+     "heading_levels_skipped": false,
+     "heading_count": 0,
+     "sections": 0,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 0,
+     "structured_format_ratio": 0.909,
+     "emphasis_density": 0.0,
+     "intro_summary_words": 0
+    }
+   },
+   "structured_data": {
+    "verdict": "MACHINE_HINTS_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": true,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/about.html",
+   "final_url": "https://www.lua.org/about.html",
+   "status": 200,
+   "error": null,
+   "depth": 1,
+   "elapsed_ms": 512,
+   "redirect_chain": [],
+   "html_bytes": 8955,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Fri, 18 Sep 2026 10:18:41 GMT",
+    "etag": "\"6aad1001-22fb\""
+   },
+   "title": "Lua: about",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "About"
+    ],
+    [
+     2,
+     "What is Lua?"
+    ],
+    [
+     2,
+     "Where does Lua come from?"
+    ],
+    [
+     2,
+     "What's in a name?"
+    ],
+    [
+     2,
+     "Joining the community"
+    ],
+    [
+     2,
+     "Supporting Lua"
+    ],
+    [
+     2,
+     "Why choose Lua?"
+    ],
+    [
+     3,
+     "Lua is a proven, robust language"
+    ],
+    [
+     3,
+     "Lua is fast"
+    ],
+    [
+     3,
+     "Lua is portable"
+    ],
+    [
+     3,
+     "Lua is embeddable"
+    ],
+    [
+     3,
+     "Lua is powerful (but simple)"
+    ],
+    [
+     3,
+     "Lua is small"
+    ],
+    [
+     3,
+     "Lua is free"
+    ]
+   ],
+   "text_len": 5576,
+   "main_text_len": 4186,
+   "boilerplate_text_len": 0,
+   "link_density": 0.149,
+   "text_sample": "Lua: about About portugu\ufffds \u00b7 news \u00b7 showcase \u00b7 uses \u00b7 quotes \u00b7 press \u00b7 authors \u00b7 contact \u00b7 license \u00b7 versions \u00b7 thanks \u00b7 getting started What is Lua? Lua is a powerful, efficient, lightweight, embeddable scripting language.\nIt supports\nseveral programming styles:\nprocedural,\nobject-oriented,\nfunctional,\ndata-driven, and\ndata description. Lua combines simple procedural syntax with\npowerful data description constructs based on\nassociative arrays and extensible semantics.\n\nLua\nis dynamically typed,\nruns by interpreting bytecode on a register-based virtual machine,\nand has automatic memory management with incremental garbage collection,\nmaking it ideal for\nconfiguration,\nscripting,\nand\nrapid prototyping. Where does Lua come from? Lua is designed, implemented, and maintained by\na team at PUC-Rio ,\nthe Pontifical Catholic University of Rio de Janeiro in Brazil.\nLua was born and raised in Tecgraf ,\nformerly the Computer Graphics Technology Group of PUC-Rio.\nLua is now housed at LabLua ,\na laboratory of the Department of Computer Science of PUC-Rio. What's in a name? \"Lua\"\n(pronounced LOO-ah )\nmeans \"Moon\" in Portuguese.\nAs such, it is neither an acronym nor an abbreviation, but a noun.\nMore specifically,\n\"Lua\" is a name,\nthe name of the Earth's moon and the name of the language.\nLike most names,\nit should be written in lower case with an initial capital, that is, \"Lua\".\nPlease do not write it as \"LUA\",\nwhich is both ugly and confusing,\nbecause then it becomes an acronym\nwith different meanings for different people.\nSo, please, write \"Lua\" right! Joining the community There are several meeting places for the Lua community where you can go to learn and help others and contribute in other ways.\nOne of the focal points is the mailing list ,\nwhich is very active and friendly. You can\nmeet part of the Lua community in person by attending\na Lua Workshop . Supporting Lua You can help to support the Lua project by buying a book published by Lua.org\nand by making a donation . You can also help to spread the word about Lua by buying Lua products\nat Zazzle . Lua.org is an Amazon Associate and we get commissions for qualifying purchases made through links in this site. Why choose Lua? Lua is a proven, robust language Lua has been used in many industrial applications (e.g., Adobe's Photoshop Lightroom ),\nwith an emphasis on embedded systems\n(e.g.,\nthe Ginga middleware for digital TV in Brazil)\nand games (e.g., World of Warcraft and Angry Birds).\nLua is currently the leading sc",
+   "word_count": 934,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/portugues.html",
+     "portugu\ufffds"
+    ],
+    [
+     "https://www.lua.org/news.html",
+     "news"
+    ],
+    [
+     "https://www.lua.org/showcase.html",
+     "showcase"
+    ],
+    [
+     "https://www.lua.org/uses.html",
+     "uses"
+    ],
+    [
+     "https://www.lua.org/quotes.html",
+     "quotes"
+    ],
+    [
+     "https://www.lua.org/press.html",
+     "press"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "authors"
+    ],
+    [
+     "https://www.lua.org/contact.html",
+     "contact"
+    ],
+    [
+     "https://www.lua.org/license.html",
+     "license"
+    ],
+    [
+     "https://www.lua.org/versions.html",
+     "versions"
+    ],
+    [
+     "https://www.lua.org/thanks.html",
+     "thanks"
+    ],
+    [
+     "https://www.lua.org/start.html",
+     "getting started"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "team"
+    ],
+    [
+     "https://www.lua.org/community.html",
+     "meeting places"
+    ],
+    [
+     "https://www.lua.org/community.html",
+     "community"
+    ],
+    [
+     "https://www.lua.org/community.html",
+     "contribute"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "mailing list"
+    ],
+    [
+     "https://www.lua.org/lua-l-stats.html",
+     "active"
+    ],
+    [
+     "https://www.lua.org/community.html",
+     "Lua Workshop"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "support the Lua project"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "buying a book"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "making a donation"
+    ],
+    [
+     "https://www.lua.org/manual/5.5",
+     "reference manual"
+    ],
+    [
+     "https://www.lua.org/docs.html",
+     "several books about it"
+    ],
+    [
+     "https://www.lua.org/versions.html",
+     "versions"
+    ],
+    [
+     "https://www.lua.org/download.html",
+     "distributed"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.5.1.tar.gz",
+     "tarball for Lua 5.5.1"
+    ],
+    [
+     "https://www.lua.org/license.html",
+     "very liberal license"
+    ],
+    [
+     "https://www.lua.org/download.html",
+     "download"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://www.puc-rio.br/",
+     "PUC-Rio"
+    ],
+    [
+     "https://www.tecgraf.puc-rio.br/",
+     "Tecgraf"
+    ],
+    [
+     "http://www.lua.inf.puc-rio.br/",
+     "LabLua"
+    ],
+    [
+     "https://www.inf.puc-rio.br",
+     "Department of Computer Science"
+    ],
+    [
+     "https://acronyms.thefreedictionary.com/lua",
+     "different meanings"
+    ],
+    [
+     "https://www.zazzle.com/store/lua_store",
+     "Zazzle"
+    ],
+    [
+     "https://en.wikipedia.org/wiki/Category:Lua_(programming_language)-scriptable_software",
+     "many industrial applications"
+    ],
+    [
+     "http://since1968.com/article/190/mark-hamburg-interview-adobe-photoshop-lightroom-part-2-of-2",
+     "Adobe's Photoshop Lightroom"
+    ],
+    [
+     "http://www.ginga.org.br/",
+     "Ginga"
+    ],
+    [
+     "https://en.wikipedia.org/wiki/Category:Lua_(programming_language)-scripted_video_games",
+     "games"
+    ],
+    [
+     "https://wowpedia.fandom.com/wiki/Lua",
+     "World of Warcraft"
+    ],
+    [
+     "https://www.satori.org/2009/03/05/the-engine-survey-general-results",
+     "the leading scripting language in games"
+    ],
+    [
+     "https://web.archive.org/web/20210825030848/https://sites.google.com/site/marbux/home/where-lua-is-used",
+     "real applications"
+    ],
+    [
+     "https://en.wikipedia.org/wiki/History_of_Programming_Languages",
+     "HOPL III, the Third ACM SIGPLAN History of Programming Languages Conference"
+    ],
+    [
+     "http://www.gamasutra.com/view/news/129084/Announcing_Game_Developer_magazines_2011_Front_Line_Award_winners.php",
+     "Front Line Award 2011"
+    ],
+    [
+     "https://www.gdmag.com/",
+     "Game Developers Magazine"
+    ],
+    [
+     "https://luajit.org/",
+     "LuaJIT"
+    ],
+    [
+     "http://lua-users.org/lists/lua-l/2007-11/msg00248.html",
+     "this summary"
+    ],
+    [
+     "http://www.schulze-mueller.de/download/lua-poster-090207.pdf",
+     "poster"
+    ],
+    [
+     "https://spectrum.ieee.org/lean-software-development",
+     "contributing to its security"
+    ],
+    [
+     "https://opensource.org/license/mit",
+     "MIT license"
+    ]
+   ],
+   "images_total": 1,
+   "images_missing_alt": 0,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 1,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [
+     "32000"
+    ],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 934,
+    "tier1": {
+     "statistics_count": 3,
+     "statistics_per_100w": 0.32,
+     "quote_tags": 0,
+     "attributed_quotes": 3,
+     "external_domains": 19,
+     "authoritative_domains": [
+      "en.wikipedia.org",
+      "lua-users.org",
+      "luajit.org",
+      "opensource.org",
+      "spectrum.ieee.org",
+      "web.archive.org",
+      "www.satori.org"
+     ],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 2,
+     "has_spec_table": true,
+     "comparison_markers": 1,
+     "hedges_per_100w": 0.21,
+     "hedged_numbers": 1,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 3,
+     "heading_levels_skipped": false,
+     "heading_count": 14,
+     "sections": 14,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 8,
+     "structured_format_ratio": 0.048,
+     "emphasis_density": 0.0038,
+     "intro_summary_words": 24
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/docs.html",
+   "final_url": "https://www.lua.org/docs.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 707,
+   "redirect_chain": [],
+   "html_bytes": 26637,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Tue, 03 Feb 2026 10:01:28 GMT",
+    "etag": "\"6981c778-680d\""
+   },
+   "title": "Lua: documentation",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Documentation"
+    ],
+    [
+     2,
+     "Reference manual"
+    ],
+    [
+     2,
+     "Technical documentation"
+    ],
+    [
+     2,
+     "Papers"
+    ],
+    [
+     2,
+     "Books"
+    ],
+    [
+     3,
+     "Reference manual"
+    ],
+    [
+     3,
+     "Programming in Lua"
+    ],
+    [
+     3,
+     "Lua Programming Gems"
+    ],
+    [
+     3,
+     "Other books"
+    ]
+   ],
+   "text_len": 11801,
+   "main_text_len": 7299,
+   "boilerplate_text_len": 0,
+   "link_density": 0.303,
+   "text_sample": "Lua: documentation Documentation manual \u00b7 readme \u00b7 books \u00b7 papers \u00b7 faq \u00b7 wiki \u00b7 source code \u00b7 versions \u00b7 bugs \u00b7 license \u00b7 getting started Reference manual The official definition of the Lua language is its reference manual ,\nwhich describes the syntax and the semantics of Lua,\nthe standard libraries, and the C\u00a0API. The reference manuals for all versions of Lua\nare available online in English.\nSome are available in other languages and as a printed book. The current version is the reference manual for Lua 5.5 . Technical documentation For more technical information,\nsee the Frequently Asked Questions (FAQ) and some old seminar slides .\nFor detailed technical information on specific topics,\nsee our old series of Lua Technical Notes and the wiki at lua-users.org ,\nspecially the tutorial .\nYou may also browse the source code .\nFor a tutorial on embedding Lua, see The Lua Integration Guide by Marc Balmer. Papers There are many papers and theses related to Lua.\nHere are the main ones written by the Lua team .\nSee also the LabLua publications . The main academic paper about Lua\ndiscusses the philosophy behind its design: Lua \u2013 an extensible extension language by R. Ierusalimschy, L. H. de Figueiredo, W. Celes, Software: Practice & Experience 26 #6 (1996) 635\u2013652.\n[ doi ] This paper was awarded the\nfirst prize (technological category)\nin the\nII\u00a0Compaq Award for Research and Development in Computer Science in 1997.\nThis award was a joint venture of\nCompaq Computer in Brazil,\nthe Brazilian Ministry of Science and Technology ,\nand the Brazilian Academy of Sciences . For an overview of how Lua is designed, see A look at the design of Lua by R. Ierusalimschy, L. H. de Figueiredo, W. Celes, Communications of the ACM 61 #11 (2018) 114\u2013123.\n[ doi \u00b7 video ] For a short exposition of the API design, see Passing a language through the eye of a needle by R. Ierusalimschy, L. H. de Figueiredo, W. Celes, ACM Queue 9 #5 (May 2011) 20\u201329.\n[ doi \u00b7 acm ] Communications of the ACM 54 #7 (July 2011) 38\u201343.\n[ doi \u00b7 acm ] It is also available in Portuguese: Passando uma linguagem pelo buraco de uma agulha por R. Ierusalimschy, L. H. de Figueiredo, W. Celes, ACM Queue 9 #5 (May 2011) 20\u201329. For details on the implementation of Lua, see The implementation of Lua 5.0 by R. Ierusalimschy, L. H. de Figueiredo, W. Celes, Journal of Universal Computer Science 11 #7 (2005) 1159\u20131176.\n[ doi \u00b7 slides ] For details on the role of first-class functions in Lua, see First-class functions in an imper",
+   "word_count": 1841,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/manual/5.5",
+     "manual"
+    ],
+    [
+     "https://www.lua.org/manual/5.5/readme.html",
+     "readme"
+    ],
+    [
+     "https://www.lua.org/faq.html",
+     "faq"
+    ],
+    [
+     "https://www.lua.org/source",
+     "source code"
+    ],
+    [
+     "https://www.lua.org/versions.html",
+     "versions"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bugs"
+    ],
+    [
+     "https://www.lua.org/license.html",
+     "license"
+    ],
+    [
+     "https://www.lua.org/start.html",
+     "getting started"
+    ],
+    [
+     "https://www.lua.org/manual",
+     "reference manual"
+    ],
+    [
+     "https://www.lua.org/manual",
+     "reference manuals"
+    ],
+    [
+     "https://www.lua.org/manual",
+     "available online"
+    ],
+    [
+     "https://www.lua.org/manual/5.5",
+     "reference manual for Lua 5.5"
+    ],
+    [
+     "https://www.lua.org/faq.html",
+     "Frequently Asked Questions (FAQ)"
+    ],
+    [
+     "https://www.lua.org/slides.html",
+     "seminar slides"
+    ],
+    [
+     "https://www.lua.org/notes",
+     "Lua Technical Notes"
+    ],
+    [
+     "https://www.lua.org/source",
+     "source code"
+    ],
+    [
+     "https://www.lua.org/papers.html",
+     "papers and theses"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "team"
+    ],
+    [
+     "https://www.lua.org/spe.html",
+     "Lua \u2013 an extensible extension language"
+    ],
+    [
+     "https://www.lua.org/doc/jucs05.pdf",
+     "The implementation of Lua 5.0"
+    ],
+    [
+     "https://www.lua.org/doc/jucs17.pdf",
+     "First-class functions in an imperative world"
+    ],
+    [
+     "https://www.lua.org/doc/jucs04.pdf",
+     "Coroutines in Lua"
+    ],
+    [
+     "https://www.lua.org/doc/hopl.pdf",
+     "The evolution of Lua"
+    ],
+    [
+     "https://www.lua.org/doc/cola.pdf",
+     "The evolution of Lua, continued"
+    ],
+    [
+     "https://www.lua.org/history.html",
+     "The evolution of an extension language: a history of Lua"
+    ],
+    [
+     "https://www.lua.org/doc/sblp2001.ps.gz",
+     "ps"
+    ],
+    [
+     "https://www.lua.org/semish94.html",
+     "The design and implementation of a language for extending applications"
+    ],
+    [
+     "https://www.lua.org/doc/semish94.ps.gz",
+     "ps"
+    ],
+    [
+     "https://www.lua.org/ddj.html",
+     "Lua: an extensible embedded language"
+    ],
+    [
+     "https://www.lua.org/doc/jai2009.pdf",
+     "Uma introdu\ufffd\ufffdo \ufffd programa\ufffd\ufffdo em Lua"
+    ],
+    [
+     "https://www.lua.org/doc/wjogos04.pdf",
+     "A linguagem Lua e suas aplica\ufffd\ufffdes em jogos"
+    ],
+    [
+     "https://www.lua.org/doc/wjogos04.ppt",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/doc/Masterminds.pdf",
+     "interview about Lua"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "support the Lua project"
+    ],
+    [
+     "https://www.lua.org/manual/5.1",
+     "Lua 5.1 Reference Manual"
+    ],
+    [
+     "https://www.lua.org/manual",
+     "online"
+    ],
+    [
+     "https://www.lua.org/pil",
+     "Programming in Lua"
+    ],
+    [
+     "https://www.lua.org/pil/contents.html",
+     "available online"
+    ],
+    [
+     "https://www.lua.org/pil",
+     "Programming in Lua"
+    ],
+    [
+     "https://www.lua.org/gems",
+     "Lua Programming Gems"
+    ]
+   ],
+   "links_external": [
+    [
+     "http://lua-users.org/wiki",
+     "wiki"
+    ],
+    [
+     "http://lua-users.org/wiki",
+     "wiki"
+    ],
+    [
+     "http://lua-users.org/",
+     "lua-users.org"
+    ],
+    [
+     "http://lua-users.org/wiki/TutorialDirectory",
+     "tutorial"
+    ],
+    [
+     "https://lua.msys.ch/",
+     "The Lua Integration Guide"
+    ],
+    [
+     "http://www.lua.inf.puc-rio.br/publications.html",
+     "LabLua publications"
+    ],
+    [
+     "https://doi.org/10.1002/(SICI)1097-024X(199606)26:6%3C635::AID-SPE26%3E3.0.CO;2-P",
+     "doi"
+    ],
+    [
+     "http://www.mct.gov.br/",
+     "Brazilian Ministry of Science and Technology"
+    ],
+    [
+     "https://www.abc.org.br/",
+     "Brazilian Academy of Sciences"
+    ],
+    [
+     "https://cacm.acm.org/magazines/2018/11/232214-a-look-at-the-design-of-lua",
+     "A look at the design of Lua"
+    ],
+    [
+     "https://doi.org/10.1145/3186277",
+     "doi"
+    ],
+    [
+     "https://vimeo.com/292779036",
+     "video"
+    ],
+    [
+     "https://queue.acm.org/detail.cfm?id=1983083",
+     "Passing a language through the eye of a needle"
+    ],
+    [
+     "https://doi.org/10.1145/1978862.1983083",
+     "doi"
+    ],
+    [
+     "https://queue.acm.org/detail.cfm?id=1983083",
+     "acm"
+    ],
+    [
+     "https://doi.org/10.1145/1978862.1983083",
+     "doi"
+    ],
+    [
+     "https://cacm.acm.org/magazines/2011/7/109909-passing-a-language-through-the-eye-of-a-needle/fulltext",
+     "acm"
+    ],
+    [
+     "https://dl.acm.org/ft_gateway.cfm?id=1983083&ftid=1471862",
+     "Passando uma linguagem pelo buraco de uma agulha"
+    ],
+    [
+     "https://doi.org/10.3217/jucs-011-07-1159",
+     "doi"
+    ],
+    [
+     "https://www.inf.puc-rio.br/~roberto/talks/lua5-imp.pdf",
+     "slides"
+    ],
+    [
+     "https://doi.org/10.3217/jucs-023-01-0112",
+     "doi"
+    ],
+    [
+     "https://www.inf.puc-rio.br/~roberto/talks/moscow17.pdf",
+     "slides"
+    ],
+    [
+     "https://dx.doi.org/10.3217/jucs-010-07-0910",
+     "doi"
+    ],
+    [
+     "https://www.inf.puc-rio.br/~roberto/talks/coro.pdf",
+     "slides"
+    ],
+    [
+     "https://doi.org/10.1145/1238844.1238846",
+     "doi"
+    ],
+    [
+     "https://www.inf.puc-rio.br/~roberto/talks/hopl-slides.pdf",
+     "slides"
+    ],
+    [
+     "https://doi.org/10.1016/j.cola.2025.101326",
+     "doi"
+    ],
+    [
+     "https://www.drdobbs.com/open-source/lua-an-extensible-embedded-language/184410014",
+     "ddj"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/0596515170/lua-docs-20",
+     "Masterminds of Programming"
+    ],
+    [
+     "https://feistyduck.gumroad.com",
+     "Feisty Duck"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379833/lua-docs-20",
+     ""
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379868/lua-docs-20",
+     ""
+    ],
+    [
+     "https://store.feistyduck.com/products/programming-in-lua-fourth-edition-ebook",
+     "e-book"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/859037985X/lua-docs-20",
+     ""
+    ],
+    [
+     "https://store.feistyduck.com/products/programming-in-lua",
+     "e-book"
+    ],
+    [
+     "https://www.grupogen.com.br/programando-em-lua?code=luaorg&utm_source=luaorgutm_medium=beneficios&utm_campaign=parceria_luaorg_9788521626992",
+     ""
+    ],
+    [
+     "https://www.grupogen.com.br/programando-em-lua?code=luaorg&utm_source=luaorgutm_medium=beneficios&utm_campaign=parceria_luaorg_9788521626992",
+     "Programando em Lua"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/5940747671/lua-docs-20",
+     ""
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/5940747671/lua-docs-20",
+     "Programmirovanie na iazyke Lua"
+    ],
+    [
+     "https://www.opensourcepress.de/index.php?26&tt_products=304",
+     ""
+    ],
+    [
+     "https://www.opensourcepress.de/index.php?26&tt_products=304",
+     "Programmieren mit Lua"
+    ],
+    [
+     "https://www.amazon.co.jp/Programming-Lua-%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9ELua%E5%85%AC%E5%BC%8F%E8%A7%A3%E8%AA%AC%E6%9B%B8-Roberto-Ierusalimschy/dp/4048677977/ref=sr_1_1?ie=UTF8&s=books&qid=1255103728&sr=1-1",
+     ""
+    ],
+    [
+     "https://www.amazon.co.jp/Programming-Lua-%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9ELua%E5%85%AC%E5%BC%8F%E8%A7%A3%E8%AA%AC%E6%9B%B8-Roberto-Ierusalimschy/dp/4048677977/ref=sr_1_1?ie=UTF8&s=books&qid=1255103728&sr=1-1",
+     "Programming in Lua"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379841/lua-docs-20",
+     ""
+    ],
+    [
+     "https://store.feistyduck.com/products/lua-programming-gems-ebook",
+     "e-book"
+    ],
+    [
+     "https://www.amazon.de/dp/3367104167",
+     "Let's code Lua!"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/B0CV2YC9YJ/lua-docs-20",
+     "Roblox Coding for kids"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/B0CY2XCKWB/lua-docs-20",
+     "Automate your Workflow with Lua"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/B0CXY6WFD4/lua-docs-20",
+     "High-Performance Lua for Roblox Developers"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/B0D66VZBN6/lua-docs-20",
+     "Lua in 8 Hours"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/B0CPY8RFD2/lua-docs-20",
+     "Lua Essentials: A Journey Through Code and Creativity"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/B0C6BWT5FT/lua-docs-20",
+     "Code Gamers Development: Lua Essentials"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/B0CJ4NDH2Y/lua-docs-20",
+     "Roblox Lua Scripting Essentials"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/B0CJHM5JV3/lua-docs-20",
+     "Scripting Farming Simulator with Lua"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/B0CFZBYHBZ/lua-docs-20",
+     "Learning Lua: A guide for getting started"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1805128612/lua-docs-20",
+     "Integrate Lua with C++"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/180181404X/lua-docs-20",
+     "Mastering Roblox Coding"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/0136829422/lua-docs-20",
+     "Coding With Roblox Lua in 24 Hours: The Official Roblox Guide"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1800561997/lua-docs-20",
+     "Coding Roblox Games Made Easy: The ultimate guide to creating games with Roblox Studio and Lua programming"
+    ],
+    [
+     "https://www.d-booker.fr/luajvlove2d/654-initiation-a-la-creation-de-jeux-video-en-lua-avec-love2d.html",
+     "Initiation \ufffd la cr\ufffdation de jeux vid\ufffdo en Lua avec L\ufffdve2D"
+    ],
+    [
+     "https://orbitalquark.github.io/lua-quick-reference",
+     "Lua Quick Reference"
+    ],
+    [
+     "https://www.apress.com/la/book/9781484241691",
+     "Developing Games on the Raspberry Pi: App Programming with Lua and L\ufffdVE"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/B07Y4JJMQV/lua-docs-20",
+     "Lua Programming using Roblox"
+    ],
+    [
+     "https://novatec.com.br/livros/introducao-a-linguagem-lua",
+     "Introdu\ufffd\ufffdo \ufffd linguagem Lua"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1789343224/lua-docs-20",
+     "Lua Quick Start Guide"
+    ],
+    [
+     "https://www.safaribooksonline.com/library/view/creating-solid-apis/9781491986301",
+     "Creating Solid APIs with Lua"
+    ],
+    [
+     "https://www.d-booker.fr/lua-app/350-manuel-apprentissage.html",
+     "Le guide de Lua et ses applications - Manuel d'apprentissage (2e \ufffddition)"
+    ],
+    [
+     "https://www.d-booker.fr/lua-mref/360-manuel-reference.html",
+     "Le guide de Lua et ses applications - Manuel de r\ufffdf\ufffdrence (2e \ufffddition)"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1849515506/lua-docs-20",
+     "Lua Game Development Cookbook"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1508728313/lua-docs-20",
+     "ROBLOX Lua: Scripting for Beginners"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1941222153/lua-docs-20",
+     "Seven More Languages in Seven Weeks: Languages That Are Shaping the Future"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1783281332/lua-docs-20",
+     "Learning Game AI Programming with Lua"
+    ],
+    [
+     "https://en.wikibooks.org/wiki/Lua_Programming",
+     "Lua Programming"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/B00IQGAC8A/lua-docs-20",
+     "Introduction to Programming with Lua and the Corona Game Lab"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1937785572/lua-docs-20",
+     "Create Mobile Games with Corona: Build with Lua on iOS and Android"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1849695903/lua-docs-20",
+     "CryENGINE Game Programming with C++, C#, and Lua"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1782161600/lua-docs-20",
+     "L\ufffdVE for Lua Game Programming"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1481927655/lua-docs-20",
+     "ComputerCraft: Lua Programming in Minecraft"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1430246626/lua-docs-20",
+     "Learn Lua for iOS Game Development"
+    ],
+    [
+     "https://www.d-booker.fr/programmation-et-langage/1-livre-lua.html",
+     "Le guide de Lua et ses applications"
+    ],
+    [
+     "https://www.agbook.com.br/book/197722--Lua__Programacao_de_Computadores",
+     "Lua - Programa\ufffd\ufffdo de Computadores"
+    ],
+    [
+     "https://www.amazon.de/Lua-Einsatz-von-Embedded-Systems/dp/3907857151",
+     "Lua: Einsatz von Lua in Embedded Systems"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1475026048/lua-docs-20",
+     "Basic ROBLOX Lua Programming"
+    ],
+    [
+     "https://doi.org/10.1007/978-1-4020-9920-5",
+     "Numerical Methods for Nonlinear Engineering Models"
+    ],
+    [
+     "https://www.amazon.de/Lua-Einsatz-von-zur-Messwerterfassung/dp/3907857127",
+     "Lua: Einsatz von Lua zur Messwerterfassung"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1430223715/lua-docs-20",
+     "Beginning Lua with World of Warcraft Add-ons"
+    ],
+    [
+     "https://www.amazon.co.jp/exec/obidos/asin/4777514137",
+     "First Lua Programming, the most popular application development lightweight script!"
+    ],
+    [
+     "https://www.amazon.co.jp/exec/obidos/asin/4797348550",
+     "Scripting Language for Game Development and Efficient C/C++ to Implement Embedded Lua"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/0470229810/lua-docs-20",
+     "World of Warcraft Programming"
+    ],
+    [
+     "https://www.amazon.co.jp/exec/obidos/ASIN/4797342722",
+     "Introduction to Lua programming"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/0470069171/lua-docs-20",
+     "Beginning Lua Programming"
+    ],
+    [
+     "https://www.jblearning.com/catalog/productdetails/9781556220784",
+     "Programming Game AI by Example"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1584504048/lua-docs-20",
+     "Game Development with Lua"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/1592000770/lua-docs-20",
+     "Game Programming with Python, Lua, and Ruby"
+    ]
+   ],
+   "images_total": 11,
+   "images_missing_alt": 10,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 1,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [
+     "83 (2025) 101326"
+    ],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 1841,
+    "tier1": {
+     "statistics_count": 3,
+     "statistics_per_100w": 0.16,
+     "quote_tags": 23,
+     "attributed_quotes": 0,
+     "external_domains": 28,
+     "authoritative_domains": [
+      "cacm.acm.org",
+      "dl.acm.org",
+      "doi.org",
+      "dx.doi.org",
+      "en.wikibooks.org",
+      "lua-users.org",
+      "queue.acm.org"
+     ],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 2,
+     "has_spec_table": true,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.22,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 3,
+     "heading_levels_skipped": false,
+     "heading_count": 9,
+     "sections": 9,
+     "sections_in_150_300_band": 1,
+     "sections_over_300w": 2,
+     "median_paragraph_words": 49,
+     "structured_format_ratio": 0.633,
+     "emphasis_density": 0.0397,
+     "intro_summary_words": 23
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/contact.html",
+   "final_url": "https://www.lua.org/contact.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 736,
+   "redirect_chain": [],
+   "html_bytes": 1190,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Wed, 17 Sep 2025 11:04:29 GMT",
+    "etag": "\"68ca95bd-4a6\""
+   },
+   "title": "Lua: contact",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Contact"
+    ],
+    [
+     2,
+     "Email"
+    ],
+    [
+     2,
+     "Mail"
+    ]
+   ],
+   "text_len": 534,
+   "main_text_len": 457,
+   "boilerplate_text_len": 0,
+   "link_density": 0.058,
+   "text_sample": "Lua: contact Contact Email Please\nsend all Lua questions, suggestions, and bug reports to the mailing list . You will certainly get faster and better answers,\nand your message will be archived for further reference. For matters that require our personal attention,\nsend email to team at lua.org . For all matters concerning this website,\nsend email to webmaster at lua.org . Mail LabLua Departamento de Inform\ufffdtica, PUC-Rio Rua Marqu\ufffds de S\ufffdo Vicente, 225 22451-900 Rio de Janeiro, RJ, Brazil Last update:\nWed Sep 17 11:04:26 UTC 2025",
+   "word_count": 88,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/faq.html",
+     "bug reports"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "mailing list"
+    ]
+   ],
+   "links_external": [
+    [
+     "http://www.lua.inf.puc-rio.br/",
+     "LabLua"
+    ]
+   ],
+   "images_total": 1,
+   "images_missing_alt": 0,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [
+     "22451"
+    ],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 88,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 1,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 2,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 2,
+     "heading_levels_skipped": false,
+     "heading_count": 3,
+     "sections": 3,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 8,
+     "structured_format_ratio": 0.0,
+     "emphasis_density": 0.0655,
+     "intro_summary_words": 0
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/news.html",
+   "final_url": "https://www.lua.org/news.html",
+   "status": 200,
+   "error": null,
+   "depth": 1,
+   "elapsed_ms": 1005,
+   "redirect_chain": [],
+   "html_bytes": 58451,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Tue, 25 Aug 2026 11:00:07 GMT",
+    "etag": "\"6a8d75b7-e453\""
+   },
+   "title": "Lua: news",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [
+    "news.rss"
+   ],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "News"
+    ],
+    [
+     2,
+     "2026"
+    ],
+    [
+     2,
+     "2025"
+    ],
+    [
+     2,
+     "2024"
+    ],
+    [
+     2,
+     "2023"
+    ],
+    [
+     2,
+     "2022"
+    ],
+    [
+     2,
+     "2021"
+    ],
+    [
+     2,
+     "2020"
+    ],
+    [
+     2,
+     "2019"
+    ],
+    [
+     2,
+     "2018"
+    ],
+    [
+     2,
+     "2017"
+    ],
+    [
+     2,
+     "2016"
+    ],
+    [
+     2,
+     "2015"
+    ],
+    [
+     2,
+     "2014"
+    ],
+    [
+     2,
+     "2013"
+    ],
+    [
+     2,
+     "2012"
+    ],
+    [
+     2,
+     "2011"
+    ],
+    [
+     2,
+     "2010"
+    ],
+    [
+     2,
+     "2009"
+    ],
+    [
+     2,
+     "2008"
+    ],
+    [
+     2,
+     "2007"
+    ],
+    [
+     2,
+     "2006"
+    ],
+    [
+     2,
+     "2005"
+    ],
+    [
+     2,
+     "2004"
+    ],
+    [
+     2,
+     "2003"
+    ],
+    [
+     2,
+     "2002"
+    ],
+    [
+     2,
+     "2001"
+    ],
+    [
+     2,
+     "2000"
+    ],
+    [
+     2,
+     "1999"
+    ],
+    [
+     2,
+     "1998"
+    ],
+    [
+     2,
+     "1997"
+    ],
+    [
+     2,
+     "1996"
+    ],
+    [
+     2,
+     "1995"
+    ],
+    [
+     2,
+     "1994"
+    ],
+    [
+     2,
+     "1993"
+    ]
+   ],
+   "text_len": 23414,
+   "main_text_len": 8246,
+   "boilerplate_text_len": 0,
+   "link_density": 0.341,
+   "text_sample": "Lua: news News 2026 \u00b7 2025 \u00b7 2024 \u00b7 2023 \u00b7 2022 \u00b7 2021 \u00b7 2020 \u00b7 2019 \u00b7 2018 \u00b7 2017 \u00b7 2016 \u00b7 2015 \u00b7 2014 \u00b7 2013 \u00b7 2012 \u00b7 2011 \u00b7 2010 \u00b7 2009 \u00b7 2008 \u00b7 2007 \u00b7 2006 \u00b7 2005 \u00b7 2004 \u00b7 2003 \u00b7 2002 \u00b7 2001 \u00b7 2000 \u00b7 1999 \u00b7 1998 \u00b7 1997 \u00b7 1996 \u00b7 1995 \u00b7 1994 \u00b7 1993 Here is a summary of the main events around and about Lua. Check also the\nannouncements in the mailing list ,\nthe recent changes in the site, and our RSS feeds . 2026 25 Aug 2026 Lua 5.4.9 released.\nThis is a bug-fix release.\nSee the diffs . 03 Aug 2026 Lua 5.5.1 released.\nThis is a bug-fix release.\nSee the diffs . 20 Feb 2026 Lua is now an associated project at Software in the Public Interest . Donations to the Lua project are now made via SPI . 2025 22 Dec 2025 Lua 5.5.0 released.\nCheck out its features . 14 Nov 2025 Lua 5.5.0 entered final release-candidate cycle. 30 Jun 2025 Lua 5.5.0 (beta) released. 04 Jun 2025 Lua 5.4.8 released.\nThis is a bug-fix release.\nSee the diffs . 10 Apr 2025 \"The evolution of Lua, continued\" published in special-issue of Journal of Computer Languages . 2024 25 Jun 2024 Lua 5.4.7 released.\nThis is a bug-fix release.\nSee the diffs . 02 Mar 2024 lua-users.org is back online. 2023 20 Dec 2023 lua.org moved to a new host in Switzerland,\ncourtesy of Marc Balmer. 11 Dec 2023 Mailing list moved to Google Groups . 01 Dec 2023 Building a Programming Language course with Roberto .\nRead the announcement . 17 Oct 2023 Lua Workshop 2023 held in Rio de Janeiro to commemorate 30 years of Lua. 18 Aug 2023 Building a Programming Language course with Roberto .\nRead the announcement . 14 May 2023 Lua 5.4.6 released.\nThis is a bug-fix release.\nSee the diffs . 29 Apr 2023 Lua 5.4.5 released.\nThis is a bug-fix release.\nSee the diffs . 17 Mar 2023 Building a Programming Language course with Roberto .\nRead the announcement . 01 Jan 2023 We commemorate 30 years of Lua in 2023. 2022 08 Nov 2022 Roberto interviewed in We Speak Your Language . 19 Oct 2022 Lua Programming Gems is now freely available. 10 Oct 2022 Lua Workshop 2022 held in Freiburg. 13 Sep 2022 Lua receives the Pedro Ernesto Medal , the highest decoration given by the city of Rio de Janeiro. 02 Jul 2022 Building a Programming Language course with Roberto .\nRead the announcement . 26 Jan 2022 Lua 5.4.4 released.\nThis is a bug-fix release.\nSee the diffs . 2021 09 Aug 2021 Roberto talks about Lua at the SIGGRAPH 2021 Retrospective . 16 Jul 2021 Video about Lua and Roblox published by TV PUC-Rio . 29 Mar 2021 Lua 5.4.3 released.\nThis is a bug-fi",
+   "word_count": 4292,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/news.rss",
+     ""
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "mailing list"
+    ],
+    [
+     "https://www.lua.org/recent.html",
+     "recent changes"
+    ],
+    [
+     "https://www.lua.org/rss.html",
+     "RSS feeds"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.4.9.tar.gz",
+     "Lua 5.4.9"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.4.8-lua-5.4.9.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.5.1.tar.gz",
+     "Lua 5.5.1"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.5.0-lua-5.5.1.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "Donations"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.5.0.tar.gz",
+     "Lua 5.5.0"
+    ],
+    [
+     "https://www.lua.org/versions.html",
+     "features"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.5.0"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.5.0 (beta)"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.4.8.tar.gz",
+     "Lua 5.4.8"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.4.7-lua-5.4.8.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/doc/cola.pdf",
+     "\"The evolution of Lua, continued\""
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.4.7.tar.gz",
+     "Lua 5.4.7"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.4.6-lua-5.4.7.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "Mailing list"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/images/lua30.gif",
+     ""
+    ],
+    [
+     "https://www.lua.org/wshop23.html",
+     "Lua Workshop 2023"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.4.6.tar.gz",
+     "Lua 5.4.6"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.4.5-lua-5.4.6.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.4.5.tar.gz",
+     "Lua 5.4.5"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.4.4-lua-5.4.5.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/images/lua30.gif",
+     "30 years of Lua"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/gems",
+     "Lua Programming Gems"
+    ],
+    [
+     "https://www.lua.org/images/mpe.jpg",
+     ""
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.4.4.tar.gz",
+     "Lua 5.4.4"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.4.3-lua-5.4.4.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.4.3.tar.gz",
+     "Lua 5.4.3"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.4.2-lua-5.4.3.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.4.2.tar.gz",
+     "Lua 5.4.2"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.4.1-lua-5.4.2.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.4.1.tar.gz",
+     "Lua 5.4.1"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.4.0-lua-5.4.1.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.3.6.tar.gz",
+     "Lua 5.3.6"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.3.5-lua-5.3.6.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.4.0.tar.gz",
+     "Lua 5.4.0"
+    ],
+    [
+     "https://www.lua.org/versions.html",
+     "features"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.4.0"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.4.0 (beta)"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.4.0 (alpha)"
+    ],
+    [
+     "https://www.lua.org/wshop18.html",
+     "Lua Workshop 2018"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.3.5.tar.gz",
+     "Lua 5.3.5"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.3.4-lua-5.3.5.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/wshop18.html",
+     "Lua Workshop 2018"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.4.0 (work2)"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.4.0 (work1)"
+    ],
+    [
+     "https://www.lua.org/images/lua25.gif",
+     ""
+    ],
+    [
+     "https://www.lua.org/images/lua25.gif",
+     "25 years of Lua"
+    ],
+    [
+     "https://www.lua.org/wshop17.html",
+     "Lua Workshop 2017"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/wshop17.html",
+     "Lua Workshop 2017"
+    ],
+    [
+     "https://www.lua.org/showcase.html",
+     "showcase page"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/doc/Inovancas.pdf",
+     "catalog"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "Mailing list"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.3.4.tar.gz",
+     "Lua 5.3.4"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.3.3-lua-5.3.4.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/wshop16.html",
+     "Lua Workshop 2016"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.3.3.tar.gz",
+     "Lua 5.3.3"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.3.2-lua-5.3.3.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/",
+     "https"
+    ],
+    [
+     "https://www.lua.org/wshop16.html",
+     "Lua Workshop 2016"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.3.2.tar.gz",
+     "Lua 5.3.2"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.3.1-lua-5.3.2.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/wshop15.html",
+     "Lua Workshop 2015"
+    ],
+    [
+     "https://www.lua.org/pil",
+     "Programming in Lua"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.3.1.tar.gz",
+     "Lua 5.3.1"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.3.0-lua-5.3.1.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/wshop15.html",
+     "Lua Workshop 2015"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.2.4.tar.gz",
+     "Lua 5.2.4"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/work/diffs-lua-5.2.3-lua-5.2.4.html",
+     "diffs"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.3.0.tar.gz",
+     "Lua 5.3.0"
+    ],
+    [
+     "https://www.lua.org/versions.html",
+     "features"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.3.0"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.3.0 (beta)"
+    ],
+    [
+     "https://www.lua.org/wshop14.html",
+     "Lua Workshop 2014"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.3.0 (alpha)"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.3.0 (work3)"
+    ],
+    [
+     "https://www.lua.org/wshop14.html",
+     "Lua Workshop 2014"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.3.0 (work2)"
+    ],
+    [
+     "https://www.lua.org/manual/5.2/pt",
+     "Portuguese"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.2.3.tar.gz",
+     "Lua 5.2.3"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/wshop13.html",
+     "Lua Workshop 2013"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/start.html",
+     "getting started"
+    ],
+    [
+     "https://www.lua.org/wshop13.html",
+     "Lua Workshop 2013"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.3.0 (work1)"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.2.2.tar.gz",
+     "Lua 5.2.2"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "Donations"
+    ],
+    [
+     "https://www.lua.org/wshop12.html",
+     "Lua Workshop 2012"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.2.1.tar.gz",
+     "Lua 5.2.1"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/wshop12.html",
+     "Lua Workshop 2012"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "Mailing list"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.1.5.tar.gz",
+     "Lua 5.1.5"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.2.0.tar.gz",
+     "Lua 5.2.0"
+    ],
+    [
+     "https://www.lua.org/versions.html",
+     "features"
+    ],
+    [
+     "https://www.lua.org/wshop11.html",
+     "Lua Workshop 2011"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.2 (beta)"
+    ],
+    [
+     "https://www.lua.org/wshop11.html",
+     "Lua Workshop 2011"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.2 (alpha)"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.2 (work5)"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "Mailing list"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.2 (work4)"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.2 (work3)"
+    ],
+    [
+     "https://www.lua.org/gems",
+     "Lua Programming Gems"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.2 (work2)"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.2 (work1)"
+    ],
+    [
+     "https://www.lua.org/wshop09.html",
+     "Lua Workshop 2009"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "lista de Lua"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/doc/jai2009.pdf",
+     "introductory Lua course"
+    ],
+    [
+     "https://www.lua.org/wshop09.html",
+     "Lua Workshop 2009"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/doc/Masterminds.pdf",
+     "Interview"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Lua team"
+    ],
+    [
+     "https://www.lua.org/gems",
+     "Lua Programming Gems"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.1.4.tar.gz",
+     "Lua 5.1.4"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/wshop08.html",
+     "Lua Workshop 2008"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/ftp/patch-lua-5.1.3",
+     "Patch for Lua 5.1.3"
+    ],
+    [
+     "https://www.lua.org/demo.html",
+     "demo"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.1.3.tar.gz",
+     "Lua 5.1.3"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/about.html",
+     "Write \"Lua\" Right!"
+    ],
+    [
+     "https://www.lua.org/manual/5.1/es",
+     "Spanish"
+    ],
+    [
+     "https://www.lua.org/wshop08.html",
+     "Lua Workshop 2008"
+    ],
+    [
+     "https://www.lua.org/manual/5.1/pt",
+     "Portuguese"
+    ],
+    [
+     "https://www.lua.org/doc/hopl.pdf",
+     "the evolution of Lua"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.1.2.tar.gz",
+     "Lua 5.1.2"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "Mailing list"
+    ],
+    [
+     "https://www.lua.org/gems/selected.html",
+     "43 abstracts selected"
+    ],
+    [
+     "https://www.lua.org/gems",
+     "Lua Programming Gems"
+    ],
+    [
+     "https://www.lua.org/gems",
+     "call for contributions"
+    ],
+    [
+     "https://www.lua.org/wshop06.html",
+     "Lua Workshop 2006"
+    ],
+    [
+     "https://www.lua.org/manual/5.1",
+     "Reference manual"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "help to support"
+    ],
+    [
+     "https://www.lua.org/wshop06.html",
+     "Lua Workshop 2006"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.0.3.tar.gz",
+     "Lua 5.0.3"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.1.1.tar.gz",
+     "Lua 5.1.1"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/pil",
+     ""
+    ],
+    [
+     "https://www.lua.org/pil",
+     "Second edition"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.1.tar.gz",
+     "Lua 5.1"
+    ],
+    [
+     "https://www.lua.org/versions.html",
+     "features"
+    ],
+    [
+     "https://www.lua.org/wshop05.html",
+     "Lua Workshop 2005"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.1 (beta)"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.1 (alpha)"
+    ],
+    [
+     "https://www.lua.org/doc/hopl.pdf",
+     "the evolution of Lua"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "Mailing list"
+    ],
+    [
+     "https://www.lua.org/wshop05.html",
+     "Lua Workshop 2005"
+    ],
+    [
+     "https://www.lua.org/wshop05/photos",
+     "photos"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/doc/sblp2005.pdf",
+     "the implementation of Lua 5.0"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.1 (work6)"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.1 (work5)"
+    ],
+    [
+     "https://www.lua.org/wshop05.html",
+     "Lua Workshop 2005"
+    ],
+    [
+     "https://www.lua.org/doc/sblp2005.pdf",
+     "the implementation of Lua 5.0"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "Mailing list"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.1 (work4)"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.1 (work3)"
+    ],
+    [
+     "https://www.lua.org/doc/wjogos04.pdf",
+     "notes"
+    ],
+    [
+     "https://www.lua.org/doc/wjogos04.ppt",
+     "slides"
+    ],
+    [
+     "http://www.lua.org/",
+     "lua.org"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.1 (work2)"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.1 (work1)"
+    ],
+    [
+     "https://www.lua.org/pil/contents.html",
+     "online"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "donations"
+    ],
+    [
+     "https://www.lua.org/work",
+     "Lua 5.1 (work0)"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.0.2.tar.gz",
+     "Lua 5.0.2"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/pil",
+     ""
+    ],
+    [
+     "https://www.lua.org/pil",
+     "Programming in Lua"
+    ],
+    [
+     "https://www.lua.org/thanks.html",
+     "individuals and institutions that have supported Lua"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.0.1.tar.gz",
+     "Lua 5.0.1"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "all known bugs"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "Mailing list"
+    ],
+    [
+     "https://www.lua.org/versions.html",
+     "version history page"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-5.0.tar.gz",
+     "Lua 5.0"
+    ],
+    [
+     "https://www.lua.org/versions.html",
+     "features"
+    ],
+    [
+     "https://www.lua.org/recent.html",
+     "recent changes"
+    ],
+    [
+     "https://www.lua.org/recent.rss",
+     "RSS feed"
+    ],
+    [
+     "https://www.lua.org/papers.html",
+     "papers and theses"
+    ],
+    [
+     "https://www.lua.org/traffic.html",
+     "web traffic statistics"
+    ],
+    [
+     "https://www.lua.org/lua-l-stats.html",
+     "mailing list traffic statistics"
+    ],
+    [
+     "https://www.lua.org/images/lua-logo-penta.gif",
+     "commemorative logo"
+    ],
+    [
+     "https://www.lua.org/source",
+     "Source code"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-4.0.1.tar.gz",
+     "Lua 4.0.1"
+    ],
+    [
+     "https://www.lua.org/bugs.html",
+     "bug-fix"
+    ],
+    [
+     "https://www.lua.org/license.html",
+     "license page"
+    ],
+    [
+     "https://www.lua.org/mirrors.html",
+     "mirrors page"
+    ],
+    [
+     "https://www.lua.org/search.html",
+     "search page"
+    ],
+    [
+     "https://www.lua.org/survey.html",
+     "user survey"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Roberto"
+    ],
+    [
+     "https://www.lua.org/history.html",
+     "history of Lua"
+    ],
+    [
+     "http://www.lua.org/",
+     "lua.org"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-4.0.tar.gz",
+     "Lua 4.0"
+    ],
+    [
+     "https://www.lua.org/versions.html",
+     "features"
+    ],
+    [
+     "https://www.lua.org/prelease-en.html",
+     "English"
+    ],
+    [
+     "https://www.lua.org/prelease.html",
+     "Portuguese"
+    ],
+    [
+     "https://www.lua.org/press.html",
+     "page with press clippings"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "Mailing list"
+    ],
+    [
+     "https://www.lua.org/mirrors.html",
+     "page listing all mirror sites"
+    ],
+    [
+     "https://www.lua.org/ftp/lua-3.2.2.tar.gz",
+     "Lua 3.2.2"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://www.spi-inc.org/projects/lua",
+     "associated project"
+    ],
+    [
+     "https://www.spi-inc.org",
+     "Software in the Public Interest"
+    ],
+    [
+     "https://www.spi-inc.org/projects/lua",
+     "via SPI"
+    ],
+    [
+     "https://doi.org/10.1016/j.cola.2025.101326",
+     ""
+    ],
+    [
+     "https://www.sciencedirect.com/special-issue/10NP29GMWFL",
+     "special-issue"
+    ],
+    [
+     "https://doi.org/10.1016/j.cola.2025.101326",
+     "Journal of Computer Languages"
+    ],
+    [
+     "http://lua-users.org/",
+     "lua-users.org"
+    ],
+    [
+     "https://lua.org/",
+     "lua.org"
+    ],
+    [
+     "https://groups.google.com/g/lua-l",
+     "Google Groups"
+    ],
+    [
+     "https://classpert.com/classpertx/courses/building-a-programming-language/cohort",
+     "Building a Programming Language"
+    ],
+    [
+     "http://lua-users.org/lists/lua-l/2023-11/msg00095.html",
+     "announcement"
+    ],
+    [
+     "https://classpert.com/classpertx/courses/building-a-programming-language/cohort",
+     "Building a Programming Language"
+    ],
+    [
+     "http://lua-users.org/lists/lua-l/2023-07/msg00055.html",
+     "announcement"
+    ],
+    [
+     "https://classpert.com/classpertx/courses/building-a-programming-language/cohort",
+     "Building a Programming Language"
+    ],
+    [
+     "http://lua-users.org/lists/lua-l/2023-03/msg00065.html",
+     "announcement"
+    ],
+    [
+     "https://podcasts.apple.com/us/podcast/episode-3-roberto-ierusalimschy/id1597113413?i=1000585645435",
+     "We Speak Your Language"
+    ],
+    [
+     "https://www.hs-furtwangen.de/en/faculties/digital-media/labs/games-lab/lua-workshop",
+     "Lua Workshop 2022"
+    ],
+    [
+     "https://en.wikipedia.org/wiki/Pedro_Ernesto_Baptista",
+     "Pedro Ernesto Medal"
+    ],
+    [
+     "https://classpert.com/classpertx/courses/building-a-programming-language/cohort",
+     "Building a Programming Language"
+    ],
+    [
+     "http://lua-users.org/lists/lua-l/2022-05/msg00030.html",
+     "announcement"
+    ],
+    [
+     "https://s2021.siggraph.org/presentation/?id=miscpan_101&sess=sess234",
+     ""
+    ],
+    [
+     "https://s2021.siggraph.org/presentation/?id=miscpan_101&sess=sess234",
+     "SIGGRAPH 2021 Retrospective"
+    ],
+    [
+     "https://www.youtube.com/watch?v=x5eZWJrDlGk",
+     "Lua and Roblox"
+    ],
+    [
+     "http://tvpuc.vrc.puc-rio.br/cgi/cgilua.exe/sys/start.htm?infoid=4202&sid=29",
+     "TV PUC-Rio"
+    ],
+    [
+     "https://andregarzia.com/2021/01/lua-a-misunderstood-language.html",
+     "\"Lua, a misunderstood language\""
+    ],
+    [
+     "https://www.youtube.com/watch?v=REwxKPitiZM",
+     "live about Lua"
+    ],
+    [
+     "http://www.inf.puc-rio.br/blog/noticia/noticia/roberto-ierusalimschy-faz-live-lua-na-puc-rio-na-quinta-feira-29",
+     "announcement"
+    ],
+    [
+     "https://www.hs-furtwangen.de/en/faculties/digital-media/labs/games-lab/lua-workshop",
+     "Lua Workshop 2021"
+    ],
+    [
+     "https://www.hs-furtwangen.de/en/faculties/digital-media/labs/games-lab/lua-workshop",
+     "Lua Workshop 2020"
+    ],
+    [
+     "http://lua-users.org/lists/lua-l/2020-02/msg00081.html",
+     "announcement"
+    ],
+    [
+     "https://lua.moscow/conf/2019",
+     ""
+    ],
+    [
+     "http://lua.moscow/conf/2019",
+     "Lua in Moscow Conference 2019"
+    ],
+    [
+     "https://cacm.acm.org/magazines/2018/11/232214-a-look-at-the-design-of-lua",
+     ""
+    ],
+    [
+     "https://cacm.acm.org/magazines/2018/11/232214-a-look-at-the-design-of-lua",
+     "\"A look at the design of Lua\""
+    ],
+    [
+     "https://cacm.acm.org/magazines/2018/11/232214-a-look-at-the-design-of-lua",
+     "Communications of the ACM"
+    ],
+    [
+     "https://vimeo.com/292779036",
+     "video"
+    ],
+    [
+     "http://tug.org/tug2018",
+     ""
+    ],
+    [
+     "http://tug.org/tug2018",
+     "TUG 2018"
+    ],
+    [
+     "https://museudoamanha.org.br/sites/default/files/15-08%20-%20Cartaz%20A1%20%5BInovancas%5D07.pdf",
+     "Semin\ufffdrio Inovan\ufffdas"
+    ],
+    [
+     "http://museudoamanha.org.br/en",
+     "Museum of Tomorrow"
+    ],
+    [
+     "http://www.curry-on.org/2017",
+     "Curry On 2017"
+    ],
+    [
+     "https://www.youtube.com/watch?v=57jKNEKSNWA",
+     "video"
+    ],
+    [
+     "http://luaconf.com/2017",
+     ""
+    ],
+    [
+     "http://luaconf.com/2017",
+     "LuaConf 2017"
+    ],
+    [
+     "https://store.feistyduck.com/products/programming-in-lua-fourth-edition-ebook",
+     "e-book"
+    ],
+    [
+     "http://museudoamanha.org.br/en/inovancas-creations-brazilian-style",
+     ""
+    ],
+    [
+     "http://museudoamanha.org.br/en/inovancas-creations-brazilian-style",
+     "\"Inovan\ufffdas \u2013 Creations Brazilian style\""
+    ],
+    [
+     "http://museudoamanha.org.br/en",
+     "Museum of Tomorrow"
+    ],
+    [
+     "https://www.youtube.com/watch?v=zNANLAPPNdU",
+     "welcome video"
+    ],
+    [
+     "https://www.youtube.com/watch?v=0cgfcpTOZwo&t=243",
+     "video about Lua"
+    ],
+    [
+     "http://www.curry-on.org/2017",
+     "Curry On 2017"
+    ],
+    [
+     "http://lua.moscow/conf/2017",
+     ""
+    ],
+    [
+     "http://lua.moscow/conf/2017",
+     "Lua in Moscow Conference 2017"
+    ],
+    [
+     "http://lua-users.org/lists/lua-l/2017-02/msg00184.html",
+     "announcement"
+    ],
+    [
+     "http://luaconf.com/2017",
+     "LuaConf 2017"
+    ],
+    [
+     "http://lua-users.org/lists/lua-l/2017-01/msg00047.html",
+     "announcement"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379868/lua-news-20",
+     ""
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379868/lua-news-20",
+     "Fourth edition"
+    ],
+    [
+     "http://luaconf.com/2016",
+     "LuaConf 2016"
+    ],
+    [
+     "https://www.flickr.com/photos/142579272@N02",
+     "photos"
+    ],
+    [
+     "http://www.grupogen.com.br/programando-em-lua?code=luaorg&utm_source=luaorgutm_medium=beneficios&utm_campaign=parceria_luaorg_9788521626992",
+     "Programando em Lua"
+    ],
+    [
+     "http://luaconf.com/2016",
+     ""
+    ],
+    [
+     "http://luaconf.com/2016",
+     "LuaConf 2016"
+    ],
+    [
+     "http://www.grupogen.com.br/programando-em-lua?code=luaorg&utm_source=luaorgutm_medium=beneficios&utm_campaign=parceria_luaorg_9788521626992",
+     ""
+    ],
+    [
+     "http://www.grupogen.com.br/programando-em-lua?code=luaorg&utm_source=luaorgutm_medium=beneficios&utm_campaign=parceria_luaorg_9788521626992",
+     "Programando em Lua"
+    ],
+    [
+     "http://luaconf.ru/",
+     ""
+    ],
+    [
+     "http://www.dcc.ufrj.br/~fabiom/lua_20years.pdf",
+     ""
+    ],
+    [
+     "http://cbsoft2013.unb.br/cbsoft/pesquisa-desenvolvimento-e-inovacao",
+     "CBSoft 2013"
+    ],
+    [
+     "http://www.dcc.ufrj.br/~fabiom/lua_20years.pdf",
+     "slides"
+    ],
+    [
+     "http://lua-users.org/lists/lua-l/2013-07/msg00846.html",
+     "announcement"
+    ],
+    [
+     "http://www.sbc.org.br/33-premios/148-merito-cientifico",
+     ""
+    ],
+    [
+     "http://www.sbc.org.br/33-premios/148-merito-cientifico",
+     "Scientific Merit Award"
+    ],
+    [
+     "http://www2013.org/program/why-do-we-need-multiple-languages",
+     "invited talk"
+    ],
+    [
+     "http://www2013.org/",
+     "WWW 2013"
+    ],
+    [
+     "https://www.inf.puc-rio.br/~roberto/talks/www2013.pdf",
+     "slides"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/859037985X/lua-news-20",
+     ""
+    ],
+    [
+     "https://store.feistyduck.com/products/programming-in-lua",
+     "e-book"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/859037985X/lua-news-20",
+     "Third edition"
+    ],
+    [
+     "http://laser.inf.ethz.ch/2012/lectures.php",
+     "LASER Summer School on Innovative Languages for Software Engineering"
+    ],
+    [
+     "http://luajit.org/",
+     "LuaJIT"
+    ],
+    [
+     "http://luajit.org/list.html",
+     "mailing list"
+    ],
+    [
+     "http://lua-users.org/lists/lua-l/2012-05/msg00114.html",
+     "announcement"
+    ],
+    [
+     "http://www.fibers.com/shop/Lua",
+     "Lua store"
+    ],
+    [
+     "http://lua-users.org/wiki/LuaWorkshopTwoThousandTwelve",
+     "Lua Workshop 2012"
+    ],
+    [
+     "http://lua-users.org/lists/lua-l/2012-02/msg00898.html",
+     "announcement"
+    ],
+    [
+     "http://en.wikipedia.org/wiki/Wikipedia:Wikipedia_Signpost/2012-01-30/Technology_report",
+     "announcement"
+    ],
+    [
+     "http://www.gamasutra.com/view/news/129084/Announcing_Game_Developer_magazines_2011_Front_Line_Award_winners.php",
+     ""
+    ],
+    [
+     "http://www.gamasutra.com/view/news/129084/Announcing_Game_Developer_magazines_2011_Front_Line_Award_winners.php",
+     "Front Line Award 2011"
+    ],
+    [
+     "http://www.gdmag.com/",
+     "Game Developers Magazine"
+    ],
+    [
+     "http://las.stanford.edu/people/tinker-professors",
+     "Tinker Professorship"
+    ],
+    [
+     "http://twolivesleft.com/Codea",
+     "Codea"
+    ],
+    [
+     "http://twolivesleft.com/Codea/PressRelease.html",
+     "Codify"
+    ],
+    [
+     "http://www.tiobe.com/tiobe-index",
+     "TIOBE Programming Community Index"
+    ],
+    [
+     "http://cacm.acm.org/magazines/2011/7/109909-passing-a-language-through-the-eye-of-a-needle",
+     ""
+    ],
+    [
+     "http://queue.acm.org/detail.cfm?id=1983083",
+     "\"Passing a language through the eye of a needle\""
+    ],
+    [
+     "http://queue.acm.org/",
+     "ACM Queue"
+    ],
+    [
+     "http://cacm.acm.org/magazines/2011/7/109909-passing-a-language-through-the-eye-of-a-needle",
+     "Communications of the ACM"
+    ],
+    [
+     "http://www.tiobe.com/tiobe-index",
+     "TIOBE Programming Community Index"
+    ],
+    [
+     "http://lua.coders-online.net/",
+     "German"
+    ],
+    [
+     "http://lua-users.org/wiki/LuaWorkshopTwoThousandEleven",
+     "Lua Workshop 2011"
+    ],
+    [
+     "http://www.online-artikel.de/",
+     "SocialMediaPress"
+    ],
+    [
+     "http://listmaster.pepperfish.net/cgi-bin/mailman/listinfo/lua-l-lists.lua.org",
+     "new home"
+    ],
+    [
+     "http://www.pepperfish.net/",
+     "Pepperfish"
+    ],
+    [
+     "http://www.tecgraf.puc-rio.br/lua/mirror",
+     "Mirror site at PUC-Rio"
+    ],
+    [
+     "http://www.cstug.cz/index.eng.html",
+     "Czechoslovak TeX Users Group"
+    ],
+    [
+     "https://store.feistyduck.com/products/lua-programming-gems-ebook",
+     "e-book"
+    ],
+    [
+     "http://www.stanford.edu/class/ee380",
+     "Stanford EE Computer Systems Colloquium"
+    ],
+    [
+     "http://www.stanford.edu/class/ee380/Abstracts/100310.html",
+     "the design of Lua"
+    ],
+    [
+     "http://ee380.stanford.edu/cgi-bin/videologger.php?target=100310-ee380-300.asx",
+     "video"
+    ],
+    [
+     "http://www.stanford.edu/class/ee380/Abstracts/100310-slides.pdf",
+     "slides"
+    ],
+    [
+     "http://www.gdconf.com/conference/tutorials.html",
+     "Lua scripting in game production"
+    ],
+    [
+     "http://www.gdconf.com/",
+     "GDC 2010"
+    ],
+    [
+     "http://www.kore.net/company/luagamedev.html",
+     "slides"
+    ],
+    [
+     "http://www.adobe.com/",
+     "Adobe"
+    ],
+    [
+     "http://forum.luahub.com/",
+     "Lua forums"
+    ],
+    [
+     "https://store.feistyduck.com/products/programming-in-lua",
+     "e-book"
+    ],
+    [
+     "http://www.gdconf.com/conference/tutorials.html",
+     "Lua scripting in game production"
+    ],
+    [
+     "http://www.gdconf.com/",
+     "GDC 2010"
+    ],
+    [
+     "http://www.zazzle.com/Lua_Store",
+     "Lua store"
+    ],
+    [
+     "http://sblp2009.ucpel.tche.br/",
+     "SBLP 2009"
+    ]
+   ],
+   "images_total": 34,
+   "images_missing_alt": 32,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 4292,
+    "tier1": {
+     "statistics_count": 6,
+     "statistics_per_100w": 0.14,
+     "quote_tags": 0,
+     "attributed_quotes": 3,
+     "external_domains": 129,
+     "authoritative_domains": [
+      "cacm.acm.org",
+      "doi.ieeecomputersociety.org",
+      "doi.org",
+      "dx.doi.org",
+      "ee380.stanford.edu",
+      "en.wikipedia.org",
+      "fcrc.acm.org",
+      "gmane.org"
+     ],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 304,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.68,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 2,
+     "heading_levels_skipped": false,
+     "heading_count": 35,
+     "sections": 35,
+     "sections_in_150_300_band": 13,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 8,
+     "structured_format_ratio": 0.0,
+     "emphasis_density": 0.0294,
+     "intro_summary_words": 99
+    }
+   },
+   "structured_data": {
+    "verdict": "MACHINE_HINTS_ONLY",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": true,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": [
+    {
+     "mode": "fact_bearing_image_without_alt",
+     "count": 1,
+     "examples": [
+      "images/siggraph2021.png"
+     ]
+    }
+   ]
+  },
+  {
+   "url": "https://www.lua.org/authors.html",
+   "final_url": "https://www.lua.org/authors.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 515,
+   "redirect_chain": [],
+   "html_bytes": 2346,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Sun, 27 Oct 2024 14:20:28 GMT",
+    "etag": "\"671e4c2c-92a\""
+   },
+   "title": "Lua: authors",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Authors"
+    ]
+   ],
+   "text_len": 715,
+   "main_text_len": 331,
+   "boilerplate_text_len": 0,
+   "link_density": 0.348,
+   "text_sample": "Lua: authors Authors The Lua language is designed, implemented, and maintained at PUC-Rio in Brazil since 1993 by the team below: Roberto Ierusalimschy Professor in the Department of Computer Science at PUC-Rio . Head of LabLua . Waldemar Celes Professor in the Department of Computer Science at PUC-Rio . Director of Tecgraf . Luiz Henrique de Figueiredo Researcher at IMPA .\nFormer consultant at Tecgraf . Waldemar, Roberto, Luiz \u00b7 photo by Ernani d'Almeida (2011) The Lua team is available for outside consulting on Lua matters. The best way to contact the Lua team is by email . The Lua team is grateful to several individuals and institutions that have supported Lua . Last update:\nSun Oct 27 14:20:26 UTC 2024",
+   "word_count": 121,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/images/team.jpg",
+     ""
+    ],
+    [
+     "https://www.lua.org/contact.html",
+     "contact"
+    ],
+    [
+     "https://www.lua.org/contact.html",
+     "email"
+    ],
+    [
+     "https://www.lua.org/thanks.html",
+     "individuals and institutions that have supported Lua"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://www.puc-rio.br/",
+     "PUC-Rio"
+    ],
+    [
+     "https://www.inf.puc-rio.br/~roberto",
+     "Roberto Ierusalimschy"
+    ],
+    [
+     "https://www.inf.puc-rio.br/",
+     "Department of Computer Science"
+    ],
+    [
+     "https://www.puc-rio.br/",
+     "PUC-Rio"
+    ],
+    [
+     "http://www.lua.inf.puc-rio.br/",
+     "LabLua"
+    ],
+    [
+     "https://www.tecgraf.puc-rio.br/~celes",
+     "Waldemar Celes"
+    ],
+    [
+     "https://www.inf.puc-rio.br/",
+     "Department of Computer Science"
+    ],
+    [
+     "https://www.puc-rio.br/",
+     "PUC-Rio"
+    ],
+    [
+     "https://www.tecgraf.puc-rio.br/",
+     "Tecgraf"
+    ],
+    [
+     "https://www.tecgraf.puc-rio.br/~lhf",
+     "Luiz Henrique de Figueiredo"
+    ],
+    [
+     "https://www.impa.br/",
+     "IMPA"
+    ],
+    [
+     "https://www.tecgraf.puc-rio.br/",
+     "Tecgraf"
+    ]
+   ],
+   "images_total": 2,
+   "images_missing_alt": 0,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 1,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [
+     "1993"
+    ],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 121,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 5,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 5,
+     "has_spec_table": true,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 1,
+     "heading_levels_skipped": false,
+     "heading_count": 1,
+     "sections": 1,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 8,
+     "structured_format_ratio": 0.143,
+     "emphasis_density": 0.0,
+     "intro_summary_words": 118
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/gems",
+   "final_url": "https://www.lua.org/gems/",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 1013,
+   "redirect_chain": [
+    {
+     "from": "https://www.lua.org/gems",
+     "status": 301,
+     "to": "https://www.lua.org/gems/"
+    }
+   ],
+   "html_bytes": 5711,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Fri, 21 Feb 2025 13:18:05 GMT",
+    "etag": "\"67b87d0d-164f\""
+   },
+   "title": "Lua Programming Gems",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Programming Gems"
+    ],
+    [
+     2,
+     "Contents"
+    ]
+   ],
+   "text_len": 2400,
+   "main_text_len": 1236,
+   "boilerplate_text_len": 0,
+   "link_density": 0.304,
+   "text_sample": "Lua Programming Gems Programming Gems contents \u00b7 front matter \u00b7 sample chapter \u00b7 errata \u00b7 cover \u00b7 download \u00b7 buy This book is a collection of articles\nrecording some of the wisdom and practice on how to program well in Lua. Lua Programming Gems edited by L. H. de Figueiredo, W. Celes, R. Ierusalimschy Lua.org, December 2008 ISBN 978-85-903798-4-3 (also available as an e-book ) Read the front matter (containing\nthe preface by the editors, forewords by Cameron Laird and by Mark Hamburg,\nand short biographies of the contributors)\nand Chapter 2 on Lua Performance Tips .\nSee also the errata . The entire book is freely available for download .\nStill, buy a copy of the book and help to support the Lua project. Contents Programming Techniques Lua Per-Thread Library Context Doug Currie Lua Performance Tips Roberto Ierusalimschy Vardump: The Power of Seeing What's Behind Tobias S\ufffdlzenbr\ufffdck and Christoph Beckmann Serialization with Pluto Ben Sunshine-Hill Abstractions for LuaSQL Tom\ufffds Guisasola Gorham Bootstrapping a Forth in 40 Lines of Lua Code Eduardo Ochs Effecting Large-Scale Change (with little trauma) using Metatables S\ufffdrgio Alvares Maffra and Pedro Miller Rabinovitch Design Techniques MVC Web Development with Kepler Andr\ufffd Carregal and Yuri Takhteyev Filters, Sources, Sinks, and Pumps Diego Nehab Lua as a Protocol Language Patrick Rapin Lua Script Packaging Han Zhao Objects, Lua-style Reuben Thomas Exceptions in Lua John Belmonte Algorithms and Data Structures Word Ladders Gavin Wraith Building Data Structures and Iterators in Lua Luis Carvalho A Primer of Scientific Computing in Lua Luis Carvalho Complex Structured Data Input Julio Manuel Fern\ufffdndez-D\ufffdaz Lua Implementations of Common Data Structures Matthew M. Burke Tic-Tac-Toe and the Minimax Decision Algorithm Rafael Savelli and Roberto de Beauclair Seixas Game Programming Using Lua in Game and Tool Creation Konstantin Sokharev and Vadim Groznov A Dynamic and Flexible Event System for Script-Driven Games Robert Oates Lua for Game Programming Steve Gargolinski Designing an Efficient Lua Driven Game Scripting Engine Nicolas Peri Embedding and Extending Enhanced Coroutines in Lua Patrick Rapin Using Lua in Pascal Jeremy Darling Porting Lua to a Microcontroller Ralph Hempel Writing C/C++ Modules for Lua Ralph Steggink and Wim Couwenberg Interpreted C Modules J\ufffdr\ufffdme Vuarand Last update:\nFri Feb 21 13:18:04 UTC 2025",
+   "word_count": 369,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/gems/front.pdf",
+     "front matter"
+    ],
+    [
+     "https://www.lua.org/gems/sample.pdf",
+     "sample chapter"
+    ],
+    [
+     "https://www.lua.org/gems/errata.html",
+     "errata"
+    ],
+    [
+     "https://www.lua.org/gems/cover.png",
+     "cover"
+    ],
+    [
+     "https://www.lua.org/gems/lpg.pdf",
+     "download"
+    ],
+    [
+     "https://www.lua.org/gems/front.pdf",
+     "front matter"
+    ],
+    [
+     "https://www.lua.org/gems/sample.pdf",
+     "Chapter 2"
+    ],
+    [
+     "https://www.lua.org/gems/sample.pdf",
+     "Lua Performance Tips"
+    ],
+    [
+     "https://www.lua.org/gems/errata.html",
+     "errata"
+    ],
+    [
+     "https://www.lua.org/gems/lpg.pdf",
+     "entire book"
+    ],
+    [
+     "https://www.lua.org/gems/lpg.pdf",
+     "download"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "help to support"
+    ],
+    [
+     "https://www.lua.org/gems/sample.pdf",
+     "Lua Performance Tips"
+    ],
+    [
+     "https://www.lua.org/gems/vardump.lua",
+     "Vardump: The Power of Seeing What's Behind"
+    ],
+    [
+     "https://www.lua.org/gems/lpg107.zip",
+     "Effecting Large-Scale Change (with little trauma) using Metatables"
+    ],
+    [
+     "https://www.lua.org/gems/lpg113.pdf",
+     "Exceptions in Lua"
+    ],
+    [
+     "https://www.lua.org/gems/lpg117.zip",
+     "Complex Structured Data Input"
+    ],
+    [
+     "https://www.lua.org/gems/lpg121.zip",
+     "A Dynamic and Flexible Event System for Script-Driven Games"
+    ],
+    [
+     "https://www.lua.org/gems/lpg124.zip",
+     "Enhanced Coroutines in Lua"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379841/lua-gems-20",
+     "buy"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379841/lua-gems-20",
+     ""
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379841/lua-gems-20",
+     "Lua Programming Gems"
+    ],
+    [
+     "https://store.feistyduck.com/products/lua-programming-gems-ebook",
+     "e-book"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379841/lua-gems-20",
+     "buy a copy"
+    ],
+    [
+     "https://luarocks.org/modules/dougcurrie/ldecnumber",
+     "Lua Per-Thread Library Context"
+    ],
+    [
+     "http://angg.twu.net/miniforth-article.html",
+     "Bootstrapping a Forth in 40 Lines of Lua Code"
+    ],
+    [
+     "http://www.tecgraf.puc-rio.br/~diego/professional/luasocket/ltn12.html",
+     "Filters, Sources, Sinks, and Pumps"
+    ],
+    [
+     "http://rrt.sc3d.org/",
+     "Reuben Thomas"
+    ],
+    [
+     "http://code.google.com/p/luagems-graph",
+     "Building Data Structures and Iterators in Lua"
+    ],
+    [
+     "http://code.google.com/p/luagems-numeric",
+     "A Primer of Scientific Computing in Lua"
+    ]
+   ],
+   "images_total": 2,
+   "images_missing_alt": 1,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 1,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 369,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 7,
+     "authoritative_domains": [
+      "luarocks.org",
+      "rrt.sc3d.org"
+     ],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 1,
+     "has_spec_table": true,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 2,
+     "heading_levels_skipped": false,
+     "heading_count": 2,
+     "sections": 2,
+     "sections_in_150_300_band": 1,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 8,
+     "structured_format_ratio": 0.791,
+     "emphasis_density": 0.6117,
+     "intro_summary_words": 120
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/pil",
+   "final_url": "https://www.lua.org/pil/",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 991,
+   "redirect_chain": [
+    {
+     "from": "https://www.lua.org/pil",
+     "status": 301,
+     "to": "https://www.lua.org/pil/"
+    }
+   ],
+   "html_bytes": 6367,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Fri, 03 Jul 2020 12:43:43 GMT",
+    "etag": "\"5eff27ff-18df\""
+   },
+   "title": "Programming in Lua",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Programming in Lua"
+    ],
+    [
+     2,
+     "Fourth edition"
+    ],
+    [
+     2,
+     "Third edition"
+    ],
+    [
+     2,
+     "Second edition"
+    ],
+    [
+     2,
+     "First edition"
+    ]
+   ],
+   "text_len": 2595,
+   "main_text_len": 2043,
+   "boilerplate_text_len": 0,
+   "link_density": 0.168,
+   "text_sample": "Programming in Lua Programming in Lua fourth edition \u00b7 third edition \u00b7 second edition \u00b7 first edition \u00b7 errata \u00b7 online version \u00b7 amazon \u00b7 e-book \u00b7 manual This book is a detailed and authoritative introduction to\nall aspects of Lua programming\nwritten by Lua's chief architect. Programming in Lua provides a solid base to any programmer who wants to use Lua.\nIt covers all aspects of Lua\u2014from the basics to its API with C.\nThe book is the main source of programming patterns for Lua, with numerous code examples that help the reader to make the most of Lua's flexibility and powerful mechanisms.\nThe book is targeted at people with some programming background,\nbut it does not assume any prior knowledge about Lua or other scripting languages. When you buy a copy of this book,\nyou help to support the Lua project . For the official definition of the Lua language, see the reference manual . Fourth edition Programming in Lua by Roberto Ierusalimschy Lua.org, August 2016 ISBN 8590379868 (also available as an e-book ) The fourth edition updates the book to Lua 5.3 and marks a complete reorganization of the text. Building on many years of experience teaching Lua, Roberto has restructured the book to present the material in a growing order of complexity, allowing the reader to better absorb the character of the language. The book is available at the main online stores\nand also as an e-book . Third edition Programming in Lua by Roberto Ierusalimschy Lua.org, January 2013 ISBN 859037985X (also available as an e-book ) Programmirovanie na iazyke Lua by Roberto Ierusalimschy DMK-press, 2014 ISBN 5940747671 Programando em Lua por Roberto Ierusalimschy LTC, January 2015 ISBN 9788521626992 The third edition is aimed at Lua 5.2 and can be used with other versions.\nIt brings substantial new material.\nAll chapters include exercises,\nranging from simple questions about the language to full small-size projects. The book is available at the main online stores\nand also as an e-book . Second edition Programming in Lua by Roberto Ierusalimschy Lua.org, March 2006 ISBN 8590379825 The second edition was aimed at Lua 5.1 and remains quite relevant for later versions. The book is still available at the main online stores.\n\nIt is also available in German, Korean, Chinese, and Japanese. First edition Programming in Lua by Roberto Ierusalimschy Lua.org, December 2003 ISBN 8590379817 The first edition was aimed at Lua 5.0 and remains largely relevant for later versions, but there are some differe",
+   "word_count": 430,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/pil/errata.html",
+     "errata"
+    ],
+    [
+     "https://www.lua.org/pil/contents.html",
+     "online version"
+    ],
+    [
+     "https://www.lua.org/manual",
+     "manual"
+    ],
+    [
+     "https://www.lua.org/pil",
+     "Programming in Lua"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "support the Lua project"
+    ],
+    [
+     "https://www.lua.org/manual",
+     "reference manual"
+    ],
+    [
+     "https://www.lua.org/manual/5.3",
+     "Lua 5.3"
+    ],
+    [
+     "https://www.lua.org/manual/5.2",
+     "Lua 5.2"
+    ],
+    [
+     "https://www.lua.org/manual/5.1",
+     "Lua 5.1"
+    ],
+    [
+     "https://www.lua.org/docs.html",
+     "available"
+    ],
+    [
+     "https://www.lua.org/manual/5.0",
+     "Lua 5.0"
+    ],
+    [
+     "https://www.lua.org/pil/contents.html",
+     "online"
+    ]
+   ],
+   "links_external": [
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379868/lua-pilindex-20",
+     "amazon"
+    ],
+    [
+     "https://store.feistyduck.com/products/programming-in-lua-fourth-edition-ebook",
+     "e-book"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379868/lua-pilindex-20",
+     ""
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379868/lua-pilindex-20",
+     "Programming in Lua"
+    ],
+    [
+     "https://store.feistyduck.com/products/programming-in-lua-fourth-edition-ebook",
+     "e-book"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379868/lua-pilindex-20",
+     "available"
+    ],
+    [
+     "https://store.feistyduck.com/products/programming-in-lua-fourth-edition-ebook",
+     "e-book"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/859037985X/lua-pilindex-20",
+     ""
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/859037985X/lua-pilindex-20",
+     "Programming in Lua"
+    ],
+    [
+     "https://store.feistyduck.com/products/programming-in-lua",
+     "e-book"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/5940747671/lua-pilindex-20",
+     ""
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/5940747671/lua-pilindex-20",
+     "Programmirovanie na iazyke Lua"
+    ],
+    [
+     "http://www.grupogen.com.br/programando-em-lua?code=luaorg&utm_source=luaorgutm_medium=beneficios&utm_campaign=parceria_luaorg_9788521626992",
+     ""
+    ],
+    [
+     "http://www.grupogen.com.br/programando-em-lua?code=luaorg&utm_source=luaorgutm_medium=beneficios&utm_campaign=parceria_luaorg_9788521626992",
+     "Programando em Lua"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/859037985X/lua-pilindex-20",
+     "available"
+    ],
+    [
+     "https://store.feistyduck.com/products/programming-in-lua",
+     "e-book"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379825/lua-pilindex-20",
+     ""
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379825/lua-pilindex-20",
+     "Programming in Lua"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379825/lua-pilindex-20",
+     "available"
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379817/lua-pilindex-20",
+     ""
+    ],
+    [
+     "https://www.amazon.com/exec/obidos/ASIN/8590379817/lua-pilindex-20",
+     "Programming in Lua"
+    ]
+   ],
+   "images_total": 7,
+   "images_missing_alt": 6,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 4,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 430,
+    "tier1": {
+     "statistics_count": 1,
+     "statistics_per_100w": 0.23,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 3,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 1,
+     "has_spec_table": true,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 2,
+     "heading_levels_skipped": false,
+     "heading_count": 5,
+     "sections": 5,
+     "sections_in_150_300_band": 1,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 8,
+     "structured_format_ratio": 0.2,
+     "emphasis_density": 0.0,
+     "intro_summary_words": 151
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/community.html",
+   "final_url": "https://www.lua.org/community.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 748,
+   "redirect_chain": [],
+   "html_bytes": 5071,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Sat, 18 May 2024 17:00:52 GMT",
+    "etag": "\"6648dec4-13cf\""
+   },
+   "title": "Lua: community",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Community"
+    ],
+    [
+     2,
+     "Meeting places"
+    ],
+    [
+     2,
+     "Contributing"
+    ],
+    [
+     2,
+     "Supporting Lua"
+    ],
+    [
+     2,
+     "Workshop"
+    ],
+    [
+     3,
+     "Past workshops"
+    ]
+   ],
+   "text_len": 2241,
+   "main_text_len": 1288,
+   "boilerplate_text_len": 0,
+   "link_density": 0.254,
+   "text_sample": "Lua: community Community lua-users.org \u00b7 wiki \u00b7 stackoverflow \u00b7 user groups \u00b7 mailing list \u00b7 user survey \u00b7 quotes \u00b7 donations Meeting places There are several places you can go to meet other people that use Lua.\nA good starting point is lua-users.org ,\na collaborative meeting place built for and by Lua users. One of the focal points of the Lua community is our mailing list ,\nwhich is very active and friendly;\nit has many subscribers from all over the world,\nincluding several Lua experts and the Lua team . Other meeting places are stackoverflow ,\nthe chat room , Twitter , Mastodon ,\na Telegram group ,\nand\na Discord room .\nFor discussions in Portuguese,\njoin the Lua BR mailing list\nand visit pt.stackoverflow . If you want to meet in person,\njoin a user group , find a user group near you ,\nattend a Lua Workshop . Contributing You can contribute to the community in several ways:\nanswer questions about Lua\n(in the mailing list ,\nin stackoverflow ,\nand elsewhere),\ncollaborate in the lua-users wiki ,\nanswer our survey ,\nadd a Lua logo to your web page,\ntell us about third-party sites related to Lua\nand papers and theses about Lua,\nand\nwrite tools and libraries for Lua\nand add them to LuaRocks . Supporting Lua You can help to support the Lua project by buying a book published by Lua.org\nand by making a donation . You can help to spread the word about Lua by buying Lua products\nat Zazzle . Workshop The main goal of the Lua workshop is to allow the Lua community to get together and meet in person and talk about the Lua language, its uses, and its implementation.\nAnother goal is to help spread the word about Lua to industry and academia, taking advantage of the location of the workshop when possible. If you'd like to organize a Lua workshop,\nplease post a proposal in the mailing list . Past workshops 2023 \u2013 Rio de Janeiro, Brazil 2022 \u2013 Freiburg, Germany 2018 \u2013 Kaunas, Lithuania 2017 \u2013 San Francisco, California 2016 \u2013 San Francisco, California 2015 \u2013 Stockholm, Sweden 2014 \u2013 Moscow, Russia 2013 \u2013 Toulouse, France 2012 \u2013 Reston, Virginia 2011 \u2013 Frick, Switzerland 2009 \u2013 Rio de Janeiro, Brazil 2008 \u2013 Washington, D.C. 2006 \u2013 Venlo, The Netherlands 2005 \u2013 San Jose, California Last update:\nSat May 18 17:00:51 UTC 2024",
+   "word_count": 408,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "mailing list"
+    ],
+    [
+     "https://www.lua.org/survey.html",
+     "user survey"
+    ],
+    [
+     "https://www.lua.org/quotes.html",
+     "quotes"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "donations"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "mailing list"
+    ],
+    [
+     "https://www.lua.org/lua-l-stats.html",
+     "active"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Lua team"
+    ],
+    [
+     "https://www.lua.org/lua-br.html",
+     "Lua BR"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "mailing list"
+    ],
+    [
+     "https://www.lua.org/survey.html",
+     "survey"
+    ],
+    [
+     "https://www.lua.org/images",
+     "logo"
+    ],
+    [
+     "https://www.lua.org/papers.html",
+     "papers and theses"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "support the Lua project"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "buying a book"
+    ],
+    [
+     "https://www.lua.org/donations.html",
+     "making a donation"
+    ],
+    [
+     "https://www.lua.org/lua-l.html",
+     "mailing list"
+    ],
+    [
+     "https://www.lua.org/wshop23.html",
+     "2023"
+    ],
+    [
+     "https://www.lua.org/wshop22.html",
+     "2022"
+    ],
+    [
+     "https://www.lua.org/wshop18.html",
+     "2018"
+    ],
+    [
+     "https://www.lua.org/wshop17.html",
+     "2017"
+    ],
+    [
+     "https://www.lua.org/wshop16.html",
+     "2016"
+    ],
+    [
+     "https://www.lua.org/wshop15.html",
+     "2015"
+    ],
+    [
+     "https://www.lua.org/wshop14.html",
+     "2014"
+    ],
+    [
+     "https://www.lua.org/wshop13.html",
+     "2013"
+    ],
+    [
+     "https://www.lua.org/wshop12.html",
+     "2012"
+    ],
+    [
+     "https://www.lua.org/wshop11.html",
+     "2011"
+    ],
+    [
+     "https://www.lua.org/wshop09.html",
+     "2009"
+    ],
+    [
+     "https://www.lua.org/wshop08.html",
+     "2008"
+    ],
+    [
+     "https://www.lua.org/wshop06.html",
+     "2006"
+    ],
+    [
+     "https://www.lua.org/wshop05.html",
+     "2005"
+    ]
+   ],
+   "links_external": [
+    [
+     "http://lua-users.org/",
+     "lua-users.org"
+    ],
+    [
+     "http://lua-users.org/wiki",
+     "wiki"
+    ],
+    [
+     "https://stackoverflow.com/questions/tagged/lua",
+     "stackoverflow"
+    ],
+    [
+     "http://lua-users.org/wiki/UserGroups",
+     "user groups"
+    ],
+    [
+     "http://lua-users.org/",
+     "lua-users.org"
+    ],
+    [
+     "http://lua-users.org/wiki",
+     "collaborative"
+    ],
+    [
+     "https://stackoverflow.com/questions/tagged/lua",
+     "stackoverflow"
+    ],
+    [
+     "http://lua-users.org/wiki/IrcChannel",
+     "chat room"
+    ],
+    [
+     "https://twitter.com/search?q=%23LuaLang",
+     "Twitter"
+    ],
+    [
+     "https://fosstodon.org/@lualang",
+     "Mastodon"
+    ],
+    [
+     "https://telegram.me/LuaLang",
+     "Telegram group"
+    ],
+    [
+     "https://discordapp.com/invite/7wu7ZsW",
+     "Discord room"
+    ],
+    [
+     "https://pt.stackoverflow.com/questions/tagged/lua",
+     "pt.stackoverflow"
+    ],
+    [
+     "http://lua-users.org/wiki/UserGroups",
+     "user group"
+    ],
+    [
+     "https://www.meetup.com/find/?keywords=lua+programming&radius=Infinity",
+     "find a user group near you"
+    ],
+    [
+     "https://stackoverflow.com/questions/tagged/lua",
+     "stackoverflow"
+    ],
+    [
+     "http://lua-users.org/wiki",
+     "lua-users wiki"
+    ],
+    [
+     "http://lua-users.org/wiki/LuaLinks",
+     "third-party sites"
+    ],
+    [
+     "http://lua-users.org/wiki/LuaAddons",
+     "tools and libraries"
+    ],
+    [
+     "https://luarocks.org/",
+     "LuaRocks"
+    ],
+    [
+     "https://www.zazzle.com/store/lua_store",
+     "Zazzle"
+    ]
+   ],
+   "images_total": 1,
+   "images_missing_alt": 0,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 1,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 408,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 10,
+     "authoritative_domains": [
+      "fosstodon.org",
+      "lua-users.org",
+      "luarocks.org"
+     ],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 2,
+     "has_spec_table": true,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.25,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 3,
+     "heading_levels_skipped": false,
+     "heading_count": 6,
+     "sections": 6,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 8,
+     "structured_format_ratio": 0.577,
+     "emphasis_density": 0.0,
+     "intro_summary_words": 18
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/wshop05.html",
+   "final_url": "https://www.lua.org/wshop05.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 703,
+   "redirect_chain": [],
+   "html_bytes": 20868,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Tue, 28 Jan 2014 11:42:49 GMT",
+    "etag": "\"52e797b9-5184\""
+   },
+   "title": "Lua: workshop 2005",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Workshop 2005"
+    ],
+    [
+     2,
+     "Program"
+    ],
+    [
+     2,
+     "Venue"
+    ],
+    [
+     2,
+     "Accommodation"
+    ],
+    [
+     2,
+     "Registration"
+    ],
+    [
+     2,
+     "Organization"
+    ],
+    [
+     2,
+     "Participants"
+    ],
+    [
+     2,
+     "Abstracts"
+    ]
+   ],
+   "text_len": 12709,
+   "main_text_len": 9676,
+   "boilerplate_text_len": 0,
+   "link_density": 0.103,
+   "text_sample": "Lua: workshop 2005 Workshop 2005 registration \u00b7 program \u00b7 venue \u00b7 accommodation \u00b7 organization \u00b7 participants \u00b7 abstracts \u00b7 photos The workshop is over.\nSee some photos taken by Marius Gheorghe. A Lua workshop will be held at\nAdobe's headquarters in San Jose, California,\non July 27-28, 2005. The main goal of the workshop is to allow the Lua community (or at least part of it)\nto get together and meet in person and talk about\nthe Lua language, its uses, and its implementation. Another goal is to help spread the word about Lua to the industry and academia,\ntaking advantage of the location of the workshop. The workshop is open to everyone interested in Lua.\nThere is no registration fee but\nparticipants are required to register because\nonly a limited number of seats are available,\nwhich will be filled first-come, first-served. Program We shall have\ntwo plenary talks by Roberto Ierusalimschy (Lua's chief architect),\none roundtable on the future of Lua,\nseveral contributed talks,\nand two sessions for demos and short presentations.\nThere will also be plenty of time for getting together and chatting about Lua.\nThe final program is below (but it is subject to last-minute changes). Wed July 27 9:00 breakfast 9:30 Io and Lua Steve Dekorte 10:00 Lua and BREW cancelled Marc Nijdam 10:30 coffee break 11:00 The Implementation of Lua Roberto Ierusalimschy 12:00 lunch 1:30 LuaSocket Behind the Scenes Diego Nehab 2:00 It's all glue: Experiences building a desktop application with Lua Mark Hamburg 2:30 Lua and Instant Messaging Matthew Burke Embedding Lua into LabView Albert-Jan Brouwer Using Lua to Build Domain-Specific Languages Thomas Wrensch Lua in ATE Marius Gheorghe 3:30 coffee break 4:00 open discussion 5:00 closing Thu July 28 9:00 breakfast 9:30 Embedding Lua in Grim Fandango Bret Mogilefsky 10:00 Psychonauts and Lua: a case study Paul Du Bois 10:30 coffee break 11:00 The Novelties of Lua 5.1 Roberto Ierusalimschy 12:00 lunch 1:30 The Kepler Project Andr\ufffd Carregal 2:00 A Macro Facility for Lua Luiz Henrique de Figueiredo 2:30 Lua for Molecular Biology Yutaka Ueno LuaSynth Alex Mohr Lua Integrated into Embedded Linux Glenn Edgar A Lua Decompiler Hisham Muhammad 3:30 coffee break 4:00 The Future of Lua roundtable 5:00 closing Venue The workshop will be held at Adobe's headquarters in San Jose, California.\nFollow these directions to get there (pdf).\nHead for the Albertus conference room on the second floor of the west tower. Accommodation The hotels below have special r",
+   "word_count": 1960,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/wshop05/photos",
+     "photos"
+    ],
+    [
+     "https://www.lua.org/wshop05/photos",
+     "photos"
+    ],
+    [
+     "https://www.lua.org/community.html",
+     "community"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Lua team"
+    ],
+    [
+     "https://www.lua.org/wshop05/Muhammad.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Figueiredo.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Mogul.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Brouwer.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Dekorte.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Hamburg.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Ueno.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Gheorghe.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Edgar.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Nehab.ppt",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Mohr.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Ierusalimschy1.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Ierusalimschy2.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop05/Wrensch.pdf",
+     "slides"
+    ]
+   ],
+   "links_external": [
+    [
+     "http://www.adobe.com/aboutadobe/pdfs/sjmap.pdf",
+     "directions"
+    ],
+    [
+     "http://www.hotelmontgomerysj.com",
+     "Hotel Montgomery"
+    ],
+    [
+     "http://www.hilton.com/en/hi/hotels/index.jhtml?ctyhocn=SJCSHHF",
+     "Hilton San Jose"
+    ],
+    [
+     "http://www.sanjosemarriott.com/",
+     "San Jose Marriott"
+    ],
+    [
+     "http://www.fairmont.com/sanjose",
+     "The Fairmont San Jose"
+    ],
+    [
+     "http://lua-users.org/wiki/MarkHamburg",
+     "Mark Hamburg"
+    ],
+    [
+     "http://www.adobe.com/",
+     ""
+    ],
+    [
+     "http://bluedino.net/talks/lua05",
+     "slides"
+    ],
+    [
+     "http://www.keplerproject.org/media/luaworkshop2005",
+     "slides"
+    ]
+   ],
+   "images_total": 2,
+   "images_missing_alt": 0,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 3,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [
+     "lua.workshop@gmail.com"
+    ],
+    "tel_links": [],
+    "phones": [
+     "(408) 280-0212",
+     "(408) 280-1300",
+     "(408) 280-6072",
+     "(408) 282-8800",
+     "(408) 282-8850",
+     "(408) 287-2100",
+     "(408) 947-4489",
+     "(408) 998-1900"
+    ],
+    "prices": [
+     "$130"
+    ],
+    "postal_codes": [
+     "95110",
+     "95113"
+    ],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 1960,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 8,
+     "authoritative_domains": [
+      "lua-users.org",
+      "www.keplerproject.org"
+     ],
+     "has_price": true,
+     "price_position": 0.208,
+     "spec_pairs": 4,
+     "has_spec_table": true,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.1,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 2,
+     "heading_levels_skipped": false,
+     "heading_count": 8,
+     "sections": 8,
+     "sections_in_150_300_band": 1,
+     "sections_over_300w": 2,
+     "median_paragraph_words": 8,
+     "structured_format_ratio": 0.682,
+     "emphasis_density": 0.112,
+     "intro_summary_words": 137
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/wshop05/photos",
+   "final_url": "https://www.lua.org/wshop05/photos/",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 1031,
+   "redirect_chain": [
+    {
+     "from": "https://www.lua.org/wshop05/photos",
+     "status": 301,
+     "to": "https://www.lua.org/wshop05/photos/"
+    }
+   ],
+   "html_bytes": 3408,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Wed, 08 Jul 2009 01:53:29 GMT",
+    "etag": "\"4a53fc19-d50\""
+   },
+   "title": "Lua: workshop 2005 photos",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Workshop 2005 photos"
+    ]
+   ],
+   "text_len": 806,
+   "main_text_len": 122,
+   "boilerplate_text_len": 0,
+   "link_density": 0.0,
+   "text_sample": "Lua: workshop 2005 photos Workshop 2005 photos Here are some photos taken by Marius Gheorghe at the Lua Workshop 2005 . Roberto Ierusalimschy Alex Mohr Steve Dekorte Bret Mogilefsky Roberto Ierusalimschy Steve Dekorte Tim Gogolin Hisham Muhammad Albert-Jan Brouwer Albert-Jan Brouwer Mark Hamburg Mark Hamburg audience Hisham Muhammad Yutaka Ueno Andr\ufffd Carregal Paul Du Bois Thomas Wrensch Alex Mohr Thomas Wrensch Tim Gogolin Luiz Henrique de Figueiredo Andr\ufffd Carregal Glenn Edgar audience Mark Hamburg Diego Nehab Luiz Henrique de Figueiredo Roberto Ierusalimschy Luiz Henrique de Figueiredo audience Glenn Edgar audience Paul Du Bois Diego Nehab Yutaka Ueno roundtable Bret Mogilefsky Hisham Muhammad Matthew Burke Roberto Ierusalimschy Mark Hamburg Yutaka Ueno Last update:\nTue Jul  7 22:53:28 BRT 2009",
+   "word_count": 118,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/wshop05.html",
+     "Lua Workshop 2005"
+    ]
+   ],
+   "links_external": [],
+   "images_total": 44,
+   "images_missing_alt": 43,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 118,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 0,
+     "authoritative_domains": [],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 2,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 1,
+     "heading_levels_skipped": false,
+     "heading_count": 1,
+     "sections": 1,
+     "sections_in_150_300_band": 0,
+     "sections_over_300w": 0,
+     "median_paragraph_words": 8,
+     "structured_format_ratio": 0.0,
+     "emphasis_density": 0.0,
+     "intro_summary_words": 111
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/wshop06.html",
+   "final_url": "https://www.lua.org/wshop06.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 881,
+   "redirect_chain": [],
+   "html_bytes": 21946,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Fri, 26 May 2017 12:08:02 GMT",
+    "etag": "\"59281aa2-55ba\""
+   },
+   "title": "Lua: workshop 2006",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Workshop 2006"
+    ],
+    [
+     2,
+     "Programme"
+    ],
+    [
+     2,
+     "Venue"
+    ],
+    [
+     2,
+     "Accommodation"
+    ],
+    [
+     2,
+     "Registration"
+    ],
+    [
+     2,
+     "Organization"
+    ],
+    [
+     2,
+     "Participants"
+    ],
+    [
+     2,
+     "Abstracts"
+    ]
+   ],
+   "text_len": 14255,
+   "main_text_len": 11526,
+   "boilerplate_text_len": 0,
+   "link_density": 0.082,
+   "text_sample": "Lua: workshop 2006 Workshop 2006 registration \u00b7 programme \u00b7 venue \u00b7 accommodation \u00b7 organization \u00b7 participants \u00b7 abstracts The workshop is over.\nSee photos and videos taken by Henk Schaer and Asko Kauppi. A Lua workshop will be held at\nthe R&D site of Oc\u00e9 Technologies b.v., Venlo, The Netherlands\non September 4-5, 2006. The main goal of the workshop is to allow the Lua community (or at least part of it)\nto get together and meet in person and talk about\nthe Lua language, its uses, and its implementation. Another goal is to help spread the word about Lua to the industry and academia,\ntaking advantage of the location of the workshop. The workshop is open to everyone interested in Lua.\nThere is no registration fee but\nparticipants are required to register . Programme We shall have\na plenary talk by Roberto Ierusalimschy (Lua's chief architect),\ntwo roundtables on Lua (subjects to be determined)\nand several contributed talks.\nThere will also be plenty of time for getting together and chatting about Lua.\nA tentative programme is below. Mon Sep 4 9:00 Registration 9:25 A Word of Welcome Roelof Hamberg, Oc\u00e9 Software Development 9:30 The Aranha Web App platform Daniel Silverstone 10:00 Lua and the Palm OS Matthew Burke 10:30 coffee break 11:00 The Evolution of Lua Roberto Ierusalimschy 12:00 lunch 13:30 LuaTeX Hans Hagen 14:00 Developing desktop solutions with Lua Ashwin Hirschi 14:30 Open Platform for Personal Robotics Dennis Taapken 15:00 Kepler/LuaForge next steps Andr\u00e9 Carregal 15:30 coffee break 16:00 round table discussion 17:00 closing 17:30 buffet dinner Tue Sep 5 9:00 Exception patterns in Lua John Belmonte 9:45 MeLua - Lua for representing musical scores Christof Schardt 10:00 Distributed programming in Lua Noemi Rodriguez 10:30 coffee break 11:00 Simulation of complex systems Wim Couwenberg 11:20 Websites with Lua - Lumikki web page creation tools Asko Kauppi 12:00 lunch 13:30 Nancy Reuben Thomas 13:35 Crazy Ivan Robot Erik Hougaard 14:30 Building Smalltalk with Lua (A Smalltalk to Lua Translator) Markus Fleck-Graffe cancelled 15:00 Weave Gavin Wraith 15:30 coffee break 16:00 round table discussion 17:00 closing Venue The workshop will be held at Oc\u00e9's R&D department in Venlo, The\nNetherlands.  The R&D buildings are indicated as location \u2018F\u2019\nof the Oc\u00e9 Venlo site in the following directions .\nEnter gate 2/3 located in the Hakkesstraat and cross the parking lot.  Head for\nthe white building to the left.  Enter the R&D building through the glass\nsliding d",
+   "word_count": 2216,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/community.html",
+     "community"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Lua team"
+    ],
+    [
+     "https://www.lua.org/wshop06/Belmonte.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop06/Couwenberg.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop06/Hagen.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop06/Ierusalimschy.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop06/Rodriguez.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop06/Silverstone.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop06/Silverstone2.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop06/Thomas.pdf",
+     "slides"
+    ]
+   ],
+   "links_external": [
+    [
+     "http://www.daanschar.com/lua",
+     "photos"
+    ],
+    [
+     "http://youtube.com/results?search_query=lua+workshop&search=Search",
+     "videos"
+    ],
+    [
+     "http://www.oce.com/uk/Contact/Oceheadquarters/avenlo.htm",
+     "directions"
+    ],
+    [
+     "http://microsite.venlo.valk.com/pages/Default.aspx?ID=903",
+     "hotel Venlo"
+    ],
+    [
+     "http://members.chello.nl/~w.couwenberg",
+     "Wim Couwenberg"
+    ],
+    [
+     "http://lua-users.org/wiki/DanielSilverstone",
+     "Daniel Silverstone"
+    ],
+    [
+     "http://www.oce.com",
+     ""
+    ],
+    [
+     "http://bluedino.net/talks/lua06",
+     "slides"
+    ],
+    [
+     "http://dev.reflexis.nl/lua",
+     "slides"
+    ],
+    [
+     "http://rrt.sc3d.org/Software/Nancy",
+     "Nancy"
+    ]
+   ],
+   "images_total": 3,
+   "images_missing_alt": 1,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 3,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [
+     "lua.workshop@gmail.com"
+    ],
+    "tel_links": [],
+    "phones": [],
+    "prices": [
+     "\u20ac95"
+    ],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 2216,
+    "tier1": {
+     "statistics_count": 1,
+     "statistics_per_100w": 0.05,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 9,
+     "authoritative_domains": [
+      "lua-users.org",
+      "rrt.sc3d.org"
+     ],
+     "has_price": true,
+     "price_position": 0.81,
+     "spec_pairs": 3,
+     "has_spec_table": true,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.23,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 2,
+     "heading_levels_skipped": false,
+     "heading_count": 8,
+     "sections": 8,
+     "sections_in_150_300_band": 2,
+     "sections_over_300w": 1,
+     "median_paragraph_words": 8,
+     "structured_format_ratio": 0.619,
+     "emphasis_density": 0.0929,
+     "intro_summary_words": 129
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/wshop08.html",
+   "final_url": "https://www.lua.org/wshop08.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 848,
+   "redirect_chain": [],
+   "html_bytes": 33953,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Tue, 11 Mar 2014 16:35:49 GMT",
+    "etag": "\"531f3b65-84a1\""
+   },
+   "title": "Lua: workshop 2008",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Workshop 2008"
+    ],
+    [
+     2,
+     "Program"
+    ],
+    [
+     2,
+     "Venue"
+    ],
+    [
+     3,
+     "Shuttle to Mount Vernon Campus"
+    ],
+    [
+     3,
+     "Parking at the Mount Vernon Campus"
+    ],
+    [
+     2,
+     "Accommodation"
+    ],
+    [
+     2,
+     "Weather in DC in July"
+    ],
+    [
+     2,
+     "Registration"
+    ],
+    [
+     2,
+     "Organization"
+    ],
+    [
+     2,
+     "Participants"
+    ],
+    [
+     2,
+     "Abstracts"
+    ]
+   ],
+   "text_len": 21522,
+   "main_text_len": 17453,
+   "boilerplate_text_len": 0,
+   "link_density": 0.087,
+   "text_sample": "Lua: workshop 2008 Workshop 2008 registration \ufffd program \ufffd venue \ufffd accommodation \ufffd weather \ufffd organization \ufffd participants \ufffd abstracts \ufffd videos A Lua workshop will be held at The George Washington University in Washington, D.C on July 14-15, 2008. Like previous workshops in 2005 and 2006 ,\nthe main goal of the workshop is to allow the\nLua community (or at\nleast part of it) to get together and meet in person and talk about\nthe Lua language, its uses, and its implementation.  Another goal is\nto help spread the word about Lua to industry and academia, taking\nadvantage of the location of the workshop. The workshop is open to everyone interested in Lua. There is no\nregistration fee but participants are required to register . Program Mon, 14 July 9:00 Registration/Breakfast 9:30 Welcome 9:45 Numlua: a Numerical Package for Lua Luis Carvalho 10:30 coffee break 10:55 External Strings Chip Salzenberg 11:25 Intelligent Programmable LCD Modules/Lua Integration Michal Sieluzycki 11:45 Lua at Sim Ops Studios Aaron Tarnow 12:00 Lunch 1:15 Business Applications with Lua Jelle Ferwerda 2:15 Sputnik: a Wiki in Lua Yuri Takhteyev 3:00 coffee break 3:30 Eliminating Cycles in Weak Tables Alexandra Barros 4:00 Expressing Data Structure Transformations for an Automatically Tuned Sparse Linear Algebra Library ( cancelled ) Richard Vuduc 4:30 Almost Good Enough to Scale: A Lua Mail Handler and Spam Filter Norman Ramsey and Fidelis Assis 5:30 Bright\u2014Yet Another Lua Derivative Terry Moore 6:00 adjourn Tue, 15 July 9:00 Registration/Breakfast 9:30 LuaAV: Computational Audovisual Composition with Lua Wesley Smith and Graham Wakefield 10:30 coffee break 11:00 wxLua Internals John Labenski 11:30 Developing a Complex Native Windows Application in Lua Matt Campbell 12:00 Lunch 1:15 High-Availability Databases John Rodriguez 1:45 Lua and .NET Erik Hougaard 2:15 10,000,000 Lua Users and Growing! Jim Whitehead II 3:00 coffee break 3:30 LuaRocks and the Kepler \"reboot\" Fabio Mascarenhas 4:00 LPEG\u2014a New Approach to Pattern Matching in Lua Roberto Ierusalimschy 5:00 round table 6:00 adjourn Venue The workshop will be held on GW's Mount Vernon campus .  In particular, Monday's session will be held in the Hand Chapel (Pictures: 1 , 2 , 3 , 4 ; and campus map ).  Tuesday's session will be held in Post Hall (Picture: 1 ; and campus map ).  The A/V facilities include a PC connected to a large presentation screen, plugs if you want to project your laptop, a smart board (Hand Chapel only), a white board",
+   "word_count": 3381,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/wshop05.html",
+     "2005"
+    ],
+    [
+     "https://www.lua.org/wshop06.html",
+     "2006"
+    ],
+    [
+     "http://www.lua.org/community.html",
+     "community"
+    ],
+    [
+     "http://www.lua.org/authors.html",
+     "Lua team"
+    ]
+   ],
+   "links_external": [
+    [
+     "http://www.vimeo.com/tag:luaworkshop",
+     "videos"
+    ],
+    [
+     "http://www.gwu.edu/",
+     "The George Washington University"
+    ],
+    [
+     "http://bluedino.net/luapix/mvmap.jpg",
+     "Mount Vernon campus"
+    ],
+    [
+     "http://bluedino.net/luapix/Hand1.jpg",
+     "1"
+    ],
+    [
+     "http://bluedino.net/luapix/Hand2.jpg",
+     "2"
+    ],
+    [
+     "http://bluedino.net/luapix/Hand3.jpg",
+     "3"
+    ],
+    [
+     "http://bluedino.net/luapix/Hand4.jpg",
+     "4"
+    ],
+    [
+     "http://bluedino.net/luapix/mvmap.jpg",
+     "campus map"
+    ],
+    [
+     "http://bluedino.net/luapix/Post1.jpg",
+     "1"
+    ],
+    [
+     "http://bluedino.net/luapix/mvmap.jpg",
+     "campus map"
+    ],
+    [
+     "http://gwired.gwu.edu/mvcl/Express/schedule",
+     "here"
+    ],
+    [
+     "http://bluedino.net/luapix/mvmap.jpg",
+     "campus map"
+    ],
+    [
+     "http://gwired.gwu.edu/adm/visit/hotels",
+     "here"
+    ],
+    [
+     "http://maps.google.com/maps/ms?ie=UTF8&hl=en&om=0&msa=0&msid=114125114877361955481.000444e05c560d3d69fc1&ll=38.907465,-77.067719&spn=0.046753,0.072956&z=13&source=embed",
+     "View Larger Map"
+    ],
+    [
+     "http://lua-users.org/wiki/DanielSilverstone",
+     "Daniel Silverstone"
+    ],
+    [
+     "http://cs.seas.gwu.edu",
+     ""
+    ],
+    [
+     "http://www.mcci.com/mcci-v5/index.html",
+     ""
+    ],
+    [
+     "http://flyingmeat.com",
+     ""
+    ],
+    [
+     "http://www.verisign.com/",
+     ""
+    ],
+    [
+     "http://store.earthlcd.com",
+     ""
+    ],
+    [
+     "http://www.cengage.com/",
+     ""
+    ],
+    [
+     "http://www.wiley.com",
+     ""
+    ],
+    [
+     "http://serotek.com/mattc/wshop08-talk",
+     "slides"
+    ],
+    [
+     "http://bluedino.net/luapix/carvalho-numlua.pdf",
+     "slides"
+    ],
+    [
+     "http://bluedino.net/luapix/Jelle.ppt",
+     "slides"
+    ],
+    [
+     "  http://www.inf.puc-rio.br/~roberto/lpeg/slides-lpeg-workshop2008.pdf",
+     "slides"
+    ],
+    [
+     "http://bluedino.net/luapix/Bright.pdf",
+     "slides"
+    ],
+    [
+     "http://bluedino.net/luapix/ramsey-lua-ws.pdf",
+     "slides"
+    ],
+    [
+     "http://bluedino.net/luapix/LuaWorkshopJuly2008-rev3.ppt",
+     "slides"
+    ],
+    [
+     "http://lua-av.mat.ucsb.edu/pubs/SmithWakefield_2008_LuaWorkshop_LuaAV.pdf",
+     "slides"
+    ],
+    [
+     "http://lua-av.mat.ucsb.edu/",
+     "LuaAV site"
+    ],
+    [
+     "http://sputnik.freewisdom.org/en/Lua_Workshop_2008",
+     "slides"
+    ],
+    [
+     "http://vuduc.org/talks/2008-Lua-OSKI-final-with_notes.pdf",
+     "slides"
+    ],
+    [
+     "http://bluedino.net/luapix/lua-whitehead.pdf",
+     "slides"
+    ]
+   ],
+   "images_total": 8,
+   "images_missing_alt": 1,
+   "iframes": [
+    {
+     "src": "http://maps.google.com/maps/ms?ie=UTF8&hl=en&om=0&s=AARTsJqKxBvX9_0zWcDdORRza7Rv-jmgnQ&msa=0&msid=114125114877361955481.000444e05c560d3d69fc1&ll=38.907465,-77.067719&spn=0.046753,0.072956&z=13&output=embed",
+     "title": null
+    }
+   ],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 3,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [
+     "lua.workshop@gmail.com"
+    ],
+    "tel_links": [],
+    "phones": [],
+    "prices": [
+     "$36.35",
+     "$39.80",
+     "$64.98",
+     "$70.70"
+    ],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 3381,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 18,
+     "authoritative_domains": [
+      "cs.seas.gwu.edu",
+      "gwired.gwu.edu",
+      "lua-av.mat.ucsb.edu",
+      "lua-users.org",
+      "sputnik.freewisdom.org",
+      "vuduc.org",
+      "www.gwu.edu"
+     ],
+     "has_price": true,
+     "price_position": 0.172,
+     "spec_pairs": 6,
+     "has_spec_table": true,
+     "comparison_markers": 1,
+     "hedges_per_100w": 0.12,
+     "hedged_numbers": 1,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 3,
+     "heading_levels_skipped": false,
+     "heading_count": 11,
+     "sections": 11,
+     "sections_in_150_300_band": 1,
+     "sections_over_300w": 3,
+     "median_paragraph_words": 40,
+     "structured_format_ratio": 0.647,
+     "emphasis_density": 0.0843,
+     "intro_summary_words": 122
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/wshop09.html",
+   "final_url": "https://www.lua.org/wshop09.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 1019,
+   "redirect_chain": [],
+   "html_bytes": 30633,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Wed, 12 Mar 2014 12:04:26 GMT",
+    "etag": "\"53204d4a-77a9\""
+   },
+   "title": "Lua: workshop 2009",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Workshop 2009"
+    ],
+    [
+     2,
+     "Inscri\ufffd\ufffdo"
+    ],
+    [
+     2,
+     "Programa\ufffd\ufffdo"
+    ],
+    [
+     2,
+     "Resumos"
+    ],
+    [
+     2,
+     "Local"
+    ],
+    [
+     2,
+     "Organiza\ufffd\ufffdo"
+    ],
+    [
+     2,
+     "Participantes"
+    ],
+    [
+     1,
+     "Workshop 2009"
+    ],
+    [
+     2,
+     "Registration"
+    ],
+    [
+     2,
+     "Program"
+    ],
+    [
+     2,
+     "Venue"
+    ],
+    [
+     2,
+     "Organization"
+    ]
+   ],
+   "text_len": 16934,
+   "main_text_len": 12764,
+   "boilerplate_text_len": 0,
+   "link_density": 0.129,
+   "text_sample": "Lua: workshop 2009 Workshop 2009 english \u00b7 inscri\ufffd\ufffdo \u00b7 programa\ufffd\ufffdo \u00b7 local \u00b7 organiza\ufffd\ufffdo \u00b7 participantes \u00b7 resumos \u00b7 videos O Lua Workshop 2009 ser\ufffd realizado na PUC-Rio nos dias 6 e 7 de outubro de 2009,\nantecedendo o SBGames\u00a02009 e o SIBGRAPI\u00a02009 .\nAs atividades do dia\u00a07 ser\ufffdo dedicadas ao uso de Lua em jogos\ne far\ufffdo parte do Lua\u00a0Games\u00a02009,\num pr\ufffd-evento do SBGames\u00a02009. Como nos workshops anteriores\n( 2005 , 2006 , 2008 ),\no objetivo principal do workshop \ufffd reunir a comunidade Lua\ne discutir a linguagem, seus usos e sua implementa\ufffd\ufffdo.\nO foco em 2009 \ufffd\nreunir a comunidade Lua do Brasil e\ndivulgar a linguagem Lua para a ind\ufffdstria no Brasil. O workshop \ufffd aberto a todas as pessoas interessadas em Lua.\nN\ufffdo h\ufffd taxa de inscri\ufffd\ufffdo mas as vagas s\ufffdo limitadas. Ajude a divulgar o workshop:\nimprima e espalhe o cartaz\n( a cores ou em preto e branco ). Inscri\ufffd\ufffdo As inscri\ufffd\ufffdes est\ufffdo encerradas.\nVeja a lista de participantes confirmados. Programa\ufffd\ufffdo Teremos\numa palestra plen\ufffdria dada por Roberto Ierusalimschy (o arquiteto principal de Lua),\numa palestra plen\ufffdria dada por Jim Whitehead II sobre Lua em World of Warcraft,\ne v\ufffdrias palestras de membros da comunidade.\n\nTeremos tamb\ufffdm\ntempo livre para conversar sobre Lua.\n\nA maioria das atividades ser\ufffd em portugu\ufffds.\nN\ufffdo haver\ufffd tradu\ufffd\ufffdo simult\ufffdnea. O programa final est\ufffd abaixo,\ncom os resumos das palestras.\n(O programa est\ufffd sujeito a modifica\ufffd\ufffdes de \ufffdltima hora.) 3a feira, 6 de outubro 8:30 abertura 9:00 Kepler Project: uma breve hist\ufffdria Andr\ufffd Carregal LuaRocks 2.0 Hisham Muhammad Orbit Fabio Mascarenhas Construindo aplica\ufffd\ufffdes web com Kepler Rafael Sabbagh, Vagner Nascimento, Guilherme Sanchez Pacheco LuaEclipse Jason Santos Sputnik Jim Whitehead II 11:00 intervalo 11:20 A evolu\ufffd\ufffdo de Lua Roberto Ierusalimschy 12:20 almo\ufffdo 14:00 IUP, CD, IM Antonio Scuri MPA Tom\ufffds Guisasola, Renato Maia Desenvolvendo seguran\ufffda para internet utilizando Lua na MAV Tecnologia Daniel Colchete Nmap Scripting Engine Patrick Donnelly 16:00 intervalo 16:20 eLua Dado Sutter, Bogdan Marinescu Open AT Lua Fabien Fleutot 18:00 fim 4a feira, 7 de outubro 8:30 abertura 9:00 Jogos em Lua com L\ufffdVE Hamilton Athanazio Programando jogos com LuaGL Anderson Ferreira de Oliveira aLua e programa\ufffd\ufffdo distribu\ufffdda de jogos Ricardo Costa LPeg Roberto Ierusalimschy 11:00 intervalo 11:20 Lua in World of Warcraft Jim Whitehead II 12:20 almo\ufffdo 14:00 Aplica\ufffd\ufffdes interativas para a TV digital brasileira Francisco Sant'Anna Lua e o mercado de TV Digital Helder Santos Simula\ufffd\ufffd",
+   "word_count": 2585,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/wshop09/videos.asx",
+     "videos"
+    ],
+    [
+     "https://www.lua.org/wshop05.html",
+     "2005"
+    ],
+    [
+     "https://www.lua.org/wshop06.html",
+     "2006"
+    ],
+    [
+     "https://www.lua.org/wshop08.html",
+     "2008"
+    ],
+    [
+     "https://www.lua.org/community.html",
+     "comunidade"
+    ],
+    [
+     "https://www.lua.org/wshop09/wshop09col.pdf",
+     "a cores"
+    ],
+    [
+     "https://www.lua.org/wshop09/wshop09bw.pdf",
+     "em preto e branco"
+    ],
+    [
+     "https://www.lua.org/wshop09/Kepler-pt.pdf",
+     "pt"
+    ],
+    [
+     "https://www.lua.org/wshop09/Kepler-en.pdf",
+     "en"
+    ],
+    [
+     "https://www.lua.org/wshop09/LuaEclipse_presentation_slides-br.ppt",
+     "pt"
+    ],
+    [
+     "https://www.lua.org/wshop09/LuaEclipse_presentation_slides-en.ppt",
+     "en"
+    ],
+    [
+     "http://www.lua.org/",
+     "A evolu\ufffd\ufffdo de Lua"
+    ],
+    [
+     "https://www.lua.org/wshop09/iupcdim_wlua2009_pt.pdf",
+     "pt"
+    ],
+    [
+     "https://www.lua.org/wshop09/iupcdim_wlua2009_en.pdf",
+     "en"
+    ],
+    [
+     "https://www.lua.org/wshop09/mpa.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop09/mav-luaworkshop2009.odp",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop09/NSE-Lua-Workshop.odp",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop09/DALua.ppt",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop09/nclua_luaws.odp",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop09/mercado-tv-digital.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "equipe de Lua"
+    ],
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/wshop09.html",
+     "portugu\ufffds"
+    ],
+    [
+     "https://www.lua.org/wshop09/videos.asx",
+     "videos"
+    ],
+    [
+     "https://www.lua.org/wshop05.html",
+     "2005"
+    ],
+    [
+     "https://www.lua.org/wshop06.html",
+     "2006"
+    ],
+    [
+     "https://www.lua.org/wshop08.html",
+     "2008"
+    ],
+    [
+     "https://www.lua.org/community.html",
+     "community"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Lua team"
+    ]
+   ],
+   "links_external": [
+    [
+     "http://www.puc-rio.br/sbgames09",
+     "SBGames 2009"
+    ],
+    [
+     "http://www.matmidia.mat.puc-rio.br/sibgrapi2009",
+     "SIBGRAPI 2009"
+    ],
+    [
+     "http://www.inf.puc-rio.br/~roberto",
+     "Roberto Ierusalimschy"
+    ],
+    [
+     "http://www.comlab.ox.ac.uk/people/Jim.Whitehead",
+     "Jim Whitehead II"
+    ],
+    [
+     "http://www.keplerproject.org/",
+     "Kepler Project: uma breve hist\ufffdria"
+    ],
+    [
+     "http://www.luarocks.org",
+     "LuaRocks 2.0: fazendo as pazes com o sistema de m\ufffddulos de Lua"
+    ],
+    [
+     "http://orbit.luaforge.net/",
+     "Orbit"
+    ],
+    [
+     "http://luaeclipse.luaforge.net",
+     "LuaEclipse: a integra\ufffd\ufffdo das ferramentas de desenvolvimento Lua"
+    ],
+    [
+     "http://spu.tnik.org/",
+     "Sputnik"
+    ],
+    [
+     "http://www.tecgraf.puc-rio.br/~scuri",
+     "IUP, CD, IM"
+    ],
+    [
+     "http://www.tecgraf.puc-rio.br/iup",
+     "IUP"
+    ],
+    [
+     "http://www.tecgraf.puc-rio.br/cd",
+     "CD"
+    ],
+    [
+     "http://www.tecgraf.puc-rio.br/im",
+     "IM"
+    ],
+    [
+     "http://www.mav.com.br/",
+     "Desenvolvendo seguran\ufffda para internet utilizando Lua na MAV Tecnologia"
+    ],
+    [
+     "http://nmap.org/book/nse.html",
+     "Nmap Script Engine: implementation and uses"
+    ],
+    [
+     "http://www.eluaproject.net/",
+     "eLua: desenvolvimento embedded no mundo da Lua"
+    ],
+    [
+     "http://www.athanazio.com/2009/10/06/palestra-lua-workshop-2009-jogos-em-lua-com-love",
+     "Jogos em Lua com L\ufffdVE"
+    ],
+    [
+     "http://alua.inf.puc-rio.br/dalua",
+     "aLua e programa\ufffd\ufffdo distribu\ufffdda de jogos"
+    ],
+    [
+     "http://www.inf.puc-rio.br/~roberto/lpeg/lpeg.html",
+     "LPeg"
+    ],
+    [
+     "http://wowprogramming.com/",
+     "Lua in World of Warcraft"
+    ],
+    [
+     "http://www.telemidia.puc-rio.br/~francisco/nclua",
+     "Aplica\ufffd\ufffdes interativas para a TV digital brasileira"
+    ],
+    [
+     "http://www.giga.puc-rio.br/",
+     "Demonstra\ufffd\ufffdes de jogos em eLua"
+    ],
+    [
+     "http://www.puc-rio.br/",
+     "PUC-Rio"
+    ],
+    [
+     "http://maps.google.com/maps?q=PUC-Rio&z=13",
+     "localiza\ufffd\ufffdo da PUC-Rio"
+    ],
+    [
+     "http://www.puc-rio.br/sobrepuc/campus/acessos",
+     "como chegar"
+    ],
+    [
+     "http://www.iag.puc-rio.br/images/foto_puc_iag9.jpg",
+     "Audit\ufffdrio Amex"
+    ],
+    [
+     "http://www.iag.puc-rio.br/",
+     "IAG"
+    ],
+    [
+     "http://www.puc-rio.br/sobrepuc/campus/mapa",
+     "mapa do campus"
+    ],
+    [
+     "http://www.puc-rio.br/sbgames09",
+     "SBGames 2009"
+    ],
+    [
+     "http://www.puc-rio.br/",
+     ""
+    ],
+    [
+     "http://www.inf.puc-rio.br/",
+     ""
+    ],
+    [
+     "http://www.puc-rio.br/sbgames09",
+     ""
+    ],
+    [
+     "http://www.puc-rio.br/sbgames09",
+     "SBGames 2009"
+    ],
+    [
+     "http://www.matmidia.mat.puc-rio.br/sibgrapi2009",
+     "SIBGRAPI 2009"
+    ],
+    [
+     "http://www.inf.puc-rio.br/~roberto",
+     "Roberto Ierusalimschy"
+    ],
+    [
+     "http://www.comlab.ox.ac.uk/people/Jim.Whitehead",
+     "Jim Whitehead II"
+    ],
+    [
+     "http://www.puc-rio.br/",
+     "PUC-Rio"
+    ],
+    [
+     "http://maps.google.com/maps?q=puc-rio&z=13",
+     "where PUC-Rio is located"
+    ],
+    [
+     "http://www.puc-rio.br/sobrepuc/campus/acessos",
+     "how to get to the campus"
+    ],
+    [
+     "http://www.iag.puc-rio.br/images/foto_puc_iag9.jpg",
+     "Amex auditorium"
+    ],
+    [
+     "http://www.iag.puc-rio.br/",
+     "IAG"
+    ],
+    [
+     "http://www.puc-rio.br/sobrepuc/campus/mapa",
+     "campus map"
+    ],
+    [
+     "http://www.puc-rio.br/sbgames09",
+     "SBGames 2009"
+    ],
+    [
+     "http://www.puc-rio.br/",
+     ""
+    ],
+    [
+     "http://www.inf.puc-rio.br/",
+     ""
+    ],
+    [
+     "http://www.puc-rio.br/sbgames09",
+     ""
+    ]
+   ],
+   "images_total": 8,
+   "images_missing_alt": 2,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 5,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [
+     "lua.workshop@gmail.com"
+    ],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 2585,
+    "tier1": {
+     "statistics_count": 0,
+     "statistics_per_100w": 0.0,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 20,
+     "authoritative_domains": [
+      "nmap.org",
+      "spu.tnik.org",
+      "www.comlab.ox.ac.uk",
+      "www.keplerproject.org",
+      "www.luarocks.org"
+     ],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 2,
+     "has_spec_table": true,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.0,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 2,
+     "heading_levels_skipped": false,
+     "heading_count": 12,
+     "sections": 12,
+     "sections_in_150_300_band": 2,
+     "sections_over_300w": 2,
+     "median_paragraph_words": 8,
+     "structured_format_ratio": 0.718,
+     "emphasis_density": 0.054,
+     "intro_summary_words": 303
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": []
+  },
+  {
+   "url": "https://www.lua.org/wshop11.html",
+   "final_url": "https://www.lua.org/wshop11.html",
+   "status": 200,
+   "error": null,
+   "depth": 2,
+   "elapsed_ms": 678,
+   "redirect_chain": [],
+   "html_bytes": 23994,
+   "https": true,
+   "headers": {
+    "server": "nginx/1.20.1",
+    "content-type": "text/html",
+    "last-modified": "Thu, 28 Nov 2013 10:27:19 GMT",
+    "etag": "\"52971a87-5dba\""
+   },
+   "title": "Lua: workshop 2011",
+   "lang": "",
+   "canonical": null,
+   "hreflangs": [],
+   "robots_meta": "",
+   "meta_description": "",
+   "og": {},
+   "twitter": {},
+   "has_favicon": false,
+   "feeds": [],
+   "jsonld": [],
+   "jsonld_types": [],
+   "jsonld_invalid": 0,
+   "jsonld_dates": {},
+   "paywalled": false,
+   "microdata_types": [],
+   "rdfa_types": [],
+   "microformats": [],
+   "headings": [
+    [
+     1,
+     "Workshop 2011"
+    ],
+    [
+     2,
+     "Registration"
+    ],
+    [
+     2,
+     "Program"
+    ],
+    [
+     2,
+     "Venue"
+    ],
+    [
+     2,
+     "Travel"
+    ],
+    [
+     2,
+     "Accommodation"
+    ],
+    [
+     2,
+     "Organization"
+    ],
+    [
+     2,
+     "Participants"
+    ],
+    [
+     2,
+     "Abstracts"
+    ]
+   ],
+   "text_len": 16832,
+   "main_text_len": 15662,
+   "boilerplate_text_len": 0,
+   "link_density": 0.031,
+   "text_sample": "Lua: workshop 2011 Workshop 2011 registration \u00b7 program \u00b7 venue \u00b7 travel \u00b7 accommodation \u00b7 organization \u00b7 participants \u00b7 abstracts \u00b7 photos The workshop is over.\nSee some photos taken by Erik Hougaard\nand read a report by Tony Finch. The Lua Workshop 2011 will be held\nin Frick, Switzerland\non September 8\u20139, 2011. As in previous workshops\n( 2005 , 2006 , 2008 , 2009 ),\nthe main goal of the workshop is to allow the Lua community to get together and meet in person and talk about\nthe Lua language, its uses, and its implementation. The workshop is open to everyone interested in Lua. Please make your own travel and accommodation arrangements. Contact us if you need help or have special requirements. Registration Registration is now closed.\nSee the list of participants . Program We shall have\na plenary talk by Roberto Ierusalimschy (Lua's chief architect)\nand several contributed talks.\nThere will also be plenty of time for getting together and chatting about Lua,\nincluding\na social event with wine tasting of FiBL's organically grown wines . See the final program and the abstracts . Venue The workshop will be held at FiBL ,\nthe Research Institute of Organic Farming,\nwhich is located near Frick in Switzerland,\non a nice hillside between Basel and Zurich. See Frick at Google Maps and learn how to get there . Travel Frick is well connected by train to Basel and Zurich. For information\nsee the Swiss railway company . There are two airports Basel and Zurich, which are both about\none hour from Frick by public transportation. EuroAirport , airport code BSL, Basel.\nThis is the airport of Basel (CH), Mulhouse (F), and Freiburg (D). If you are\narriving from France or Germany, then check if you can book a cheaper\ndomestic flight. Easyjet has a base at the EuroAirport.\nThey fly from many European destinations to Basel.\n\nThere is a bus Line 50 that gets you every 15 minutes to the main\nrailwaystation of Basel. There are several connections per hour to\nFrick, normally at xx:13, xx:20, xx:40. Zurich Airport airport code ZRH,\nZurich. This is a big international airport.\n\nEvery hour from 06:04 to 21:04 there is a direct train from the airport\nto Frick. Accommodation We have reserved rooms in the Hotel Platanenhof ,\nwhich is directly situated by the train station.\nThe cost per night is\nCHF 140 (single) and\nCHF 200 (double), breakfast included.\nThese are special conditions.\nThe rooms are reserved until August 9th.\nYou still need to make an individual reservation for your room. To bo",
+   "word_count": 2688,
+   "links_internal": [
+    [
+     "https://www.lua.org/home.html",
+     ""
+    ],
+    [
+     "https://www.lua.org/wshop11",
+     "photos"
+    ],
+    [
+     "https://www.lua.org/wshop11",
+     "photos"
+    ],
+    [
+     "https://www.lua.org/wshop05.html",
+     "2005"
+    ],
+    [
+     "https://www.lua.org/wshop06.html",
+     "2006"
+    ],
+    [
+     "https://www.lua.org/wshop08.html",
+     "2008"
+    ],
+    [
+     "https://www.lua.org/wshop09.html",
+     "2009"
+    ],
+    [
+     "https://www.lua.org/community.html",
+     "community"
+    ],
+    [
+     "https://www.lua.org/wshop11/schedule.pdf",
+     "final program"
+    ],
+    [
+     "https://www.lua.org/info@platanenhof.ch",
+     "send email to the hotel"
+    ],
+    [
+     "https://www.lua.org/authors.html",
+     "Lua team"
+    ],
+    [
+     "https://www.lua.org/wshop11/ws2011.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop11/novelties-5.2.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop11/Reflexis-Flow--Agile-through-Lua.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop11/splay-vschiavoni-luawshop2011.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop11/lubyk.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop11/Cawley.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop11/Lua-APR.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop11/m2m-embedded-development-with-lua.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop11/luaws11_ag.pdf",
+     "slides"
+    ],
+    [
+     "https://www.lua.org/wshop11/Couwenberg.pdf",
+     "slides"
+    ]
+   ],
+   "links_external": [
+    [
+     "http://lua-users.org/lists/lua-l/2011-09/msg00240.html",
+     "report"
+    ],
+    [
+     "http://www.inf.puc-rio.br/~roberto",
+     "Roberto Ierusalimschy"
+    ],
+    [
+     "http://www.fibl.org/en/switzerland/location-ch/winery.html",
+     "organically grown wines"
+    ],
+    [
+     "http://www.fibl.org/en/switzerland.html",
+     "FiBL"
+    ],
+    [
+     "http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=Ackerstrasse,+Frick,+Switzerland&aq=0&sll=-22.97897,-43.234677&sspn=0.005808,0.015385&hq=&hnear=Frick,+Laufenburg,+Aargau,+Switzerland&t=h&z=14",
+     "Frick at Google Maps"
+    ],
+    [
+     "http://www.fibl.org/en/switzerland/location-ch/how-to-find-fibl-switzerland.html",
+     "how to get there"
+    ],
+    [
+     "http://www.sbb.ch/en",
+     "Swiss railway company"
+    ],
+    [
+     "http://www.euroairport.ch/",
+     "EuroAirport"
+    ],
+    [
+     "http://www.easyjet.com/",
+     "Easyjet"
+    ],
+    [
+     "http://www.flughafen-zuerich.ch/",
+     "Zurich Airport"
+    ],
+    [
+     "http://www.platanenhof.ch/",
+     "Hotel Platanenhof"
+    ],
+    [
+     "http://www.frick.ch/de/vereine/hotels",
+     "other hotels in Frick"
+    ],
+    [
+     "http://www.rebstock-frick.ch/jom",
+     "Hotel Rebstock"
+    ],
+    [
+     "http://www.reflexis.nl/flow.html",
+     "Reflexis Flow"
+    ],
+    [
+     "http://www.splay-project.org/",
+     "SPLAY"
+    ],
+    [
+     "http://www.planet-lab.eu/",
+     "PlanetLab"
+    ],
+    [
+     "http://hdiedrich.github.com/darc/README.html",
+     "d'Arc"
+    ],
+    [
+     "http://lubyk.org/en",
+     "Lubyk"
+    ],
+    [
+     "http://www.zeromq.org/",
+     "ZeroMQ"
+    ],
+    [
+     "http://de.wikipedia.org/wiki/Zeroconf",
+     "ZeroConf"
+    ],
+    [
+     "http://www.symbolicsound.com/cgi-bin/bin/view/Products/WebHome",
+     "Kyma"
+    ],
+    [
+     "http://code.google.com/p/lbcv",
+     "LBCV"
+    ]
+   ],
+   "images_total": 1,
+   "images_missing_alt": 0,
+   "iframes": [],
+   "media_counts": {
+    "video": 0,
+    "audio": 0,
+    "canvas": 0,
+    "svg": 0,
+    "table": 0,
+    "picture": 0,
+    "details": 0,
+    "dialog": 0
+   },
+   "scripts": {
+    "total": 0,
+    "external": 0,
+    "head_blocking": 0,
+    "inline_bytes": 0
+   },
+   "spa_root": false,
+   "noscript_len": 0,
+   "viewport": false,
+   "forms": {
+    "count": 0,
+    "search": false,
+    "inputs": 0,
+    "labeled": 0,
+    "submits_offsite": false,
+    "has_password": false
+   },
+   "aria_labels": 0,
+   "has_nav": false,
+   "nav_links": 0,
+   "has_breadcrumbs": false,
+   "facts": {
+    "emails": [],
+    "tel_links": [],
+    "phones": [],
+    "prices": [],
+    "postal_codes": [],
+    "hours_mentions": 0,
+    "founded_years": [],
+    "copyright_years": [],
+    "updated_years": [],
+    "coming_soon": [],
+    "cta_matches": [
+     "contact us"
+    ],
+    "login_wall": false,
+    "consent_wall": false
+   },
+   "citability": {
+    "word_count": 2688,
+    "tier1": {
+     "statistics_count": 1,
+     "statistics_per_100w": 0.04,
+     "quote_tags": 0,
+     "attributed_quotes": 0,
+     "external_domains": 20,
+     "authoritative_domains": [
+      "de.wikipedia.org",
+      "lua-users.org",
+      "lubyk.org",
+      "www.fibl.org",
+      "www.splay-project.org",
+      "www.zeromq.org"
+     ],
+     "has_price": false,
+     "price_position": null,
+     "spec_pairs": 3,
+     "has_spec_table": false,
+     "comparison_markers": 0,
+     "hedges_per_100w": 0.15,
+     "hedged_numbers": 0,
+     "query_term_coverage": 1.0,
+     "uncovered_claim_terms": []
+    },
+    "tier2": {
+     "heading_depth": 2,
+     "heading_levels_skipped": false,
+     "heading_count": 9,
+     "sections": 9,
+     "sections_in_150_300_band": 1,
+     "sections_over_300w": 1,
+     "median_paragraph_words": 17,
+     "structured_format_ratio": 0.519,
+     "emphasis_density": 0.0053,
+     "intro_summary_words": 119
+    }
+   },
+   "structured_data": {
+    "verdict": "NO_STRUCTURED_DATA",
+    "strong": false,
+    "legacy_microformats": false,
+    "social_meta": false,
+    "machine_hints": false,
+    "embedded_state_blob": false
+   },
+   "extractability_risks": [
+    {
+     "mode": "facts_locked_in_pdf",
+     "examples": [
+      "wshop11/schedule.pdf"
+     ]
+    }
+   ]
+  }
+ ],
+ "link_graph": {
+  "https://www.lua.org/": [
+   "https://www.lua.org/images/luaa.gif",
+   "https://www.lua.org/about.html",
+   "https://www.lua.org/news.html",
+   "https://www.lua.org/start.html",
+   "https://www.lua.org/download.html",
+   "https://www.lua.org/docs.html",
+   "https://www.lua.org/community.html",
+   "https://www.lua.org/map.html",
+   "https://www.lua.org/portugues.html"
+  ],
+  "https://www.lua.org/about.html": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/portugues.html",
+   "https://www.lua.org/news.html",
+   "https://www.lua.org/showcase.html",
+   "https://www.lua.org/uses.html",
+   "https://www.lua.org/quotes.html",
+   "https://www.lua.org/press.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/contact.html",
+   "https://www.lua.org/license.html",
+   "https://www.lua.org/versions.html",
+   "https://www.lua.org/thanks.html",
+   "https://www.lua.org/start.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/community.html",
+   "https://www.lua.org/community.html",
+   "https://www.lua.org/community.html",
+   "https://www.lua.org/lua-l.html",
+   "https://www.lua.org/lua-l-stats.html",
+   "https://www.lua.org/community.html",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/manual/5.5",
+   "https://www.lua.org/docs.html",
+   "https://www.lua.org/versions.html",
+   "https://www.lua.org/download.html",
+   "https://www.lua.org/ftp/lua-5.5.1.tar.gz",
+   "https://www.lua.org/license.html",
+   "https://www.lua.org/download.html"
+  ],
+  "https://www.lua.org/docs.html": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/manual/5.5",
+   "https://www.lua.org/manual/5.5/readme.html",
+   "https://www.lua.org/faq.html",
+   "https://www.lua.org/source",
+   "https://www.lua.org/versions.html",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/license.html",
+   "https://www.lua.org/start.html",
+   "https://www.lua.org/manual",
+   "https://www.lua.org/manual",
+   "https://www.lua.org/manual",
+   "https://www.lua.org/manual/5.5",
+   "https://www.lua.org/faq.html",
+   "https://www.lua.org/slides.html",
+   "https://www.lua.org/notes",
+   "https://www.lua.org/source",
+   "https://www.lua.org/papers.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/spe.html",
+   "https://www.lua.org/doc/jucs05.pdf",
+   "https://www.lua.org/doc/jucs17.pdf",
+   "https://www.lua.org/doc/jucs04.pdf",
+   "https://www.lua.org/doc/hopl.pdf",
+   "https://www.lua.org/doc/cola.pdf",
+   "https://www.lua.org/history.html",
+   "https://www.lua.org/doc/sblp2001.ps.gz",
+   "https://www.lua.org/semish94.html",
+   "https://www.lua.org/doc/semish94.ps.gz",
+   "https://www.lua.org/ddj.html",
+   "https://www.lua.org/doc/jai2009.pdf",
+   "https://www.lua.org/doc/wjogos04.pdf",
+   "https://www.lua.org/doc/wjogos04.ppt",
+   "https://www.lua.org/doc/Masterminds.pdf",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/manual/5.1",
+   "https://www.lua.org/manual",
+   "https://www.lua.org/pil",
+   "https://www.lua.org/pil/contents.html",
+   "https://www.lua.org/pil",
+   "https://www.lua.org/gems"
+  ],
+  "https://www.lua.org/contact.html": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/faq.html",
+   "https://www.lua.org/lua-l.html"
+  ],
+  "https://www.lua.org/news.html": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/news.rss",
+   "https://www.lua.org/lua-l.html",
+   "https://www.lua.org/recent.html",
+   "https://www.lua.org/rss.html",
+   "https://www.lua.org/ftp/lua-5.4.9.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.4.8-lua-5.4.9.html",
+   "https://www.lua.org/ftp/lua-5.5.1.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.5.0-lua-5.5.1.html",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/ftp/lua-5.5.0.tar.gz",
+   "https://www.lua.org/versions.html",
+   "https://www.lua.org/work",
+   "https://www.lua.org/work",
+   "https://www.lua.org/ftp/lua-5.4.8.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.4.7-lua-5.4.8.html",
+   "https://www.lua.org/doc/cola.pdf",
+   "https://www.lua.org/ftp/lua-5.4.7.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.4.6-lua-5.4.7.html",
+   "https://www.lua.org/lua-l.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/images/lua30.gif",
+   "https://www.lua.org/wshop23.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/ftp/lua-5.4.6.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.4.5-lua-5.4.6.html",
+   "https://www.lua.org/ftp/lua-5.4.5.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.4.4-lua-5.4.5.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/images/lua30.gif",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/gems",
+   "https://www.lua.org/images/mpe.jpg",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/ftp/lua-5.4.4.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.4.3-lua-5.4.4.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/ftp/lua-5.4.3.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.4.2-lua-5.4.3.html",
+   "https://www.lua.org/ftp/lua-5.4.2.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.4.1-lua-5.4.2.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/ftp/lua-5.4.1.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.4.0-lua-5.4.1.html",
+   "https://www.lua.org/ftp/lua-5.3.6.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.3.5-lua-5.3.6.html",
+   "https://www.lua.org/ftp/lua-5.4.0.tar.gz",
+   "https://www.lua.org/versions.html",
+   "https://www.lua.org/work",
+   "https://www.lua.org/work",
+   "https://www.lua.org/work",
+   "https://www.lua.org/wshop18.html",
+   "https://www.lua.org/ftp/lua-5.3.5.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.3.4-lua-5.3.5.html",
+   "https://www.lua.org/wshop18.html",
+   "https://www.lua.org/work",
+   "https://www.lua.org/work",
+   "https://www.lua.org/images/lua25.gif",
+   "https://www.lua.org/images/lua25.gif",
+   "https://www.lua.org/wshop17.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/wshop17.html",
+   "https://www.lua.org/showcase.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/doc/Inovancas.pdf",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/lua-l.html",
+   "https://www.lua.org/ftp/lua-5.3.4.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.3.3-lua-5.3.4.html",
+   "https://www.lua.org/wshop16.html",
+   "https://www.lua.org/ftp/lua-5.3.3.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.3.2-lua-5.3.3.html",
+   "https://www.lua.org/",
+   "https://www.lua.org/wshop16.html",
+   "https://www.lua.org/ftp/lua-5.3.2.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.3.1-lua-5.3.2.html",
+   "https://www.lua.org/wshop15.html",
+   "https://www.lua.org/pil",
+   "https://www.lua.org/ftp/lua-5.3.1.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.3.0-lua-5.3.1.html",
+   "https://www.lua.org/wshop15.html",
+   "https://www.lua.org/ftp/lua-5.2.4.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/work/diffs-lua-5.2.3-lua-5.2.4.html",
+   "https://www.lua.org/ftp/lua-5.3.0.tar.gz",
+   "https://www.lua.org/versions.html",
+   "https://www.lua.org/work",
+   "https://www.lua.org/work",
+   "https://www.lua.org/wshop14.html",
+   "https://www.lua.org/work",
+   "https://www.lua.org/work",
+   "https://www.lua.org/wshop14.html",
+   "https://www.lua.org/work",
+   "https://www.lua.org/manual/5.2/pt",
+   "https://www.lua.org/ftp/lua-5.2.3.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/wshop13.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/start.html",
+   "https://www.lua.org/wshop13.html",
+   "https://www.lua.org/work",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/ftp/lua-5.2.2.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/wshop12.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/ftp/lua-5.2.1.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/wshop12.html",
+   "https://www.lua.org/lua-l.html",
+   "https://www.lua.org/ftp/lua-5.1.5.tar.gz",
+   "https://www.lua.org/bugs.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/ftp/lua-5.2.0.tar.gz",
+   "https://www.lua.org/versions.html",
+   "https://www.lua.org/wshop11.html",
+   "https://www.lua.org/work",
+   "https://www.lua.org/wshop11.html",
+   "https://www.lua.org/work",
+   "https://www.lua.org/work",
+   "https://www.lua.org/lua-l.html",
+   "https://www.lua.org/work",
+   "https://www.lua.org/work",
+   "https://www.lua.org/gems",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/work",
+   "https://www.lua.org/work",
+   "https://www.lua.org/wshop09.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/lua-l.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/doc/jai2009.pdf",
+   "https://www.lua.org/wshop09.html"
+  ],
+  "https://www.lua.org/authors.html": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/images/team.jpg",
+   "https://www.lua.org/contact.html",
+   "https://www.lua.org/contact.html",
+   "https://www.lua.org/thanks.html"
+  ],
+  "https://www.lua.org/gems": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/gems/front.pdf",
+   "https://www.lua.org/gems/sample.pdf",
+   "https://www.lua.org/gems/errata.html",
+   "https://www.lua.org/gems/cover.png",
+   "https://www.lua.org/gems/lpg.pdf",
+   "https://www.lua.org/gems/front.pdf",
+   "https://www.lua.org/gems/sample.pdf",
+   "https://www.lua.org/gems/sample.pdf",
+   "https://www.lua.org/gems/errata.html",
+   "https://www.lua.org/gems/lpg.pdf",
+   "https://www.lua.org/gems/lpg.pdf",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/gems/sample.pdf",
+   "https://www.lua.org/gems/vardump.lua",
+   "https://www.lua.org/gems/lpg107.zip",
+   "https://www.lua.org/gems/lpg113.pdf",
+   "https://www.lua.org/gems/lpg117.zip",
+   "https://www.lua.org/gems/lpg121.zip",
+   "https://www.lua.org/gems/lpg124.zip"
+  ],
+  "https://www.lua.org/pil": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/pil/errata.html",
+   "https://www.lua.org/pil/contents.html",
+   "https://www.lua.org/manual",
+   "https://www.lua.org/pil",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/manual",
+   "https://www.lua.org/manual/5.3",
+   "https://www.lua.org/manual/5.2",
+   "https://www.lua.org/manual/5.1",
+   "https://www.lua.org/docs.html",
+   "https://www.lua.org/manual/5.0",
+   "https://www.lua.org/pil/contents.html"
+  ],
+  "https://www.lua.org/community.html": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/lua-l.html",
+   "https://www.lua.org/survey.html",
+   "https://www.lua.org/quotes.html",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/lua-l.html",
+   "https://www.lua.org/lua-l-stats.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/lua-br.html",
+   "https://www.lua.org/lua-l.html",
+   "https://www.lua.org/survey.html",
+   "https://www.lua.org/images",
+   "https://www.lua.org/papers.html",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/donations.html",
+   "https://www.lua.org/lua-l.html",
+   "https://www.lua.org/wshop23.html",
+   "https://www.lua.org/wshop22.html",
+   "https://www.lua.org/wshop18.html",
+   "https://www.lua.org/wshop17.html",
+   "https://www.lua.org/wshop16.html",
+   "https://www.lua.org/wshop15.html",
+   "https://www.lua.org/wshop14.html",
+   "https://www.lua.org/wshop13.html",
+   "https://www.lua.org/wshop12.html",
+   "https://www.lua.org/wshop11.html",
+   "https://www.lua.org/wshop09.html",
+   "https://www.lua.org/wshop08.html",
+   "https://www.lua.org/wshop06.html",
+   "https://www.lua.org/wshop05.html"
+  ],
+  "https://www.lua.org/wshop05.html": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/wshop05/photos",
+   "https://www.lua.org/wshop05/photos",
+   "https://www.lua.org/community.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/wshop05/Muhammad.pdf",
+   "https://www.lua.org/wshop05/Figueiredo.pdf",
+   "https://www.lua.org/wshop05/Mogul.pdf",
+   "https://www.lua.org/wshop05/Brouwer.pdf",
+   "https://www.lua.org/wshop05/Dekorte.pdf",
+   "https://www.lua.org/wshop05/Hamburg.pdf",
+   "https://www.lua.org/wshop05/Ueno.pdf",
+   "https://www.lua.org/wshop05/Gheorghe.pdf",
+   "https://www.lua.org/wshop05/Edgar.pdf",
+   "https://www.lua.org/wshop05/Nehab.ppt",
+   "https://www.lua.org/wshop05/Mohr.pdf",
+   "https://www.lua.org/wshop05/Ierusalimschy1.pdf",
+   "https://www.lua.org/wshop05/Ierusalimschy2.pdf",
+   "https://www.lua.org/wshop05/Wrensch.pdf"
+  ],
+  "https://www.lua.org/wshop05/photos": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/wshop05.html"
+  ],
+  "https://www.lua.org/wshop06.html": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/community.html",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/wshop06/Belmonte.pdf",
+   "https://www.lua.org/wshop06/Couwenberg.pdf",
+   "https://www.lua.org/wshop06/Hagen.pdf",
+   "https://www.lua.org/wshop06/Ierusalimschy.pdf",
+   "https://www.lua.org/wshop06/Rodriguez.pdf",
+   "https://www.lua.org/wshop06/Silverstone.pdf",
+   "https://www.lua.org/wshop06/Silverstone2.pdf",
+   "https://www.lua.org/wshop06/Thomas.pdf"
+  ],
+  "https://www.lua.org/wshop08.html": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/wshop05.html",
+   "https://www.lua.org/wshop06.html",
+   "http://www.lua.org/community.html",
+   "http://www.lua.org/authors.html"
+  ],
+  "https://www.lua.org/wshop09.html": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/wshop09/videos.asx",
+   "https://www.lua.org/wshop05.html",
+   "https://www.lua.org/wshop06.html",
+   "https://www.lua.org/wshop08.html",
+   "https://www.lua.org/community.html",
+   "https://www.lua.org/wshop09/wshop09col.pdf",
+   "https://www.lua.org/wshop09/wshop09bw.pdf",
+   "https://www.lua.org/wshop09/Kepler-pt.pdf",
+   "https://www.lua.org/wshop09/Kepler-en.pdf",
+   "https://www.lua.org/wshop09/LuaEclipse_presentation_slides-br.ppt",
+   "https://www.lua.org/wshop09/LuaEclipse_presentation_slides-en.ppt",
+   "http://www.lua.org/",
+   "https://www.lua.org/wshop09/iupcdim_wlua2009_pt.pdf",
+   "https://www.lua.org/wshop09/iupcdim_wlua2009_en.pdf",
+   "https://www.lua.org/wshop09/mpa.pdf",
+   "https://www.lua.org/wshop09/mav-luaworkshop2009.odp",
+   "https://www.lua.org/wshop09/NSE-Lua-Workshop.odp",
+   "https://www.lua.org/wshop09/DALua.ppt",
+   "https://www.lua.org/wshop09/nclua_luaws.odp",
+   "https://www.lua.org/wshop09/mercado-tv-digital.pdf",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/wshop09.html",
+   "https://www.lua.org/wshop09/videos.asx",
+   "https://www.lua.org/wshop05.html",
+   "https://www.lua.org/wshop06.html",
+   "https://www.lua.org/wshop08.html",
+   "https://www.lua.org/community.html",
+   "https://www.lua.org/authors.html"
+  ],
+  "https://www.lua.org/wshop11.html": [
+   "https://www.lua.org/home.html",
+   "https://www.lua.org/wshop11",
+   "https://www.lua.org/wshop11",
+   "https://www.lua.org/wshop05.html",
+   "https://www.lua.org/wshop06.html",
+   "https://www.lua.org/wshop08.html",
+   "https://www.lua.org/wshop09.html",
+   "https://www.lua.org/community.html",
+   "https://www.lua.org/wshop11/schedule.pdf",
+   "https://www.lua.org/info@platanenhof.ch",
+   "https://www.lua.org/authors.html",
+   "https://www.lua.org/wshop11/ws2011.pdf",
+   "https://www.lua.org/wshop11/novelties-5.2.pdf",
+   "https://www.lua.org/wshop11/Reflexis-Flow--Agile-through-Lua.pdf",
+   "https://www.lua.org/wshop11/splay-vschiavoni-luawshop2011.pdf",
+   "https://www.lua.org/wshop11/lubyk.pdf",
+   "https://www.lua.org/wshop11/Cawley.pdf",
+   "https://www.lua.org/wshop11/Lua-APR.pdf",
+   "https://www.lua.org/wshop11/m2m-embedded-development-with-lua.pdf",
+   "https://www.lua.org/wshop11/luaws11_ag.pdf",
+   "https://www.lua.org/wshop11/Couwenberg.pdf"
+  ]
+ },
+ "stats": {
+  "pages_fetched": 15,
+  "pages_failed": 0,
+  "failures": [],
+  "robots_skipped": [],
+  "elapsed_seconds": 20.0,
+  "budget_exhausted": false
+ }
+}

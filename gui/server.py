@@ -628,7 +628,8 @@ def delete_run(run_id):
 
 CONTENT_TYPES = {".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8",
                  ".js": "text/javascript; charset=utf-8", ".svg": "image/svg+xml",
-                 ".json": "application/json; charset=utf-8", ".md": "text/markdown; charset=utf-8"}
+                 ".json": "application/json; charset=utf-8", ".md": "text/markdown; charset=utf-8",
+                 ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8"}
 
 
 class Handler(http.server.BaseHTTPRequestHandler):

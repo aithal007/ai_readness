@@ -1,0 +1,139 @@
+{
+ "static": true,
+ "generated_at": "2026-09-23T17:24:26Z",
+ "repo": "https://github.com/aithal007/ai_readness",
+ "engine": {
+  "source": "submission.zip",
+  "sha256": "1d5e0f3e4dd12a8c12e205b4723124b4d441cdbf3f76605a2befde9114ec33b1"
+ },
+ "runs": [
+  {
+   "id": "cli-sqlite.org-agent",
+   "url": "https://sqlite.org/",
+   "site": "sqlite.org",
+   "mode": "agent",
+   "status": "done",
+   "started_at": "2026-09-22T20:20:16Z",
+   "finished_at": "2026-09-22T20:20:16Z",
+   "harness": "Claude Code 2.1.278",
+   "model": "claude-sonnet-5",
+   "engine_verified": true,
+   "agent_summary": "I audited https://www.sqlite.org/ and found no critical or high findings. The final report has 12 findings: 2 medium and 10 low, with an overall readiness score of 96/100. That score is this audit's own framework, not a validated metric.\n\nThe raw scripted run flagged 1 critical and 6 high. I removed or downgraded all of them after checking the evidence, and the reasons are listed in the report's suppressed section.\n\n### Findings I removed or downgraded\n\n- **\"AI crawlers blocked\" (critical, now low).** Only GPTBot and ClaudeBot, which are training crawlers, get HTTP 403. I re-probed OAI-SearchBot, Claude-SearchBot, PerplexityBot, Googlebot, ChatGPT-User, Claude-User and Perplexity-User, and all get 200. Blocking training crawlers doesn't cost citations. The probes only vary the user-agent string, so a firewall that also checks source IP could behave differently for the real bots.\n- **\"Homepage states no value proposition\" (high, dropped).** The homepage text says \"Small. Fast. Reliable. Choose any three.\" and \"SQLite is a C-language library that implements a small, fast\u2026 SQL database engine.\"\n- **\"2 of 6 core questions unanswerable\" and \"answers in non-extractable form\" (both high, dropped).** These came from a generic-organisation heuristic misfiring on a public-domain library. The only real cause is the missing H1 and meta description, which are reported separately.\n- **Two stale-date findings (high, merged into one low).** They cover 2 of 15 pages, both evergreen reference docs: faq.html (last updated 2024-11-26) and threadsafe.html (2023-12-05). The homepage and news page are current.\n- **\"Facts locked in non-text elements\" (high, now low).** It is one benchmark chart on news.html, and the adjacent text states the result. I reworded it as a missing-alt-text tidy-up that also covers 13 of 14 images on books.html.\n- **\"No quotable evidence\" (dropped).** The pages flagged were the C function list and a threading explainer, where adding statistics would be artificial.\n\n### Remaining findings\n\n**Medium:**\n1. No XML sitemap (`/sitemap.xml` returns 404, and robots.txt has no Sitemap line).\n2. The homepage has no H1, and its title is the generic \"SQLite Home Page\".\n\n**Low:**\n- Training-crawler block is silent rather than declared in robots.txt.\n- Missing meta descriptions.\n- No `lang` attribute.\n- No structured data, which is optional here because there's no sign of name confusion.\n- No llms.txt, which is informational only.\n- Thin headings and opening summaries on a few explainer pages.\n- No breadcrumbs.\n- Unlabelled search box.\n- Missing alt text.\n- Two stale-dated reference pages.\n\n### Remediation roadmap\n\n- **Do now (all quick):**\n  - Publish a sitemap and add its `Sitemap:` line to robots.txt.\n  - Make the existing description sentence the homepage H1.\n  - Add `<html lang=\"en\">` and an `aria-label` on the search box.\n  - Optionally document the crawler policy in robots.txt. The roadmap lists this under \"do now\", but it needs no fix if the block is intentional.\n- **Later:**\n  - Add alt text to the chart and book covers.\n  - Write meta descriptions.\n  - Add headings and summaries to a few explainer pages.\n  - Add breadcrumbs.\n  - Optionally add JSON-LD.\n  - Review the two dated pages for anything that has changed.\n\n### What was checked and its limits\n\n- All six analyzers ran on a 15-page sample, so page-level findings are a sample, not a census.\n- The off-site check (2 web searches) found Wikipedia, Database of Databases and The New Stack agreeing with the site on the core facts: C-language, public-domain SQL engine, created by D. Richard Hipp in 2000. I read search snippets, not the source pages.\n- The machine clock stamped the run as 2026-09-21 UTC. I used your date, 2026-09-22, for staleness checks and patched `audited_at` to match. The time-of-day part is still the machine's, and the report notes this.\n\nThe report is at `audit_out/audit_report.json` and `audit_out/audit_report.md`, alongside `evidence.json`, `raw_findings.json` and the two adjudication files in the same folder.",
+   "files": [
+    "audit_report.json",
+    "evidence.json",
+    "audit_report.md"
+   ],
+   "summary": {
+    "score": 96,
+    "critical": 0,
+    "high": 0,
+    "medium": 2,
+    "low": 10,
+    "total": 12
+   }
+  },
+  {
+   "id": "20260923-220143-www.lua.org-a48f",
+   "url": "https://www.lua.org/",
+   "site": "www.lua.org",
+   "mode": "agent",
+   "status": "done",
+   "started_at": "2026-09-23T16:31:43Z",
+   "finished_at": "2026-09-23T16:33:10Z",
+   "harness": "2.1.280 (Claude Code)",
+   "model": "claude-sonnet-5",
+   "engine_verified": true,
+   "engine_unchanged": true,
+   "agent_summary": "I audited https://www.lua.org/ on 2026-09-23. The report has 19 findings: 0 critical, 3 high, 9 medium and 7 low. Some of the scripted findings look overstated, and I did not edit them (details below). The overall readiness score is 82.\n\n## Critical and high findings\n\nThere are no critical findings.\n\n- **F-003, no mobile viewport tag (high):** None of the 15 sampled pages has a viewport meta tag, so mobile browsers show a shrunken desktop layout. This one is real and cheap to fix: add `<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">` to every page.\n- **F-001 and F-002, facts locked in non-text elements (high):** The script found one fact-bearing image without alt text on `/news.html` and one PDF-only page, `/wshop11.html`. I think \"high\" overstates this. The evidence covers two pages, and the PDF is workshop material. Treat it as medium at most. The fix is an HTML summary beside the PDF and alt text on the image.\n\n## Other findings worth knowing\n\n- **Homepage orientation (F-009, F-012, medium):** The homepage has 18 words of text and no H1. It never says what Lua is or who it is for, and it has no emphasised call to action. I added F-012 myself after scoring the homepage against the orientation rubric.\n- **Sitemap (F-004, medium):** No XML sitemap was found.\n- **Page dates (F-005, medium):** None of the 15 sampled pages shows a date.\n- **Images (F-011, medium):** 96 of 127 images have no alt text.\n- **Long sections (F-006, medium):** Four pages have long sections that bury facts mid-passage.\n- **Next actions (F-010, medium):** 10 of 15 substantive pages offer no clear next step.\n- **Off-site corroboration (F-017, low):** I ran two web searches. Wikipedia, Wikidata (Q207316), CACM and ScienceDirect all cover Lua, so the off-site footprint looks healthy from that brief sample. The site itself has no JSON-LD, so nothing on lua.org links to those sources.\n\n## Findings I'd discount\n\n- **F-007:** The script classed Lua as \"professional_services\", so this finding rests on a wrong entity type. The real gap is the thin homepage text, already covered by F-012.\n- **F-008:** The \"multiple phone numbers\" finding is likely a false positive. One match, \"83 (2025) 101326\", isn't a phone number, and the rest are probably PUC-Rio contact numbers on other pages.\n- **Critic pass:** The evidence-critic kept all 20 candidate findings (19 after final deduplication), so these calls are my own reading of the evidence.\n\n## Remediation roadmap\n\n1. **Now (about an hour):** add the viewport tag and `lang=\"en\"` to every page. Add an H1 and a one-sentence description to the homepage, plus a prominent \"Get started / Download\" link.\n2. **Next:** publish `sitemap.xml` and reference it in `robots.txt`. Add HTML summaries beside the PDFs and alt text on meaningful images. Add visible updated dates to key pages.\n3. **Later:**\n   - Add Organization or SoftwareApplication JSON-LD with `sameAs` to Wikidata and Wikipedia. It helps entity identity, but I'm not claiming it raises citations.\n   - Add meta descriptions, opening summaries, breadcrumbs and a privacy/legal link.\n   - Skip `llms.txt`. It has no demonstrated benefit.\n\n## Files\n\nThe files are in `./audit_out/`:\n- `audit_report.json`\n- `audit_report.md`\n- `raw_findings.json`\n- `adjudicated.json`\n- `evidence.json`\n\nThe off-site corroboration check was a two-query sample, so it is not exhaustive.",
+   "max_pages": 15,
+   "files": [
+    "audit_report.json",
+    "evidence.json",
+    "audit_report.md"
+   ],
+   "summary": {
+    "score": 82,
+    "critical": 0,
+    "high": 3,
+    "medium": 9,
+    "low": 7,
+    "total": 19
+   }
+  },
+  {
+   "id": "cli-www.adobe.com-agent",
+   "url": "https://www.adobe.com/",
+   "site": "www.adobe.com",
+   "mode": "agent",
+   "status": "done",
+   "started_at": "2026-09-23T15:58:47Z",
+   "finished_at": "2026-09-23T15:58:47Z",
+   "harness": "Claude Code 2.1.280",
+   "model": "claude-sonnet-5",
+   "engine_verified": true,
+   "agent_summary": "I audited www.adobe.com and wrote the report to `audit_out/audit_report.json` and `audit_out/audit_report.md`. There are no critical findings, 4 high, 8 medium and 8 low, and the overall readiness score is 82/100, which is the audit's own scale, not a validated metric. The crawl sampled only 15 pages, many of them CMS fragment endpoints rather than real pages, so treat the findings as indicative.\n\nTwo things degraded the audit:\n- **Corroboration:** the off-site check was a single web search. It confirmed Adobe's identity, its 345 Park Avenue San Jose address and its 1982 founding from independent sources. I did not verify the `sameAs` links to Wikidata or LinkedIn.\n- **Adjustments:** the critic script kept all 21 candidate findings. I then reviewed them by hand and changed two things:\n  - I dropped the \"noindex\" finding, because every URL listed was a CMS fragment endpoint where noindex is deliberate.\n  - I lowered \"no path to contact/about\" from high to medium and caveated it, because it is probably a crawl artefact.\n\n## High findings\n1. **No price in extractable text.** None of the 9 product and pricing pages sampled shows a currency figure. Missing prices are one of the strongest measured barriers to being cited by AI answer engines. Publish \"from $X/month\" as plain text on each product page.\n2. **3 of 8 core questions can't be answered from the site's text.** These are contact details, cost, and specifications or what's included. Put each answer in visible body text.\n3. **Facts locked in unrendered templates.** 8 sampled pages, including the homepage, expose CMS placeholders such as `mas-field: ACOM / Headless / ... \u2192 Title` instead of prose. Server-render the product-card and hero copy.\n4. **The missing answers may exist but be unreadable to a text extractor.** This is the same template problem as finding 3, seen from the answerability side. The fix is the same: add a plain-text equivalent beside each element.\n\n## Medium and low findings\n- The homepage's extractable text has no clear value proposition, only the title and placeholder strings (medium).\n- Undated pages and thin pages (medium).\n- No structured specs or comparison content, no third-party corroboration links, and 40 of 67 images missing alt text (medium).\n- Weak structured data, no `lang` attribute, no breadcrumbs, generic link text and no summary paragraph at page top (low).\n\n## Remediation roadmap\n1. **Now:** server-render homepage and product copy, including the value proposition and CTAs, so it is real HTML text. This fixes the two template findings and the homepage orientation gap.\n2. **Next:** publish starting prices, a contact route, and spec tables as visible text on product pages.\n3. **Then:** add visible updated dates, alt text, an Organization JSON-LD block with `sameAs`, and a `lang` attribute.\n4. **Ongoing:** publish honest comparison pages and pursue third-party listings and roundups.\n\nEverything is in `audit_out/`. The raw and adjudicated findings, the evidence bundle and three small helper scripts I wrote are there alongside the two reports.",
+   "files": [
+    "audit_report.json",
+    "evidence.json",
+    "audit_report.md"
+   ],
+   "summary": {
+    "score": 82,
+    "critical": 0,
+    "high": 4,
+    "medium": 8,
+    "low": 8,
+    "total": 20
+   }
+  },
+  {
+   "id": "20260923-215526-sqlite.org-9d66",
+   "url": "https://sqlite.org/",
+   "site": "sqlite.org",
+   "mode": "engine",
+   "status": "done",
+   "started_at": "2026-09-23T16:25:26Z",
+   "finished_at": "2026-09-23T16:25:57Z",
+   "engine_verified": true,
+   "max_pages": 15,
+   "files": [
+    "audit_report.json",
+    "evidence.json",
+    "audit_report.md"
+   ],
+   "summary": {
+    "score": 70,
+    "critical": 1,
+    "high": 6,
+    "medium": 6,
+    "low": 8,
+    "total": 21
+   }
+  },
+  {
+   "id": "20260923-220021-www.lua.org-bb83",
+   "url": "https://www.lua.org/",
+   "site": "www.lua.org",
+   "mode": "engine",
+   "status": "done",
+   "started_at": "2026-09-23T16:30:21Z",
+   "finished_at": "2026-09-23T16:30:45Z",
+   "engine_verified": true,
+   "max_pages": 15,
+   "files": [
+    "audit_report.json",
+    "evidence.json",
+    "audit_report.md"
+   ],
+   "summary": {
+    "score": 84,
+    "critical": 0,
+    "high": 3,
+    "medium": 8,
+    "low": 6,
+    "total": 17
+   }
+  }
+ ]
+}

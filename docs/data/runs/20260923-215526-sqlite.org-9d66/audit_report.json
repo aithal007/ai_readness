@@ -1,0 +1,686 @@
+{
+  "site": "sqlite.org",
+  "audited_at": "2026-09-23T16:25:57Z",
+  "summary": {
+    "site": "sqlite.org",
+    "audited_at": "2026-09-23T16:25:57Z",
+    "total_findings": 21,
+    "critical": 1,
+    "high": 6,
+    "medium": 6,
+    "low": 8
+  },
+  "readiness": {
+    "overall": 70,
+    "pillars": {
+      "crawl_access": {
+        "label": "Reachable",
+        "score": 58
+      },
+      "machine_readable": {
+        "label": "Readable",
+        "score": 50
+      },
+      "citability": {
+        "label": "Quotable",
+        "score": 76
+      },
+      "answerability": {
+        "label": "Answerable",
+        "score": 76
+      },
+      "trust_freshness": {
+        "label": "Current & corroborated",
+        "score": 88
+      },
+      "engagement": {
+        "label": "Engaging",
+        "score": 75
+      }
+    },
+    "scale_note": "Scores are this audit's own 0-100 framework (100 = no findings in that pillar), intended to show relative weakness at a glance. They are not a validated or externally comparable metric."
+  },
+  "audit_scope": {
+    "pages_sampled": 15,
+    "crawl_seconds": 29.7,
+    "collected_at": "2026-09-23T16:25:56Z"
+  },
+  "roadmap": {
+    "now": [
+      {
+        "id": "F-001",
+        "code": "NETWORK_LAYER_BLOCK",
+        "title": "AI crawler user-agents are blocked at the network layer",
+        "severity": "critical",
+        "effort": "quick",
+        "action": "Check the CDN/WAF bot-management settings and allow the AI search crawlers you want citing you."
+      },
+      {
+        "id": "F-002",
+        "code": "FACTS_IN_NON_TEXT",
+        "title": "Facts appear to be locked in non-text elements",
+        "severity": "high",
+        "effort": "project",
+        "action": "Add a plain-text equivalent alongside each of these elements: real HTML text for prices and specs shown as images, an HTML summary beside PDF-only documents, and descriptive alt text on fact-bearing graphics."
+      },
+      {
+        "id": "F-003",
+        "code": "STALE_DATES",
+        "title": "Pages carry visibly stale dates",
+        "severity": "high",
+        "effort": "moderate",
+        "action": "Review and update these pages, then set an accurate visible 'last updated' date and a matching dateModified."
+      },
+      {
+        "id": "F-004",
+        "code": "UNANSWERABLE_QUESTIONS",
+        "title": "2 of 6 core questions about this brand cannot be answered from its own extractable content",
+        "severity": "high",
+        "effort": "project",
+        "action": "Publish each missing fact as plain, visible text on a relevant page: What is SQLite Home Page?, What services does SQLite Home Page provide?"
+      },
+      {
+        "id": "F-005",
+        "code": "ANSWERS_NOT_EXTRACTABLE",
+        "title": "Some missing answers may exist on the page but in a non-extractable form",
+        "severity": "high",
+        "effort": "project",
+        "action": "Add a plain-text equivalent beside each non-textual element carrying a fact (prices in images, spec tables as graphics, PDF-only documents)."
+      },
+      {
+        "id": "F-006",
+        "code": "STALE_DATES",
+        "title": "Visibly stale dates on the site",
+        "severity": "high",
+        "effort": "moderate",
+        "action": "Review these pages, update what has changed, and set an accurate current date. Auto-generate the footer copyright year."
+      },
+      {
+        "id": "F-007",
+        "code": "NO_VALUE_PROP",
+        "title": "Homepage states no value proposition in extractable text",
+        "severity": "high",
+        "effort": "moderate",
+        "action": "State in one sentence, near the top of the homepage, what the organisation does and who it is for."
+      },
+      {
+        "id": "F-009",
+        "code": "NO_SITEMAP",
+        "title": "No usable XML sitemap found",
+        "severity": "medium",
+        "effort": "quick",
+        "action": "Publish an XML sitemap covering all public pages and reference it from robots.txt with a Sitemap: line."
+      },
+      {
+        "id": "F-012",
+        "code": "NO_H1",
+        "title": "Homepage has no H1",
+        "severity": "medium",
+        "effort": "quick",
+        "action": "Add exactly one H1 stating plainly what the organisation does."
+      },
+      {
+        "id": "F-015",
+        "code": "NO_HTML_LANG",
+        "title": "No language declared on the html element",
+        "severity": "low",
+        "effort": "quick",
+        "action": "Add a lang attribute, e.g. <html lang=\"en\">."
+      },
+      {
+        "id": "F-016",
+        "code": "NO_LLMS_TXT",
+        "title": "No llms.txt (optional, unproven -- informational only)",
+        "severity": "low",
+        "effort": "quick",
+        "action": "Optional. Prioritise sitemap.xml, crawler access and visible on-page facts first -- all three are far better evidenced. Add llms.txt only if it is cheap and you accept it may do nothing."
+      },
+      {
+        "id": "F-020",
+        "code": "NO_PRIVACY_OR_TERMS",
+        "title": "No link to a privacy policy or terms page",
+        "severity": "low",
+        "effort": "quick",
+        "action": "Publish and link privacy policy from the site footer."
+      },
+      {
+        "id": "F-021",
+        "code": "UNLABELLED_FORM_FIELDS",
+        "title": "Form fields without accessible labels",
+        "severity": "low",
+        "effort": "quick",
+        "action": "Give every input a visible <label> (placeholders alone are not labels)."
+      }
+    ],
+    "next": [
+      {
+        "id": "F-010",
+        "code": "NO_STRUCTURED_DATA",
+        "title": "No structured data of any kind on the sampled pages",
+        "severity": "medium",
+        "effort": "moderate",
+        "action": "Add an Organization (or LocalBusiness) JSON-LD block on the homepage with name, url, logo, a stable @id and sameAs links."
+      },
+      {
+        "id": "F-011",
+        "code": "LONG_SECTIONS",
+        "title": "Content sections run long enough to bury facts mid-passage",
+        "severity": "medium",
+        "effort": "moderate",
+        "action": "Break long sections into 150-300 word chunks under their own descriptive subheadings, and move each section's key fact to its opening sentence."
+      },
+      {
+        "id": "F-013",
+        "code": "NO_CTA",
+        "title": "Most substantive pages offer no clear next action",
+        "severity": "medium",
+        "effort": "moderate",
+        "action": "Give each substantive page one obvious next action appropriate to its intent."
+      }
+    ],
+    "later": [
+      {
+        "id": "F-008",
+        "code": "NO_QUOTABLE_EVIDENCE",
+        "title": "Substantive pages contain no quotable evidence",
+        "severity": "medium",
+        "effort": "project",
+        "action": "Add specific, verifiable figures and attributed statements to the body copy of these pages -- concrete numbers with units and dates, named sources for claims."
+      },
+      {
+        "id": "F-014",
+        "code": "NO_META_DESCRIPTION",
+        "title": "Most pages have no meta description",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Write a specific description (roughly 120-160 characters) for each substantive page."
+      },
+      {
+        "id": "F-017",
+        "code": "WEAK_HEADINGS",
+        "title": "Long pages have almost no heading structure",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Add a descriptive heading hierarchy (H2/H3) that names the questions each section answers."
+      },
+      {
+        "id": "F-018",
+        "code": "NO_INTRO_SUMMARY",
+        "title": "Pages open without a summary paragraph",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Open each substantive page with a 40-120 word summary that directly answers the question the page exists to answer."
+      },
+      {
+        "id": "F-019",
+        "code": "NO_BREADCRUMBS",
+        "title": "No breadcrumbs on a site with nested content",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Add breadcrumb navigation to nested pages, marked up with BreadcrumbList."
+      }
+    ],
+    "note": "Bucketed by impact against implementation cost, so a cheap fix is not queued behind an expensive one. Severity order is preserved within each bucket."
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "code": "NETWORK_LAYER_BLOCK",
+      "title": "AI crawler user-agents are blocked at the network layer",
+      "severity": "critical",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "The same URL returned a normal response to a browser user-agent but an explicit refusal to declared AI crawlers -- GPTBot: HTTP 403; ClaudeBot: HTTP 403. robots.txt does not disallow these agents, so the block is happening above it.",
+      "mechanism": "CDN and WAF bot management (Cloudflare's AI-bot blocking, AWS WAF, Akamai) filters by user-agent and IP before robots.txt is ever consulted, and overrides it. A site can publish a perfectly permissive robots.txt and still be completely invisible to assistants. This failure is undetectable from robots.txt alone.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Check the CDN/WAF bot-management settings and allow the AI search crawlers you want citing you.",
+        "priority": "critical",
+        "how": "In Cloudflare this is the 'Block AI Bots' / bot-management rule set, not robots.txt. Note that some plans block AI crawlers by default."
+      },
+      "source_skill": "crawl-render-audit",
+      "effort": "quick"
+    },
+    {
+      "id": "F-002",
+      "code": "FACTS_IN_NON_TEXT",
+      "title": "Facts appear to be locked in non-text elements",
+      "severity": "high",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "Detected: fact_bearing_image_without_alt on 1 page(s) (e.g. https://sqlite.org/news.html).",
+      "mechanism": "A fact carried only by an image, a PDF, a canvas, a third-party embed or an unrendered template is invisible to text extraction. The information already exists -- it just cannot be read -- which makes this among the cheapest gaps to close.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add a plain-text equivalent alongside each of these elements: real HTML text for prices and specs shown as images, an HTML summary beside PDF-only documents, and descriptive alt text on fact-bearing graphics.",
+        "priority": "high"
+      },
+      "source_skill": "crawl-render-audit",
+      "affected_urls": [
+        "https://sqlite.org/news.html"
+      ],
+      "effort": "project"
+    },
+    {
+      "id": "F-003",
+      "code": "STALE_DATES",
+      "title": "Pages carry visibly stale dates",
+      "severity": "high",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "1 sampled page(s) show a most-recent date 3+ years old. Examples: https://sqlite.org/threadsafe.html -> 2023.",
+      "mechanism": "Recency is a unanimous citation gatekeeper (recent vs old measured OR above 10,000). Critically, an OLD date scored WORSE than showing no date at all -- but a RECENT date beats both. So the fix is to genuinely refresh and re-date, never to delete dates.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Review and update these pages, then set an accurate visible 'last updated' date and a matching dateModified.",
+        "priority": "high",
+        "how": "Do NOT strip dates to look evergreen -- undated measured worse than recently-dated."
+      },
+      "source_skill": "ai-citability-audit",
+      "affected_urls": [
+        "https://sqlite.org/threadsafe.html"
+      ],
+      "effort": "moderate"
+    },
+    {
+      "id": "F-004",
+      "code": "UNANSWERABLE_QUESTIONS",
+      "title": "2 of 6 core questions about this brand cannot be answered from its own extractable content",
+      "severity": "high",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "Entity type inferred as 'generic_org' (no strong type signal; treated as a generic organisation). Sampled 15 page(s). Unanswerable: What is SQLite Home Page? -> homepage has no meta description, no H1 and no Organization schema; What services does SQLite Home Page provide? -> no services information found in extractable text.",
+      "mechanism": "An assistant answering a question about a brand builds the answer from what it can reach, read and quote at that moment. Where the answer is not present as extractable text, the assistant either omits the brand entirely or fills the gap from a third-party source it does not control -- which is how brands get described inaccurately. Each gap below is a specific question your site currently cannot answer.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Publish each missing fact as plain, visible text on a relevant page: What is SQLite Home Page?, What services does SQLite Home Page provide?",
+        "priority": "high",
+        "how": "Put the answer in body text, not only in an image, a PDF, a form, or a JS-rendered widget. Stating it once, plainly, is enough."
+      },
+      "source_skill": "answerability-probe",
+      "answerability": {
+        "entity_type": "generic_org",
+        "coverage": 0.67,
+        "answered": [
+          "what_it_does",
+          "contact",
+          "location",
+          "about_depth"
+        ],
+        "unanswered": [
+          "identity",
+          "services"
+        ]
+      },
+      "effort": "project"
+    },
+    {
+      "id": "F-005",
+      "code": "ANSWERS_NOT_EXTRACTABLE",
+      "title": "Some missing answers may exist on the page but in a non-extractable form",
+      "severity": "high",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "Detected extractability risks across sampled pages: css_generated_text, fact_bearing_image_without_alt. These co-occur with 2 unanswerable question(s).",
+      "mechanism": "A fact rendered inside an image, canvas, PDF, third-party embed or client-side template is visible to a human but absent for a text extractor. This is the most recoverable class of gap -- the content already exists and only needs a text equivalent.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add a plain-text equivalent beside each non-textual element carrying a fact (prices in images, spec tables as graphics, PDF-only documents).",
+        "priority": "high",
+        "how": "A short HTML table or paragraph next to the visual is sufficient; the visual can stay."
+      },
+      "source_skill": "answerability-probe",
+      "effort": "project"
+    },
+    {
+      "id": "F-006",
+      "code": "STALE_DATES",
+      "title": "Visibly stale dates on the site",
+      "severity": "high",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "2 page(s) show a most-recent year at least 2 years old (checked against 2026-09-23): https://sqlite.org/faq.html -> 2024; https://sqlite.org/threadsafe.html -> 2023.",
+      "mechanism": "Recency measured as a citation gatekeeper -- recent content beat old content by odds ratios above 10,000 across models. A visibly stale year also tells a human visitor the site may no longer be maintained.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Review these pages, update what has changed, and set an accurate current date. Auto-generate the footer copyright year.",
+        "priority": "high",
+        "how": "Do not simply bump the date without reviewing content -- and do not delete dates to look evergreen, since undated content measured worse than recently-dated."
+      },
+      "source_skill": "freshness-corroboration-audit",
+      "affected_urls": [
+        "https://sqlite.org/faq.html",
+        "https://sqlite.org/threadsafe.html"
+      ],
+      "effort": "moderate"
+    },
+    {
+      "id": "F-007",
+      "code": "NO_VALUE_PROP",
+      "title": "Homepage states no value proposition in extractable text",
+      "severity": "high",
+      "confidence": 0.75,
+      "category": "engagement",
+      "evidence": "https://sqlite.org/ has neither an H1 nor a meta description, and exposes 235 words of extracted text.",
+      "mechanism": "A first-time visitor has nothing telling them what this is or whether they are in the right place, and neither does any machine reading the page.",
+      "evidence_tier": "correlational",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "State in one sentence, near the top of the homepage, what the organisation does and who it is for.",
+        "priority": "high"
+      },
+      "source_skill": "engagement-audit",
+      "affected_urls": [
+        "https://sqlite.org/"
+      ],
+      "effort": "moderate"
+    },
+    {
+      "id": "F-008",
+      "code": "NO_QUOTABLE_EVIDENCE",
+      "title": "Substantive pages contain no quotable evidence",
+      "severity": "medium",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "3/15 pages over 250 words contain zero statistics, zero attributed quotes and zero outbound links to any external domain. Examples: https://sqlite.org/threadsafe.html, https://sqlite.org/c3ref/funclist.html, https://sqlite.org/cintro.html.",
+      "mechanism": "Adding statistics measured the largest single content lift in the original GEO study (+30.6% visibility; up to +37% subjective impression on a live engine), and quotations the largest overall (+41%). Claims backed by evidence beat unbacked claims by odds ratios from 2.1 up to >10,000. Answer engines quote body text -- give them something concrete and attributable to lift.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add specific, verifiable figures and attributed statements to the body copy of these pages -- concrete numbers with units and dates, named sources for claims.",
+        "priority": "high",
+        "how": "One real statistic per ~100 words of substantive copy is a reasonable target; attribute each to a named, linkable source."
+      },
+      "source_skill": "ai-citability-audit",
+      "affected_urls": [
+        "https://sqlite.org/threadsafe.html",
+        "https://sqlite.org/c3ref/funclist.html",
+        "https://sqlite.org/cintro.html"
+      ],
+      "effort": "project"
+    },
+    {
+      "id": "F-009",
+      "code": "NO_SITEMAP",
+      "title": "No usable XML sitemap found",
+      "severity": "medium",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "No sitemap was retrievable from robots.txt declarations or /sitemap.xml.",
+      "mechanism": "A sitemap is the most reliable way for a crawler to discover pages that have few inbound internal links. It is far better evidenced than newer conventions such as llms.txt, which measurably almost nothing reads.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Publish an XML sitemap covering all public pages and reference it from robots.txt with a Sitemap: line.",
+        "priority": "medium"
+      },
+      "source_skill": "crawl-render-audit",
+      "effort": "quick"
+    },
+    {
+      "id": "F-010",
+      "code": "NO_STRUCTURED_DATA",
+      "title": "No structured data of any kind on the sampled pages",
+      "severity": "medium",
+      "confidence": 0.7,
+      "category": "discoverability",
+      "evidence": "All 15 sampled pages resolve to NO_STRUCTURED_DATA -- no JSON-LD, microdata, RDFa, microformats, Open Graph or Dublin Core markup was found.",
+      "mechanism": "Structured data is a legitimate aid for search rich results and, more importantly here, for stating entity identity unambiguously. Note the honest scope: controlled studies do NOT show schema markup causing more AI citations -- so this is worth doing for identity and search, not as a route to being quoted. What gets a page quoted is concrete facts in visible body text.",
+      "evidence_tier": "correlational",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Add an Organization (or LocalBusiness) JSON-LD block on the homepage with name, url, logo, a stable @id and sameAs links.",
+        "priority": "medium",
+        "how": "Keep the markup's claims identical to the visible page text -- asserting facts in markup that the page does not show is its own failure mode."
+      },
+      "source_skill": "structured-data-entity-audit",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-011",
+      "code": "LONG_SECTIONS",
+      "title": "Content sections run long enough to bury facts mid-passage",
+      "severity": "medium",
+      "confidence": 0.85,
+      "category": "discoverability",
+      "evidence": "2 page(s) have 2+ sections over 300 words (e.g. https://sqlite.org/oldnews.html: 6 long sections, 14 in the 150-300 band).",
+      "mechanism": "Information in the middle of a long passage is retrieved markedly worse than information at its start or end -- and in controlled testing, a fact in the middle position scored BELOW the baseline of not supplying the document at all. The trough deepens as the passage grows. Fix the tier-1 gatekeeper findings first -- structural work measured negligible benefit on pages that still fail a gatekeeper.",
+      "evidence_tier": "measured",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Break long sections into 150-300 word chunks under their own descriptive subheadings, and move each section's key fact to its opening sentence.",
+        "priority": "medium"
+      },
+      "source_skill": "ai-citability-audit",
+      "affected_urls": [
+        "https://sqlite.org/oldnews.html",
+        "https://sqlite.org/oldnews.html:"
+      ],
+      "page": "https://sqlite.org/oldnews.html",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-012",
+      "code": "NO_H1",
+      "title": "Homepage has no H1",
+      "severity": "medium",
+      "confidence": 0.9,
+      "category": "engagement",
+      "evidence": "No H1 element found on https://sqlite.org/.",
+      "mechanism": "The H1 is the clearest single statement of what a page is -- for a scanning visitor, for assistive technology, and for any system building a page outline.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add exactly one H1 stating plainly what the organisation does.",
+        "priority": "medium"
+      },
+      "source_skill": "engagement-audit",
+      "affected_urls": [
+        "https://sqlite.org/"
+      ],
+      "effort": "quick"
+    },
+    {
+      "id": "F-013",
+      "code": "NO_CTA",
+      "title": "Most substantive pages offer no clear next action",
+      "severity": "medium",
+      "confidence": 0.75,
+      "category": "engagement",
+      "evidence": "14/15 sampled pages with over 150 words contain no call-to-action phrasing.",
+      "mechanism": "A page that informs but does not offer a next step leaves the visitor to invent one, which most will not do. This is where discoverability gains leak away.",
+      "evidence_tier": "correlational",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Give each substantive page one obvious next action appropriate to its intent.",
+        "priority": "medium"
+      },
+      "source_skill": "engagement-audit",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-014",
+      "code": "NO_META_DESCRIPTION",
+      "title": "Most pages have no meta description",
+      "severity": "low",
+      "confidence": 0.85,
+      "category": "discoverability",
+      "evidence": "15/15 sampled pages expose no meta description.",
+      "mechanism": "The description is a structural field used in retrieval and as an explicit one-line statement of page purpose.",
+      "evidence_tier": "measured",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Write a specific description (roughly 120-160 characters) for each substantive page.",
+        "priority": "low"
+      },
+      "source_skill": "structured-data-entity-audit",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-015",
+      "code": "NO_HTML_LANG",
+      "title": "No language declared on the html element",
+      "severity": "low",
+      "confidence": 0.7,
+      "category": "discoverability",
+      "evidence": "<html> has no lang attribute on https://sqlite.org/.",
+      "mechanism": "Missing language metadata weakens locale and entity matching, and degrades screen reader pronunciation.",
+      "evidence_tier": "correlational",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Add a lang attribute, e.g. <html lang=\"en\">.",
+        "priority": "low"
+      },
+      "source_skill": "structured-data-entity-audit",
+      "affected_urls": [
+        "https://sqlite.org/"
+      ],
+      "effort": "quick"
+    },
+    {
+      "id": "F-016",
+      "code": "NO_LLMS_TXT",
+      "title": "No llms.txt (optional, unproven -- informational only)",
+      "severity": "low",
+      "confidence": 0.45,
+      "category": "discoverability",
+      "evidence": "GET /llms.txt returned no usable file.",
+      "mechanism": "llms.txt is an emerging convention with, as of 2026, no demonstrated citation benefit: a 137,000-domain study found 97% of published files received zero requests, a ~300,000-domain study found no significant correlation with AI citations, and Google has said it does not support it. Listed for completeness only.",
+      "evidence_tier": "speculative",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Optional. Prioritise sitemap.xml, crawler access and visible on-page facts first -- all three are far better evidenced. Add llms.txt only if it is cheap and you accept it may do nothing.",
+        "priority": "low"
+      },
+      "source_skill": "structured-data-entity-audit",
+      "effort": "quick"
+    },
+    {
+      "id": "F-017",
+      "code": "WEAK_HEADINGS",
+      "title": "Long pages have almost no heading structure",
+      "severity": "low",
+      "confidence": 0.85,
+      "category": "discoverability",
+      "evidence": "3 page(s) exceed 400 words with heading depth below 2. Examples: https://sqlite.org/threadsafe.html, https://sqlite.org/chronology.html, https://sqlite.org/cintro.html.",
+      "mechanism": "Structural fields (title, headings, meta description) measured a ~+22% retrieval hit-rate improvement -- they help a document get FOUND. They do not make it quoted; body-text evidence does that. Fix the tier-1 gatekeeper findings first -- structural work measured negligible benefit on pages that still fail a gatekeeper.",
+      "evidence_tier": "measured",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Add a descriptive heading hierarchy (H2/H3) that names the questions each section answers.",
+        "priority": "low"
+      },
+      "source_skill": "ai-citability-audit",
+      "affected_urls": [
+        "https://sqlite.org/threadsafe.html",
+        "https://sqlite.org/chronology.html",
+        "https://sqlite.org/cintro.html"
+      ],
+      "effort": "moderate"
+    },
+    {
+      "id": "F-018",
+      "code": "NO_INTRO_SUMMARY",
+      "title": "Pages open without a summary paragraph",
+      "severity": "low",
+      "confidence": 0.85,
+      "category": "discoverability",
+      "evidence": "8 page(s) over 300 words have under 25 words between the H1 and the first subheading. Examples: https://sqlite.org/about.html, https://sqlite.org/docs.html, https://sqlite.org/books.html.",
+      "mechanism": "Retrieval favours content that answers early, and the opening position is the strongest slot in a passage. Some engine architectures weight the opening especially heavily when judging a batch of retrieved documents. Fix the tier-1 gatekeeper findings first -- structural work measured negligible benefit on pages that still fail a gatekeeper.",
+      "evidence_tier": "measured",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Open each substantive page with a 40-120 word summary that directly answers the question the page exists to answer.",
+        "priority": "low"
+      },
+      "source_skill": "ai-citability-audit",
+      "affected_urls": [
+        "https://sqlite.org/about.html",
+        "https://sqlite.org/docs.html",
+        "https://sqlite.org/books.html"
+      ],
+      "effort": "moderate"
+    },
+    {
+      "id": "F-019",
+      "code": "NO_BREADCRUMBS",
+      "title": "No breadcrumbs on a site with nested content",
+      "severity": "low",
+      "confidence": 0.75,
+      "category": "engagement",
+      "evidence": "4 sampled page(s) sit two or more clicks deep and no breadcrumb navigation (BreadcrumbList markup or a breadcrumb nav landmark) was found.",
+      "mechanism": "Someone arriving on a deep page from a search result or an assistant's citation has no way to tell where they are in the site or how to go up a level. Breadcrumbs also state the site's hierarchy explicitly for machines.",
+      "evidence_tier": "correlational",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add breadcrumb navigation to nested pages, marked up with BreadcrumbList.",
+        "priority": "low"
+      },
+      "source_skill": "engagement-audit",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-020",
+      "code": "NO_PRIVACY_OR_TERMS",
+      "title": "No link to a privacy policy or terms page",
+      "severity": "low",
+      "confidence": 0.75,
+      "category": "engagement",
+      "evidence": "Across 15 sampled page(s), no link was found to: privacy policy.",
+      "mechanism": "These pages are a baseline trust signal for visitors deciding whether to transact, and their absence is conspicuous on any site that collects data. They are also commonly expected by platforms and reviewers.",
+      "evidence_tier": "correlational",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Publish and link privacy policy from the site footer.",
+        "priority": "low"
+      },
+      "source_skill": "engagement-audit",
+      "effort": "quick"
+    },
+    {
+      "id": "F-021",
+      "code": "UNLABELLED_FORM_FIELDS",
+      "title": "Form fields without accessible labels",
+      "severity": "low",
+      "confidence": 0.9,
+      "category": "engagement",
+      "evidence": "16 input field(s) across sampled pages have no label, aria-label, title or placeholder.",
+      "mechanism": "Unlabelled fields are ambiguous for every visitor and unusable with a screen reader, and forms are usually the last step before a conversion.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Give every input a visible <label> (placeholders alone are not labels).",
+        "priority": "low"
+      },
+      "source_skill": "engagement-audit",
+      "effort": "quick"
+    }
+  ],
+  "not_assessed": [
+    {
+      "id": "N-001",
+      "title": "Visitor-goal checks not applicable: pricing, offering",
+      "status": "not_applicable",
+      "category": "engagement",
+      "evidence": "No pricing, offering destination was found, but this site shows no commercial signals (prices, purchase CTAs, Product/Offer structured data, or a pricing/shop URL), so these goals do not apply to it.",
+      "mechanism": "The audit distinguishes 'goal missing' from 'goal not relevant to this kind of site' rather than reporting a category error.",
+      "suggested_action": {
+        "summary": "No action needed. Add pricing/offering navigation only if the site starts selling or listing an offering.",
+        "priority": "low"
+      },
+      "source_skill": "engagement-audit"
+    }
+  ],
+  "critic_summary": {
+    "findings_considered": 22,
+    "findings_reported": 22,
+    "suppressed": [],
+    "severity_adjustments": []
+  }
+}

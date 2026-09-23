@@ -1,0 +1,491 @@
+{
+  "site": "sqlite.org",
+  "audited_at": "2026-09-22T20:20:16Z",
+  "summary": {
+    "site": "sqlite.org",
+    "audited_at": "2026-09-22T20:20:16Z",
+    "total_findings": 12,
+    "critical": 0,
+    "high": 0,
+    "medium": 2,
+    "low": 10
+  },
+  "readiness": {
+    "overall": 96,
+    "pillars": {
+      "crawl_access": {
+        "label": "Reachable",
+        "score": 93
+      },
+      "machine_readable": {
+        "label": "Readable",
+        "score": 89
+      },
+      "citability": {
+        "label": "Quotable",
+        "score": 99
+      },
+      "answerability": {
+        "label": "Answerable",
+        "score": 100
+      },
+      "trust_freshness": {
+        "label": "Current & corroborated",
+        "score": 99
+      },
+      "engagement": {
+        "label": "Engaging",
+        "score": 93
+      }
+    },
+    "scale_note": "Scores are this audit's own 0-100 framework (100 = no findings in that pillar), intended to show relative weakness at a glance. They are not a validated or externally comparable metric."
+  },
+  "audit_scope": {
+    "pages_sampled": 15,
+    "crawl_seconds": 37.5,
+    "collected_at": "2026-09-21T20:15:48Z",
+    "audit_date_note": "Machine clock stamped 2026-09-21T20:20:16Z; the user-stated real date is 2026-09-22, which was used for all staleness checks and for audited_at.",
+    "pages_note": "15 pages sampled to depth 2 from the homepage; the site is much larger, so page-level findings are a sample, not a census.",
+    "homepage_orientation": {
+      "what_is_this": "PASS - \"SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.\"",
+      "who_is_it_for": "IMPLICIT - developers embedding a C/SQL engine; no explicit audience statement. Not reported: acceptable for this kind of project.",
+      "what_next": "PASS - \"Download\", \"Getting Started\", \"Try it live!\", \"Latest Release Version 3.53.4 (2026-07-24)\".",
+      "result": "No finding raised; the scripted \"no value proposition\" finding was rejected as contradicted by this text."
+    },
+    "off_site_check": {
+      "ran": true,
+      "method": "2 web searches (creator/founding/licence; Wikipedia/Wikidata presence).",
+      "result": "Independent sources returned by search (Wikipedia, Database of Databases, The New Stack) agree with the site on the core facts: SQLite is a C-language, public-domain embedded SQL database engine created by D. Richard Hipp in 2000 (first release August 2000). No contradicting source and no name collision seen. This is a brief sample, not proof of full corroboration; the search snippets were read, the source pages themselves were not.",
+      "finding_raised": false
+    },
+    "crawler_reprobe": "Collector probed only browser, GPTBot, ClaudeBot, PerplexityBot. The audit re-probed OAI-SearchBot, Claude-SearchBot, Googlebot, ChatGPT-User, Claude-User and Perplexity-User with read-only GETs to https://www.sqlite.org/index.html: all returned 200. These probes spoof user-agent strings only; a WAF that also checks source IP ranges could still behave differently for the real bots."
+  },
+  "roadmap": {
+    "now": [
+      {
+        "id": "F-001",
+        "code": "NO_SITEMAP",
+        "title": "No usable XML sitemap found",
+        "severity": "medium",
+        "effort": "quick",
+        "action": "Publish an XML sitemap covering all public pages and reference it from robots.txt with a Sitemap: line."
+      },
+      {
+        "id": "F-002",
+        "code": "NO_H1",
+        "title": "Homepage has no H1",
+        "severity": "medium",
+        "effort": "quick",
+        "action": "Make the existing description line the homepage H1, e.g. \"SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured SQL database engine.\""
+      },
+      {
+        "id": "F-003",
+        "code": "TRAINING_CRAWLERS_BLOCKED_OK",
+        "title": "Training crawlers are blocked at the network layer; search and live-fetch agents are not",
+        "severity": "low",
+        "effort": "quick",
+        "action": "No fix needed if the training-crawler block is intentional. Optionally state the policy in robots.txt so the intent is explicit and does not look like a misconfiguration to the next maintainer."
+      },
+      {
+        "id": "F-008",
+        "code": "NO_HTML_LANG",
+        "title": "No language declared on the html element",
+        "severity": "low",
+        "effort": "quick",
+        "action": "Add a lang attribute, e.g. <html lang=\"en\">."
+      },
+      {
+        "id": "F-009",
+        "code": "NO_LLMS_TXT",
+        "title": "No llms.txt (optional, unproven -- informational only)",
+        "severity": "low",
+        "effort": "quick",
+        "action": "Optional. Prioritise sitemap.xml, crawler access and visible on-page facts first -- all three are far better evidenced. Add llms.txt only if it is cheap and you accept it may do nothing."
+      },
+      {
+        "id": "F-012",
+        "code": "UNLABELLED_FORM_FIELDS",
+        "title": "Form fields without accessible labels",
+        "severity": "low",
+        "effort": "quick",
+        "action": "Give the search box an aria-label=\"Search sqlite.org\" (or a visible label) and set a placeholder."
+      }
+    ],
+    "next": [],
+    "later": [
+      {
+        "id": "F-004",
+        "code": "MISSING_ALT_TEXT",
+        "title": "Images with no alt text on 3 sampled pages",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Add short descriptive alt text to the benchmark chart on news.html and to the book-cover images on books.html (title and author); mark purely decorative images alt=\"\"."
+      },
+      {
+        "id": "F-005",
+        "code": "STALE_DATES",
+        "title": "Visibly stale dates on the site",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Review faq.html and threadsafe.html for anything that has changed since the stated dates; if something has, update it and let the date advance. If nothing has changed, no action is needed."
+      },
+      {
+        "id": "F-006",
+        "code": "NO_STRUCTURED_DATA",
+        "title": "No structured data of any kind on the sampled pages",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Optionally add JSON-LD to the homepage (Organization or SoftwareApplication with name, url, a stable @id and sameAs links to the Wikipedia and Wikidata entries)."
+      },
+      {
+        "id": "F-007",
+        "code": "NO_META_DESCRIPTION",
+        "title": "Most pages have no meta description",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Write a specific description (roughly 120-160 characters) for each substantive page."
+      },
+      {
+        "id": "F-010",
+        "code": "WEAK_HEADINGS",
+        "title": "Long documentation pages have almost no heading structure or opening summary",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "On the few substantive explainer pages (about, cintro, threadsafe), add H2/H3 headings that name the question each section answers and open with a one- or two-sentence summary."
+      },
+      {
+        "id": "F-011",
+        "code": "NO_BREADCRUMBS",
+        "title": "No breadcrumbs on a site with nested content",
+        "severity": "low",
+        "effort": "moderate",
+        "action": "Add breadcrumb navigation to nested pages, marked up with BreadcrumbList."
+      }
+    ],
+    "note": "Bucketed by impact against implementation cost, so a cheap fix is not queued behind an expensive one. Severity order is preserved within each bucket."
+  },
+  "findings": [
+    {
+      "id": "F-001",
+      "code": "NO_SITEMAP",
+      "title": "No usable XML sitemap found",
+      "severity": "medium",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "No sitemap was retrievable from robots.txt declarations or /sitemap.xml.",
+      "mechanism": "A sitemap is the most reliable way for a crawler to discover pages that have few inbound internal links. It is far better evidenced than newer conventions such as llms.txt, which measurably almost nothing reads.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Publish an XML sitemap covering all public pages and reference it from robots.txt with a Sitemap: line.",
+        "priority": "medium"
+      },
+      "source_skill": "crawl-render-audit",
+      "effort": "quick"
+    },
+    {
+      "id": "F-002",
+      "code": "NO_H1",
+      "title": "Homepage has no H1",
+      "severity": "medium",
+      "confidence": 0.9,
+      "category": "engagement",
+      "evidence": "No H1 element on https://www.sqlite.org/ (its only headings are four H3s: \"Common Links\", \"Latest Release\", \"Common Links\", \"Sponsors\"). The page does carry a visible tagline in a div (\"Small. Fast. Reliable. Choose any three.\") and a one-sentence description in body text, but neither is marked up as the page heading, and the <title> is the generic \"SQLite Home Page\".",
+      "mechanism": "The H1 is the clearest single statement of what a page is -- for a scanning visitor, for assistive technology, and for any system building a page outline.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Make the existing description line the homepage H1, e.g. \"SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured SQL database engine.\"",
+        "priority": "medium"
+      },
+      "source_skill": "engagement-audit",
+      "affected_urls": [
+        "https://www.sqlite.org/"
+      ],
+      "effort": "quick"
+    },
+    {
+      "id": "F-003",
+      "code": "TRAINING_CRAWLERS_BLOCKED_OK",
+      "title": "Training crawlers are blocked at the network layer; search and live-fetch agents are not",
+      "severity": "low",
+      "confidence": 0.8,
+      "category": "discoverability",
+      "evidence": "GET https://www.sqlite.org/index.html returns HTTP 403 to the GPTBot and ClaudeBot user-agents and HTTP 200 to a browser UA, OAI-SearchBot, Claude-SearchBot, PerplexityBot, Googlebot, ChatGPT-User, Claude-User and Perplexity-User (collector probe plus a manual re-probe on 2026-09-22). robots.txt (100 bytes) disallows only /cvstrac, /src, /docsrc, /cgi and /contrib and says nothing about either blocked agent, so the 403 is applied above robots.txt.",
+      "mechanism": "GPTBot and ClaudeBot are training crawlers. Refusing them while serving the search-index and live-fetch agents is a documented, legitimate choice and does not remove the site from AI answers. The only residual point is that the policy is enforced silently rather than declared.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "No fix needed if the training-crawler block is intentional. Optionally state the policy in robots.txt so the intent is explicit and does not look like a misconfiguration to the next maintainer.",
+        "priority": "low",
+        "how": "Do NOT unblock OAI-SearchBot, Claude-SearchBot, PerplexityBot or the *-User agents; they currently get 200. Re-probe them after any CDN/WAF rule change."
+      },
+      "source_skill": "crawl-render-audit",
+      "affected_urls": [
+        "https://www.sqlite.org/index.html"
+      ],
+      "severity_adjusted_from": "critical",
+      "effort": "quick"
+    },
+    {
+      "id": "F-004",
+      "code": "MISSING_ALT_TEXT",
+      "title": "Images with no alt text on 3 sampled pages",
+      "severity": "low",
+      "confidence": 0.8,
+      "category": "discoverability",
+      "evidence": "From the evidence bundle: https://www.sqlite.org/books.html has 13 of 14 images with no alt attribute, https://www.sqlite.org/news.html has 1 of 2 (images/sschart20221116.jpg, a CPU-cycle benchmark chart), and https://www.sqlite.org/copyright.html has 1 of 2. The chart on news.html is introduced by body text that states the result, so no fact is stranded in the image. The other 12 sampled pages have no missing alt text.",
+      "mechanism": "Images without alt text are invisible to text extractors and to screen readers. Here the impact is small: the one fact-bearing chart is explained in adjacent text, and the rest are book covers.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add short descriptive alt text to the benchmark chart on news.html and to the book-cover images on books.html (title and author); mark purely decorative images alt=\"\".",
+        "priority": "low",
+        "how": "Alt-text coverage is a prompt for review, not a verdict: decorative images legitimately use empty alt."
+      },
+      "source_skill": "crawl-render-audit",
+      "affected_urls": [
+        "https://www.sqlite.org/books.html",
+        "https://www.sqlite.org/news.html",
+        "https://www.sqlite.org/copyright.html"
+      ],
+      "severity_adjusted_from": "high",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-005",
+      "code": "STALE_DATES",
+      "title": "Visibly stale dates on the site",
+      "severity": "low",
+      "confidence": 0.85,
+      "category": "discoverability",
+      "evidence": "Checked against 2026-09-22: https://www.sqlite.org/faq.html footer reads \"last updated on 2024-11-26\" and https://www.sqlite.org/threadsafe.html reads \"last updated on 2023-12-05\". That is 2 of 15 sampled pages, both stable technical reference pages. The homepage (\"last updated on 2026-08-14\") and news.html (newest entry 2026-07-24, release 3.53.4) are current.",
+      "mechanism": "Recency is a citation gatekeeper for time-sensitive content, and an old visible date scores worse than a recent one. On reference documentation that has not needed to change, an older \"last updated\" date is expected; the exposure is limited to pages whose content has actually drifted.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Review faq.html and threadsafe.html for anything that has changed since the stated dates; if something has, update it and let the date advance. If nothing has changed, no action is needed.",
+        "priority": "low",
+        "how": "Do not bump dates without reviewing content, and do not remove dates to look evergreen: undated content measured worse than recently-dated content."
+      },
+      "source_skill": "freshness-corroboration-audit",
+      "affected_urls": [
+        "https://www.sqlite.org/faq.html",
+        "https://www.sqlite.org/threadsafe.html"
+      ],
+      "severity_adjusted_from": "high",
+      "corroborated_by": [
+        "ai-citability-audit"
+      ],
+      "effort": "moderate"
+    },
+    {
+      "id": "F-006",
+      "code": "NO_STRUCTURED_DATA",
+      "title": "No structured data of any kind on the sampled pages",
+      "severity": "low",
+      "confidence": 0.6,
+      "category": "discoverability",
+      "evidence": "All 15 sampled pages resolve to NO_STRUCTURED_DATA -- no JSON-LD, microdata, RDFa, microformats, Open Graph or Dublin Core markup was found.",
+      "mechanism": "Structured data is a legitimate aid for search rich results and, more importantly here, for stating entity identity unambiguously. Note the honest scope: controlled studies do NOT show schema markup causing more AI citations -- so this is worth doing for identity and search, not as a route to being quoted. What gets a page quoted is concrete facts in visible body text. Entity confusion is not a live risk here: brief searches for \"SQLite\" returned results about this database engine (Wikipedia, dbdb.io, The New Stack), not an unrelated organisation.",
+      "evidence_tier": "correlational",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Optionally add JSON-LD to the homepage (Organization or SoftwareApplication with name, url, a stable @id and sameAs links to the Wikipedia and Wikidata entries).",
+        "priority": "low",
+        "how": "Keep every claim in the markup identical to the visible page text."
+      },
+      "source_skill": "structured-data-entity-audit",
+      "severity_adjusted_from": "medium",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-007",
+      "code": "NO_META_DESCRIPTION",
+      "title": "Most pages have no meta description",
+      "severity": "low",
+      "confidence": 0.85,
+      "category": "discoverability",
+      "evidence": "15/15 sampled pages expose no meta description.",
+      "mechanism": "The description is a structural field used in retrieval and as an explicit one-line statement of page purpose.",
+      "evidence_tier": "measured",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Write a specific description (roughly 120-160 characters) for each substantive page.",
+        "priority": "low"
+      },
+      "source_skill": "structured-data-entity-audit",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-008",
+      "code": "NO_HTML_LANG",
+      "title": "No language declared on the html element",
+      "severity": "low",
+      "confidence": 0.7,
+      "category": "discoverability",
+      "evidence": "<html> has no lang attribute on https://www.sqlite.org/.",
+      "mechanism": "Missing language metadata weakens locale and entity matching, and degrades screen reader pronunciation.",
+      "evidence_tier": "correlational",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Add a lang attribute, e.g. <html lang=\"en\">.",
+        "priority": "low"
+      },
+      "source_skill": "structured-data-entity-audit",
+      "affected_urls": [
+        "https://www.sqlite.org/"
+      ],
+      "effort": "quick"
+    },
+    {
+      "id": "F-009",
+      "code": "NO_LLMS_TXT",
+      "title": "No llms.txt (optional, unproven -- informational only)",
+      "severity": "low",
+      "confidence": 0.45,
+      "category": "discoverability",
+      "evidence": "GET /llms.txt returned no usable file.",
+      "mechanism": "llms.txt is an emerging convention with, as of 2026, no demonstrated citation benefit: a 137,000-domain study found 97% of published files received zero requests, a ~300,000-domain study found no significant correlation with AI citations, and Google has said it does not support it. Listed for completeness only.",
+      "evidence_tier": "speculative",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "Optional. Prioritise sitemap.xml, crawler access and visible on-page facts first -- all three are far better evidenced. Add llms.txt only if it is cheap and you accept it may do nothing.",
+        "priority": "low"
+      },
+      "source_skill": "structured-data-entity-audit",
+      "effort": "quick"
+    },
+    {
+      "id": "F-010",
+      "code": "WEAK_HEADINGS",
+      "title": "Long documentation pages have almost no heading structure or opening summary",
+      "severity": "low",
+      "confidence": 0.9,
+      "category": "discoverability",
+      "evidence": "3 pages over 400 words have heading depth below 2 (https://www.sqlite.org/threadsafe.html, https://www.sqlite.org/chronology.html, https://www.sqlite.org/cintro.html), and 8 pages over 300 words have under 25 words between the H1 and the first subheading (e.g. https://www.sqlite.org/about.html, https://www.sqlite.org/docs.html, https://www.sqlite.org/books.html). Separately, https://www.sqlite.org/oldnews.html is a 13,602-word release-note archive with 6 sections over 300 words.",
+      "mechanism": "Structural fields (title, headings, meta description) measured a ~+22% retrieval hit-rate improvement -- they help a document get FOUND. They do not make it quoted; body-text evidence does that. Fix the tier-1 gatekeeper findings first -- structural work measured negligible benefit on pages that still fail a gatekeeper.",
+      "evidence_tier": "measured",
+      "signal_tier": 2,
+      "suggested_action": {
+        "summary": "On the few substantive explainer pages (about, cintro, threadsafe), add H2/H3 headings that name the question each section answers and open with a one- or two-sentence summary.",
+        "priority": "low",
+        "how": "Leave function lists, changelogs and the oldnews archive as they are; chunking a release-note archive would not help a reader or a retriever."
+      },
+      "source_skill": "ai-citability-audit",
+      "affected_urls": [
+        "https://www.sqlite.org/threadsafe.html",
+        "https://www.sqlite.org/chronology.html",
+        "https://www.sqlite.org/cintro.html",
+        "https://www.sqlite.org/about.html",
+        "https://www.sqlite.org/docs.html",
+        "https://www.sqlite.org/books.html",
+        "https://www.sqlite.org/oldnews.html"
+      ],
+      "corroborated_by": [
+        "ai-citability-audit"
+      ],
+      "effort": "moderate"
+    },
+    {
+      "id": "F-011",
+      "code": "NO_BREADCRUMBS",
+      "title": "No breadcrumbs on a site with nested content",
+      "severity": "low",
+      "confidence": 0.75,
+      "category": "engagement",
+      "evidence": "4 sampled page(s) sit two or more clicks deep and no breadcrumb navigation (BreadcrumbList markup or a breadcrumb nav landmark) was found.",
+      "mechanism": "Someone arriving on a deep page from a search result or an assistant's citation has no way to tell where they are in the site or how to go up a level. Breadcrumbs also state the site's hierarchy explicitly for machines.",
+      "evidence_tier": "correlational",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Add breadcrumb navigation to nested pages, marked up with BreadcrumbList.",
+        "priority": "low"
+      },
+      "source_skill": "engagement-audit",
+      "effort": "moderate"
+    },
+    {
+      "id": "F-012",
+      "code": "UNLABELLED_FORM_FIELDS",
+      "title": "Form fields without accessible labels",
+      "severity": "low",
+      "confidence": 0.9,
+      "category": "engagement",
+      "evidence": "16 input fields across the 15 sampled pages have no label, aria-label, title or placeholder. On the homepage this is the site search box: <input type=\"text\" name=\"q\" id=\"searchbox\" value=\"\"> followed by <input type=\"submit\" value=\"Go\">. The same one-field search form is on every sampled page; docs.html and copyright.html carry a second form.",
+      "mechanism": "Unlabelled fields are ambiguous for every visitor and unusable with a screen reader, and forms are usually the last step before a conversion.",
+      "evidence_tier": "measured",
+      "signal_tier": 1,
+      "suggested_action": {
+        "summary": "Give the search box an aria-label=\"Search sqlite.org\" (or a visible label) and set a placeholder.",
+        "priority": "low",
+        "how": "A one-line template change in the shared page header fixes all pages."
+      },
+      "source_skill": "engagement-audit",
+      "effort": "quick"
+    }
+  ],
+  "not_assessed": [
+    {
+      "id": "N-001",
+      "title": "Visitor-goal checks not applicable: pricing, offering",
+      "status": "not_applicable",
+      "category": "engagement",
+      "evidence": "No pricing, offering destination was found, but this site shows no commercial signals (prices, purchase CTAs, Product/Offer structured data, or a pricing/shop URL), so these goals do not apply to it.",
+      "mechanism": "The audit distinguishes 'goal missing' from 'goal not relevant to this kind of site' rather than reporting a category error.",
+      "suggested_action": {
+        "summary": "No action needed. Add pricing/offering navigation only if the site starts selling or listing an offering.",
+        "priority": "low"
+      },
+      "source_skill": "engagement-audit"
+    }
+  ],
+  "critic_summary": {
+    "findings_considered": 22,
+    "findings_reported": 13,
+    "suppressed": [
+      {
+        "title": "Pages carry visibly stale dates",
+        "reason": "Duplicate of \"Visibly stale dates on the site\" (same threadsafe.html date, found by a different skill); merged and recorded as corroboration."
+      },
+      {
+        "title": "Pages open without a summary paragraph",
+        "reason": "Merged into the heading-structure finding: same skill, same tier-2 structural family, same fix, and the evidence overlaps (about.html, docs.html)."
+      },
+      {
+        "title": "Content sections run long enough to bury facts mid-passage",
+        "reason": "Merged into the heading-structure finding. The only strong example is oldnews.html, a 13,602-word changelog archive where re-chunking is not an appropriate fix."
+      },
+      {
+        "title": "Homepage states no value proposition in extractable text",
+        "reason": "Contradicted by the evidence. The homepage text_sample contains \"Small. Fast. Reliable. Choose any three.\" and \"SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine. SQLite is the most used database engine in the world.\" The three orientation questions pass: what it is (stated), who it is for (implicit: developers embedding a C/SQL engine), next action (\"Download\", \"Getting Started\", \"Try it live!\"). The genuine gap, a missing H1 and meta description, is reported separately."
+      },
+      {
+        "title": "2 of 6 core questions about this brand cannot be answered from its own extractable content",
+        "reason": "Heuristic misfire. The entity name was taken from the <title> \"SQLite Home Page\", and the \"services\" question was generated for a generic organisation, whereas SQLite is a public-domain library. The \"what is it\" answer is on the page; its only root cause (no H1 or meta description) is already reported."
+      },
+      {
+        "title": "Some missing answers may exist on the page but in a non-extractable form",
+        "reason": "Heuristic misfire. The evidence is one benchmark JPEG on news.html and three decorative CSS glyphs on chronology.html (\\2666, \\2191, \\2193); neither carries the facts behind the two flagged questions."
+      },
+      {
+        "title": "Substantive pages contain no quotable evidence",
+        "reason": "Heuristic misfire. The two pages are the C API function list (c3ref/funclist.html) and a threading-mode explainer, where adding statistics or attributed quotes would be artificial. 2 of 15 pages, neither the homepage."
+      },
+      {
+        "title": "Most substantive pages offer no clear next action",
+        "reason": "CTA detection is a fixed phrase list and this is a documentation site whose pages are reference material. The homepage does offer \"Download\", \"Getting Started\" and \"Try it live!\"."
+      },
+      {
+        "title": "No link to a privacy policy or terms page",
+        "reason": "No evidence that this site collects personal data (no accounts, no password fields; the only forms are site search and a licence purchase form). The finding's own premise, a site that collects data, is not shown."
+      }
+    ],
+    "severity_adjustments": [
+      "AI crawler block: critical -> low. Only the two training crawlers (GPTBot, ClaudeBot) get 403; every search-index and live-fetch agent probed gets 200, so no citation visibility is lost. A blocked training crawler is not a defect.",
+      "Non-text facts finding: high -> low and reworded. One image on one page, with the fact stated in adjacent body text; the page-level picture is a missing-alt-text tidy-up, not a render gap.",
+      "Stale dates: high -> low, and the ai-citability-audit duplicate was merged in. 2 of 15 pages, neither the homepage, both evergreen reference docs, so the one-page-of-many cap applies and the site's time-sensitive pages (home, news) are current.",
+      "No structured data: medium -> low. Tier-2 correlational signal with no evidence of entity ambiguity for the name \"SQLite\"; markup is not shown to drive AI citations."
+    ]
+  }
+}
