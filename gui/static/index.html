@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Brand AI-Readiness Audit · PSTrio</title>
-<meta name="description" content="An agent skill marketplace that audits any website for why AI assistants miss, misquote or won't cite a brand, and why visitors don't stay.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23171512'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' font-style='italic' text-anchor='middle' fill='%23f4f0e8'%3Ea%3C/text%3E%3C/svg%3E">
+<title>Brand AI-Readiness Audit</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Cpath d='M9 21l5-10 4 7 2-3 3 6' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="static/app.css">
 </head>
 <body>
@@ -13,9 +12,14 @@
   <button class="icon-btn only-narrow" id="nav-toggle" aria-label="Show audits" aria-expanded="false">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
   </button>
-  <a class="brand" href="#/" aria-label="Brand AI-Readiness Audit, home">
-    <span class="brand-word">Brand <i>AI-Readiness</i> Audit</span>
-    <span class="kicker brand-tag">Round 4 · PSTrio</span>
+  <a class="brand" href="#/" aria-label="Home">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="6 6 20 20"><path d="M9 21l5-10 4 7 2-3 3 6"/></svg>
+    </span>
+    <span class="brand-text">
+      <strong>Brand AI-Readiness Audit</strong>
+      <small>AI discoverability &amp; on-site engagement</small>
+    </span>
   </a>
   <div class="topbar-right">
     <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
@@ -26,55 +30,54 @@
 
 <div class="layout">
   <aside class="sidebar" id="sidebar">
-    <section class="side-block" id="run-block">
-      <span class="kicker">New audit</span>
-      <form class="new-audit" id="new-audit" autocomplete="off">
-        <label class="field">
-          <span>Website</span>
-          <input id="url-input" name="url" type="text" inputmode="url" placeholder="example.com" required spellcheck="false">
-        </label>
-        <fieldset class="segmented" id="mode-picker">
-          <legend>Run with</legend>
-          <div class="seg-track">
-            <label><input type="radio" name="mode" value="engine" checked><span>Engine</span></label>
-            <label id="agent-option"><input type="radio" name="mode" value="agent"><span>Agent</span></label>
-          </div>
-        </fieldset>
-        <p class="hint" id="mode-hint">Scripted pipeline. Deterministic, no LLM, about a minute.</p>
-        <div class="row-2">
-          <label class="field">
-            <span>Pages</span>
-            <select id="pages-input" name="max_pages">
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15" selected>15</option>
-            </select>
-          </label>
-          <label class="field" id="model-field" hidden>
-            <span>Model</span>
-            <input id="model-input" name="model" type="text" spellcheck="false">
-          </label>
+    <form class="card new-audit" id="new-audit" autocomplete="off">
+      <h2 class="card-title">New audit</h2>
+      <label class="field">
+        <span>Website</span>
+        <input id="url-input" name="url" type="text" inputmode="url" placeholder="example.com" required spellcheck="false">
+      </label>
+      <fieldset class="segmented" id="mode-picker">
+        <legend>Run with</legend>
+        <div class="seg-track">
+          <label><input type="radio" name="mode" value="engine" checked><span>Engine</span></label>
+          <label id="agent-option"><input type="radio" name="mode" value="agent"><span>Agent</span></label>
         </div>
-        <button class="btn primary block" type="submit" id="run-btn">Run audit</button>
-        <p class="form-error" id="form-error" role="alert" hidden></p>
-      </form>
-    </section>
+      </fieldset>
+      <p class="hint" id="mode-hint">Scripted pipeline. Deterministic, no LLM, about a minute.</p>
+      <div class="row-2">
+        <label class="field">
+          <span>Pages</span>
+          <select id="pages-input" name="max_pages">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15" selected>15</option>
+          </select>
+        </label>
+        <label class="field" id="model-field" hidden>
+          <span>Model</span>
+          <input id="model-input" name="model" type="text" spellcheck="false">
+        </label>
+      </div>
+      <button class="btn primary block" type="submit" id="run-btn">Run audit</button>
+      <p class="form-error" id="form-error" role="alert" hidden></p>
+    </form>
 
-    <section class="side-block">
-      <span class="kicker">Open a report</span>
-      <label class="btn ghost block" for="import-input">Choose files&hellip;</label>
+    <div class="card import-card">
+      <label class="btn ghost block" for="import-input">Import a report&hellip;</label>
       <input type="file" id="import-input" accept=".json,.md" multiple hidden>
-      <p class="hint">An <code>audit_report.json</code> from any run, plus its <code>evidence.json</code> and <code>.md</code> if you have them. Or drop them anywhere on the page.</p>
-    </section>
+      <p class="hint">Open an <code>audit_report.json</code> from any run, e.g. an interactive agent session. Add its <code>evidence.json</code> and <code>.md</code> too if you have them.</p>
+    </div>
 
-    <section class="side-block history">
-      <span class="kicker history-head"><span id="history-title">Audits</span><span id="history-count"></span></span>
+    <section class="history">
+      <div class="history-head">
+        <h2 class="card-title" id="history-title">Audits</h2>
+        <span class="muted" id="history-count"></span>
+      </div>
       <ul class="history-list" id="history-list"></ul>
     </section>
-
     <footer class="credit">
-      <strong>PSTrio</strong><br>
-      Adobe University Hackathon 2026
+      <span>Built by <strong>PSTrio</strong></span>
+      <span>Adobe University Hackathon 2026</span>
     </footer>
   </aside>
 
@@ -86,45 +89,36 @@
 <template id="tpl-empty">
   <section class="landing">
     <div class="landing-hero">
-      <span class="kicker">Nº 04 &mdash; An audit for the age of answer engines</span>
-      <h1>Why don&rsquo;t AI assistants <i>cite</i> this brand?</h1>
-      <p class="dek">Point it at any website. It crawls once, runs six evidence-backed checks in order, argues with its own findings, and hands back a short list of fixes, ranked by what they are worth. It never changes the site.</p>
+      <span class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span>AI discoverability &middot; on-site engagement</span>
+      <h1>Why don&rsquo;t AI assistants <span class="grad">cite this brand?</span></h1>
+      <p class="lede">Point the audit at any website. It crawls once, runs six evidence-backed checks in order, argues with its own findings, and hands back a prioritized list of fixes. Read-only: it never changes the site.</p>
       <form class="hero-form" id="hero-form" autocomplete="off">
-        <label class="hero-input">
-          <span class="kicker">Website to audit</span>
-          <input id="hero-url" type="text" inputmode="url" placeholder="sqlite.org" spellcheck="false" required>
-        </label>
+        <span class="hero-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span>
+        <input id="hero-url" type="text" inputmode="url" placeholder="Enter a website, e.g. sqlite.org" aria-label="Website to audit" spellcheck="false" required>
         <div class="hero-mode" role="radiogroup" aria-label="Run with">
           <label><input type="radio" name="hero-mode" value="engine" checked><span>Engine</span></label>
           <label id="hero-agent-option"><input type="radio" name="hero-mode" value="agent"><span>Agent</span></label>
         </div>
-        <button class="btn primary" type="submit" id="hero-run">Run audit &rarr;</button>
+        <button class="btn primary" type="submit" id="hero-run">Run audit
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
       </form>
       <p class="form-error" id="hero-error" role="alert" hidden></p>
       <p class="hero-foot" id="hero-foot"></p>
-      <div id="static-landing" hidden></div>
+      <div class="static-landing" id="static-landing" hidden></div>
     </div>
 
-    <div class="toc">
-      <div>
-        <div class="section-title"><h2>The chain of citation</h2><span class="kicker">six skills, in order</span></div>
-        <ol class="toc-list" id="chain"></ol>
-      </div>
-      <aside class="toc-aside">
-        <div>
-          <span class="kicker">Evidence first</span>
-          <p class="pull">An old date measured <i>worse</i> than no date at all.</p>
-          <p>Every check traces to a measured study. Every finding says how strong its evidence is.</p>
-        </div>
-        <div>
-          <span class="kicker">It argues with itself</span>
-          <p>A critic drops, merges and recalibrates findings before they ship, and publishes what it removed.</p>
-        </div>
-        <div>
-          <span class="kicker">Recommend-only</span>
-          <p>Read-only requests, robots.txt honoured, nothing on the site is ever changed.</p>
-        </div>
-      </aside>
+    <div class="flow-wrap">
+      <div class="section-kicker">How a brand gets cited, in order</div>
+      <ol class="flow" id="chain"></ol>
+    </div>
+
+    <div class="features">
+      <div class="feature"><span class="f-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/></svg></span>
+        <h3>Evidence-calibrated</h3><p>Every check traces to a measured study, and every finding says how strong its evidence is.</p></div>
+      <div class="feature"><span class="f-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span>
+        <h3>Argues with itself</h3><p>A critic drops, merges and recalibrates findings before they ship, and publishes what it removed.</p></div>
+      <div class="feature"><span class="f-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/></svg></span>
+        <h3>Prioritized fixes</h3><p>Each fix states its mechanism, and the roadmap orders them by impact against effort.</p></div>
     </div>
   </section>
 </template>

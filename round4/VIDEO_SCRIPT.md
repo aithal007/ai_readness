@@ -295,14 +295,14 @@ python ai_readness\gui\server.py --open demo\audit_out
 
 **You should see** five lines: `opened : …\demo\audit_out`, `engine : submission.zip (verified)`,
 `sha256 : 1d5e0f3e…`, `agent : Claude Code 2.1.280`, and `open : http://127.0.0.1:8765/#/run/…`. The browser
-opens on the report, and the readiness number counts up.
+opens on the report, and the score gauge sweeps round as the number counts up.
 
 > Same run, now as a case file. The note under the title shows the folder it
 > came from.
 
 ### C6 · 1:18–1:45 · Exhibit A
 
-**[DO]** Click **EVIDENCE**. The AI crawler table is at the top.
+**[DO]** Click the **Evidence** tab. The AI crawler table is at the top.
 
 **[SCREEN]** GPTBot and ClaudeBot rows have a red edge, **403** in *Live probe*, and
 *None (training only)* under *Cost of blocking*. The PerplexityBot row shows **200**.
@@ -310,9 +310,9 @@ opens on the report, and the readiness number counts up.
 > Exhibit A. GPTBot and ClaudeBot get a 403. They're training crawlers: blocking
 > them costs no citations. PerplexityBot, a search crawler, gets through.
 
-**[DO]** Click **FINDINGS**, type `crawler` in the search box, and click the finding to open it.
+**[DO]** Click the **Findings** tab, type `crawler` in the search box, and click the finding to open it.
 
-**[SCREEN]** Evidence and *Why it matters* on the left, *What to do* on the right. If the
+**[SCREEN]** Evidence and *Why it matters* on the left, *Suggested fix* on the right. If the
 row shows **critic: critical → low**, point at it.
 
 > So the charge came down from critical, with the evidence, the reasoning and
@@ -330,16 +330,16 @@ plain `curl` is a different command.
 
 ### C7 · 1:45–1:55 · The sentence
 
-**[DO]** Click **ROADMAP**.
+**[DO]** Click the **Roadmap** tab.
 
-**[SCREEN]** Three columns: *i. Do now*, *ii. Next*, *iii. Later*. *Do now* includes *No usable XML sitemap found*.
+**[SCREEN]** Three numbered columns: *Do now*, *Next* and *Later*. *Do now* includes *No usable XML sitemap found*.
 
 > And the sentence, ranked by impact against effort. Do now: publish a sitemap.
 > Medium impact, quick fix. The big, low-value work waits.
 
 ### C8 · 1:55–2:00 · Case closed
 
-**[DO]** Click **OVERVIEW**.
+**[DO]** Click the **Overview** tab.
 
 > Same engine as Round 3, running live, replayable from our manifest. More
 > real cases are open on our site. Case closed.

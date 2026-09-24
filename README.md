@@ -350,11 +350,10 @@ accepts only `http` and `https` targets. Run IDs and static paths are checked
 against traversal. All report text is escaped before display, because reports
 quote content scraped from arbitrary websites.
 
-**Design.** The interface reads like a printed audit report: paper, one ink
-colour for the interface, ruled ledgers, and serif display numerals. Colour is
-kept for data only, using a validated severity palette where every colour sits
-beside a shape and a word. The fonts (Instrument Serif, Geist, Geist Mono) are
-bundled under the SIL Open Font License, so nothing is fetched from a font service.
+**Design.** Severity uses a validated status palette, and every severity
+colour sits beside a shape and a word, so colour never carries meaning alone.
+Scores use one blue hue. The interface uses system fonts, so nothing is
+fetched from a font service, and it has light and dark themes.
 
 ### The published showcase
 
@@ -461,7 +460,7 @@ fixed. Each is documented with what was observed and what guard was added in
 ├── gui/                          local web GUI (not part of the engine)
 │   ├── server.py                 standard-library server and job runner
 │   ├── build_static.py           exports the published showcase into docs/
-│   └── static/                   index.html, app.css, app.js, bundled fonts
+│   └── static/                   index.html, app.css, app.js
 ├── docs/                         the published showcase (GitHub Pages)
 └── round4/                       REPLAY_PSTrio.txt and the video script
 ```
