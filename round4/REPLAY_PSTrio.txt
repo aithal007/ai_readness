@@ -1,32 +1,25 @@
-PSTrio ROUND 4 REPLAY — GEMINI AGENT RUN
-
-TEST_SITE_URLS: https://www.adobe.com/ (replace this URL if the submitted video audits another site)
-AGENT_HARNESS: Gemini CLI, interactive session. Record the version printed by gemini --version on the recording computer.
-MODEL: Gemini CLI's model routing for the signed-in personal Google account. Record the model displayed during the submitted run.
-ENGINE: The unchanged Round 3 submission.zip. SHA-256: 1d5e0f3e4dd12a8c12e205b4723124b4d441cdbf3f76605a2befde9114ec33b1.
-ENV_SETUP: Windows PowerShell, Python 3, Node.js 20+, Gemini CLI installed with npm, personal Google sign-in, outbound HTTPS. No Python packages are needed. Free Gemini CLI usage is subject to Google's current quota.
-
+TEST_SITE_URLS: https://www.sqlite.org/ (change this line if the recorded video uses another site)
+LLM_MODEL: Record the model shown by Gemini CLI during the submitted run; Gemini may route models differently by account and quota.
+AGENT_HARNESS: Gemini CLI interactive session; record the version printed by gemini --version on the recording computer.
+ENV_SETUP: Windows PowerShell, Python 3, Node.js 20+, Gemini CLI (npm install -g @google/gemini-cli), personal Google sign-in, and outbound HTTPS. The Python engine needs no pip install. Free Gemini CLI usage is subject to Google's current quota. The unchanged Round 3 package is submission.zip, SHA-256 1d5e0f3e4dd12a8c12e205b4723124b4d441cdbf3f76605a2befde9114ec33b1. Set PYTHONUTF8=1 before running the agent so console output from the scripts does not hit an encoding error (PowerShell: $env:PYTHONUTF8="1").
 TEST_STEPS:
- 1. Extract PSTrio_video_demo.zip. Open PowerShell in the extracted folder.
- 2. If needed, install Gemini CLI with: npm install -g @google/gemini-cli
-    Start gemini once and choose Sign in with Google. Complete the browser sign-in.
- 3. Check the frozen package and create a fresh workspace:
+ 1. Extract PSTrio_video_demo.zip into a fresh directory, for example C:\PSTrio_demo. The archive contains submission.zip, the GUI, and this script. Check the frozen engine:
       Get-FileHash .\submission.zip -Algorithm SHA256
+ 2. Install the package's skills, unchanged, where Gemini CLI discovers project skills, and create the output folder. Run from the extracted directory:
       python round4/setup_gemini_demo.py
-    The setup script checks the full expected hash, then installs eight byte-identical skills at demo/gemini_run/.gemini/skills/ and creates demo/gemini_run/audit_out/.
- 4. Enter the workspace and start Gemini:
+    This verifies submission.zip and copies all eight skills into demo/gemini_run/.gemini/skills/ byte for byte. Use a new workspace name for another take.
+ 3. Enter the workspace.
       cd demo/gemini_run
+      $env:PYTHONUTF8="1"
+ 4. Start the agent. Sign in with a personal Google account beforehand, trust the new workspace if asked, and run /skills list to confirm audit-orchestrator appears.
       gemini
-    Trust the workspace if asked. Run /skills list and confirm audit-orchestrator appears.
- 5. Paste this prompt. Change only the URL if the video uses another site:
-      Activate the audit-orchestrator skill and audit https://www.adobe.com/ for AI discoverability and on-site engagement. Use today's real date and sample at most 5 pages. On Windows use python for the skill scripts if python3 is unavailable. Write every generated file under ./audit_out/, ending with audit_out/audit_report.json and audit_out/audit_report.md. Perform the skill's off-site web-search corroboration and homepage orientation checks, run the evidence critic, and review surviving findings before finalizing. Leave .gemini/skills unchanged. Summarize the critical and high findings and the remediation roadmap.
- 6. Approve skill activation and the Python script calls. The agent should collect evidence once, run six analyzers, use web search for off-site corroboration, assess homepage orientation, run the evidence critic, review surviving findings, and finalize the JSON and Markdown reports. If a step cannot run, the report or final message must identify the gap; do not invent evidence.
- 7. From another PowerShell tab in the extracted folder, confirm:
-      Test-Path demo/gemini_run/audit_out/audit_report.json
-    A completed run prints True. If False, inspect the Gemini error and start a new workspace for the next take.
- 8. Open that run's output in the GUI from the extracted folder:
+ 5. Give the agent this prompt, verbatim. To audit a different site, change the URL here, in TEST_SITE_URLS, and in the video script.
+      Activate the audit-orchestrator skill and audit https://www.sqlite.org/ for AI discoverability and on-site engagement. Use today's real date and sample at most 5 pages. On Windows use python for the skill scripts if python3 is unavailable. Write every generated file under ./audit_out/, ending with audit_out/audit_report.json and audit_out/audit_report.md. Perform the skill's off-site web-search corroboration and homepage orientation checks, run the evidence critic, and review surviving findings before finalizing. Leave .gemini/skills unchanged. Summarize the critical and high findings and the remediation roadmap.
+ 6. The agent activates audit-orchestrator (the marketplace entrypoint). The skill crawls the site once into audit_out/evidence.json and runs six analyzers over that snapshot into audit_out/raw_findings.json. The agent then runs the two judgement checks the skill specifies (off-site corroboration by web search, homepage orientation), runs the evidence critic into audit_out/adjudicated.json, reviews what survives, and finalizes. The report lands in audit_out/audit_report.json (machine-readable) and audit_out/audit_report.md (readable). Each finding carries id, title, severity, evidence, suggested_action, plus a stable code, a confidence and an effort. The .md report has a Remediation roadmap section that sorts fixes into Do now, Next and Later by impact against effort (an empty bucket is omitted), then every finding in full, then a section listing the findings the critic suppressed and why. The agent's final chat message summarises critical and high findings and the roadmap. Wall-clock time varies by site and model.
+ 7. Check the actual output of this run. It must contain audit_out/audit_report.json and audit_out/audit_report.md alongside evidence.json, raw_findings.json, and adjudicated.json. A terminal summary without the JSON report is an incomplete run. Earlier Claude rehearsals scored 90 to 96 with zero critical and zero high; later live runs contradicted those figures. There is no fixed expected score, count, HTTP response, or crawler downgrade for this Gemini run. Read all of them from the saved report and evidence.
+ 8. OPTIONAL independent check of a crawler response, if relevant to this run. A live response can change, so record what these commands actually return:
+      curl.exe -s -o NUL -w "%{http_code}\n" -A "GPTBot/1.1" https://www.sqlite.org/
+      curl.exe -s -o NUL -w "%{http_code}\n" -A "OAI-SearchBot/1.0" https://www.sqlite.org/
+ 9. OPTIONAL viewer, shown in the video after the run. Our GUI is not part of the Round 3 engine and changes nothing: it only displays the files the agent wrote in steps 4 to 6. From the extracted directory, open that run's output folder. The browser opens on the report; a banner names the folder it came from. --engine-only hides the GUI's separate Claude launcher; it does not produce this report. Ctrl+C stops the viewer.
       python gui/server.py --engine-only --open demo/gemini_run/audit_out
-    The GUI is an imported-report viewer here. Its engine launcher did not produce the recorded agent report.
-
-EXPECTED_OUTPUT: demo/gemini_run/audit_out/audit_report.json and audit_report.md, alongside evidence.json, raw_findings.json, and adjudicated.json. Report counts, severities, and score depend on the live site and the agent's review; read them from the submitted run. The GUI displays those same files.
-REPLAY_LIMIT: The crawl samples at most five pages. Off-site search and agent judgment can vary. No fixed score or finding count is promised.
+EXPECTED_OUTPUT: demo/gemini_run/audit_out/audit_report.json and demo/gemini_run/audit_out/audit_report.md; counts and score vary with the live run.
