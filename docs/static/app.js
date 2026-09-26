@@ -294,11 +294,8 @@
       return;
     }
     var agent = S.meta.agent;
-    var opt = $("#agent-option");
     if (!agent.available) {
-      opt.classList.add("disabled");
-      opt.querySelector("input").disabled = true;
-      opt.title = "Agent mode needs Claude Code. Install the claude CLI or set CLAUDE_BIN, then restart the GUI.";
+      $("#mode-picker").hidden = true;
     }
     $("#model-input").value = agent.default_model || "";
     $$('#mode-picker input').forEach(function (r) { r.addEventListener("change", updateModeHint); });
@@ -505,11 +502,8 @@
     }
 
     var agent = S.meta.agent;
-    var opt = $("#hero-agent-option");
     if (!agent.available) {
-      opt.classList.add("disabled");
-      opt.querySelector("input").disabled = true;
-      opt.title = "Agent mode needs Claude Code.";
+      $(".hero-mode").hidden = true;
     }
     var foot = function () {
       var mode = $('input[name="hero-mode"]:checked').value;
@@ -688,11 +682,7 @@
         ? '<a class="btn sm" href="' + h(D.fileUrl(run.id, name) || "#") + '" download="' + h((run.site || "site") + "_" + name) + '">' + icon("download") + h(label) + "</a>" : "";
     };
     var bannerHtml = "";
-    if (run.mode === "engine") {
-      bannerHtml = '<div class="banner">' + icon("info") + "<span><strong>Engine-only run.</strong> These are the scripted checks without the agent's judgement layer. " +
-        "An agent run adds off-site corroboration, a reading of the homepage, and a review of every finding, which can raise or lower severities." +
-        (S.meta.agent.available ? " Use <em>Agent</em> mode for that." : "") + "</span></div>";
-    } else if (run.mode === "agent") {
+    if (run.mode === "agent") {
       bannerHtml = '<div class="banner info">' + icon("info") + "<span><strong>Agent-reviewed run.</strong> " + h(run.harness || "Claude Code") +
         " driving the audit-orchestrator skill with model <span class=\"mono\">" + h(run.model) + "</span>. The agent's own summary is under Review.</span></div>";
     } else if (run.mode === "imported" && run.source_dir) {
