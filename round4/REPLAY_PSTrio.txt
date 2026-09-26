@@ -7,7 +7,7 @@ ENGINE: The unchanged Round 3 submission.zip. SHA-256: 1d5e0f3e4dd12a8c12e205b47
 ENV_SETUP: Windows PowerShell, Python 3, Node.js 20+, Gemini CLI installed with npm, personal Google sign-in, outbound HTTPS. No Python packages are needed. Free Gemini CLI usage is subject to Google's current quota.
 
 TEST_STEPS:
- 1. Extract PSTrio_gemini_video_demo.zip. Open PowerShell in the extracted folder.
+ 1. Extract PSTrio_video_demo.zip. Open PowerShell in the extracted folder.
  2. If needed, install Gemini CLI with: npm install -g @google/gemini-cli
     Start gemini once and choose Sign in with Google. Complete the browser sign-in.
  3. Check the frozen package and create a fresh workspace:

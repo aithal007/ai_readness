@@ -34,7 +34,7 @@ Read every score, finding, severity, and HTTP response from the recorded run.
    [current quota](https://geminicli.com/docs/resources/quota-and-pricing/).
    Do the browser sign-in off camera. Confirm `gemini --version` works.
 
-2. Extract `PSTrio_gemini_video_demo.zip` and open PowerShell in that folder.
+2. Extract `PSTrio_video_demo.zip` and open PowerShell in that folder.
    Check the frozen package and make a **fresh** workspace:
 
    ```powershell

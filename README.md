@@ -58,10 +58,10 @@ python3 gui/server.py
 ```
 
 Type a domain, press **Run audit**, and browse the result. See [The web GUI](#the-web-gui).
-For a one-website recording with a free agent instead of Claude Code, share
-[`PSTrio_gemini_video_demo.zip`](PSTrio_gemini_video_demo.zip) and follow the
-[Gemini video script](round4/VIDEO_SCRIPT.md). The
-[engine-only package](PSTrio_video_demo.zip) remains available for a scripted demo.
+For the one-website recording with a free agent instead of Claude Code, share
+[`PSTrio_video_demo.zip`](PSTrio_video_demo.zip) and follow the
+[video script](round4/VIDEO_SCRIPT.md) and its
+[replay steps](round4/REPLAY_PSTrio.txt).
 
 **2. An AI agent.** The agent runs the scripts, adds the two checks that need
 judgement, and reviews the findings. For the free Gemini CLI video workflow,
