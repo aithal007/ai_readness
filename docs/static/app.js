@@ -490,7 +490,7 @@
         '<div class="section-kicker">Read a real audit &middot; ' + plural(samples.length, "report") + " on live sites</div>" +
         '<ul class="case-list">' + samples.map(function (r) {
           var sm = r.summary || {}, has = typeof sm.score === "number";
-          var tag = r.mode === "agent" ? '<span class="tag agent">agent-reviewed</span>' : '<span class="tag">engine only</span>';
+          var tag = r.mode === "agent" ? '<span class="tag agent">agent-reviewed</span>' : '<span class="tag">engine</span>';
           return '<li><a href="#/run/' + h(r.id) + '"><span class="ring-mini' + (has ? "" : " na") + '">' + ring(has ? sm.score : null, 42, 4) +
             "<b>" + (has ? h(sm.score) : "&ndash;") + '</b></span><span class="cs-body"><span class="cs-site">' + h(r.site) + "</span>" + tag +
             '<span class="cs-meta">' + h((sm.critical || 0) + " critical · " + (sm.high || 0) + " high · " + plural(sm.total || 0, "finding")) + "</span></span></a></li>";
@@ -667,7 +667,7 @@
     var run = S.run, rep = S.report, sm = rep.summary || {};
     document.title = (run.site || rep.site) + " · Brand AI-Readiness Audit";
     var modeBadge = run.mode === "agent" ? '<span class="tag agent">agent-reviewed</span>'
-      : run.mode === "imported" ? '<span class="tag">imported</span>' : '<span class="tag">engine only</span>';
+      : run.mode === "imported" ? '<span class="tag">imported</span>' : '<span class="tag">engine</span>';
     var scope = rep.audit_scope || {};
     var integrity = "";
     if (run.mode !== "imported" && run.engine_verified) {
