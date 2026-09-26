@@ -1,27 +1,32 @@
-TEST_SITE_URLS: https://www.sqlite.org/
-LLM_MODEL: Claude Sonnet 5 (model id claude-sonnet-5), runs dated 2026-09-22 and 2026-09-23
-AGENT_HARNESS: Claude Code v2.1.280
-ENV_SETUP: Python 3 only, standard library, no pip install and no requirements.txt (tested on Python 3.14.7; on Windows use "python" wherever "python3" is missing). Install Claude Code (https://docs.claude.com/en/docs/claude-code) and sign in; its WebSearch tool must be available for the off-site corroboration step. Needs outbound HTTPS. The engine is the Round 3 package submission.zip, SHA-256 1d5e0f3e4dd12a8c12e205b4723124b4d441cdbf3f76605a2befde9114ec33b1, also at the root of https://github.com/aithal007/ai_readness. On Windows, set PYTHONUTF8=1 before step 4 so console output from the scripts never hits an encoding error (bash: export PYTHONUTF8=1, PowerShell: $env:PYTHONUTF8="1").
+PSTrio ROUND 4 REPLAY — GEMINI AGENT RUN
+
+TEST_SITE_URLS: https://www.adobe.com/ (replace this URL if the submitted video audits another site)
+AGENT_HARNESS: Gemini CLI, interactive session. Record the version printed by gemini --version on the recording computer.
+MODEL: Gemini CLI's model routing for the signed-in personal Google account. Record the model displayed during the submitted run.
+ENGINE: The unchanged Round 3 submission.zip. SHA-256: 1d5e0f3e4dd12a8c12e205b4723124b4d441cdbf3f76605a2befde9114ec33b1.
+ENV_SETUP: Windows PowerShell, Python 3, Node.js 20+, Gemini CLI installed with npm, personal Google sign-in, outbound HTTPS. No Python packages are needed. Free Gemini CLI usage is subject to Google's current quota.
+
 TEST_STEPS:
- 1. In an empty directory that contains submission.zip, unpack it. The same command works in bash, PowerShell and cmd.
-      python3 -m zipfile -e submission.zip r3
- 2. Install the package's skills, unchanged, where Claude Code discovers project skills, and create the output folder.
-      python3 -c "import shutil, os; shutil.copytree('r3/brand-ai-readiness-audit/skills', 'demo/.claude/skills'); os.makedirs('demo/audit_out')"
- 3. Enter the workspace.
-      cd demo
- 4. Start the harness pointed at the entrypoint skill's workspace. Allowing Skill is required: without it Claude Code will not load the audit-orchestrator skill. Bash is allowed because the skill runs its Python scripts; run this in the throwaway demo directory only.
-      claude --model claude-sonnet-5 --allowedTools Skill Bash Read Write Glob Grep WebSearch
- 5. Give the agent this prompt, verbatim. To audit a site of your own choosing, change only the URL.
-      Use the audit-orchestrator skill to audit https://www.sqlite.org/ for AI discoverability and on-site engagement. Use today's real date. Write every output file into ./audit_out/, ending with audit_out/audit_report.json and audit_out/audit_report.md. Then summarise the critical and high findings and the remediation roadmap.
- 6. The agent calls the Skill tool on audit-orchestrator (the marketplace entrypoint). The skill crawls the site once into audit_out/evidence.json and runs six analyzers over that snapshot into audit_out/raw_findings.json. The agent then runs the two judgement checks the skill specifies (off-site corroboration by web search, homepage orientation), runs the evidence critic into audit_out/adjudicated.json, reviews what survives, and finalizes. The report lands in audit_out/audit_report.json (machine-readable) and audit_out/audit_report.md (readable). Each finding carries id, title, severity, evidence, suggested_action, plus a stable code, a confidence and an effort. The .md report has a Remediation roadmap section that sorts fixes into Do now, Next and Later by impact against effort (an empty bucket is omitted), then every finding in full, then a section listing the findings the critic suppressed and why. The agent's final chat message summarises critical and high findings and the roadmap. Wall-clock time was 2 to 7 minutes across our runs.
- 7. Expected substance for https://www.sqlite.org/, stable across three independent runs on this harness and model. Wording, finding count (12 to 20) and readiness score (90 to 96) vary between runs. Zero critical and zero high findings. GPTBot and ClaudeBot receive HTTP 403 while a browser user agent receives 200; the scripts propose this as a critical network-layer block, and the agent reports it as a training-crawler refusal at low or medium, never critical, because training crawlers do not affect citation. No usable XML sitemap (medium): /sitemap.xml returns 404 and robots.txt has no Sitemap line. No structured data on any sampled page (medium or low). Homepage has no H1, its headings are all H3 (medium or low). No lang attribute on the html element (low). Most pages have no meta description (low). Every one of these can be checked with curl.
- 8. Headless variant of steps 4 and 5, used for our third verification run (same model, same allowed tools, same prompt):
-      claude -p "Use the audit-orchestrator skill to audit https://www.sqlite.org/ for AI discoverability and on-site engagement. Use today's real date. Write every output file into ./audit_out/, ending with audit_out/audit_report.json and audit_out/audit_report.md. Then summarise the critical and high findings and the remediation roadmap." --model claude-sonnet-5 --allowedTools Skill Bash Read Write Glob Grep WebSearch
- 9. FALLBACK with no LLM and no Claude Code. Run from the demo directory. This executes the same engine but skips the two judgement checks and the agent's review, so its substance differs: for sqlite.org it keeps the 403 on GPTBot and ClaudeBot as a critical network-layer block (readiness 70; 1 critical, 6 high, 6 medium, 8 low). Any other agent harness that can read a SKILL.md and run shell commands should instead follow .claude/skills/audit-orchestrator/SKILL.md, which is provider-neutral and gives the agent-reviewed result.
-      python3 .claude/skills/audit-orchestrator/scripts/run_audit.py https://www.sqlite.org/ --out audit_out/raw_findings.json --evidence-out audit_out/evidence.json
-      python3 .claude/skills/evidence-critic/scripts/critique_findings.py --findings audit_out/raw_findings.json --evidence audit_out/evidence.json --out audit_out/adjudicated.json
-      python3 .claude/skills/audit-orchestrator/scripts/finalize_report.py audit_out/adjudicated.json --site www.sqlite.org --evidence audit_out/evidence.json --out audit_out/audit_report.json --md audit_out/audit_report.md
- 10. OPTIONAL viewer, shown in the video after the run. Our GUI is not part of the Round 3 engine and changes nothing: it only displays the files the run in steps 4 to 6 wrote. From the directory that contains demo/, clone our repository and open the run's output folder. The browser opens on that report; a banner names the folder it came from. Standard library only; Ctrl+C stops it.
-      git clone https://github.com/aithal007/ai_readness
-      python3 ai_readness/gui/server.py --open demo/audit_out
-EXPECTED_OUTPUT: demo/audit_out/audit_report.json
+ 1. Extract PSTrio_gemini_video_demo.zip. Open PowerShell in the extracted folder.
+ 2. If needed, install Gemini CLI with: npm install -g @google/gemini-cli
+    Start gemini once and choose Sign in with Google. Complete the browser sign-in.
+ 3. Check the frozen package and create a fresh workspace:
+      Get-FileHash .\submission.zip -Algorithm SHA256
+      python round4/setup_gemini_demo.py
+    The setup script checks the full expected hash, then installs eight byte-identical skills at demo/gemini_run/.gemini/skills/ and creates demo/gemini_run/audit_out/.
+ 4. Enter the workspace and start Gemini:
+      cd demo/gemini_run
+      gemini
+    Trust the workspace if asked. Run /skills list and confirm audit-orchestrator appears.
+ 5. Paste this prompt. Change only the URL if the video uses another site:
+      Activate the audit-orchestrator skill and audit https://www.adobe.com/ for AI discoverability and on-site engagement. Use today's real date and sample at most 5 pages. On Windows use python for the skill scripts if python3 is unavailable. Write every generated file under ./audit_out/, ending with audit_out/audit_report.json and audit_out/audit_report.md. Perform the skill's off-site web-search corroboration and homepage orientation checks, run the evidence critic, and review surviving findings before finalizing. Leave .gemini/skills unchanged. Summarize the critical and high findings and the remediation roadmap.
+ 6. Approve skill activation and the Python script calls. The agent should collect evidence once, run six analyzers, use web search for off-site corroboration, assess homepage orientation, run the evidence critic, review surviving findings, and finalize the JSON and Markdown reports. If a step cannot run, the report or final message must identify the gap; do not invent evidence.
+ 7. From another PowerShell tab in the extracted folder, confirm:
+      Test-Path demo/gemini_run/audit_out/audit_report.json
+    A completed run prints True. If False, inspect the Gemini error and start a new workspace for the next take.
+ 8. Open that run's output in the GUI from the extracted folder:
+      python gui/server.py --engine-only --open demo/gemini_run/audit_out
+    The GUI is an imported-report viewer here. Its engine launcher did not produce the recorded agent report.
+
+EXPECTED_OUTPUT: demo/gemini_run/audit_out/audit_report.json and audit_report.md, alongside evidence.json, raw_findings.json, and adjudicated.json. Report counts, severities, and score depend on the live site and the agent's review; read them from the submitted run. The GUI displays those same files.
+REPLAY_LIMIT: The crawl samples at most five pages. Off-site search and agent judgment can vary. No fixed score or finding count is promised.

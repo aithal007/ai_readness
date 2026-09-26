@@ -22,7 +22,7 @@ binary, no model weights. The whole package is 0.18 MB.
 | Skills | 8, in [agentskills.io](https://agentskills.io) format, exactly one entrypoint |
 | Code | 4,925 lines of Python across 10 scripts, plus 1,475 lines of tests |
 | Tests | 119 behavioural tests and a spec gate, all offline |
-| Runtime | 12 to 46 seconds per site for the scripted engine, 2 to 7 minutes agent-driven |
+| Runtime | Scripted engine usually takes about a minute; agent time varies by site and model |
 | Interfaces | Any agent harness that reads `SKILL.md`, the command line, or the local web GUI |
 | Live showcase | **https://aithal007.github.io/ai_readness/** · five real audits, readable in the browser |
 
@@ -58,21 +58,25 @@ python3 gui/server.py
 ```
 
 Type a domain, press **Run audit**, and browse the result. See [The web GUI](#the-web-gui).
+For a one-website recording with a free agent instead of Claude Code, share
+[`PSTrio_gemini_video_demo.zip`](PSTrio_gemini_video_demo.zip) and follow the
+[Gemini video script](round4/VIDEO_SCRIPT.md). The
+[engine-only package](PSTrio_video_demo.zip) remains available for a scripted demo.
 
-**2. An AI agent.** The way the marketplace is meant to be used. The agent runs
-the scripts, adds the two checks that need judgement, and reviews every finding.
+**2. An AI agent.** The agent runs the scripts, adds the two checks that need
+judgement, and reviews the findings. For the free Gemini CLI video workflow,
+install Gemini CLI, sign in, then run:
 
 ```bash
-python3 -m zipfile -e submission.zip r3
-python3 -c "import shutil, os; shutil.copytree('r3/brand-ai-readiness-audit/skills', 'demo/.claude/skills'); os.makedirs('demo/audit_out')"
-cd demo
-claude --model claude-sonnet-5 --allowedTools Skill Bash Read Write Glob Grep WebSearch
+python3 round4/setup_gemini_demo.py
+cd demo/gemini_run
+gemini
 ```
 
-Then ask: *"Use the audit-orchestrator skill to audit https://example.com for AI
-discoverability and on-site engagement. Use today's real date. Write every
-output file into ./audit_out/."* The skills are provider-neutral, so any harness
-that reads `SKILL.md` files works the same way.
+Confirm `audit-orchestrator` appears in `/skills list`, then use the prompt in
+[the video script](round4/VIDEO_SCRIPT.md). The skills are provider-neutral;
+the GUI's built-in Agent button still launches Claude Code, while the Gemini
+workflow opens its completed report through `--open`.
 
 **3. Scripts only.** Deterministic, with no LLM.
 
@@ -304,13 +308,14 @@ and no internet access beyond the site being audited.
 
 ```bash
 python3 gui/server.py                         # http://127.0.0.1:8765
-python3 gui/server.py --open demo/audit_out   # open an agent run's output folder
+python3 gui/server.py --engine-only --open demo/gemini_run/audit_out
 python3 gui/server.py --port 9000 --no-browser
 ```
 
 `--open` takes any folder an audit wrote, such as the `audit_out/` from an
-interactive Claude Code session, and opens that report straight away. If the
+interactive Gemini CLI session, and opens that report straight away. If the
 GUI is already running, it hands the report to that window instead.
+`--engine-only` hides the Claude launcher; it does not change imported reports.
 
 **What it does**
 
@@ -318,6 +323,7 @@ GUI is already running, it hands the report to that window instead.
   LLM, about a minute. *Agent* drives Claude Code headless over the same
   skills, with the judgement checks and the review of every finding. Agent mode
   appears only when a Claude Code binary is found; set `CLAUDE_BIN` to point at one.
+  Gemini CLI runs its agent in the terminal and imports the completed report.
 - **Live progress.** The stages, each analyzer as it reports, and a streamed
   log. In agent mode, every tool call the agent makes is shown as it happens.
 - **Overview.** Readiness score, the weakest pillars, findings by severity,
@@ -420,13 +426,19 @@ They exist because a real bug shipped through that gap once.
 | web.whatsapp.com | Login wall | — | not scored | "Not a public content site" |
 | *(dead domain)* | DNS failure | 1/0/0/0 | not scored | Named as DNS, not a generic error |
 
-Two consecutive scripted runs against the same site produce identical findings.
+Two scripted runs on the same saved evidence produced identical findings. Live
+sites can change between crawls.
 
-**Agent-driven runs.** Claude Code with Claude Sonnet 5, on sites never used in development:
+**Earlier agent-driven examples.** These Claude Code runs are historical
+observations, not expected output for a new run. Site content, crawl results,
+and agent judgement can change. In particular, later live rehearsals reported
+readiness 70 to 72, 1 critical, 5 high, and 21 findings, contradicting the
+older high-score rehearsal figures. The video script therefore reads every
+number from its actual report.
 
 | Site | Runs | Result |
 |---|---|---|
-| sqlite.org | 3 | Zero critical and zero high every time, readiness 90 to 96. The scripts flag a critical AI-crawler block. The agent checks further, finds that only the training crawlers are refused while every search crawler is served, and downgrades it. Independent requests confirm this. |
+| sqlite.org | 3 earlier runs | Readiness 90 to 96 in those runs, with zero critical and zero high. The agent downgraded a scripted AI-crawler finding after checking which crawler types were refused. This is an observation from those runs, not a guaranteed result. |
 | adobe.com | 1 | Readiness 82. The agent noticed that 6 of the 15 pages sampled were CMS fragment endpoints and suppressed a misleading noindex finding on its own. |
 | lua.org | 1, from the GUI | Readiness 82, 0 critical, 3 high. No page sets a mobile viewport, confirmed independently. The other two high findings each rest on a single page. The agent's own summary says they overstate the evidence and should be medium at most, but it left the report unchanged. |
 
@@ -479,9 +491,9 @@ An audit tool that hides its own limits has no business auditing anything.
 - **Inline SVG titles leak into page titles.** The collector reads every
   `<title>` element, including ones inside SVG icons, which can distort
   term-coverage findings on icon-heavy sites.
-- **The scripts alone over-call AI-crawler blocks.** They probe only a few user
-  agents. The agent's review corrects this, which is why agent-driven runs are
-  the intended use.
+- **The scripts can over-call AI-crawler blocks.** They probe only a few user
+  agents. An agent can review and correct such findings; check what survived in
+  each report.
 - **Entity-type inference is imperfect**, and the fact patterns lean towards
   English and Latin script.
 - **Off-site corroboration needs a search tool.** Without one it is skipped and recorded.

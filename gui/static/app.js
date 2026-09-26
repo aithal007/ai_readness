@@ -294,11 +294,8 @@
       return;
     }
     var agent = S.meta.agent;
-    var opt = $("#agent-option");
     if (!agent.available) {
-      opt.classList.add("disabled");
-      opt.querySelector("input").disabled = true;
-      opt.title = "Agent mode needs Claude Code. Install the claude CLI or set CLAUDE_BIN, then restart the GUI.";
+      $("#mode-picker").hidden = true;
     }
     $("#model-input").value = agent.default_model || "";
     $$('#mode-picker input').forEach(function (r) { r.addEventListener("change", updateModeHint); });
@@ -505,11 +502,8 @@
     }
 
     var agent = S.meta.agent;
-    var opt = $("#hero-agent-option");
     if (!agent.available) {
-      opt.classList.add("disabled");
-      opt.querySelector("input").disabled = true;
-      opt.title = "Agent mode needs Claude Code.";
+      $(".hero-mode").hidden = true;
     }
     var foot = function () {
       var mode = $('input[name="hero-mode"]:checked').value;

@@ -55,10 +55,11 @@ UNPACKED_FALLBACK = os.path.join(REPO, "brand-ai-readiness-audit")
 DEFAULT_MODEL = "claude-sonnet-5"
 AGENT_TOOLS = ["Skill", "Bash", "Read", "Write", "Glob", "Grep", "WebSearch"]
 AGENT_PROMPT = (
-    "Use the audit-orchestrator skill to audit {url} for AI discoverability and "
+    "Invoke the audit-orchestrator skill to audit {url} for AI discoverability and "
     "on-site engagement. Use today's real date. Write every output file into "
     "./audit_out/, ending with audit_out/audit_report.json and "
-    "audit_out/audit_report.md. Then summarise the critical and high findings and "
+    "audit_out/audit_report.md. On Windows run the skill's scripts with python "
+    "if python3 is unavailable. Then summarise the critical and high findings and "
     "the remediation roadmap."
 )
 MAX_CONCURRENT = 2
@@ -366,9 +367,13 @@ def run_agent(meta, engine, binary):
     set_stage(meta, "agent")
     log(meta, "Starting %s with model %s" % (meta.get("harness") or "Claude Code", meta["model"]),
         kind="stage")
+    tools = AGENT_TOOLS + (["PowerShell"] if os.name == "nt" else [])
     cmd = [binary, "-p", AGENT_PROMPT.format(url=meta["url"]), "--model", meta["model"],
-           "--allowedTools"] + AGENT_TOOLS + ["--output-format", "stream-json", "--verbose"]
+           "--allowedTools"] + tools + ["--output-format", "stream-json", "--verbose"]
     proc = popen(meta, cmd, ws)
+    agent_error = None
+    retry_error = None
+    last_output = None
     for line in proc.stdout:
         line = line.strip()
         if not line:
@@ -377,8 +382,12 @@ def run_agent(meta, engine, binary):
             ev = json.loads(line)
         except ValueError:
             log(meta, line[:300])
+            last_output = line[:300]
             continue
         etype = ev.get("type")
+        if etype == "system" and ev.get("subtype") == "api_retry":
+            retry_error = "Claude API request failed: %s" % (ev.get("error") or ev.get("error_status") or "unknown error")
+            log(meta, "%s (retry %s/%s)" % (retry_error, ev.get("attempt"), ev.get("max_retries")), kind="error")
         if etype == "system" and ev.get("subtype") == "init":
             skills = [s for s in (ev.get("skills") or []) if s in ANALYZERS + ["audit-orchestrator", "evidence-critic"]]
             log(meta, "Harness ready. Marketplace skills discovered: %d" % len(skills), kind="stage")
@@ -401,6 +410,9 @@ def run_agent(meta, engine, binary):
             with LOCK:
                 meta["agent_summary"] = ev.get("result") or ""
                 meta["agent_cost_usd"] = ev.get("total_cost_usd")
+            if ev.get("is_error"):
+                agent_error = str(ev.get("result") or ev.get("subtype") or "Claude reported an error.").strip()
+                log(meta, agent_error[:600], kind="error")
     proc.wait()
     if cancelled(meta):
         return
@@ -422,7 +434,12 @@ def run_agent(meta, engine, binary):
             copied.append(name)
     log(meta, "Collected from audit_out: %s" % (", ".join(copied) or "nothing"), kind="stage")
     if not os.path.isfile(os.path.join(d, "audit_report.json")):
-        raise RuntimeError("The agent finished without writing audit_out/audit_report.json.")
+        reason = agent_error or retry_error or last_output or meta.get("agent_summary") or (
+            "Claude exited with code %s." % proc.returncode if proc.returncode else
+            "Claude exited successfully but did not write a report.")
+        raise RuntimeError("%s No audit_out/audit_report.json was written. Check the agent log." % reason[:500])
+    if proc.returncode != 0 or agent_error:
+        raise RuntimeError(agent_error or "Claude exited with code %s after writing a report." % proc.returncode)
 
 
 # --- job wrapper ------------------------------------------------------------
@@ -791,6 +808,8 @@ def main():
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--port", type=int, default=8765)
     ap.add_argument("--no-browser", action="store_true")
+    ap.add_argument("--engine-only", action="store_true",
+                    help="show only the scripted engine; useful for demos without Claude access")
     ap.add_argument("--open", metavar="DIR",
                     help="import an audit output folder (e.g. demo/audit_out) and open it")
     args = ap.parse_args()
@@ -803,7 +822,7 @@ def main():
             raise SystemExit("--open: %s" % e)
 
     engine = locate_engine()
-    binary = find_claude()
+    binary = None if args.engine_only else find_claude()
     agent = {"available": bool(binary), "bin": binary,
              "version": claude_version(binary) if binary else None}
     os.makedirs(RUNS, exist_ok=True)
